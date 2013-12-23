@@ -1,8 +1,7 @@
 package tppitweaks;
 
-import tppitweaks.config.ConfigurationHandler;
-import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import tppitweaks.config.ConfigurationHandler;
 
 public class AM2SpawnControls {
 
