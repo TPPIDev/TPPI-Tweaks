@@ -29,7 +29,6 @@ public class TPPITweaks {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		AM2SpawnControls.doAM2SpawnControls();
-		new TPPIBook().registerRecipe();
 	}
  
 	@EventHandler
