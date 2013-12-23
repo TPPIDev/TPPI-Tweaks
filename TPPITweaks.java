@@ -1,5 +1,6 @@
 package tppitweaks;
 
+import tppitweaks.config.ConfigurationHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -17,7 +18,7 @@ public class TPPITweaks {
  
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 	}
  
 	@EventHandler
