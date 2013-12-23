@@ -1,12 +1,11 @@
 package tppitweaks.event;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import tppitweaks.item.SpecialRecipes;
+import tppitweaks.item.TPPIBook;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 public class BookEventHandler {
 	
@@ -19,7 +18,7 @@ public class BookEventHandler {
 			
 			EntityPlayer entity = (EntityPlayer) event.entity;
 			
-			entity.inventory.addItemStackToInventory(SpecialRecipes.stack);
+			entity.inventory.addItemStackToInventory(TPPIBook.tppiBook);
 		}
 	}
 }
