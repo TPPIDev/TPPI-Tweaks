@@ -18,22 +18,19 @@ public class TPPITweaks {
  
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
-	
-	public static TPPIBook book;
  
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		
-		MinecraftForge.EVENT_BUS.register(new BookEventHandler());
-		
-		book = new TPPIBook();
-		book.registerRecipe();
 	}
  
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		AM2SpawnControls.doAM2SpawnControls();
+		MinecraftForge.EVENT_BUS.register(new BookEventHandler());
+		TPPIBook.registerRecipe();
 	}
  
 	@EventHandler

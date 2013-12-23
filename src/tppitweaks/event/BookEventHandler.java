@@ -17,11 +17,9 @@ public class BookEventHandler {
 		{
 			System.out.println("adding book");
 			
-			TPPITweaks.book = new TPPIBook();
-			
 			EntityPlayer entity = (EntityPlayer) event.entity;
 			
-			entity.inventory.addItemStackToInventory(TPPIBook.tppiBook);
+			entity.inventory.addItemStackToInventory(TPPIBook.getBook());
 			
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setBoolean("hasBook", true);
