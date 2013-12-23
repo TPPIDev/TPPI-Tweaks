@@ -1,6 +1,9 @@
 package tppitweaks;
 
+import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.event.BookEventHandler;
+import tppitweaks.item.SpecialRecipes;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -19,6 +22,10 @@ public class TPPITweaks {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+		
+		SpecialRecipes.registerSpecialRecipes();
+		
+		MinecraftForge.EVENT_BUS.register(new BookEventHandler());
 	}
  
 	@EventHandler
