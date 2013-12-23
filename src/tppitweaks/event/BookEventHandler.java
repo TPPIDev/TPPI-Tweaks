@@ -5,12 +5,11 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import tppitweaks.TPPITweaks;
 import tppitweaks.item.TPPIBook;
 
 public class BookEventHandler {
-	
-	public static TPPIBook book;
-	
+		
 	@ForgeSubscribe
 	public void onPlayerJoin(EntityJoinWorldEvent event)
 	{
@@ -18,8 +17,7 @@ public class BookEventHandler {
 		{
 			System.out.println("adding book");
 			
-			book = new TPPIBook();
-			book.registerRecipe();
+			TPPITweaks.book = new TPPIBook();
 			
 			EntityPlayer entity = (EntityPlayer) event.entity;
 			
