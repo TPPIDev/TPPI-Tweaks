@@ -4,11 +4,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -38,16 +40,28 @@ public class TPPIBook extends ItemEditableBook{
 		return par1ItemStack;
 	}
 	
+	@Override
+	public void onUpdate(ItemStack tppiBook, World par2World, Entity par3Entity, int par4, boolean par5) {
+		if(!tppiBook.hasTagCompound()) {
+			tppiBook.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
+			tppiBook.setTagInfo("title", new NBTTagString("title", "TPPI Worldgen Field Guide"));
+			
+			NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
+			NBTTagList bookPages = new NBTTagList("pages");
+	        bookPages.appendTag(new NBTTagString("1", "Test"));
+	        bookPages.appendTag(new NBTTagString("2", "Two!"));
+	        bookPages.appendTag(new NBTTagString("3", "Hi tterrag."));
+	        nbttagcompound.setTag("pages", bookPages);
+		}
+	}
+	
+	@Override
+    public String getItemDisplayName(ItemStack par1ItemStack) {
+        return "TPPI Worldgen Field Guide";
+    }
+	
 	public static ItemStack getBook() {
 		ItemStack tppiBook = new ItemStack(ModItem.tppiBook);
-		tppiBook.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
-		tppiBook.setTagInfo("title", new NBTTagString("title", "TPPI Worldgen Field Guide"));
-		
-		NBTTagCompound tag = new NBTTagCompound("pages");
-		tag.setString("page1", "Test Page Please Ignore");
-		tag.setString("page2", "Test Page Please Ignore 2");
-		
-		tppiBook.setTagCompound(tag);
 		return tppiBook;
 	}
 	
