@@ -19,7 +19,7 @@ public class ConfigurationHandler
 	public static String bookAuthor;
 	public static List<String> bookText;
 	
-	private static final int COMMENT_LINE_NUM = 13;
+	private static final int COMMENT_LINE_NUM = 16;
 	
 	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
 
@@ -36,7 +36,6 @@ public class ConfigurationHandler
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Field Guide", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("BOOK INFO", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
-
 
 		config.save();
 	}
@@ -55,15 +54,25 @@ public class ConfigurationHandler
 		while (scanner.hasNextLine())
 		{
 			String temp = scanner.nextLine();
+			System.out.println("temp:" + temp);
 			if (temp.equals("~~~"))
 			{
 				bookText.add(nextPage);
 				nextPage = "";
 			}
 			else
-				nextPage += temp + " ";
-			
+			{
+				if (temp.charAt(temp.length() - 1) == '~')
+				{
+					temp = temp.substring(0, temp.length() - 1);
+					temp += "\n";
+					nextPage += temp;
+				}
+				else
+					nextPage += temp + " ";
+			}			
 		}
+
 		
 		bookText.add(nextPage);
 		
