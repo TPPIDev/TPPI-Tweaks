@@ -1,7 +1,9 @@
 package tppitweaks.config;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import net.minecraftforge.common.Configuration;
 
@@ -9,6 +11,7 @@ public class ConfigurationHandler {
 
 	public static HashMap<String, Boolean> am2SpawnControls = new HashMap<String, Boolean>();
 	public static int bookID;
+	public static String bookText = "";
 	
 	public static String[] am2MobKeys = {"EntityHecate", "EntityDarkMage", "EntityWaterElemental", "EntityManaElemental", 
 		"EntityDryad", "EntityManaCreeper", "EntityDarkling"};
@@ -25,6 +28,18 @@ public class ConfigurationHandler {
 		
 		config.save();
 		
+	}
+	
+	public static void loadBookText(File bookTextFile) {
+		Scanner scanner;
+		try {
+			scanner = new Scanner(bookTextFile);
+			while(scanner.hasNext()) {
+				bookText = bookText + scanner.next();
+			}
+		} catch (FileNotFoundException e) {
+			System.err.println("Unable to locate TPPI Book file.");
+		}
 	}
 	
 	

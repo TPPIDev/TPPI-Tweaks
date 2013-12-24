@@ -1,5 +1,6 @@
 package tppitweaks.item;
 
+import tppitweaks.config.ConfigurationHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -48,10 +49,10 @@ public class TPPIBook extends ItemEditableBook{
 			
 			NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
 			NBTTagList bookPages = new NBTTagList("pages");
-	        bookPages.appendTag(new NBTTagString("1", "Test"));
-	        bookPages.appendTag(new NBTTagString("2", "Two!"));
-	        bookPages.appendTag(new NBTTagString("3", "Hi tterrag."));
-	        nbttagcompound.setTag("pages", bookPages);
+			bookPages.appendTag(new NBTTagString("1", ConfigurationHandler.bookText));
+			bookPages.appendTag(new NBTTagString("2", "Two!"));
+			bookPages.appendTag(new NBTTagString("3", "Hi tterrag."));
+			nbttagcompound.setTag("pages", bookPages);
 		}
 	}
 	
