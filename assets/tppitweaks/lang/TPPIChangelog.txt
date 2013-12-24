@@ -1,3 +1,23 @@
-asdfasdfhaklsdhflaksjdhflkajh
+**This is the file that TPPI Tweaks reads its info from, it is used for changelogs and information on the modpack**
+**To add to the file, type what you want, and separate pages by using the phrase ~~~ **
+**The code will interpret "~~~" as a page break, and format the book accordingly**
 
-h000m000000000000000000000
+Example:
+This is some very useful info
+And I am typing it on multiple lines
+~~~
+Now I am on page 2
+Still on page 2
+
+**Begin line after asterisks**
+****************************************************************************
+Testing for the
+book this
+is ridiculously
+short
+lines
+~~~
+but I just
+wanna see
+~~~
+if pagination works
