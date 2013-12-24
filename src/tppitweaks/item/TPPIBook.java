@@ -50,8 +50,8 @@ public class TPPIBook extends ItemEditableBook
 	{
 		if (!tppiBook.hasTagCompound())
 		{
-			tppiBook.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
-			tppiBook.setTagInfo("title", new NBTTagString("title", "TPPI Worldgen Field Guide"));
+			tppiBook.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
+			tppiBook.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
 
 			NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
 			NBTTagList bookPages = new NBTTagList("pages");
@@ -67,7 +67,7 @@ public class TPPIBook extends ItemEditableBook
 	@Override
 	public String getItemDisplayName(ItemStack par1ItemStack)
 	{
-		return "TPPI Worldgen Field Guide";
+		return ConfigurationHandler.bookTitle;
 	}
 
 	public static ItemStack getBook()
