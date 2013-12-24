@@ -24,8 +24,5 @@ public class ConfigurationHandler {
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		
 		config.save();
-		
-	}
-	
-	
+	}	
 }
