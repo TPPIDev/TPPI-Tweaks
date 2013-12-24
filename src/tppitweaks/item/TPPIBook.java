@@ -40,8 +40,8 @@ public class TPPIBook extends ItemEditableBook
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		System.out.println("right clicked");
-		Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(par3EntityPlayer, par1ItemStack, false));
+		if (!par2World.isRemote)
+			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(par3EntityPlayer, par1ItemStack, false));
 		return par1ItemStack;
 	}
 
@@ -60,6 +60,7 @@ public class TPPIBook extends ItemEditableBook
 			{
 				bookPages.appendTag(new NBTTagString("" + i, ConfigurationHandler.bookText.get(i)));
 			}
+			
 			nbttagcompound.setTag("pages", bookPages);
 		}
 	}
