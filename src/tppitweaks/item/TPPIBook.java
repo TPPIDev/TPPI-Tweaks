@@ -27,7 +27,7 @@ public class TPPIBook extends ItemEditableBook{
 	}
 
 	public static void registerRecipes() {
-		GameRegistry.addShapelessRecipe(getBook(), Item.book, Item.coal);	
+		GameRegistry.addShapelessRecipe(getBook(), Item.book, Item.ingotIron);	
 	}
 	
 	@Override
