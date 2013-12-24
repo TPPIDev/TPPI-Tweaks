@@ -43,7 +43,7 @@ public class TPPIBook extends ItemEditableBook{
 		tppiBook.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
 		tppiBook.setTagInfo("title", new NBTTagString("title", "TPPI Worldgen Field Guide"));
 		
-		NBTTagCompound tag = new NBTTagCompound();
+		NBTTagCompound tag = new NBTTagCompound("pages");
 		tag.setString("page1", "Test Page Please Ignore");
 		tag.setString("page2", "Test Page Please Ignore 2");
 		
