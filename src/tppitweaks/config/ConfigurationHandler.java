@@ -18,7 +18,7 @@ public class ConfigurationHandler {
 		config.load();
 		
 		for(String s : am2MobKeys) {
-			am2SpawnControls.put(s, config.get("GLOBAL ARS MAGICA 2 MOB SPAWN CONTROLS", "globallyDisable"+s, false).getBoolean(false));
+			am2SpawnControls.put(s, config.get("GLOBAL ARS MAGICA 2 MOB SPAWN CONTROLS", "globallyDisable"+s, true).getBoolean(true));
 		}
 		
 		config.save();
