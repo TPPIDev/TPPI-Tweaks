@@ -30,7 +30,7 @@ public class TPPITweaks {
 	public void init(FMLInitializationEvent event) {
 		AM2SpawnControls.doAM2SpawnControls();
 		MinecraftForge.EVENT_BUS.register(new BookEventHandler());
-		TPPIBook.registerRecipe();
+		TPPIBook.registerRecipes();
 	}
  
 	@EventHandler
