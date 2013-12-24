@@ -15,61 +15,70 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TPPIBook extends ItemEditableBook{
-	
-	public TPPIBook(int par1) {
+public class TPPIBook extends ItemEditableBook
+{
+
+	public TPPIBook(int par1)
+	{
 		super(par1);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("tppibook");
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister)
+	{
 		this.itemIcon = par1IconRegister.registerIcon("tppitweaks:tppiBook");
 	}
 
-	public static void registerRecipes() {
-		GameRegistry.addShapelessRecipe(getBook(), Item.book, Item.ingotIron);	
+	public static void registerRecipes()
+	{
+		GameRegistry.addShapelessRecipe(getBook(), Item.book, Item.ingotIron);
 	}
-	
+
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
-			EntityPlayer par3EntityPlayer) {
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	{
 		System.out.println("right clicked");
 		Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(par3EntityPlayer, par1ItemStack, false));
 		return par1ItemStack;
 	}
-	
+
 	@Override
-	public void onUpdate(ItemStack tppiBook, World par2World, Entity par3Entity, int par4, boolean par5) {
-		if(!tppiBook.hasTagCompound()) {
+	public void onUpdate(ItemStack tppiBook, World par2World, Entity par3Entity, int par4, boolean par5)
+	{
+		if (!tppiBook.hasTagCompound())
+		{
 			tppiBook.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
 			tppiBook.setTagInfo("title", new NBTTagString("title", "TPPI Worldgen Field Guide"));
-			
+
 			NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
 			NBTTagList bookPages = new NBTTagList("pages");
-			
-			//Judge put your pages in here
-	        bookPages.appendTag(new NBTTagString("1", "Page about ore stuff 1"));
-	        bookPages.appendTag(new NBTTagString("2", "Page about ore stuff 2"));
-	        bookPages.appendTag(new NBTTagString("3", "etc etc"));
-	        nbttagcompound.setTag("pages", bookPages);
+
+			// Judge put your pages in here
+			bookPages.appendTag(new NBTTagString("1", "Page about ore stuff 1"));
+			bookPages.appendTag(new NBTTagString("2", "Page about ore stuff 2"));
+			bookPages.appendTag(new NBTTagString("3", "etc etc"));
+			nbttagcompound.setTag("pages", bookPages);
 		}
 	}
-	
+
 	@Override
-    public String getItemDisplayName(ItemStack par1ItemStack) {
-        return "TPPI Worldgen Field Guide";
-    }
-	
-	public static ItemStack getBook() {
+	public String getItemDisplayName(ItemStack par1ItemStack)
+	{
+		return "TPPI Worldgen Field Guide";
+	}
+
+	public static ItemStack getBook()
+	{
 		ItemStack tppiBook = new ItemStack(ModItem.tppiBook);
 		return tppiBook;
 	}
-	
+
 	@Override
-	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+	public boolean hasEffect(ItemStack par1ItemStack, int pass)
+	{
 		return false;
 	}
-	
+
 }
