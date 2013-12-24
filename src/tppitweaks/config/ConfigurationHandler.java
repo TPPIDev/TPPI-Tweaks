@@ -19,7 +19,7 @@ public class ConfigurationHandler
 	public static String bookAuthor;
 	public static List<String> bookText;
 	
-	private static final int COMMENT_LINE_NUM = 12;
+	private static final int COMMENT_LINE_NUM = 13;
 	
 	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
 
@@ -48,7 +48,7 @@ public class ConfigurationHandler
 		
 		bookText = new ArrayList<String>();
 		
-		for (int i = 0; i <= COMMENT_LINE_NUM; i++)
+		for (int i = 0; i < COMMENT_LINE_NUM; i++)
 			scanner.nextLine();
 		
 		String nextPage = "";
