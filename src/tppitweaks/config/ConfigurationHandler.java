@@ -26,9 +26,7 @@ public class ConfigurationHandler {
 		}
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		
-		config.save();
-<<<<<<< HEAD
-		
+		config.save();		
 	}
 	
 	public static void loadBookText(File bookTextFile) {
@@ -42,9 +40,4 @@ public class ConfigurationHandler {
 			System.err.println("Unable to locate TPPI Book file.");
 		}
 	}
-	
-	
-=======
-	}	
->>>>>>> bb10f626df9233964527b51eb9bc2e09f3097d33
 }
