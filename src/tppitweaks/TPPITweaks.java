@@ -2,6 +2,7 @@ package tppitweaks;
 
 import java.io.File;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.BookEventHandler;
@@ -25,8 +26,7 @@ public class TPPITweaks {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-		ConfigurationHandler.loadBookText(new File(event.getModConfigurationDirectory(), "TPPIChangelog.txt"));
-		
+		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/TPPIChangelog.txt"));
 	}
  
 	@EventHandler

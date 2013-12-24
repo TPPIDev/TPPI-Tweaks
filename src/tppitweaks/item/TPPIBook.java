@@ -56,10 +56,10 @@ public class TPPIBook extends ItemEditableBook
 			NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
 			NBTTagList bookPages = new NBTTagList("pages");
 
-			// Judge put your pages in here
-			bookPages.appendTag(new NBTTagString("1", "Page about ore stuff 1"));
-			bookPages.appendTag(new NBTTagString("2", "Page about ore stuff 2"));
-			bookPages.appendTag(new NBTTagString("3", "etc etc"));
+			for (int i = 0; i < ConfigurationHandler.bookText.size(); i++)
+			{
+				bookPages.appendTag(new NBTTagString("" + i, ConfigurationHandler.bookText.get(i)));
+			}
 			nbttagcompound.setTag("pages", bookPages);
 		}
 	}
