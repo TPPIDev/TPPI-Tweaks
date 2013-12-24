@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -41,6 +42,12 @@ public class TPPIBook extends ItemEditableBook{
 		ItemStack tppiBook = new ItemStack(ModItem.tppiBook);
 		tppiBook.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
 		tppiBook.setTagInfo("title", new NBTTagString("title", "TPPI Worldgen Field Guide"));
+		
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("page1", "Test Page Please Ignore");
+		tag.setString("page2", "Test Page Please Ignore 2");
+		
+		tppiBook.setTagCompound(tag);
 		return tppiBook;
 	}
 	
