@@ -25,6 +25,7 @@ public class EnderStorageTesseracts {
 		
 	}
 	
+	@SuppressWarnings({ "unchecked", "unused" })
 	private static void removeEnderStorageRecipes() {
 	
 		ListIterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().listIterator();
@@ -36,7 +37,7 @@ public class EnderStorageTesseracts {
 			if(out != null) {
 				outputID = out.itemID;
 			}
-			if(outputID == EnderStorage.blockEnderChest.blockID || outputID == EnderStorage.itemEnderPouch.itemID) {
+			if(outputID == ((Block)EnderStorage.blockEnderChest).blockID || outputID == ((Item)EnderStorage.itemEnderPouch).itemID) {
 				iterator.remove();
 			}
 		}

@@ -29,7 +29,7 @@ public class TPPIBook extends ItemEditableBook
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("tppitweaks:tppiBook");
+		this.itemIcon = par1IconRegister.registerIcon("tppitweaks:tppibook");
 	}
 
 	public static void registerRecipes()
