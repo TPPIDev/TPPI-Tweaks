@@ -1,5 +1,6 @@
 package tppitweaks.item;
 
+import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreenBook;
@@ -39,31 +40,32 @@ public class TPPIBook extends ItemEditableBook
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (!par2World.isRemote)
-			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(par3EntityPlayer, par1ItemStack, false));
-		return par1ItemStack;
+		if (!stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
+		{
+			if (!world.isRemote)
+			{
+				player.inventory.consumeInventoryItem(this.itemID);
+
+				ItemStack book = TPPIBook.getBook();
+				book.setTagCompound(new NBTTagCompound("version"));
+				book.getTagCompound().setString("version", TPPITweaks.VERSION);
+				//player.inventory.addItemStackToInventory(book);
+				
+				Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, book, false));
+				return book;
+			}
+		}
+		else if (!world.isRemote)
+			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, stack, false));
+		return stack;
 	}
 
 	@Override
-	public void onUpdate(ItemStack tppiBook, World par2World, Entity par3Entity, int par4, boolean par5)
+	public void onUpdate(ItemStack tppiBook, World world, Entity par3Entity, int par4, boolean par5)
 	{
-		if (!tppiBook.hasTagCompound())
-		{
-			tppiBook.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
-			tppiBook.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
-
-			NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
-			NBTTagList bookPages = new NBTTagList("pages");
-
-			for (int i = 0; i < ConfigurationHandler.bookText.size(); i++)
-			{
-				bookPages.appendTag(new NBTTagString("" + i, ConfigurationHandler.bookText.get(i)));
-			}
-			
-			nbttagcompound.setTag("pages", bookPages);
-		}
+		super.onUpdate(tppiBook, world, par3Entity, par4, par5);
 	}
 
 	@Override
@@ -75,6 +77,20 @@ public class TPPIBook extends ItemEditableBook
 	public static ItemStack getBook()
 	{
 		ItemStack tppiBook = new ItemStack(ModItem.tppiBook);
+		
+		tppiBook.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
+		tppiBook.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
+
+		NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
+		NBTTagList bookPages = new NBTTagList("pages");
+
+		for (int i = 0; i < ConfigurationHandler.bookText.size(); i++)
+		{
+			bookPages.appendTag(new NBTTagString("" + i, ConfigurationHandler.bookText.get(i)));
+		}
+
+		nbttagcompound.setTag("pages", bookPages);
+		
 		return tppiBook;
 	}
 
