@@ -24,7 +24,7 @@ import erogenousbeef.bigreactors.common.block.BlockReactorPart;
 
 public class RecipeTweaks {
 
-	public static HashMap<Integer, Integer> recipesToRemove;
+	private static HashMap<Integer, Integer> recipesToRemove;
 	private static boolean okayToTweakEnderStorage;
 	private static boolean okayToTweakBigReactors;
 	
@@ -135,15 +135,19 @@ public class RecipeTweaks {
 	}
 
 	private static void doOreDictTweaks() {
-		if(Loader.isModLoaded("IC2") && OreDictionary.getOreID(Ic2Items.reinforcedGlass) == -1) {
-			OreDictionary.registerOre("glassReinforced", Ic2Items.reinforcedGlass);
+		
+		if(ConfigurationHandler.ic2TEGlassInterchangeability) {
+			if(Loader.isModLoaded("IC2") && OreDictionary.getOreID(Ic2Items.reinforcedGlass) == -1) {
+				OreDictionary.registerOre("glassReinforced", Ic2Items.reinforcedGlass);
+			}
+			for(ItemStack stack : OreDictionary.getOres("glassReinforced")) {
+				OreDictionary.registerOre("glassHardened", stack);
+			}
+			for(ItemStack stack : OreDictionary.getOres("glassHardened")) {
+				OreDictionary.registerOre("glassReinforced", stack);
+			}
 		}
-		for(ItemStack stack : OreDictionary.getOres("glassReinforced")) {
-			OreDictionary.registerOre("glassHardened", stack);
-		}
-		for(ItemStack stack : OreDictionary.getOres("glassHardened")) {
-			OreDictionary.registerOre("glassReinforced", stack);
-		}
+		
 	}
 	
 	private static void addBigReactorsRecipes() {
