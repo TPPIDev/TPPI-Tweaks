@@ -1,13 +1,12 @@
 package tppitweaks.event;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import tppitweaks.TPPITweaks;
 import tppitweaks.item.TPPIBook;
 
 public class BookEventHandler
@@ -23,9 +22,7 @@ public class BookEventHandler
 			EntityPlayer entity = (EntityPlayer) event.entity;
 
 			ItemStack stack = TPPIBook.getBook();
-			stack.setTagCompound(new NBTTagCompound("version"));
-			stack.getTagCompound().setString("version", TPPITweaks.VERSION);
-			entity.inventory.addItemStackToInventory(stack);
+			entity.worldObj.spawnEntityInWorld(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, stack));
 
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setBoolean("hasBook", true);

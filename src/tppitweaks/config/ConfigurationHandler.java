@@ -20,6 +20,7 @@ public class ConfigurationHandler
 	public static boolean enderChestTesseract;
 	public static boolean enderPouchTesseract;
 	public static boolean enderTankTesseract;
+	public static boolean steelReactorCasings;
 
 
 	/** ArrayList of Strings, the strings are each one whole page **/
@@ -43,6 +44,7 @@ public class ConfigurationHandler
 		enderChestTesseract = config.get("OPTIONS", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
 		enderPouchTesseract = config.get("OPTIONS", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
 		enderTankTesseract = config.get("OPTIONS", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
+		steelReactorCasings = config.get("OPTIONS", "steelReactorCasings", true, "Big Reactors reactor casing require steel. Affects ONLY the casings.").getBoolean(true);
 		
 		config.save();
 	}
@@ -65,8 +67,6 @@ public class ConfigurationHandler
 		{
 			String temp = scanner.nextLine();
 
-			System.out.println("temp:" + temp);
-
 			// If the line is a comment
 			if (temp.length() == 0 || temp.startsWith("**"))
 			{
@@ -76,7 +76,6 @@ public class ConfigurationHandler
 					// Skip the requested amount of lines by parsing the number after the asterisks
 					for (int i = 0; i <= Integer.parseInt(temp.substring(3, 4)); i++)
 					{
-						System.out.println("line skipped");
 						scanner.nextLine();
 					}
 				}
@@ -84,7 +83,7 @@ public class ConfigurationHandler
 				// If the line is not a valid line-skip comment, and does not have more than 3 asterisks
 				else if (temp.startsWith("***") && !temp.startsWith("****"))
 				{
-					System.out.println("TPPI - Invalid line-skip in changelog. This may not work as intended");
+					System.err.println("TPPI - Invalid line-skip in changelog. This may not work as intended");
 				}
 				
 				// Finally, do not add this to the page

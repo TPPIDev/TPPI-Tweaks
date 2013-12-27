@@ -36,25 +36,23 @@ public class TPPIBook extends ItemEditableBook
 	public static void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(getBook(), Item.book, Item.ingotIron);
-		GameRegistry.addShapelessRecipe(getBook(), getBook().getItem());
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (!stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
+		if (stack.stackTagCompound == null || !stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
 		{
 			if (!world.isRemote)
 			{
-				player.inventory.consumeInventoryItem(this.itemID);
 
-				ItemStack book = TPPIBook.getBook();
-				book.setTagCompound(new NBTTagCompound("version"));
-				book.getTagCompound().setString("version", TPPITweaks.VERSION);
-				//player.inventory.addItemStackToInventory(book);
+				stack.setTagCompound(new NBTTagCompound());
+				addTextToBook(stack);
 				
-				Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, book, false));
-				return book;
+				player.inventoryContainer.detectAndSendChanges();
+				
+				Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, stack, false));
+				return stack;
 			}
 		}
 		else if (!world.isRemote)
@@ -63,25 +61,17 @@ public class TPPIBook extends ItemEditableBook
 	}
 
 	@Override
-	public void onUpdate(ItemStack tppiBook, World world, Entity par3Entity, int par4, boolean par5)
-	{
-		super.onUpdate(tppiBook, world, par3Entity, par4, par5);
-	}
-
-	@Override
 	public String getItemDisplayName(ItemStack par1ItemStack)
 	{
 		return ConfigurationHandler.bookTitle;
 	}
 
-	public static ItemStack getBook()
-	{
-		ItemStack tppiBook = new ItemStack(ModItem.tppiBook);
+	public static ItemStack addTextToBook(ItemStack book) {
 		
-		tppiBook.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
-		tppiBook.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
+		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
+		book.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
 
-		NBTTagCompound nbttagcompound = tppiBook.getTagCompound();
+		NBTTagCompound nbttagcompound = book.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
 
 		for (int i = 0; i < ConfigurationHandler.bookText.size(); i++)
@@ -90,8 +80,15 @@ public class TPPIBook extends ItemEditableBook
 		}
 
 		nbttagcompound.setTag("pages", bookPages);
+		nbttagcompound.setString("version", TPPITweaks.VERSION);
 		
-		return tppiBook;
+		return book;
+		
+	}
+	
+	public static ItemStack getBook()
+	{
+		return addTextToBook(new ItemStack(ModItems.tppiBook));
 	}
 
 	@Override

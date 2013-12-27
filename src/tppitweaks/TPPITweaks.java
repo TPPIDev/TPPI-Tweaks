@@ -4,7 +4,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.BookEventHandler;
 import tppitweaks.item.TPPIBook;
-import tppitweaks.recipetweaks.EnderStorageTesseracts;
+import tppitweaks.recipetweaks.RecipeTweaks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -13,12 +13,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = "after:arsmagica2")
+@Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION)
 @NetworkMod(channels = { "tppitweaks" }, clientSideRequired = true, serverSideRequired = false)
 public class TPPITweaks
 {
 
-	public static final String VERSION = "1";
+	public static final String VERSION = "0.0.2";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
@@ -42,6 +42,6 @@ public class TPPITweaks
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		EnderStorageTesseracts.doEnderStorageTweaks();
+		RecipeTweaks.doRecipeTweaks();
 	}
 }

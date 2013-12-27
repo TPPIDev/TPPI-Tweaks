@@ -2,7 +2,7 @@
     "modid": "TPPITweaks",
     "name": "TPPI Tweaks",
     "description": "Does some useful stuff for the TPPI modpack.",
-    "version": "1",
+    "version": "0.0.2",
     "mcversion": "1.6.4",
     "authors": [ "The TPPI Team" ],
     "requiredMods": [ "Forge" ]
