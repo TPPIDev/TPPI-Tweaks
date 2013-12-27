@@ -1,12 +1,10 @@
 package tppitweaks;
 
-import java.io.File;
-
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.BookEventHandler;
 import tppitweaks.item.TPPIBook;
+import tppitweaks.recipetweaks.EnderStorageTesseracts;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -42,6 +40,6 @@ public class TPPITweaks
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-
+		EnderStorageTesseracts.doEnderStorageTweaks();
 	}
 }

@@ -17,6 +17,10 @@ public class ConfigurationHandler
 	public static int bookID;
 	public static String bookTitle;
 	public static String bookAuthor;
+	public static boolean enderChestTesseract;
+	public static boolean enderPouchTesseract;
+	public static boolean enderTankTesseract;
+
 
 	/** ArrayList of Strings, the strings are each one whole page **/
 	public static List<String> bookText;
@@ -36,7 +40,10 @@ public class ConfigurationHandler
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Field Guide", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("BOOK INFO", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
-
+		enderChestTesseract = config.get("OPTIONS", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
+		enderPouchTesseract = config.get("OPTIONS", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
+		enderTankTesseract = config.get("OPTIONS", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
+		
 		config.save();
 	}
 
