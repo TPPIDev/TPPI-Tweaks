@@ -11,13 +11,4 @@ Still on page 2
 
 **Begin line after asterisks**
 ****************************************************************************
-Testing for the VERSION 222222222222
-book this
-is ridiculously
-short
-lines
-~~~
-but I just
-wanna see
-~~~
-if pagination works
+This text intentionally left blank

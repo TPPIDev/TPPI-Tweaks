@@ -45,7 +45,7 @@ public class ConfigurationHandler
 		enderChestTesseract = config.get("OPTIONS", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
 		enderPouchTesseract = config.get("OPTIONS", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
 		enderTankTesseract = config.get("OPTIONS", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
-		steelReactorCasings = config.get("OPTIONS", "steelReactorCasings", true, "Big Reactors reactor casing require steel. Affects ONLY the casings.").getBoolean(true);
+		steelReactorCasings = config.get("OPTIONS", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("OPTIONS", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
 		
 		config.save();

@@ -89,5 +89,11 @@ public class TPPIBook extends ItemEditableBook
 	{
 		return addTextToBook(new ItemStack(ModItems.tppiBook));
 	}
+	
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack)
+	{
+		return false;
+	}
 
 }
