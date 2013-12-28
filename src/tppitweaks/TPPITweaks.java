@@ -3,7 +3,7 @@ package tppitweaks;
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.BookEventHandler;
-import tppitweaks.item.TPPIBook;
+import tppitweaks.item.ModItems;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -29,6 +29,7 @@ public class TPPITweaks
 
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/TPPIChangelog.txt"));
+		ModItems.initItems();
 	}
 
 	@EventHandler
@@ -36,7 +37,7 @@ public class TPPITweaks
 	{
 		AM2SpawnControls.doAM2SpawnControls();
 		MinecraftForge.EVENT_BUS.register(new BookEventHandler());
-		TPPIBook.registerRecipes();
+		ModItems.tppiBook.registerRecipes();
 	}
 
 	@EventHandler

@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import tppitweaks.item.TPPIBook;
+import tppitweaks.item.ModItems;
 
 public class BookEventHandler
 {
@@ -21,7 +21,7 @@ public class BookEventHandler
 
 			EntityPlayer entity = (EntityPlayer) event.entity;
 
-			ItemStack stack = TPPIBook.getBook();
+			ItemStack stack = ModItems.tppiBook.getBook();
 			entity.worldObj.spawnEntityInWorld(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, stack));
 
 			NBTTagCompound tag = new NBTTagCompound();

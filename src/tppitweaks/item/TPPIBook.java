@@ -1,12 +1,7 @@
 package tppitweaks.item;
 
-import tppitweaks.TPPITweaks;
-import tppitweaks.config.ConfigurationHandler;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEditableBook;
@@ -15,7 +10,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.world.World;
+import tppitweaks.GuiHelper;
+import tppitweaks.TPPITweaks;
+import tppitweaks.config.ConfigurationHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class TPPIBook extends ItemEditableBook
 {
@@ -33,7 +33,7 @@ public class TPPIBook extends ItemEditableBook
 		this.itemIcon = par1IconRegister.registerIcon("tppitweaks:tppibook");
 	}
 
-	public static void registerRecipes()
+	public void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(getBook(), Item.book, Item.ingotIron);
 	}
@@ -43,20 +43,19 @@ public class TPPIBook extends ItemEditableBook
 	{
 		if (stack.stackTagCompound == null || !stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
 		{
-			if (!world.isRemote)
+			if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 			{
-
 				stack.setTagCompound(new NBTTagCompound());
 				addTextToBook(stack);
 				
 				player.inventoryContainer.detectAndSendChanges();
 				
-				Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, stack, false));
+				GuiHelper.doBookGUI(player, stack, false);
 				return stack;
 			}
 		}
-		else if (!world.isRemote)
-			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, stack, false));
+		else if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+			GuiHelper.doBookGUI(player, stack, false);
 		return stack;
 	}
 
@@ -66,7 +65,7 @@ public class TPPIBook extends ItemEditableBook
 		return ConfigurationHandler.bookTitle;
 	}
 
-	public static ItemStack addTextToBook(ItemStack book) {
+	public ItemStack addTextToBook(ItemStack book) {
 		
 		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
 		book.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
@@ -86,15 +85,9 @@ public class TPPIBook extends ItemEditableBook
 		
 	}
 	
-	public static ItemStack getBook()
+	public ItemStack getBook()
 	{
 		return addTextToBook(new ItemStack(ModItems.tppiBook));
-	}
-
-	@Override
-	public boolean hasEffect(ItemStack par1ItemStack, int pass)
-	{
-		return false;
 	}
 
 }

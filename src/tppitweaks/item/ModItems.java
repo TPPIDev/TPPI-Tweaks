@@ -5,6 +5,10 @@ import net.minecraft.item.Item;
 
 public class ModItems {
 	
-	public static Item tppiBook = new TPPIBook(ConfigurationHandler.bookID);
+	public static TPPIBook tppiBook;
+	
+	public static void initItems() {
+		tppiBook = new TPPIBook(ConfigurationHandler.bookID);
+	}
 
 }
