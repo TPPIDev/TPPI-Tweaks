@@ -22,7 +22,7 @@ public class ConfigurationHandler
 	public static boolean enderTankTesseract;
 	public static boolean steelReactorCasings;
 	public static boolean ic2TEGlassInterchangeability;
-
+	public static boolean tweakDA;
 
 	/** ArrayList of Strings, the strings are each one whole page **/
 	public static List<String> bookText;
@@ -47,7 +47,7 @@ public class ConfigurationHandler
 		enderTankTesseract = config.get("OPTIONS", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
 		steelReactorCasings = config.get("OPTIONS", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("OPTIONS", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
-		
+		tweakDA = config.get("OPTIONS", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
 		config.save();
 	}
 

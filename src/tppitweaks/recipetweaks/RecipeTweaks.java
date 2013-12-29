@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ListIterator;
 
+import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,6 +28,7 @@ public class RecipeTweaks {
 	private static HashMap<Integer, Integer> recipesToRemove;
 	private static boolean okayToTweakEnderStorage;
 	private static boolean okayToTweakBigReactors;
+	private static boolean okayToTweakDA;
 	
 	public static void doRecipeTweaks() {
 		
@@ -55,6 +57,7 @@ public class RecipeTweaks {
 	private static void checkWhatWeCanTweak() {
 		okayToTweakEnderStorage = Loader.isModLoaded("EnderStorage") && Loader.isModLoaded("ThermalExpansion");
 		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty() && ConfigurationHandler.steelReactorCasings;
+		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -73,6 +76,9 @@ public class RecipeTweaks {
 		if(okayToTweakBigReactors) {
 			recipesToRemove.put(BigReactors.blockReactorPart.blockID, 0);
 		}
+		if(okayToTweakDA) {
+			recipesToRemove.put(DimensionalAnchors.instance.block.blockID, -1);
+		}
 		
 	}
 	
@@ -90,6 +96,7 @@ public class RecipeTweaks {
 		doOreDictTweaks();
 		addEnderStorageRecipes();
 		addBigReactorsRecipes();
+		addDARecipe();
     }
 	
 	private static void addEnderStorageRecipes() {
@@ -161,5 +168,23 @@ public class RecipeTweaks {
 		}
 		
 	}
+	
+	private static void addDARecipe()
+	{
+		if (okayToTweakDA)
+		{
+		 GameRegistry.addRecipe(new ItemStack(DimensionalAnchors.instance.block, 1, 0),
+					"ded",
+					"oIo",
+					"gog",
+					'd', Item.diamond,
+					'e', Item.enderPearl,
+					'o', Block.obsidian,
+					'I', Block.blockIron,
+					'g', Item.ingotGold
+					);
+		}
+	}
+		
 	
 }
