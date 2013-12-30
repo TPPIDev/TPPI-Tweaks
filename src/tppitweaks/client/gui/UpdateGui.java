@@ -1,5 +1,8 @@
 package tppitweaks.client.gui;
 
+import java.awt.Desktop;
+import java.net.URI;
+
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.gui.GuiButton;
@@ -9,6 +12,7 @@ public class UpdateGui extends GuiScreen
 {
 	private GuiScreen parentScreen;
 	private boolean isTCLoaded, isTFLoaded;
+	private Desktop desktop;
 
 	public UpdateGui(GuiScreen parentScreen)
 	{
@@ -20,6 +24,8 @@ public class UpdateGui extends GuiScreen
 		this.parentScreen = parentScreen;
 		isTCLoaded = flags[0];
 		isTFLoaded = flags[1];
+
+		desktop = Desktop.getDesktop();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -50,41 +56,49 @@ public class UpdateGui extends GuiScreen
 	{
 		if (button.enabled)
 		{
-			switch (button.id)
+			try
 			{
-			case 0:
-				// TODO Download TC4
-				this.mc.displayGuiScreen(new InstructionsGui(this));
-				break;
-			case 1:
-				// TODO Download TF
-				this.mc.displayGuiScreen(new InstructionsGui(this));
-				break;
-			case 2:
-				System.exit(0);
-				break;
-			case 3:
-				this.mc.displayGuiScreen(this.parentScreen);
+				switch (button.id)
+				{
+				case 0:
+					desktop.browse(new URI("http://adf.ly/1311628/thaumcraft-4"));
+					this.mc.displayGuiScreen(new InstructionsGui(this));
+					break;
+				case 1:
+					desktop.browse(new URI("http://adf.ly/Zvi5J"));
+					this.mc.displayGuiScreen(new InstructionsGui(this));
+					break;
+				case 2:
+					System.exit(0);
+					break;
+				case 3:
+					this.mc.displayGuiScreen(this.parentScreen);
+				}
+			}
+			catch (Exception e)
+			{
+				System.err.println("Error opening webpage, please contact TPPI Team.");
+				e.printStackTrace();
 			}
 		}
 	}
 
 	@Override
-	public void drawScreen(int par1, int par2, float par3) 
+	public void drawScreen(int par1, int par2, float par3)
 	{
 		drawScreen(par1, par2, par3, true);
 	}
-	
+
 	public void drawScreen(int par1, int par2, float par3, boolean draw)
 	{
 		if (draw)
 		{
 			this.drawDefaultBackground();
 
-			this.drawCenteredString(this.fontRenderer, "This is the first time you are starting TestPackPleaseIgnore. ",      this.width / 2, 20, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "If you would like to download either of these two mods,",             this.width / 2, 40, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "please click the appropriate buttons.",                               this.width / 2, 50, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "This option will not show again unless enabled in the config.",       this.width / 2, 60, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "This is the first time you are starting TestPackPleaseIgnore. ", this.width / 2, 20, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "If you would like to download either of these two mods,", this.width / 2, 40, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "please click the appropriate buttons.", this.width / 2, 50, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "This option will not show again unless enabled in the config.", this.width / 2, 60, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "Alternatively, use the command \"/tppi download\" to show this GUI.", this.width / 2, 80, 0xFFFFFF);
 		}
 
