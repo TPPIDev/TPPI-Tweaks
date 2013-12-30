@@ -1,16 +1,13 @@
 package tppitweaks.client.gui;
 
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraft.world.World;
 import tppitweaks.TPPITweaks;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiHelper {
 	
@@ -18,8 +15,13 @@ public class GuiHelper {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, stack, par3));
 	}
 	
-	public static void doDownloaderGUI() {
-		Minecraft.getMinecraft().displayGuiScreen(new UpdateGui(Minecraft.getMinecraft().currentScreen, TPPITweaks.getModFlags()));
+	@SuppressWarnings("unchecked")
+	public static void doDownloaderGUI(String playername, World world) {
+		for (EntityPlayer player : (List<EntityPlayer>) world.playerEntities)
+		{
+			if (player.username.equals(playername));//remove this semicolon
+				//TODO Do stuff with the guis and stuff
+		}
 	}	
 	
 	public static boolean shouldLoadDownloaderGUI() {

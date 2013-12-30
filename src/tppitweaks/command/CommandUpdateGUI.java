@@ -43,11 +43,12 @@ public class CommandUpdateGUI extends CommandBase
 			
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument"));
 			
-		}else if (astring[0].equals("download") && FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+		}else if (astring[0].equals("download")) {
 			
-			GuiHelper.doDownloaderGUI();
+			GuiHelper.doDownloaderGUI(icommandsender.getCommandSenderName(), icommandsender.getEntityWorld());
 			
 		}
+		else System.out.println("fail");
 		
 	}
 
