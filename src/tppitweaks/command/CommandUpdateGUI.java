@@ -2,6 +2,7 @@ package tppitweaks.command;
 
 import java.util.HashSet;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatMessageComponent;
@@ -14,15 +15,17 @@ public class CommandUpdateGUI extends CommandBase
 {
 
 	private static HashSet<String> validCommands = new HashSet<String>();
-	
-	public static void initValidCommandArguments() {
+
+	public static void initValidCommandArguments()
+	{
 		validCommands.add("download");
 	}
-	
-	private boolean isValidArgument(String s) {
+
+	private boolean isValidArgument(String s)
+	{
 		return validCommands.contains(s);
 	}
-	
+
 	@Override
 	public String getCommandName()
 	{
@@ -38,18 +41,20 @@ public class CommandUpdateGUI extends CommandBase
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
-		
-		if (astring.length <= 0 || !isValidArgument(astring[0])) {
-			
-			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument"));
-			
-		}else if (astring[0].equals("download")) {
-			
-			GuiHelper.doDownloaderGUI(icommandsender.getCommandSenderName(), icommandsender.getEntityWorld());
-			
-		}
-		else System.out.println("fail");
-		
-	}
 
+		if (astring.length <= 0 || !isValidArgument(astring[0]) || !Minecraft.getMinecraft().isSingleplayer())
+		{
+
+			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(Minecraft.getMinecraft().isSingleplayer() ? "Invalid Argument" : 
+				"Cannot use this command on a server"));
+
+		}
+		else if (astring[0].equals("download"))
+		{
+
+			GuiHelper.doDownloaderGUI();
+
+		
+		}
+	}
 }
