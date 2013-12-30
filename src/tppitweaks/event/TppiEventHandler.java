@@ -9,6 +9,7 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import tppitweaks.TPPITweaks;
+import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.item.ModItems;
 import cpw.mods.fml.relauncher.Side;
@@ -45,6 +46,7 @@ public class TppiEventHandler
 		if (shouldLoadGUI && event.gui instanceof GuiMainMenu)
 		{
 			event.gui = new UpdateGui(event.gui);
+			GuiHelper.updateGui = (UpdateGui)event.gui;
 			shouldLoadGUI = false;
 		}
 	}

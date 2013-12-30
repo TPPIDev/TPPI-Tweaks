@@ -42,19 +42,23 @@ public class CommandUpdateGUI extends CommandBase
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
 
-		if (astring.length <= 0 || !isValidArgument(astring[0]) || !Minecraft.getMinecraft().isSingleplayer())
-		{
+		try{
+			if (astring.length <= 0 || !isValidArgument(astring[0]) || !Minecraft.getMinecraft().isSingleplayer())
+			{
 
-			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(Minecraft.getMinecraft().isSingleplayer() ? "Invalid Argument" : 
-				"Cannot use this command on a server"));
+				icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(Minecraft.getMinecraft().isSingleplayer() ? "Invalid Argument" : 
+					"You cannot use this command on a server."));
 
+			}
+			else if (astring[0].equals("download"))
+			{
+
+				GuiHelper.doDownloaderGUI();
+				
+			}
+		}catch(Throwable t) {
+			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("You cannot use this command on a server."));
 		}
-		else if (astring[0].equals("download"))
-		{
-
-			GuiHelper.doDownloaderGUI();
-
 		
-		}
 	}
 }

@@ -1,14 +1,17 @@
 package tppitweaks.client.gui;
 
 import java.awt.Desktop;
-import java.net.URI;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
 import org.lwjgl.input.Keyboard;
+
+import tppitweaks.TPPITweaks;
+import tppitweaks.event.TppiEventHandler;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
@@ -17,25 +20,43 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class UpdateGui extends GuiScreen
 {
-	private GuiScreen parentScreen;
-	private Desktop desktop;
+	protected GuiScreen parentScreen;
+	Desktop desktop;
 	private boolean noShow = true;
 	
-	private List<ModDownload> mods = new ArrayList<ModDownload>();
+	List<InstructionsGui> modScreens = new ArrayList<InstructionsGui>();
+	Iterator<InstructionsGui> iterator;
+	
+	public void initModInstallationMenus() {
+		
+		if(!Loader.isModLoaded("Thaumcraft"))
+			modScreens.add(new InstructionsGui(new ModDownload("Thaumcraft 4", "http://adf.ly/1311628/thaumcraft-4", "Thaumcraft")));
+		
+		if(!Loader.isModLoaded("TwilightForest"))
+			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
+		
+		if(!Loader.isModLoaded("TEST"))
+			modScreens.add(new InstructionsGui(new ModDownload("Testing Testing", "http://google.com", "TEST")));
+		
+		iterator = modScreens.iterator();
+		
+	}
 
+	public UpdateGui() {
+		desktop = Desktop.getDesktop();
+	}
+	
 	public UpdateGui(GuiScreen parentScreen)
 	{
 		this.parentScreen = parentScreen;
 
 		desktop = Desktop.getDesktop();
 		
-		mods.add(new ModDownload("Thaumcraft", "http://adf.ly/1311628/thaumcraft-4", "Thaumcraft"));
-		mods.add(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest"));
-		mods.add(new ModDownload("Testing Testing", "http://google.com", "TEST"));
+		initModInstallationMenus();
 		
-		for (ModDownload m : mods)
+		for (InstructionsGui g : modScreens)
 		{
-			if (!Loader.isModLoaded(m.modid))
+			if (!Loader.isModLoaded(g.mod.modid))
 				noShow = false;
 		}
 	}
@@ -56,16 +77,8 @@ public class UpdateGui extends GuiScreen
 
 		this.buttonList.clear();
 		
-		int index = 0;
-		for (ModDownload m : mods)
-		{
-			if (!Loader.isModLoaded(m.modid))
-				this.buttonList.add(new GuiButton(index, this.width / 2 - 150, this.height / 4 + (19 * (1 + (index + 1))), 300, 20, "Download " + m.name));
-			index++;
-		}
-		
-		this.buttonList.add(new GuiButton(10, this.width / 2 - 150, this.height / 4 + 135, 300, 20, "Close the game, to allow the new mods to load."));
-		this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 160, 300, 20, "Skip this, do NOT exit the game."));
+		this.buttonList.add(new GuiButton(-1, this.width / 2 - 150, this.height / 4 + 137, 300, 20, "Continue"));
+		//this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 150, 300, 20, "Skip this, do NOT exit the game."));
 	}
 
 	@Override
@@ -81,13 +94,11 @@ public class UpdateGui extends GuiScreen
 		{
 			try
 			{
-				if (button.id < 10)
-					this.mc.displayGuiScreen(new InstructionsGui(this, mods.get(button.id)));
-				else if (button.id == 10)
-					System.exit(0);
-				else
+				if (GuiHelper.updateGui.iterator.hasNext()) {
+					this.mc.displayGuiScreen(GuiHelper.updateGui.iterator.next());
+				}else{
 					this.mc.displayGuiScreen(this.parentScreen);
-					System.out.println(this.parentScreen.toString());
+				}
 			}
 			catch (Exception e)
 			{
@@ -109,11 +120,13 @@ public class UpdateGui extends GuiScreen
 		{
 			this.drawDefaultBackground();
 
-			this.drawCenteredString(this.fontRenderer, "This is the first time you are starting TestPackPleaseIgnore. ", this.width / 2, 20, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "If you would like to download either of these two mods,", this.width / 2, 40, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "please click the appropriate buttons.", this.width / 2, 50, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "This option will not show again unless enabled in the config.", this.width / 2, 60, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "Alternatively, use the command \"/tppi download\" to show this GUI.", this.width / 2, 80, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, 20, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "As it turns out, there are some mods we really wanted to include,", this.width / 2, 60, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, 70, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, 90, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "help you all add them manually, to gain what we feel is the full TPPI experience.", this.width / 2, 100, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "This menu will not show again unless enabled in the TPPI Tweaks config.", this.width / 2, 145, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "Alternatively, you may use the command \"/tppi download\" to show it in-game.", this.width / 2, 157, 0xFFFFFF);
 		}
 
 		super.drawScreen(par1, par2, par3);

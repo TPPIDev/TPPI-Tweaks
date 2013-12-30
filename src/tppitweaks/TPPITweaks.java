@@ -7,7 +7,6 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TppiEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.recipetweaks.RecipeTweaks;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
