@@ -49,6 +49,7 @@ public class ConfigurationHandler
 		{
 			am2SpawnControls.put(s, config.get("GLOBAL ARS MAGICA 2 MOB SPAWN CONTROLS", "globallyDisable" + s, true).getBoolean(true));
 		}
+		
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		
 		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Field Guide", "The title of the custom spawn book", Type.STRING).getString();

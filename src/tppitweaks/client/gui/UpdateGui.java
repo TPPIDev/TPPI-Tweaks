@@ -32,10 +32,7 @@ public class UpdateGui extends GuiScreen
 
 		if (!Loader.isModLoaded("TwilightForest"))
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
-
-		if (!Loader.isModLoaded("TEST"))
-			modScreens.add(new InstructionsGui(new ModDownload("Testing Testing", "http://google.com", "TEST")));
-
+		
 		iterator = modScreens.iterator();
 
 	}
