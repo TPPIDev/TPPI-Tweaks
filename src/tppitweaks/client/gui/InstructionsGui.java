@@ -1,14 +1,11 @@
 package tppitweaks.client.gui;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -27,9 +24,9 @@ public class InstructionsGui extends UpdateGui
 	@Override
 	public void initGui()
 	{
-		this.buttonList.add(new GuiButton(11, this.width / 2 - 99, 40, 200, 20, "Download"));
-		this.buttonList.add(new GuiButton(12, this.width / 2 - 99, 120, 200, 20, "Open Folder"));
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 99, 200, 200, 20, "Continue"));
+		this.buttonList.add(new GuiButton(11, this.width / 2 - 100, 70, 200, 20, "Download"));
+		this.buttonList.add(new GuiButton(12, this.width / 2 - 100, 130, 200, 20, "Open Folder"));
+		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, 200, 200, 20, "Continue"));
 	}
 	
 	@Override
@@ -37,9 +34,10 @@ public class InstructionsGui extends UpdateGui
 	{
 		this.drawDefaultBackground();
 		
-		this.drawCenteredString(this.fontRenderer, "1. Click the button below to download "+mod.name+",", this.width / 2, 10, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "or press continue at the bottom to skip installation.", this.width / 2, 20, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "2. Drag it into the following folder when it's done downloading.", this.width / 2, 100, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, mod.name, this.width / 2,  10, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "1. Click the button below to download "+mod.name+",", this.width / 2, 40, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "or press continue at the bottom to skip installation.", this.width / 2, 50, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "2. Drag it into the following folder when it's done downloading.", this.width / 2, 110, 0xFFFFFF);
 		this.drawCenteredString(this.fontRenderer, "3. Press the button below to continue.", this.width / 2, 180, 0xFFFFFF);
 				
 		super.drawScreen(par1, par2, par3, false);

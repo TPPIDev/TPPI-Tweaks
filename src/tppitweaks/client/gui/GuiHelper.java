@@ -17,6 +17,6 @@ public class GuiHelper {
 	}
 	
 	public static void doDownloaderGUI() {
-		Minecraft.getMinecraft().displayGuiScreen((updateGui = new UpdateGui(Minecraft.getMinecraft().currentScreen)));
+		Minecraft.getMinecraft().displayGuiScreen((updateGui = new UpdateGui(Minecraft.getMinecraft().currentScreen, false)));
 	}
 }

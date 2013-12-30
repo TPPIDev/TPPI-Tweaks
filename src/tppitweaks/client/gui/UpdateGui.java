@@ -10,9 +10,6 @@ import net.minecraft.client.gui.GuiScreen;
 
 import org.lwjgl.input.Keyboard;
 
-import tppitweaks.TPPITweaks;
-import tppitweaks.event.TppiEventHandler;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,7 +19,7 @@ public class UpdateGui extends GuiScreen
 {
 	protected GuiScreen parentScreen;
 	Desktop desktop;
-	private boolean noShow = true;
+	private boolean noShow = true, firstTime;
 	
 	List<InstructionsGui> modScreens = new ArrayList<InstructionsGui>();
 	Iterator<InstructionsGui> iterator;
@@ -46,7 +43,7 @@ public class UpdateGui extends GuiScreen
 		desktop = Desktop.getDesktop();
 	}
 	
-	public UpdateGui(GuiScreen parentScreen)
+	public UpdateGui(GuiScreen parentScreen, boolean firstTime)
 	{
 		this.parentScreen = parentScreen;
 
@@ -59,6 +56,8 @@ public class UpdateGui extends GuiScreen
 			if (!Loader.isModLoaded(g.mod.modid))
 				noShow = false;
 		}
+		
+		this.firstTime = firstTime;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -68,8 +67,8 @@ public class UpdateGui extends GuiScreen
 		if (noShow)
 		{
 			System.out.println("not opening GUI");
-			//this.mc.displayGuiScreen(this.parentScreen);
-		//	return;
+			this.mc.displayGuiScreen(this.parentScreen);
+			return;
 		}
 		
 		// Unsure exactly what this does but...it seems necessary
@@ -78,7 +77,7 @@ public class UpdateGui extends GuiScreen
 		this.buttonList.clear();
 		
 		this.buttonList.add(new GuiButton(-1, this.width / 2 - 150, this.height / 4 + 137, 300, 20, "Continue"));
-		//this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 150, 300, 20, "Skip this, do NOT exit the game."));
+		this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 150, 300, 20, "Skip the downloads completely"));
 	}
 
 	@Override
@@ -120,7 +119,9 @@ public class UpdateGui extends GuiScreen
 		{
 			this.drawDefaultBackground();
 
-			this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, 20, 0xFFFFFF);
+			if (firstTime)
+				this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, 20, 0xFFFFFF);
+			
 			this.drawCenteredString(this.fontRenderer, "As it turns out, there are some mods we really wanted to include,", this.width / 2, 60, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, 70, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, 90, 0xFFFFFF);

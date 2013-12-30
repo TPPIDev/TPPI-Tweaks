@@ -1,7 +1,6 @@
 package tppitweaks;
 
 import net.minecraftforge.common.MinecraftForge;
-import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.command.CommandUpdateGUI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TppiEventHandler;
