@@ -1,13 +1,11 @@
 package tppitweaks.command;
 
-import tppitweaks.TPPITweaks;
-import tppitweaks.client.gui.UpdateGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatMessageComponent;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
+import tppitweaks.TPPITweaks;
+import tppitweaks.client.gui.UpdateGui;
 
 public class CommandUpdateGUI extends CommandBase
 {

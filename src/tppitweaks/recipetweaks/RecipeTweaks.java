@@ -2,7 +2,6 @@ package tppitweaks.recipetweaks;
 
 import ic2.core.Ic2Items;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ListIterator;
 
@@ -39,7 +38,7 @@ public class RecipeTweaks {
 		
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "unused" })
 	private static void removeSomeRecipes() {
 	
 		ListIterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().listIterator();
