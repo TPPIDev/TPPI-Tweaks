@@ -1,6 +1,7 @@
 package tppitweaks;
 
 import net.minecraftforge.common.MinecraftForge;
+import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.command.CommandUpdateGUI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TppiEventHandler;
@@ -36,10 +37,8 @@ public class TPPITweaks
 		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/TPPIChangelog.txt"));
 		ModItems.initItems();
 		
-		flags[0] = Loader.isModLoaded("Thaumcraft");
-		flags[1] = Loader.isModLoaded("TwilightForest");
+		CommandUpdateGUI.initValidCommandArguments();
 		
-		TppiEventHandler.shouldLoadGUI = shouldShowUpdateGUI();
 	}
 
 	@EventHandler

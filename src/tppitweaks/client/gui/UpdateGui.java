@@ -3,11 +3,15 @@ package tppitweaks.client.gui;
 import java.awt.Desktop;
 import java.net.URI;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
+import org.lwjgl.input.Keyboard;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+@SideOnly(Side.CLIENT)
 public class UpdateGui extends GuiScreen
 {
 	private GuiScreen parentScreen;
