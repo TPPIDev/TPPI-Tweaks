@@ -13,8 +13,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiHelper {
-
-	public static boolean[] flags;
 	
 	public static void doBookGUI(EntityPlayer player, ItemStack stack, boolean par3) {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiScreenBook(player, stack, par3));
@@ -22,22 +20,9 @@ public class GuiHelper {
 	
 	public static void doDownloaderGUI() {
 		Minecraft.getMinecraft().displayGuiScreen(new UpdateGui(Minecraft.getMinecraft().currentScreen, TPPITweaks.getModFlags()));
-	}
+	}	
 	
-	public static UpdateGui getUpdateGui(GuiOpenEvent event) {
-		return new UpdateGui(event.gui, TPPITweaks.getModFlags());
-	}
-	
-	@ForgeSubscribe
-	public void onGui(GuiOpenEvent event)
-	{
-		if (shouldLoadDownloaderGUI() && event.gui instanceof GuiMainMenu)
-		{
-			event.gui = getUpdateGui(event);
-		}
-	}
-	
-	private boolean shouldLoadDownloaderGUI() {
+	public static boolean shouldLoadDownloaderGUI() {
 		
 		//TODO: Grab the config option that'll trigger this event
 		
@@ -45,7 +30,7 @@ public class GuiHelper {
 			return false;
 		}*/
 		
-		for(boolean b : flags) {
+		for(boolean b : TPPITweaks.getModFlags()) {
 			if(!b) {
 				return true;
 			}

@@ -77,6 +77,7 @@ public class UpdateGui extends GuiScreen
 					break;
 				case 3:
 					this.mc.displayGuiScreen(this.parentScreen);
+					System.out.println(this.parentScreen.toString());
 					break;
 				default:
 					System.out.println("Where did you find this button?");

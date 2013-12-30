@@ -39,6 +39,10 @@ public class TPPITweaks
 		
 		CommandUpdateGUI.initValidCommandArguments();
 		
+		flags[0] = Loader.isModLoaded("Thaumcraft");
+		flags[1] = Loader.isModLoaded("TwilightForest");
+		
+		TppiEventHandler.shouldLoadGUI = shouldShowUpdateGUI();
 	}
 
 	@EventHandler
