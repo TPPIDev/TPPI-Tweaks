@@ -2,12 +2,15 @@ package tppitweaks.client.gui;
 
 import java.awt.Desktop;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
 import org.lwjgl.input.Keyboard;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -15,38 +18,54 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UpdateGui extends GuiScreen
 {
 	private GuiScreen parentScreen;
-	private boolean isTCLoaded, isTFLoaded;
 	private Desktop desktop;
+	private boolean noShow = true;
+	
+	private List<ModDownload> mods = new ArrayList<ModDownload>();
 
 	public UpdateGui(GuiScreen parentScreen)
 	{
-		this(parentScreen, new boolean[] { false, false });
-	}
-
-	public UpdateGui(GuiScreen parentScreen, boolean[] flags)
-	{
 		this.parentScreen = parentScreen;
-		isTCLoaded = flags[0];
-		isTFLoaded = flags[1];
 
 		desktop = Desktop.getDesktop();
+		
+		mods.add(new ModDownload("Thaumcraft", "http://adf.ly/1311628/thaumcraft-4", "Thaumcraft"));
+		mods.add(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest"));
+		mods.add(new ModDownload("Testing Testing", "http://google.com", "TEST"));
+		
+		for (ModDownload m : mods)
+		{
+			if (!Loader.isModLoaded(m.modid))
+				noShow = false;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui()
 	{
+		if (noShow)
+		{
+			System.out.println("not opening GUI");
+			//this.mc.displayGuiScreen(this.parentScreen);
+		//	return;
+		}
+		
 		// Unsure exactly what this does but...it seems necessary
 		Keyboard.enableRepeatEvents(true);
 
 		this.buttonList.clear();
-		if (!isTCLoaded)
-			this.buttonList.add(new GuiButton(0, this.width / 2 - 150, this.height / 4 + 60, 300, 20, "Download Thaumcraft 4"));
-		if (!isTFLoaded)
-			this.buttonList.add(new GuiButton(1, this.width / 2 - 150, this.height / 4 + 85, 300, 20, "Download Twilight Forest"));
-
-		this.buttonList.add(new GuiButton(2, this.width / 2 - 150, this.height / 4 + 110, 300, 20, "Close the game, to allow the new mods to load."));
-		this.buttonList.add(new GuiButton(3, this.width / 2 - 150, this.height / 4 + 135, 300, 20, "Skip this, do NOT exit the game."));
+		
+		int index = 0;
+		for (ModDownload m : mods)
+		{
+			if (!Loader.isModLoaded(m.modid))
+				this.buttonList.add(new GuiButton(index, this.width / 2 - 150, this.height / 4 + (19 * (1 + (index + 1))), 300, 20, "Download " + m.name));
+			index++;
+		}
+		
+		this.buttonList.add(new GuiButton(10, this.width / 2 - 150, this.height / 4 + 135, 300, 20, "Close the game, to allow the new mods to load."));
+		this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 160, 300, 20, "Skip this, do NOT exit the game."));
 	}
 
 	@Override
@@ -62,27 +81,13 @@ public class UpdateGui extends GuiScreen
 		{
 			try
 			{
-				switch (button.id)
-				{
-				case 0:
-					desktop.browse(new URI("http://adf.ly/1311628/thaumcraft-4"));
-					this.mc.displayGuiScreen(new InstructionsGui(this));
-					break;
-				case 1:
-					desktop.browse(new URI("http://adf.ly/Zvi5J"));
-					this.mc.displayGuiScreen(new InstructionsGui(this));
-					break;
-				case 2:
+				if (button.id < 10)
+					this.mc.displayGuiScreen(new InstructionsGui(this, mods.get(button.id)));
+				else if (button.id == 10)
 					System.exit(0);
-					break;
-				case 3:
+				else
 					this.mc.displayGuiScreen(this.parentScreen);
 					System.out.println(this.parentScreen.toString());
-					break;
-				default:
-					System.out.println("Where did you find this button?");
-					break;
-				}
 			}
 			catch (Exception e)
 			{

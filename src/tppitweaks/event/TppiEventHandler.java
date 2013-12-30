@@ -15,9 +15,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class TppiEventHandler
-{
+{	
 	
-	public static boolean shouldLoadGUI;
+	private boolean shouldLoadGUI = true;
 	
 	@ForgeSubscribe
 	public void onPlayerJoin(EntityJoinWorldEvent event)
@@ -44,7 +44,7 @@ public class TppiEventHandler
 	{
 		if (shouldLoadGUI && event.gui instanceof GuiMainMenu)
 		{
-			event.gui = new UpdateGui(event.gui, TPPITweaks.getModFlags());
+			event.gui = new UpdateGui(event.gui);
 			shouldLoadGUI = false;
 		}
 	}

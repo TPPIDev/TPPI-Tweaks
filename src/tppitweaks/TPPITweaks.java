@@ -24,8 +24,6 @@ public class TPPITweaks
 
 	public static final String VERSION = "0.0.2";
 	
-	/** Thaumcraft = 0, TF = 1 **/
-	private static boolean[] flags = new boolean[2];
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
@@ -38,11 +36,6 @@ public class TPPITweaks
 		ModItems.initItems();
 		
 		CommandUpdateGUI.initValidCommandArguments();
-		
-		flags[0] = Loader.isModLoaded("Thaumcraft");
-		flags[1] = Loader.isModLoaded("TwilightForest");
-		
-		TppiEventHandler.shouldLoadGUI = shouldShowUpdateGUI();
 	}
 
 	@EventHandler
@@ -65,15 +58,5 @@ public class TPPITweaks
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandUpdateGUI());
-	}
-	
-	public static boolean shouldShowUpdateGUI()
-	{
-		return !(flags[0] && flags[1]);
-	}
-	
-	public static boolean[] getModFlags()
-	{
-		return flags;
 	}
 }

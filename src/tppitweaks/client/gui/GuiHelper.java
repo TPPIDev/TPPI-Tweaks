@@ -13,24 +13,6 @@ public class GuiHelper {
 	}
 	
 	public static void doDownloaderGUI() {
-		Minecraft.getMinecraft().displayGuiScreen(new UpdateGui(Minecraft.getMinecraft().currentScreen, TPPITweaks.getModFlags()));
-	}	
-	
-	public static boolean shouldLoadDownloaderGUI() {
-		
-		//TODO: Grab the config option that'll trigger this event
-		
-		/*if(config stuff says don't do it) {
-			return false;
-		}*/
-		
-		for(boolean b : TPPITweaks.getModFlags()) {
-			if(!b) {
-				return true;
-			}
-		}
-		return false;
-		
-	}
-	
+		Minecraft.getMinecraft().displayGuiScreen(new UpdateGui(Minecraft.getMinecraft().currentScreen));
+	}		
 }
