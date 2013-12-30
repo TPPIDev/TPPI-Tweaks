@@ -10,6 +10,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
+import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,13 +41,15 @@ public class TppiEventHandler
 	
 	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
-	public void onGui(GuiOpenEvent event)
+	public void onGui(GuiOpenEvent event)	
 	{
-		if (shouldLoadGUI && event.gui instanceof GuiMainMenu)
+		if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI && event.gui instanceof GuiMainMenu)
 		{
 			event.gui = new UpdateGui(event.gui, true);
 			GuiHelper.updateGui = (UpdateGui)event.gui;
 			shouldLoadGUI = false;
+			
+			ConfigurationHandler.stopShowingGUI();
 		}
 	}
 	

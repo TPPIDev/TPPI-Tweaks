@@ -20,43 +20,45 @@ public class UpdateGui extends GuiScreen
 	protected GuiScreen parentScreen;
 	Desktop desktop;
 	private boolean noShow = true, firstTime;
-	
+
 	List<InstructionsGui> modScreens = new ArrayList<InstructionsGui>();
 	Iterator<InstructionsGui> iterator;
-	
-	public void initModInstallationMenus() {
-		
-		if(!Loader.isModLoaded("Thaumcraft"))
+
+	public void initModInstallationMenus()
+	{
+
+		if (!Loader.isModLoaded("Thaumcraft"))
 			modScreens.add(new InstructionsGui(new ModDownload("Thaumcraft 4", "http://adf.ly/1311628/thaumcraft-4", "Thaumcraft")));
-		
-		if(!Loader.isModLoaded("TwilightForest"))
+
+		if (!Loader.isModLoaded("TwilightForest"))
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
-		
-		if(!Loader.isModLoaded("TEST"))
+
+		if (!Loader.isModLoaded("TEST"))
 			modScreens.add(new InstructionsGui(new ModDownload("Testing Testing", "http://google.com", "TEST")));
-		
+
 		iterator = modScreens.iterator();
-		
+
 	}
 
-	public UpdateGui() {
+	public UpdateGui()
+	{
 		desktop = Desktop.getDesktop();
 	}
-	
+
 	public UpdateGui(GuiScreen parentScreen, boolean firstTime)
 	{
 		this.parentScreen = parentScreen;
 
 		desktop = Desktop.getDesktop();
-		
+
 		initModInstallationMenus();
-		
+
 		for (InstructionsGui g : modScreens)
 		{
 			if (!Loader.isModLoaded(g.mod.modid))
 				noShow = false;
 		}
-		
+
 		this.firstTime = firstTime;
 	}
 
@@ -70,13 +72,13 @@ public class UpdateGui extends GuiScreen
 			this.mc.displayGuiScreen(this.parentScreen);
 			return;
 		}
-		
+
 		// Unsure exactly what this does but...it seems necessary
 		Keyboard.enableRepeatEvents(true);
 
 		this.buttonList.clear();
-		
-		this.buttonList.add(new GuiButton(-1, this.width / 2 - 150, this.height / 4 + 137, 300, 20, "Continue"));
+
+		this.buttonList.add(new GuiButton(-1, this.width / 2 - 150, this.height / 4 + 125, 300, 20, "Continue"));
 		this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 150, 300, 20, "Skip the downloads completely"));
 	}
 
@@ -91,18 +93,26 @@ public class UpdateGui extends GuiScreen
 	{
 		if (button.enabled)
 		{
-			try
+			if (button.id == 11)
+				this.mc.displayGuiScreen(this.parentScreen);
+			else
 			{
-				if (GuiHelper.updateGui.iterator.hasNext()) {
-					this.mc.displayGuiScreen(GuiHelper.updateGui.iterator.next());
-				}else{
-					this.mc.displayGuiScreen(this.parentScreen);
+				try
+				{
+					if (GuiHelper.updateGui.iterator.hasNext())
+					{
+						this.mc.displayGuiScreen(GuiHelper.updateGui.iterator.next());
+					}
+					else
+					{
+						this.mc.displayGuiScreen(this.parentScreen);
+					}
 				}
-			}
-			catch (Exception e)
-			{
-				System.err.println("Error opening webpage, please contact TPPI Team.");
-				e.printStackTrace();
+				catch (Exception e)
+				{
+					System.err.println("Error opening webpage, please contact TPPI Team.");
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -121,7 +131,7 @@ public class UpdateGui extends GuiScreen
 
 			if (firstTime)
 				this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, 20, 0xFFFFFF);
-			
+
 			this.drawCenteredString(this.fontRenderer, "As it turns out, there are some mods we really wanted to include,", this.width / 2, 60, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, 70, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, 90, 0xFFFFFF);
