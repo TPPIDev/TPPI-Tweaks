@@ -1,5 +1,6 @@
 package tppitweaks.event;
 
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.item.EntityItem;
@@ -12,6 +13,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.UpdateGui;
+import tppitweaks.command.CommandUpdateGUI;
 import tppitweaks.item.ModItems;
 
 public class TppiEventHandler

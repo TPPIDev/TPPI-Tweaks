@@ -2,7 +2,9 @@ package tppitweaks;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeSubscribe;
 import tppitweaks.client.gui.UpdateGui;
+import tppitweaks.command.CommandUpdateGUI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TppiEventHandler;
 import tppitweaks.item.ModItems;
@@ -14,6 +16,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = "after:Thaumcraft;after:TwilightForest")
@@ -56,6 +59,12 @@ public class TPPITweaks
 		RecipeTweaks.doRecipeTweaks();
 
 		System.out.println("Opening GUI");
+	}
+	
+	@EventHandler
+	public void onFMLServerStart(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandUpdateGUI());
 	}
 	
 	public static boolean shouldShowUpdateGUI()
