@@ -25,12 +25,11 @@ public class CommandUpdateGUI extends CommandBase
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
-		if (astring.length == 0)
+		// FIXME This is horrible hard-coding and will need to be changed if we add more possible parameters
+		if (astring.length == 0 || !astring[0].equals("download"))
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument"));
 		else if (astring[0].equals("download"))
 			Minecraft.getMinecraft().displayGuiScreen(new UpdateGui(Minecraft.getMinecraft().currentScreen, TPPITweaks.getModFlags()));
-		else
-			return;
 	}
 
 }
