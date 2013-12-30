@@ -24,6 +24,7 @@ public class InstructionsGui extends UpdateGui
 		this.drawDefaultBackground();
 		
 		this.drawCenteredString(this.fontRenderer, "Not finished", this.width / 2, 20, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "...Good luck <3", this.width / 2, 50, 0xFFFFFF);
 				
 		super.drawScreen(par1, par2, par3, false);
 	}

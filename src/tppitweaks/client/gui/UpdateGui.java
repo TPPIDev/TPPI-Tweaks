@@ -73,6 +73,10 @@ public class UpdateGui extends GuiScreen
 					break;
 				case 3:
 					this.mc.displayGuiScreen(this.parentScreen);
+					break;
+				default:
+					System.out.println("Where did you find this button?");
+					break;
 				}
 			}
 			catch (Exception e)

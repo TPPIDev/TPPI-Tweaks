@@ -28,7 +28,7 @@ public class TppiEventHandler
 			EntityPlayer entity = (EntityPlayer) event.entity;
 
 			ItemStack stack = ModItems.tppiBook.getBook();
-			entity.worldObj.spawnEntityInWorld(new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, stack));
+			entity.inventory.addItemStackToInventory(stack);
 
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setBoolean("hasBook", true);
