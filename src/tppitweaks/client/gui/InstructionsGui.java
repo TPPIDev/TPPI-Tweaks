@@ -1,16 +1,18 @@
 package tppitweaks.client.gui;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class InstructionsGui extends UpdateGui
+public class InstructionsGui extends GuiScreen
 {
 	
 	ModDownload mod;
@@ -40,7 +42,7 @@ public class InstructionsGui extends UpdateGui
 		this.drawCenteredString(this.fontRenderer, "2. Drag it into the following folder when it's done downloading.", this.width / 2, 110, 0xFFFFFF);
 		this.drawCenteredString(this.fontRenderer, "3. Press the button below to continue.", this.width / 2, 180, 0xFFFFFF);
 				
-		super.drawScreen(par1, par2, par3, false);
+		super.drawScreen(par1, par2, par3);
 	}
 	
 	@Override
@@ -49,7 +51,7 @@ public class InstructionsGui extends UpdateGui
 		switch(button.id) {
 			case 11:
 			try {
-				desktop.browse(new URI(mod.link));
+				Desktop.getDesktop().browse(new URI(mod.link));
 			} catch (Exception e1) {
 				System.err.println("Failed to reach "+mod.name+"'s download page!");
 				e1.printStackTrace();
@@ -59,7 +61,7 @@ public class InstructionsGui extends UpdateGui
 			case 12:
 				File mods = new File(Minecraft.getMinecraft().mcDataDir, "mods");
 			    try {
-			    	desktop.open(mods);
+			    	Desktop.getDesktop().open(mods);
 				} catch (IOException e) {
 					System.err.println("Minecraft mods folder not found!");
 					e.printStackTrace();
@@ -67,7 +69,7 @@ public class InstructionsGui extends UpdateGui
 			    break;
 			    
 			default:
-				super.actionPerformed(button);
+				GuiHelper.updateGui.actionPerformed(button);
 		}
 
 	}

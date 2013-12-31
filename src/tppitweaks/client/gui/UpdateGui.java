@@ -37,11 +37,6 @@ public class UpdateGui extends GuiScreen
 
 	}
 
-	public UpdateGui()
-	{
-		desktop = Desktop.getDesktop();
-	}
-
 	public UpdateGui(GuiScreen parentScreen, boolean firstTime)
 	{
 		this.parentScreen = parentScreen;
