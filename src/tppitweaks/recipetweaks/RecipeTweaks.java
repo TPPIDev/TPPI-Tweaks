@@ -73,10 +73,10 @@ public class RecipeTweaks {
 			recipesToRemove.put(((Item)EnderStorage.itemEnderPouch).itemID, -1);
 		}
 		if(okayToTweakBigReactors) {
-			recipesToRemove.put(BigReactors.blockReactorPart.blockID, 0);
+			recipesToRemove.put(((Block)BigReactors.blockReactorPart).blockID, 0);
 		}
 		if(okayToTweakDA) {
-			recipesToRemove.put(DimensionalAnchors.instance.block.blockID, -1);
+			recipesToRemove.put(((Block)DimensionalAnchors.instance.block).blockID, -1);
 		}
 		
 	}
