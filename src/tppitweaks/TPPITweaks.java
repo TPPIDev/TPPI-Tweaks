@@ -32,10 +32,10 @@ public class TPPITweaks
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/TPPIChangelog.txt"));
+		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt"));
 		ModItems.initItems();
 		
-		CommandTPPI.initValidCommandArguments();
+		CommandTPPI.initValidCommandArguments(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"));
 	}
 
 	@EventHandler

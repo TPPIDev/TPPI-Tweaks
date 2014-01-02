@@ -1,9 +1,10 @@
 package tppitweaks.command;
 
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Scanner;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -19,12 +20,19 @@ public class CommandTPPI extends CommandBase
 	private static HashSet<String> validCommands = new HashSet<String>();
 	
 	/** First index is list, rest are mod names **/
-	private String[] supportedModsAndList = {"list", "TPPITweaks"};
+	private static ArrayList<String> supportedModsAndList = new ArrayList<String>();
 
-	public static void initValidCommandArguments()
+	public static void initValidCommandArguments(InputStream file)
 	{
 		validCommands.add("download");
 		validCommands.add("mods");
+		
+		supportedModsAndList.add("list");
+		
+		Scanner scan = new Scanner(file);
+		
+		while (scan.hasNextLine())
+			supportedModsAndList.add(scan.nextLine());
 	}
 
 	private boolean isValidArgument(String s)
@@ -56,7 +64,7 @@ public class CommandTPPI extends CommandBase
 		{
 			System.out.println(par2ArrayOfStr[1]);
 			if (par2ArrayOfStr[0].equals("mods"))
-				return getListOfStringsMatchingLastWord(par2ArrayOfStr, supportedModsAndList);
+				return getListOfStringsMatchingLastWord(par2ArrayOfStr, supportedModsAndList.toArray(new String[supportedModsAndList.size()]));
 			else return null;
 		}
 		else return null;
@@ -93,7 +101,7 @@ public class CommandTPPI extends CommandBase
 				listMods(command);
 				return true;
 			}
-			else if (ArrayUtils.contains(supportedModsAndList, args[1]))
+			else if (supportedModsAndList.contains(args[1]))
 				displayModInfo(args[1], command);
 			else
 				command.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument After: mods"));
@@ -129,11 +137,13 @@ public class CommandTPPI extends CommandBase
 	{
 		String s = "";
 		
-		for (int i = 1; i < supportedModsAndList.length; i++)
+		for (int i = 1; i < supportedModsAndList.size(); i++)
 		{
-			s += supportedModsAndList[i];
-			if (i < supportedModsAndList.length - 1)
+			s += supportedModsAndList.get(i);
+			if (i < supportedModsAndList.size() - 1)
 				s += ", ";
+			if (i % 4 == 0)
+				s += "\n";
 		}
 		
 		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(s));		
