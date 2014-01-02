@@ -5,7 +5,9 @@ import tppitweaks.command.CommandUpdateGUI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TppiEventHandler;
 import tppitweaks.item.ModItems;
+import tppitweaks.lib.Reference;
 import tppitweaks.recipetweaks.RecipeTweaks;
+import tppitweaks.proxy.PacketHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -16,7 +18,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = "after:Thaumcraft;after:TwilightForest")
-@NetworkMod(channels = { "tppitweaks" }, clientSideRequired = true, serverSideRequired = false)
+@NetworkMod(serverSideRequired=true, clientSideRequired=true, channels = {Reference.CHANNEL}, packetHandler = PacketHandler.class)
 public class TPPITweaks
 {
 
@@ -47,6 +49,8 @@ public class TPPITweaks
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		System.out.println("here");
+		
 		RecipeTweaks.doRecipeTweaks();
 
 		System.out.println("Opening GUI");

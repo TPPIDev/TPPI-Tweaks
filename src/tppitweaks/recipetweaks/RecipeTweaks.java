@@ -30,12 +30,19 @@ public class RecipeTweaks {
 	private static boolean okayToTweakDA;
 	
 	public static void doRecipeTweaks() {
+		System.out.println("0");
 		
 		checkWhatWeCanTweak();
-		initRemovableRecipesMap();
-		removeSomeRecipes();
-		addRevisedRecipes();
+		System.out.println("1");
 		
+		initRemovableRecipesMap();	
+		System.out.println("2");
+		
+		removeSomeRecipes();
+		System.out.println("3");
+		
+		addRevisedRecipes();
+		System.out.println("4");
 	}
 	
 	@SuppressWarnings({ "unchecked", "unused" })
