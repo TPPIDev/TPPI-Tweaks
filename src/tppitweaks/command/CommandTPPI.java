@@ -8,8 +8,15 @@ import java.util.Scanner;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ChatMessageComponent;
+import tppitweaks.TPPITweaks;
+import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
@@ -108,7 +115,7 @@ public class CommandTPPI extends CommandBase
 				return true;
 			}
 			else if (supportedModsAndList.contains(args[1]))
-				displayModInfo(args[1], command);
+				giveModBook(args[1], command);
 			else
 				command.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument After: mods"));
 		}
@@ -155,9 +162,25 @@ public class CommandTPPI extends CommandBase
 		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(s));		
 	}
 	
-	private void displayModInfo(String modName, ICommandSender command)
+	private void giveModBook(String modName, ICommandSender command)
 	{
-		// TODO Display mod info
+		ItemStack stack = new ItemStack(Item.writtenBook);
+		
+		stack.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
+		stack.setTagInfo("title", new NBTTagString("title", "Info on " + modName));
+
+		NBTTagCompound nbttagcompound = stack.getTagCompound();
+		NBTTagList bookPages = new NBTTagList("pages");
+
+		bookPages.appendTag(new NBTTagString("1", "testing"));
+		/*for (int i = 0; i < ConfigurationHandler.bookText.size(); i++)
+		{
+			bookPages.appendTag(new NBTTagString("" + i, ConfigurationHandler.bookText.get(i)));
+		}*/
+
+		nbttagcompound.setTag("pages", bookPages);		
+
+		command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack);
 	}
 	
 	
