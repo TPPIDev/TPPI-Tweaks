@@ -42,37 +42,30 @@ public class CommandUpdateGUI extends CommandBase
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
-
-		System.out.println(astring[0] + " " + icommandsender.getCommandSenderName() + " " + icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
-
-		try
+		if (astring.length > 0 && isValidArgument(astring[0]))
 		{
-			if (astring.length > 0 && isValidArgument(astring[0]))
+			if (astring[0].equals("download"))
 			{
-				if (astring[0].equals("download"))
+				Packet250CustomPayload packet = new Packet250CustomPayload();
+
+				packet.channel = Reference.CHANNEL;
+
+				byte[] bytes = { (byte) 0 };
+				boolean showGui = icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) != null;
+
+				if (showGui)
 				{
-					Packet250CustomPayload packet = new Packet250CustomPayload();
-
-					packet.channel = Reference.CHANNEL;
-
-					byte[] bytes = { (byte) 0 };
-					boolean showGui = icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) != null;
-
-					if (showGui)
-					{
-						packet.length = 1;
-						packet.data = bytes;
-						PacketDispatcher.sendPacketToPlayer(packet, (Player) icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
-					}
-					else
-						System.err.println("Invalid Player");
+					packet.length = 1;
+					packet.data = bytes;
+					PacketDispatcher.sendPacketToPlayer(packet, (Player) icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
 				}
+				else
+					System.err.println("Invalid Player");
 			}
 		}
-		catch (Throwable t)
-		{
-			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("You cannot use this command on a server."));
-		}
-
+		else if (astring.length <= 0)
+			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Proper Usage: /tppi <arg>"));
+		else
+			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument"));
 	}
 }
