@@ -1,13 +1,13 @@
 package tppitweaks;
 
 import net.minecraftforge.common.MinecraftForge;
-import tppitweaks.command.CommandUpdateGUI;
+import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TppiEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
-import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.proxy.PacketHandler;
+import tppitweaks.recipetweaks.RecipeTweaks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -35,7 +35,7 @@ public class TPPITweaks
 		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/TPPIChangelog.txt"));
 		ModItems.initItems();
 		
-		CommandUpdateGUI.initValidCommandArguments();
+		CommandTPPI.initValidCommandArguments();
 	}
 
 	@EventHandler
@@ -59,6 +59,6 @@ public class TPPITweaks
 	@EventHandler
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommandUpdateGUI());
+		event.registerServerCommand(new CommandTPPI());
 	}
 }
