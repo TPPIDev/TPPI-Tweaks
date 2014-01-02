@@ -52,6 +52,12 @@ public class CommandTPPI extends CommandBase
 		return "tppi <arg>";
 	}
 	
+	@Override
+	public int getRequiredPermissionLevel()
+	{
+		return 0;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List addTabCompletionOptions(ICommandSender command, String[] par2ArrayOfStr)
