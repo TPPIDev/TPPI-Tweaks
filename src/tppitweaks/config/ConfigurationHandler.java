@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import tppitweaks.util.TxtParser;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property.Type;
 
@@ -75,63 +76,7 @@ public class ConfigurationHandler
 	 */
 	public static void loadBookText(InputStream file)
 	{
-		Scanner scanner;
-		scanner = new Scanner(file);
-
-		bookText = new ArrayList<String>();
-
-		String nextPage = "";
-		while (scanner.hasNextLine())
-		{
-			String temp = scanner.nextLine();
-
-			// If the line is a comment
-			if (temp.length() == 0 || temp.startsWith("**"))
-			{
-				// If the line is possibly a line-skip comment
-				if (temp.startsWith("***") && temp.length() == 4)
-				{
-					// Skip the requested amount of lines by parsing the number after the asterisks
-					for (int i = 0; i <= Integer.parseInt(temp.substring(3, 4)); i++)
-					{
-						scanner.nextLine();
-					}
-				}
-				
-				// If the line is not a valid line-skip comment, and does not have more than 3 asterisks
-				else if (temp.startsWith("***") && !temp.startsWith("****"))
-				{
-					System.err.println("TPPI - Invalid line-skip in changelog. This may not work as intended");
-				}
-				
-				// Finally, do not add this to the page
-				continue;
-			}
-
-			// If this line is a page break
-			if (temp.equals("~~~"))
-			{
-				bookText.add(nextPage);
-				nextPage = "";
-			}
-			else
-			{
-				// If there is a line break
-				if (temp.charAt(temp.length() - 1) == '~')
-				{
-					temp = temp.substring(0, temp.length() - 1);
-					temp += "\n";
-					nextPage += temp;
-				}
-				// In the end just concatenate to the page
-				else
-					nextPage += temp + " ";
-			}
-		}
-
-		bookText.add(nextPage);
-
-		scanner.close();
+		bookText = TxtParser.parseFile(file);
 	}
 
 	public static void stopShowingGUI()
