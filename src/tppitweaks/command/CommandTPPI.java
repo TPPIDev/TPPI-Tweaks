@@ -180,7 +180,8 @@ public class CommandTPPI extends CommandBase
 
 		nbttagcompound.setTag("pages", bookPages);		
 
-		command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack);
+		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack))
+			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(stack, 0);
 	}
 	
 	
