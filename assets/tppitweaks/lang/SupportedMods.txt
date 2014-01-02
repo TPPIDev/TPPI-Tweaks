@@ -1,0 +1,20 @@
+**This is the file that TPPI Tweaks reads its info from, it is used for changelogs and information on the modpack**
+**To add to the file, type what you want, and separate pages by using the phrase ~~~ **
+**The code will interpret "~~~" as a page break, and format the book accordingly**
+**In addition, adding a "~" to the end of a line will add a line break**
+**Two asterisks at the beginning of a line is a comment**
+**Three asterisks and a number will skip that amount of lines following**
+
+***9
+Example:
+This is some very useful info
+And I am typing it on multiple lines
+~~~
+Now I am on page 2~
+Now I am one line down~
+~
+Now I am after a blank line
+
+**Begin line after asterisks**
+****************************************************************************
+This text intentionally left blank.

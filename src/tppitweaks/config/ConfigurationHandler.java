@@ -76,7 +76,7 @@ public class ConfigurationHandler
 	 */
 	public static void loadBookText(InputStream file)
 	{
-		bookText = TxtParser.parseFile(file);
+		bookText = TxtParser.parseFileMain(file);
 	}
 
 	public static void stopShowingGUI()

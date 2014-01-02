@@ -4,6 +4,6 @@ public class ModObject
 {
 	public ModObject()
 	{
-		// TODO Have stuff
+		// TODO I have no idea what to put here, but I think I need it
 	}
 }
