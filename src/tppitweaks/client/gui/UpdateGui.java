@@ -122,14 +122,17 @@ public class UpdateGui extends GuiScreen
 			this.drawDefaultBackground();
 
 			if (firstTime)
+			{
 				this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, 20, 0xFFFFFF);
+				this.drawCenteredString(this.fontRenderer, "This menu will not show again unless enabled in the TPPI Tweaks config.", this.width / 2, 145, 0xFFFFFF);
+				this.drawCenteredString(this.fontRenderer, "Alternatively, you may use the command \"/tppi download\" to show it in-game.", this.width / 2, 157, 0xFFFFFF);
+			}
 
 			this.drawCenteredString(this.fontRenderer, "As it turns out, there are some mods we really wanted to include,", this.width / 2, 60, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, 70, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, 90, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "help you all add them manually, to gain what we feel is the full TPPI experience.", this.width / 2, 100, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "This menu will not show again unless enabled in the TPPI Tweaks config.", this.width / 2, 145, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "Alternatively, you may use the command \"/tppi download\" to show it in-game.", this.width / 2, 157, 0xFFFFFF);
+			
 		}
 
 		super.drawScreen(par1, par2, par3);

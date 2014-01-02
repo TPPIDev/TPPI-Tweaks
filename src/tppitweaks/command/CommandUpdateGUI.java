@@ -42,29 +42,31 @@ public class CommandUpdateGUI extends CommandBase
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
-		
-		System.out.println(astring[0] + " " + icommandsender.getCommandSenderName() + " " + icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) );
+
+		System.out.println(astring[0] + " " + icommandsender.getCommandSenderName() + " " + icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
 
 		try
 		{
-			if (true)
+			if (astring.length > 0 && isValidArgument(astring[0]))
 			{
-				Packet250CustomPayload packet = new Packet250CustomPayload();
-
-				packet.channel = Reference.CHANNEL;
-
-				byte[] bytes = new byte[2];
-				bytes[0] = 0;
-				boolean showGui  = icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) != null;
-
-				if (showGui)
+				if (astring[0].equals("download"))
 				{
-					packet.length = 1;
-					packet.data = bytes;
-					PacketDispatcher.sendPacketToPlayer(packet, (Player) icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
+					Packet250CustomPayload packet = new Packet250CustomPayload();
+
+					packet.channel = Reference.CHANNEL;
+
+					byte[] bytes = { (byte) 0 };
+					boolean showGui = icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) != null;
+
+					if (showGui)
+					{
+						packet.length = 1;
+						packet.data = bytes;
+						PacketDispatcher.sendPacketToPlayer(packet, (Player) icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
+					}
+					else
+						System.err.println("Invalid Player");
 				}
-				else
-					System.err.println("Invalid Player");
 			}
 		}
 		catch (Throwable t)
