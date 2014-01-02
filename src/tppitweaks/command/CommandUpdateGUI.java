@@ -2,11 +2,15 @@ package tppitweaks.command;
 
 import java.util.HashSet;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ChatMessageComponent;
 import tppitweaks.client.gui.GuiHelper;
+import tppitweaks.lib.Reference;
 
 public class CommandUpdateGUI extends CommandBase
 {
@@ -38,24 +42,35 @@ public class CommandUpdateGUI extends CommandBase
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
+		
+		System.out.println(astring[0] + " " + icommandsender.getCommandSenderName() + " " + icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) );
 
-		try{
-			if (astring.length <= 0 || !isValidArgument(astring[0]) || !Minecraft.getMinecraft().isSingleplayer())
+		try
+		{
+			if (true)
 			{
+				Packet250CustomPayload packet = new Packet250CustomPayload();
 
-				icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(Minecraft.getMinecraft().isSingleplayer() ? "Invalid Argument" : 
-					"You cannot use this command on a server."));
+				packet.channel = Reference.CHANNEL;
 
+				byte[] bytes = new byte[2];
+				bytes[0] = 0;
+				boolean showGui  = icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()) != null;
+
+				if (showGui)
+				{
+					packet.length = 1;
+					packet.data = bytes;
+					PacketDispatcher.sendPacketToPlayer(packet, (Player) icommandsender.getEntityWorld().getPlayerEntityByName(icommandsender.getCommandSenderName()));
+				}
+				else
+					System.err.println("Invalid Player");
 			}
-			else if (astring[0].equals("download"))
-			{
-
-				GuiHelper.doDownloaderGUI();
-				
-			}
-		}catch(Throwable t) {
+		}
+		catch (Throwable t)
+		{
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("You cannot use this command on a server."));
 		}
-		
+
 	}
 }
