@@ -16,6 +16,7 @@ public class TPPIMaterial extends Item {
 		super(par1);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("tppimaterial");
+		setHasSubtypes(true);
 	}
 	
 	@Override
