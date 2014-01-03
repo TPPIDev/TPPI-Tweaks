@@ -45,18 +45,10 @@ public class TPPIMaterial extends Item {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		list.add(getCookedProcessor());
-		list.add(getUncookedProcessor());
+		for (int i = 0; i < 2; i++)
+			list.add(new ItemStack(this.itemID, 1, i));
 	}
-	
-	public ItemStack getCookedProcessor() {
-		return new ItemStack(this, 1, 0);
-	}
-	
-	public ItemStack getUncookedProcessor() {
-		return new ItemStack(this, 1, 1);
-	}
-
 }

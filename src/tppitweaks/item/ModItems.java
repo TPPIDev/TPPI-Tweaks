@@ -23,7 +23,7 @@ public class ModItems {
 		GameRegistry.addShapelessRecipe(tppiBook.getBook(), Item.ingotIron, Item.paper, Item.paper, Item.paper);
 		
 		if(Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM) {
-			GameRegistry.addRecipe(tppiMaterial.getUncookedProcessor(),
+			GameRegistry.addRecipe(new ItemStack(tppiMaterial.itemID, 1, 1),
 		            new Object[] {
 									"CSC",
 									"SPS",
@@ -34,7 +34,7 @@ public class ModItems {
 									'S', Materials.matProcessorAdvanced.copy(),
 					});
 				
-			FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, tppiMaterial.getCookedProcessor(), 0.1f);
+			FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, new ItemStack(tppiMaterial), 0.1f);
 		}
 	}
 

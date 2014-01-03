@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.ListIterator;
 
 import appeng.api.Materials;
-
 import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -111,7 +110,7 @@ public class RecipeTweaks {
 	
 	private static void addSFMRecipes() {
 		if(okayToTweakSFM) {
-			GameRegistry.addRecipe(new ItemStack(Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), ModItems.tppiMaterial.getCookedProcessor(), Character.valueOf('P'), Block.pistonBase, Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
+			GameRegistry.addRecipe(new ItemStack(Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial), Character.valueOf('P'), Block.pistonBase, Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
 			GameRegistry.addRecipe(new ItemStack(Blocks.blockCable, 8), new Object[] { "GPG", "IRI", "GPG", Character.valueOf('R'), Materials.matFluxDust.copy(), Character.valueOf('G'), Block.glass, Character.valueOf('I'), Item.ingotIron, Character.valueOf('P'), Block.pressurePlateIron });
 		}
 	}
