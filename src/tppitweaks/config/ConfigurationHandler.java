@@ -20,6 +20,8 @@ public class ConfigurationHandler
 
 	public static HashMap<String, Boolean> am2SpawnControls = new HashMap<String, Boolean>();
 	public static int bookID;
+	public static int materialID;
+	
 	public static String bookTitle;
 	public static String bookAuthor;
 	
@@ -29,6 +31,7 @@ public class ConfigurationHandler
 	public static boolean steelReactorCasings;
 	public static boolean ic2TEGlassInterchangeability;
 	public static boolean tweakDA;
+	public static boolean tweakSFM;
 
 	public static boolean showDownloadGUI;
 	
@@ -52,6 +55,7 @@ public class ConfigurationHandler
 		}
 		
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
+		materialID = config.getItem("tppiMaterialId", 21001).getInt() - 256;
 		
 		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Field Guide", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("BOOK INFO", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
@@ -62,6 +66,7 @@ public class ConfigurationHandler
 		steelReactorCasings = config.get("OPTIONS", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("OPTIONS", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
 		tweakDA = config.get("OPTIONS", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
+		tweakSFM = config.get("OPTIONS", "stevesFactoryManagerAERecipes", true, "Recipes from Steve's Factory Manager take items from Applied Energistics.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		

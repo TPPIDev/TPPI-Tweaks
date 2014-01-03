@@ -19,7 +19,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = "after:Thaumcraft;after:TwilightForest")
+@Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = "after:Thaumcraft;after:TwilightForest;after:AppliedEnergistics;after:StevesFactoryManager")
 @NetworkMod(serverSideRequired=true, clientSideRequired=true, channels = {Reference.CHANNEL}, packetHandler = PacketHandler.class)
 public class TPPITweaks
 {
@@ -44,7 +44,7 @@ public class TPPITweaks
 	{
 		AM2SpawnControls.doAM2SpawnControls();
 		MinecraftForge.EVENT_BUS.register(new TppiEventHandler());
-		ModItems.tppiBook.registerRecipes();
+		ModItems.registerRecipes();
 	}
 
 	@EventHandler

@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.config.ConfigurationHandler;
+import appeng.api.Materials;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -31,11 +32,6 @@ public class TPPIBook extends ItemEditableBook
 	public void registerIcons(IconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon("tppitweaks:tppibook");
-	}
-
-	public void registerRecipes()
-	{
-		GameRegistry.addShapelessRecipe(getBook(), Item.ingotIron, Item.paper, Item.paper, Item.paper);
 	}
 
 	@Override

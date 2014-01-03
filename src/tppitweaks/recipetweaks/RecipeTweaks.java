@@ -5,6 +5,8 @@ import ic2.core.Ic2Items;
 import java.util.HashMap;
 import java.util.ListIterator;
 
+import appeng.api.Materials;
+
 import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -15,6 +17,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import thermalexpansion.block.TEBlocks;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.item.ModItems;
+import vswe.stevesfactory.blocks.Blocks;
 import codechicken.enderstorage.EnderStorage;
 import codechicken.enderstorage.api.EnderStorageManager;
 import cpw.mods.fml.common.Loader;
@@ -28,21 +32,15 @@ public class RecipeTweaks {
 	private static boolean okayToTweakEnderStorage;
 	private static boolean okayToTweakBigReactors;
 	private static boolean okayToTweakDA;
+	private static boolean okayToTweakSFM;
 	
 	public static void doRecipeTweaks() {
-		System.out.println("0");
 		
 		checkWhatWeCanTweak();
-		System.out.println("1");
-		
-		initRemovableRecipesMap();	
-		System.out.println("2");
-		
+		initRemovableRecipesMap();
 		removeSomeRecipes();
-		System.out.println("3");
-		
 		addRevisedRecipes();
-		System.out.println("4");
+		
 	}
 	
 	@SuppressWarnings({ "unchecked", "unused" })
@@ -64,6 +62,7 @@ public class RecipeTweaks {
 		okayToTweakEnderStorage = Loader.isModLoaded("EnderStorage") && Loader.isModLoaded("ThermalExpansion");
 		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty() && ConfigurationHandler.steelReactorCasings;
 		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
+		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -85,6 +84,10 @@ public class RecipeTweaks {
 		if(okayToTweakDA) {
 			recipesToRemove.put(((Block)DimensionalAnchors.instance.block).blockID, -1);
 		}
+		if(okayToTweakSFM) {
+			recipesToRemove.put(((Block)Blocks.blockManager).blockID, -1);
+			recipesToRemove.put(((Block)Blocks.blockCable).blockID, -1);
+		}
 		
 	}
 	
@@ -103,8 +106,16 @@ public class RecipeTweaks {
 		addEnderStorageRecipes();
 		addBigReactorsRecipes();
 		addDARecipe();
+		addSFMRecipes();
     }
 	
+	private static void addSFMRecipes() {
+		if(okayToTweakSFM) {
+			GameRegistry.addRecipe(new ItemStack(Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial, 1, 0), Character.valueOf('P'), Block.pistonBase, Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
+			GameRegistry.addRecipe(new ItemStack(Blocks.blockCable, 8), new Object[] { "GPG", "IRI", "GPG", Character.valueOf('R'), Materials.matFluxDust.copy(), Character.valueOf('G'), Block.glass, Character.valueOf('I'), Item.ingotIron, Character.valueOf('P'), Block.pressurePlateIron });
+		}
+	}
+
 	private static void addEnderStorageRecipes() {
 		if(okayToTweakEnderStorage) {
 			
