@@ -1,6 +1,7 @@
 **This is the file of supported mods and the info to go along with them**
 **To add a mod to the file, type >Modname< (ex. >Buildcraft<)**
 **After that, type any info about the mod. Mod information is naturally separated by the names of mods (inside ><)**
+**To just specify a link, use <> (ex. <http://google.com>) and this will be put into the chat instead of a book**
 **The code will interpret "~~~" as a page break, and format the book accordingly**
 **In addition, adding a "~" to the end of a line will add a line break**
 **Two asterisks at the beginning of a line is a comment**
@@ -17,7 +18,7 @@ Now I am one line down~
 ~
 Now I am after a blank line
 >ModName2<
-Now I am writing a different book on the new mod
+<http://google.com>
 
 **Begin line after asterisks**
 ****************************************************************************

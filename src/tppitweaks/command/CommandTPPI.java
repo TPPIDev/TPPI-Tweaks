@@ -172,7 +172,13 @@ public class CommandTPPI extends CommandBase
 		NBTTagList bookPages = new NBTTagList("pages");
 		
 		ArrayList<String> pages = TxtParser.parseFileMods(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"), modName);
-
+		
+		if (pages.get(0).startsWith("<") && pages.get(0).endsWith(">"))
+		{
+			command.sendChatToPlayer(new ChatMessageComponent().addText(pages.get(0).substring(1, pages.get(0).length() - 1)));
+			return;
+		}
+		
 		for (int i = 0; i < pages.size(); i++)
 		{
 			bookPages.appendTag(new NBTTagString("" + i, pages.get(i)));
