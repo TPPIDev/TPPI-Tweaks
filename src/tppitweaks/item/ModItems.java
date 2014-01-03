@@ -2,9 +2,10 @@ package tppitweaks.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import tppitweaks.config.ConfigurationHandler;
 import appeng.api.Materials;
 import cpw.mods.fml.common.registry.GameRegistry;
-import tppitweaks.config.ConfigurationHandler;
 
 public class ModItems {
 	
@@ -19,7 +20,7 @@ public class ModItems {
 	public static void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(tppiBook.getBook(), Item.ingotIron, Item.paper, Item.paper, Item.paper);
-		GameRegistry.addRecipe(new ItemStack(ModItems.tppiMaterial, 1, 0),
+		GameRegistry.addRecipe(tppiMaterial.getUncookedProcessor(),
             new Object[] {
 							"CSC",
 							"SPS",
@@ -29,6 +30,9 @@ public class ModItems {
 							'P', new ItemStack(Item.dyePowder, 1, 4),
 							'S', Materials.matProcessorAdvanced.copy(),
 			});
+		
+		FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, tppiMaterial.getCookedProcessor(), 0.1f);
+		
 	}
 
 }
