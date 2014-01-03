@@ -1,5 +1,7 @@
 package tppitweaks;
 
+import java.io.InputStream;
+
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
@@ -24,7 +26,6 @@ public class TPPITweaks
 
 	public static final String VERSION = "0.0.2";
 	
-
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
 

@@ -18,6 +18,7 @@ import net.minecraft.util.ChatMessageComponent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
+import tppitweaks.util.TxtParser;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 
@@ -36,10 +37,7 @@ public class CommandTPPI extends CommandBase
 		
 		supportedModsAndList.add("list");
 		
-		Scanner scan = new Scanner(file);
-		
-		while (scan.hasNextLine())
-			supportedModsAndList.add(scan.nextLine());
+		supportedModsAndList.addAll(TxtParser.getSupportedMods(file));
 	}
 
 	private boolean isValidArgument(String s)
@@ -86,6 +84,7 @@ public class CommandTPPI extends CommandBase
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
+		System.out.println(supportedModsAndList.toString());
 		if (astring.length > 0 && isValidArgument(astring[0]))
 		{
 			if (astring[0].equals("download"))
@@ -171,12 +170,13 @@ public class CommandTPPI extends CommandBase
 
 		NBTTagCompound nbttagcompound = stack.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
+		
+		ArrayList<String> pages = TxtParser.parseFileMods(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"), modName);
 
-		bookPages.appendTag(new NBTTagString("1", "testing"));
-		/*for (int i = 0; i < ConfigurationHandler.bookText.size(); i++)
+		for (int i = 0; i < pages.size(); i++)
 		{
-			bookPages.appendTag(new NBTTagString("" + i, ConfigurationHandler.bookText.get(i)));
-		}*/
+			bookPages.appendTag(new NBTTagString("" + i, pages.get(i)));
+		}
 
 		nbttagcompound.setTag("pages", bookPages);		
 
