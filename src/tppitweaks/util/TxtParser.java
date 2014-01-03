@@ -4,15 +4,24 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Beware all ye who enter here, for the sake of your sanity, turn back
+ */
 public class TxtParser
 {
+	/** The useable lines (not commented) from the file last processed by parseFileMain **/
 	private static ArrayList<String> useableLines = new ArrayList<String>();
-	
+
+	/**
+	 * Parses a file, taking into account all comments, line-skips, and pagination/formatting
+	 * @param file
+	 * @return an array of pages
+	 */
 	public static ArrayList<String> parseFileMain(InputStream file)
 	{
 		ArrayList<String> bookText = new ArrayList<String>();
 		useableLines.clear();
-		
+
 		Scanner scanner;
 		scanner = new Scanner(file);
 
@@ -60,7 +69,7 @@ public class TxtParser
 			else
 			{
 				useableLines.add(temp);
-				
+
 				// If there is a line break
 				if (temp.charAt(temp.length() - 1) == '~')
 				{
@@ -81,6 +90,10 @@ public class TxtParser
 		return bookText;
 	}
 
+	/**
+	 * @param charAt
+	 * @return If this char is a number
+	 */
 	private static boolean isANumber(char charAt)
 	{
 		for (int i = 0; i < 10; i++)
@@ -98,9 +111,14 @@ public class TxtParser
 		return false;
 	}
 
+	/**
+	 * Parses a file, identically to ParseFileMain, but takes into account mod names, searching for the >< identifier.
+	 * @param file
+	 * @param modName
+	 * @return an array of pages, only containing the lines of info about the passed in modname
+	 */
 	public static ArrayList<String> parseFileMods(InputStream file, String modName)
 	{
-		System.out.println("test");
 		ArrayList<String> bookText = new ArrayList<String>();
 
 		Scanner scanner = new Scanner(file);
@@ -111,7 +129,6 @@ public class TxtParser
 		{
 			String temp = scanner.nextLine();
 
-			System.out.println(temp + " *************************************************************************************");
 			if (temp.startsWith(">") && temp.contains("<"))
 				if (temp.substring(1, temp.length() - 1).equals(modName))
 					break;
@@ -181,13 +198,18 @@ public class TxtParser
 		return bookText;
 	}
 
+	/**
+	 * Gets mod names from the file
+	 * @param file
+	 * @return an array of Strings, the names of mods that are described in the file, evidenced by the >< identifier
+	 */
 	public static ArrayList<String> getSupportedMods(InputStream file)
 	{
 		ArrayList<String> mods = new ArrayList<String>();
 
 		Scanner scanner;
 		scanner = new Scanner(file);
-		
+
 		parseFileMain(file);
 
 		for (String s : useableLines)
