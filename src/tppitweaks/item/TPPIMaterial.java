@@ -15,7 +15,6 @@ public class TPPIMaterial extends Item {
 	public TPPIMaterial(int par1) {
 		super(par1);
 		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName("tppimaterial");
 		setHasSubtypes(true);
 	}
 	
@@ -27,12 +26,9 @@ public class TPPIMaterial extends Item {
 	}
 	
 	@Override
-	public String getItemDisplayName(ItemStack par1ItemStack)
+	public String getUnlocalizedName(ItemStack par1ItemStack)
 	{
-		if(par1ItemStack.getItemDamage() == 1) {
-			return "Multi-Core Processor Assembly";
-		}
-		return "ME Multi-Core Processor";
+		return par1ItemStack.getItemDamage() == 0 ? "multicoreProcessor" : "multicoreProcessorUncooked";
 	}
 	
 	@Override
