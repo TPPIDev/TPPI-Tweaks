@@ -30,7 +30,7 @@ public class ModItems {
 									"CSC",
 		                                                    
 									'C', Materials.matFluxDust.copy(),
-									'P', new ItemStack(Item.dyePowder, 1, 4),
+									'P', Materials.matSilicon.copy(),
 									'S', Materials.matProcessorAdvanced.copy(),
 					});
 				

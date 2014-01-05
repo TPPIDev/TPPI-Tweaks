@@ -5,7 +5,6 @@ import ic2.core.Ic2Items;
 import java.util.HashMap;
 import java.util.ListIterator;
 
-import appeng.api.Materials;
 import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -17,7 +16,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import thermalexpansion.block.TEBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
-import vswe.stevesfactory.blocks.Blocks;
+import appeng.api.Materials;
 import codechicken.enderstorage.EnderStorage;
 import codechicken.enderstorage.api.EnderStorageManager;
 import cpw.mods.fml.common.Loader;
@@ -84,8 +83,8 @@ public class RecipeTweaks {
 			recipesToRemove.put(((Block)DimensionalAnchors.instance.block).blockID, -1);
 		}
 		if(okayToTweakSFM) {
-			recipesToRemove.put(((Block)Blocks.blockManager).blockID, -1);
-			recipesToRemove.put(((Block)Blocks.blockCable).blockID, -1);
+			recipesToRemove.put(((Block)vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
+			recipesToRemove.put(((Block)vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);
 		}
 		
 	}
@@ -110,8 +109,8 @@ public class RecipeTweaks {
 	
 	private static void addSFMRecipes() {
 		if(okayToTweakSFM) {
-			GameRegistry.addRecipe(new ItemStack(Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial), Character.valueOf('P'), Block.pistonBase, Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
-			GameRegistry.addRecipe(new ItemStack(Blocks.blockCable, 8), new Object[] { "GPG", "IRI", "GPG", Character.valueOf('R'), Materials.matFluxDust.copy(), Character.valueOf('G'), Block.glass, Character.valueOf('I'), Item.ingotIron, Character.valueOf('P'), Block.pressurePlateIron });
+			GameRegistry.addRecipe(new ItemStack((Block)vswe.stevesfactory.blocks.Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial), Character.valueOf('P'), Materials.matConversionMatrix.copy(), Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
+			GameRegistry.addRecipe(new ItemStack((Block)vswe.stevesfactory.blocks.Blocks.blockCable, 8), new Object[] { "GPG", "IRI", "GPG", Character.valueOf('R'), Materials.matFluxDust.copy(), Character.valueOf('G'), Block.glass, Character.valueOf('I'), Item.ingotIron, Character.valueOf('P'), Block.pressurePlateIron });
 		}
 	}
 

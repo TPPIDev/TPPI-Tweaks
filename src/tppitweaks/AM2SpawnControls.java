@@ -6,6 +6,7 @@ import tppitweaks.config.ConfigurationHandler;
 public class AM2SpawnControls {
 
 	static void doAM2SpawnControls() {
+		System.out.println("TPPI TWEAKS IS ABOUT TO DO A THING. PAY NO ATTENTION TO THE ARS MAGICA 2 CONSOLE SPAM - IT MEANS STUFF IS WORKING.");
 		for(String s : ConfigurationHandler.am2MobKeys) {
 			if(ConfigurationHandler.am2SpawnControls.get(s)) {
 				//Blanket dimensional spawning bans
