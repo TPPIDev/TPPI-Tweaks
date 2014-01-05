@@ -52,6 +52,8 @@ public class TPPIEventHandler
 	
 	public NBTTagCompound getTag(EntityPlayer entity, boolean useClassVal)
 	{
+		ItemStack stack = ModItems.tppiBook.getBook();
+		entity.inventory.addItemStackToInventory(stack);
 
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setBoolean("hasBook", useClassVal ? NBTValOnDeath : true);
