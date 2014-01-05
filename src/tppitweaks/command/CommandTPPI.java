@@ -87,12 +87,12 @@ public class CommandTPPI extends CommandBase
 		System.out.println(supportedModsAndList.toString());
 		if (astring.length > 0 && isValidArgument(astring[0]))
 		{
-			if (astring[0].equals("download"))
+			if (astring[0].equalsIgnoreCase("download"))
 			{
 				if (!processCommandDownload(icommandsender, astring))
 					System.err.println("Invalid Player");
 			}
-			else if (astring[0].equals("mods"))
+			else if (astring[0].equalsIgnoreCase("mods"))
 			{
 				processCommandMods(icommandsender, astring);	
 			}
@@ -173,9 +173,10 @@ public class CommandTPPI extends CommandBase
 		
 		ArrayList<String> pages = TxtParser.parseFileMods(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"), modName);
 		
-		if (pages.get(0).startsWith("<") && pages.get(0).endsWith(">"))
+		System.out.println(pages.get(0) + "*");
+		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{
-			command.sendChatToPlayer(new ChatMessageComponent().addText(pages.get(0).substring(1, pages.get(0).length() - 1)));
+			command.sendChatToPlayer(new ChatMessageComponent().addText(pages.get(0).substring(1, pages.get(0).length() - 2)));
 			return;
 		}
 		
