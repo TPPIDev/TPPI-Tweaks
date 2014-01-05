@@ -39,9 +39,6 @@ public class UpdateGui extends GuiScreen
 		if (!Loader.isModLoaded("Mystcraft"))
 			modScreens.add(new InstructionsGui(new ModDownload("Mystcraft", "binarymage.com/mystcraft/publish/mystcraft-uni-1.6.4-0.10.11.00.zip", "Mystcraft")));
 		
-		if (!Loader.isModLoaded("PortalGun"))
-			modScreens.add(new InstructionsGui(new ModDownload("Portal Gun", "http://adf.ly/b8dzu", "PortalGun")));
-		
 		iterator = modScreens.iterator();
 
 	}
