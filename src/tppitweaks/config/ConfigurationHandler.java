@@ -40,7 +40,7 @@ public class ConfigurationHandler
 	/** ArrayList of Strings, the strings are each one whole page **/
 	public static List<String> bookText;
 
-	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
+	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityLightMage", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
 
 	public static void init(File file)
 	{
