@@ -53,3 +53,11 @@ Authors: wha-ha-ha, tterrag
     you should've gotten another book in your inventory called "Materials And You" 
     which is your guide to Tinkers Construct.
 ~
+>Thermal Expansions<
+    Thermal Expansion is a tech mod (like IC2, BC, etc.) that uses a power system called Redstone Flux (RF).
+    Thermal Expansion has itemducts, fluiducts, and energy conduits, used as "tubes" to transfer their respective
+    purpose. It is pretty much self explanatory stuff, after you know the basics, like configuration.
+    TE machines always have a config option. Blue is input, orange output, and sometimes there are other colors,
+    but it is very easy to understand. If you want to rotate machines, for instance, you can craft TE's "wrench"
+    which is called the crecent hammer.
+~
