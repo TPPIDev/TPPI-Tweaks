@@ -75,11 +75,27 @@ public class TxtParser
 				{
 					temp = temp.substring(0, temp.length() - 1);
 					temp += "\n";
-					nextPage += temp;
+					if (nextPage.length() + temp.length() > 240 && nextPage.length() != 0 && temp.length() != 0)
+					{
+						bookText.add(nextPage);
+						nextPage = temp;
+						temp = "";
+					}
+					else		
+						nextPage += temp;
 				}
 				// In the end just concatenate to the page
 				else
-					nextPage += temp + " ";
+				{
+					if (nextPage.length() + temp.length() > 240 && nextPage.length() != 0 && temp.length() != 0)
+					{
+						bookText.add(nextPage);
+						nextPage = temp;
+						temp = "";
+					}
+					else		
+						nextPage += temp + " ";
+				}
 			}
 		}
 
@@ -183,11 +199,27 @@ public class TxtParser
 				{
 					temp = temp.substring(0, temp.length() - 1);
 					temp += "\n";
-					nextPage += temp;
+					if (nextPage.length() + temp.length() > 240 && nextPage.length() != 0 && temp.length() != 0)
+					{
+						bookText.add(nextPage);
+						nextPage = temp;
+						temp = "";
+					}
+					else		
+						nextPage += temp;
 				}
 				// In the end just concatenate to the page
 				else
-					nextPage += temp + " ";
+				{
+					if (nextPage.length() + temp.length() > 240 && nextPage.length() != 0 && temp.length() != 0)
+					{
+						bookText.add(nextPage);
+						nextPage = temp;
+						temp = "";
+					}
+					else		
+						nextPage += temp + " ";
+				}
 			}
 		}
 
