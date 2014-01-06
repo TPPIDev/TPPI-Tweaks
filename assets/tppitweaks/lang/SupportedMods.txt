@@ -7,11 +7,14 @@
 **Two asterisks at the beginning of a line is a comment**
 **Three asterisks and a number will skip that amount of lines following**
 
-***12
+***15
 Example:
 >ModName<
 This is some very useful info
-And I am typing it on multiple lines
+and I am typing it on multiple lines 
+to make this text file easier to read. 
+These lines don't have line breaks between them 
+in the book though because they don't end with "~".
 ~~~
 Now I am on page 2~
 Now I am one line down~
@@ -32,10 +35,18 @@ the player in the modpack.~
 ~
 Authors: wha-ha-ha, tterrag 
 >Thaumcraft<
-    Thaumcraft is a magical mod that requires you to "research" the items in the mod before you can craft/make them. In Thaumcraft you can find aura nodes to charge your wand, craft items in special altars, and even use magical robes and tools to improve your gameplay.~
-    To get started, craft a iron capped wooden wand (look it up in NEI you fool :P). Place a bookshelf on the ground (I prefer the ground, but the roof works too) and tap it with your magical mystic wand of powerfulness! Now you have a thauminomicon, and your ready to be a magician!
+    Thaumcraft is a magical mod that requires you to "research" the items in the mod before you can craft/make them. 
+    In Thaumcraft you can find aura nodes to charge your wand, craft items in special altars, 
+    and even use magical robes and tools to improve your gameplay.~
+    To get started, craft a iron capped wooden wand (look it up in NEI you fool :P). 
+    Place a bookshelf on the ground (I prefer the ground, but the roof works too) and tap it with your magical mystic wand of powerfulness! 
+    Now you have a thauminomicon, and you're ready to be a magician!
 ~
 >Tinkers Construct<
-    Tinkers Construct is a mod for those people who like to customize their tools, but also adds a way to double ores using a unique mechanic I've never seen in a mod before. It's a very nice alternative to just crafting normal vanilla tools. ~
-    Luckily for me, I don't have to to into too much detail since you should've gotten another book in your inventory called "Materials And You" which is your guide to Tinkers Construct.
+    Tinkers Construct is a mod for those people who like to customize their tools, 
+    but also adds a way to double ores using a unique mechanic I've never seen in a mod before. 
+    It's a very nice alternative to just crafting normal vanilla tools. ~
+    Luckily for me, I don't have to to into too much detail since 
+    you should've gotten another book in your inventory called "Materials And You" 
+    which is your guide to Tinkers Construct.
 ~
