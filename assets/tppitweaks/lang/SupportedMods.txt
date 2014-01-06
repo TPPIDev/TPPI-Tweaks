@@ -2,6 +2,9 @@
 **To add a mod to the file, type >Modname< (ex. >Buildcraft<)**
 **After that, type any info about the mod. Mod information is naturally separated by the names of mods (inside ><)**
 **To just specify a link, use <> (ex. <http://google.com>) and this will be put into the chat instead of a book**
+**You CANNOT have a mod's documentation be both a book and a link, due to current limitations of the mod**
+**That means, for mods where you want to link to a wiki, the link should be all that's there under it in this**
+**documentation file.**
 **The code will interpret "~~~" as a page break, and format the book accordingly**
 **In addition, adding a "~" to the end of a line will add a line break**
 **Two asterisks at the beginning of a line is a comment**
