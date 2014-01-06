@@ -99,8 +99,9 @@ public class TxtParser
 			}
 		}
 
-		bookText.add(nextPage);
-
+		if (nextPage.length() > 1)
+			bookText.add(nextPage);
+		
 		scanner.close();
 
 		return bookText;
@@ -223,7 +224,8 @@ public class TxtParser
 			}
 		}
 
-		bookText.add(nextPage);
+		if (nextPage.length() > 1)
+			bookText.add(nextPage);
 
 		scanner.close();
 
