@@ -31,3 +31,7 @@ and some helpful objects to better guide
 the player in the modpack.~
 ~
 Authors: wha-ha-ha, tterrag 
+>Thaumcraft<
+    Thaumcraft is a magical mod that requires you to "research" the items in the mod before you can craft/make them. In Thaumcraft you can find aura nodes to charge your wand, craft items in special altars, and even use magical robes and tools to improve your gameplay.~
+    To get started, craft a iron capped wooden wand (look it up in NEI you fool :P). Place a bookshelf on the ground (I prefer the ground, but the roof works too) and tap it with your magical mystic wand of powerfulness! Now you have a thauminomicon, and your ready to be a magician!
+~
