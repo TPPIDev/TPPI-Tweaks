@@ -1,5 +1,8 @@
 package tppitweaks;
 
+import java.io.File;
+import java.io.IOException;
+
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
@@ -8,6 +11,7 @@ import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 import tppitweaks.proxy.PacketHandler;
 import tppitweaks.recipetweaks.RecipeTweaks;
+import tppitweaks.util.FileLoader;
 import tppitweaks.util.TPPIPlayerTracker;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -35,11 +39,22 @@ public class TPPITweaks
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-		ConfigurationHandler.loadBookText(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt"));
+		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
+		
+		try
+		{
+			FileLoader.init(ConfigurationHandler.cfg, 0);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		ConfigurationHandler.loadBookText(FileLoader.bookText);
+		CommandTPPI.initValidCommandArguments(FileLoader.supportedMods);
+		
 		ModItems.initItems();
-
-		CommandTPPI.initValidCommandArguments(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"));
+		
 
 		playerTracker = new TPPIPlayerTracker();
 		GameRegistry.registerPlayerTracker(playerTracker);

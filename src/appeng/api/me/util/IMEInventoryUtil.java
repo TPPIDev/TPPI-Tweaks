@@ -4,7 +4,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import appeng.api.IAEItemStack;
 import appeng.api.IItemList;
 
 public interface IMEInventoryUtil {

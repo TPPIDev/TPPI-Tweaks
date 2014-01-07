@@ -2,7 +2,6 @@ package appeng.api.networkevents;
 
 import appeng.api.IItemList;
 import appeng.api.me.tiles.IGridTileEntity;
-import appeng.api.me.util.IMEInventory;
 
 public class MENetworkStorageEvent extends MENetworkEvent {
 	

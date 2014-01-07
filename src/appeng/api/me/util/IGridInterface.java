@@ -13,7 +13,6 @@ import appeng.api.me.tiles.IGridMachine;
 import appeng.api.me.tiles.IGridTileEntity;
 import appeng.api.me.tiles.ITilePushable;
 import appeng.api.networkevents.MENetworkEvent;
-import appeng.api.networkevents.MENetworkPowerStorage;
 
 /**
  * Lets you access network related features. You will mostly care about "getCellArray()" which returns the IMEInventory for the entire network...

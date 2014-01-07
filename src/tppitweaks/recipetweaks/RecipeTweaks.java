@@ -83,10 +83,10 @@ public class RecipeTweaks {
 		}
 		if(okayToTweakBigReactors) {
 			if(ConfigurationHandler.steelReactorCasings) {
-				recipesToRemove.put(((Block)BigReactors.blockReactorPart).blockID, 0);
+				recipesToRemove.put(BigReactors.blockReactorPart.blockID, 0);
 			}
 			if(ConfigurationHandler.glassFuelRods) {
-				recipesToRemove.put(((Block)BigReactors.blockYelloriumFuelRod).blockID, -1);
+				recipesToRemove.put(BigReactors.blockYelloriumFuelRod.blockID, -1);
 			}
 		}
 		if(okayToTweakDA) {
@@ -124,15 +124,15 @@ public class RecipeTweaks {
 	
 	private static void addOpenBlocksRecipes() {
 		if(okayToTweakOpenBlocks) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(((Block)OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron, 'P', Block.pistonBase, 'R', Item.redstone }));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(((Block)OpenBlocks.Blocks.blockPlacer), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Block.chest, 'P', Block.pistonBase, 'R', Item.redstone }));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron, 'P', Block.pistonBase, 'R', Item.redstone }));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((OpenBlocks.Blocks.blockPlacer), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Block.chest, 'P', Block.pistonBase, 'R', Item.redstone }));
 		}
 	}
 
 	private static void addSFMRecipes() {
 		if(okayToTweakSFM) {
-			GameRegistry.addRecipe(new ItemStack((Block)vswe.stevesfactory.blocks.Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial), Character.valueOf('P'), Materials.matConversionMatrix.copy(), Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
-			GameRegistry.addRecipe(new ItemStack((Block)vswe.stevesfactory.blocks.Blocks.blockCable, 8), new Object[] { "GPG", "IRI", "GPG", Character.valueOf('R'), Materials.matFluxDust.copy(), Character.valueOf('G'), Block.glass, Character.valueOf('I'), Item.ingotIron, Character.valueOf('P'), Block.pressurePlateIron });
+			GameRegistry.addRecipe(new ItemStack(vswe.stevesfactory.blocks.Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial), Character.valueOf('P'), Materials.matConversionMatrix.copy(), Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
+			GameRegistry.addRecipe(new ItemStack(vswe.stevesfactory.blocks.Blocks.blockCable, 8), new Object[] { "GPG", "IRI", "GPG", Character.valueOf('R'), Materials.matFluxDust.copy(), Character.valueOf('G'), Block.glass, Character.valueOf('I'), Item.ingotIron, Character.valueOf('P'), Block.pressurePlateIron });
 		}
 	}
 

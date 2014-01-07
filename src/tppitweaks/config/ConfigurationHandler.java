@@ -9,8 +9,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
-
 import tppitweaks.util.TxtParser;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property.Type;
@@ -39,7 +37,7 @@ public class ConfigurationHandler
 
 	public static boolean showDownloadGUI;
 	
-	private static File cfg;
+	public static File cfg;
 	
 	/** ArrayList of Strings, the strings are each one whole page **/
 	public static List<String> bookText;
@@ -89,7 +87,7 @@ public class ConfigurationHandler
 	 */
 	public static void loadBookText(InputStream file)
 	{
-		bookText = TxtParser.parseFileMain(file);
+		bookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 	}
 
 	public static void stopShowingGUI()

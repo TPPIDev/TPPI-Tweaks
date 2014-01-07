@@ -7,7 +7,6 @@ import net.minecraft.tileentity.TileEntity;
 import appeng.api.IAEItemStack;
 import appeng.api.IItemList;
 import appeng.api.config.FuzzyMode;
-import appeng.api.config.IConfigEnum;
 import appeng.api.config.ItemFlow;
 import appeng.api.config.ListMode;
 

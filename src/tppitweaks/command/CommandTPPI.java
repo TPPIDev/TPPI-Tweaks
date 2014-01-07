@@ -39,7 +39,7 @@ public class CommandTPPI extends CommandBase
 		
 		supportedModsAndList.add("list");
 		
-		supportedModsAndList.addAll(TxtParser.getSupportedMods(file));
+		supportedModsAndList.addAll(file == null ? new ArrayList<String>() : TxtParser.getSupportedMods(file));
 	}
 	
 	public static void addProperNameMapping(String argName, String properName) {
@@ -75,7 +75,7 @@ public class CommandTPPI extends CommandBase
     {			
 		if (par2ArrayOfStr.length == 1)
 		{
-			return getListOfStringsMatchingLastWord(par2ArrayOfStr, (String[]) validCommands.toArray(new String[validCommands.size()]));
+			return getListOfStringsMatchingLastWord(par2ArrayOfStr, validCommands.toArray(new String[validCommands.size()]));
 		}
 		else if (par2ArrayOfStr.length == 2)
 		{

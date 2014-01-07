@@ -2,16 +2,11 @@ package appeng.api;
 
 import appeng.api.me.items.IMemoryCard;
 import appeng.api.me.items.ISpatialStorage;
-import appeng.api.me.tiles.IColoredMETile;
-import appeng.api.me.util.ICraftingPattern;
 import appeng.api.me.util.ICraftingPatternMAC;
 import appeng.api.me.util.IMEInventory;
 import appeng.api.me.util.IMEInventoryUtil;
 import appeng.api.movable.IMovableRegistry;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public interface IAppEngApi {

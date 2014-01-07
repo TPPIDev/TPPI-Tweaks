@@ -2,7 +2,6 @@ package appeng.api.movable;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 
 public interface IMovableHandler {
 	

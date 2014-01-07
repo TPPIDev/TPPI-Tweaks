@@ -3,7 +3,6 @@ package appeng.api;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import appeng.api.me.util.IMEInventoryHandler;
 
 /**
  * Registratio record for a Custom Cell handler.

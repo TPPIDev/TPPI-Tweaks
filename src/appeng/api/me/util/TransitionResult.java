@@ -1,8 +1,5 @@
 package appeng.api.me.util;
 
-import appeng.api.WorldCoord;
-import net.minecraft.world.World;
-
 /**
  * Defines the result of performing a transition from the world into a storage cell, if its possible, and what the energy usage is.
  *

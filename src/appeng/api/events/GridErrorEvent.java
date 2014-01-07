@@ -1,7 +1,6 @@
 package appeng.api.events;
 
 import net.minecraft.world.World;
-import net.minecraftforge.event.world.WorldEvent;
 import appeng.api.WorldCoord;
 
 /**

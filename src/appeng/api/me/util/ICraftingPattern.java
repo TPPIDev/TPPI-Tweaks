@@ -2,13 +2,7 @@ package appeng.api.me.util;
 
 import java.util.List;
 
-import appeng.api.IItemList;
-import appeng.api.me.tiles.ITilePushable;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 /**
  * this class can be implemented if you wish to implement a TileCraftingProvider.

@@ -1,6 +1,5 @@
 package appeng.api;
 
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 
 /**
@@ -21,6 +20,7 @@ public interface IAETagCompound {
 	 * @param a
 	 * @return true, if they are the same.
 	 */
+	@Override
 	boolean equals( Object a );
 	
 	/**

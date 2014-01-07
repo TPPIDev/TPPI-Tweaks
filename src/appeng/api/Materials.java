@@ -1,6 +1,5 @@
 package appeng.api;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**

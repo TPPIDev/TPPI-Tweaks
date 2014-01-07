@@ -1,6 +1,5 @@
 package appeng.api;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.network.Player;
 
