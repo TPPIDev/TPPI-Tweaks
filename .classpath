@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/gregtechmod.zip"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/RedstoneArsenal-1.0.0.0.jar"/>
 	<classpathentry kind="src" path="/Dimensional Anchors"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/OpenBlocks-1.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
