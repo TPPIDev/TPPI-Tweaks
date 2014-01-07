@@ -5,6 +5,8 @@ import ic2.core.Ic2Items;
 import java.util.HashMap;
 import java.util.ListIterator;
 
+import openblocks.OpenBlocks;
+
 import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -31,6 +33,7 @@ public class RecipeTweaks {
 	private static boolean okayToTweakBigReactors;
 	private static boolean okayToTweakDA;
 	private static boolean okayToTweakSFM;
+	private static boolean okayToTweakOpenBlocks;
 	
 	public static void doRecipeTweaks() {
 		
@@ -58,9 +61,10 @@ public class RecipeTweaks {
 	
 	private static void checkWhatWeCanTweak() {
 		okayToTweakEnderStorage = Loader.isModLoaded("EnderStorage") && Loader.isModLoaded("ThermalExpansion");
-		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty() && ConfigurationHandler.steelReactorCasings;
+		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty() && (ConfigurationHandler.steelReactorCasings || ConfigurationHandler.glassFuelRods);
 		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
 		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
+		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -77,7 +81,12 @@ public class RecipeTweaks {
 			recipesToRemove.put(((Item)EnderStorage.itemEnderPouch).itemID, -1);
 		}
 		if(okayToTweakBigReactors) {
-			recipesToRemove.put(((Block)BigReactors.blockReactorPart).blockID, 0);
+			if(ConfigurationHandler.steelReactorCasings) {
+				recipesToRemove.put(((Block)BigReactors.blockReactorPart).blockID, 0);
+			}
+			if(ConfigurationHandler.glassFuelRods) {
+				recipesToRemove.put(((Block)BigReactors.blockYelloriumFuelRod).blockID, -1);
+			}
 		}
 		if(okayToTweakDA) {
 			recipesToRemove.put(((Block)DimensionalAnchors.instance.block).blockID, -1);
@@ -85,6 +94,10 @@ public class RecipeTweaks {
 		if(okayToTweakSFM) {
 			recipesToRemove.put(((Block)vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
 			recipesToRemove.put(((Block)vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);
+		}
+		if(okayToTweakOpenBlocks) {
+			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockBreaker).blockID, -1);
+			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockPlacer).blockID, -1);
 		}
 		
 	}
@@ -105,8 +118,16 @@ public class RecipeTweaks {
 		addBigReactorsRecipes();
 		addDARecipe();
 		addSFMRecipes();
+		addOpenBlocksRecipes();
     }
 	
+	private static void addOpenBlocksRecipes() {
+		if(okayToTweakOpenBlocks) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(((Block)OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron, 'P', Block.pistonBase, 'R', Item.redstone }));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(((Block)OpenBlocks.Blocks.blockPlacer), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Block.chest, 'P', Block.pistonBase, 'R', Item.redstone }));
+		}
+	}
+
 	private static void addSFMRecipes() {
 		if(okayToTweakSFM) {
 			GameRegistry.addRecipe(new ItemStack((Block)vswe.stevesfactory.blocks.Blocks.blockManager), new Object[] { "III", "IRI", "SPS", Character.valueOf('R'), new ItemStack(ModItems.tppiMaterial), Character.valueOf('P'), Materials.matConversionMatrix.copy(), Character.valueOf('I'), Item.ingotIron, Character.valueOf('S'), Block.stone });
@@ -176,9 +197,14 @@ public class RecipeTweaks {
 		
 		if(okayToTweakBigReactors) {
 			
-			ItemStack reactorPartStack = ((BlockReactorPart) BigReactors.blockReactorPart).getReactorCasingItemStack(); 
-			reactorPartStack.stackSize = 4;
-			GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, new Object[] { "ICI", "CUC", "ICI", 'I', "ingotSteel", 'C', "ingotGraphite", 'U', "ingotYellorium" }));
+			if(ConfigurationHandler.steelReactorCasings) {
+				ItemStack reactorPartStack = ((BlockReactorPart) BigReactors.blockReactorPart).getReactorCasingItemStack(); 
+				reactorPartStack.stackSize = 4;
+				GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, new Object[] { "ICI", "CUC", "ICI", 'I', "ingotSteel", 'C', "ingotGraphite", 'U', "ingotYellorium" }));
+			}
+			if(ConfigurationHandler.glassFuelRods) {
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockYelloriumFuelRod, 1), new Object[] { "ICI", "GUG", "ICI", Character.valueOf('I'), BigReactors.blockReactorGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium" , Character.valueOf('G'), "ingotGraphite"}));
+			}
 			
 		}
 		

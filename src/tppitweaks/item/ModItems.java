@@ -29,9 +29,9 @@ public class ModItems {
 									"SPS",
 									"CSC",
 		                                                    
-									'C', Materials.matFluxDust.copy(),
+									'C', Materials.matProcessorAdvanced.copy(),
 									'P', Materials.matSilicon.copy(),
-									'S', Materials.matProcessorAdvanced.copy(),
+									'S', Materials.matFluxDust.copy(),
 					});
 				
 			FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, new ItemStack(tppiMaterial), 0.1f);

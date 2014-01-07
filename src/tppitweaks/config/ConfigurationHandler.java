@@ -29,6 +29,8 @@ public class ConfigurationHandler
 	public static boolean enderPouchTesseract;
 	public static boolean enderTankTesseract;
 	public static boolean steelReactorCasings;
+	public static boolean glassFuelRods;
+	public static boolean eloraamBreakersAndDeployers;
 	public static boolean ic2TEGlassInterchangeability;
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
@@ -67,6 +69,9 @@ public class ConfigurationHandler
 		ic2TEGlassInterchangeability = config.get("OPTIONS", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
 		tweakDA = config.get("OPTIONS", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
 		tweakSFM = config.get("OPTIONS", "stevesFactoryManagerAERecipes", true, "Recipes from Steve's Factory Manager take items from Applied Energistics.").getBoolean(true);
+		glassFuelRods = config.get("OPTIONS", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
+		eloraamBreakersAndDeployers = config.get("OPTIONS", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
+		
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
