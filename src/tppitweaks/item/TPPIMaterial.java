@@ -41,7 +41,7 @@ public class TPPIMaterial extends Item {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int i = 0; i < 2; i++)

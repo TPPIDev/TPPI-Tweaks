@@ -26,7 +26,7 @@ public class FileLoader
 		}
 		catch(FileNotFoundException e)
 		{
-			Scanner scan = new Scanner(TPPITweaks.class.getResourceAsStream("/assetstweaks/lang/BookText.txt"));
+			Scanner scan = new Scanner(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt"));
 			
 			FileWriter newBookText = new FileWriter(new File(file.getParent() + "/BookText.txt"));
 			
@@ -54,7 +54,7 @@ public class FileLoader
 		}
 		catch(FileNotFoundException e)
 		{
-			Scanner scan = new Scanner(TPPITweaks.class.getResourceAsStream("/assetstweaks/lang/SupportedMods.txt"));
+			Scanner scan = new Scanner(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"));
 			
 			FileWriter newBookText = new FileWriter(new File(file.getParent() + "/SupportedMods.txt"));
 			
@@ -67,7 +67,7 @@ public class FileLoader
 			newBookText.flush(); 
 			newBookText.close();
 			
-			if (attempt < 2)
+			if (attempt < 3)
 				init(file, 2);
 			else
 			{

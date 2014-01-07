@@ -1,5 +1,8 @@
 package tppitweaks.command;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,20 +19,18 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ChatMessageComponent;
-import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
-import tppitweaks.util.FileLoader;
 import tppitweaks.util.TxtParser;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 
 public class CommandTPPI extends CommandBase
 {
-	
+
 	private static HashMap<String, String> modProperNames = new HashMap<String, String>();
 	private static HashSet<String> validCommands = new HashSet<String>();
-	
+
 	/** First index is list, rest are mod names **/
 	private static ArrayList<String> supportedModsAndList = new ArrayList<String>();
 
@@ -37,13 +38,14 @@ public class CommandTPPI extends CommandBase
 	{
 		validCommands.add("download");
 		validCommands.add("mods");
-		
+
 		supportedModsAndList.add("list");
-		
-		supportedModsAndList.addAll(file == null ? new ArrayList<String>() : TxtParser.getSupportedMods(file));
+
+		supportedModsAndList.addAll(TxtParser.getSupportedMods(file));
 	}
-	
-	public static void addProperNameMapping(String argName, String properName) {
+
+	public static void addProperNameMapping(String argName, String properName)
+	{
 		modProperNames.put(argName, properName);
 	}
 
@@ -63,35 +65,35 @@ public class CommandTPPI extends CommandBase
 	{
 		return "tppi <arg>";
 	}
-	
+
 	@Override
 	public int getRequiredPermissionLevel()
 	{
 		return 0;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List addTabCompletionOptions(ICommandSender command, String[] par2ArrayOfStr)
-    {			
+	{
 		if (par2ArrayOfStr.length == 1)
 		{
 			return getListOfStringsMatchingLastWord(par2ArrayOfStr, validCommands.toArray(new String[validCommands.size()]));
 		}
 		else if (par2ArrayOfStr.length == 2)
 		{
-			System.out.println(par2ArrayOfStr[1]);
 			if (par2ArrayOfStr[0].equals("mods"))
 				return getListOfStringsMatchingLastWord(par2ArrayOfStr, supportedModsAndList.toArray(new String[supportedModsAndList.size()]));
-			else return null;
+			else
+				return null;
 		}
-		else return null;
-    }
+		else
+			return null;
+	}
 
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
 	{
-		System.out.println(supportedModsAndList.toString());
 		if (astring.length > 0 && isValidArgument(astring[0]))
 		{
 			if (astring[0].equalsIgnoreCase("download"))
@@ -101,11 +103,12 @@ public class CommandTPPI extends CommandBase
 			}
 			else if (astring[0].equalsIgnoreCase("mods"))
 			{
-				processCommandMods(icommandsender, astring);	
+				processCommandMods(icommandsender, astring);
 			}
-			
+
 		}
-		else {
+		else
+		{
 			String validCommandString = "";
 			Iterator<String> it = validCommands.iterator();
 			for (int i = 0; i < validCommands.size(); i++)
@@ -117,8 +120,8 @@ public class CommandTPPI extends CommandBase
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Proper Usage: /tppi <arg>"));
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Valid args:"));
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(validCommandString));
-		}	
-			
+		}
+
 	}
 
 	private boolean processCommandMods(ICommandSender command, String[] args)
@@ -130,23 +133,25 @@ public class CommandTPPI extends CommandBase
 				listMods(command);
 				return true;
 			}
-			else if (supportedModsAndList.contains(args[1])) {
+			else if (supportedModsAndList.contains(args[1]))
+			{
 				giveModBook(args[1], command);
-			}	
-			else {
+			}
+			else
+			{
 				command.sendChatToPlayer(new ChatMessageComponent().addText("Valid mod names:"));
 				listMods(command);
 			}
-				
+
 		}
-		else {
+		else
+		{
 			command.sendChatToPlayer(new ChatMessageComponent().addText("Proper Usage: /tppi mods <modname>"));
 			command.sendChatToPlayer(new ChatMessageComponent().addText("or /tppi mods list to see valid names."));
 		}
-		
+
 		return false;
 	}
-
 
 	private boolean processCommandDownload(ICommandSender command, String[] args)
 	{
@@ -164,14 +169,14 @@ public class CommandTPPI extends CommandBase
 			PacketDispatcher.sendPacketToPlayer(packet, (Player) command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()));
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	private void listMods(ICommandSender icommandsender)
 	{
 		String s = "";
-		
+
 		for (int i = 1; i < supportedModsAndList.size(); i++)
 		{
 			s += supportedModsAndList.get(i);
@@ -180,40 +185,48 @@ public class CommandTPPI extends CommandBase
 			if (i % 4 == 0)
 				s += "\n";
 		}
-		
-		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(s));		
+
+		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(s));
 	}
-	
+
 	private void giveModBook(String modName, ICommandSender command)
 	{
 		String properName = modProperNames.get(modName);
-		
+
 		ItemStack stack = new ItemStack(Item.writtenBook);
-		
+
 		stack.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
 		stack.setTagInfo("title", new NBTTagString("title", "Guide To " + properName));
 
 		NBTTagCompound nbttagcompound = stack.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
-		
-		ArrayList<String> pages = TxtParser.parseFileMods(FileLoader.supportedMods, modName+", "+properName);
-		
+
+		ArrayList<String> pages;
+		try
+		{
+			pages = TxtParser.parseFileMods(new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/SupportedMods.txt")), modName + ", " + properName);
+		}
+		catch (FileNotFoundException e)
+		{
+			pages = new ArrayList<String>();
+			e.printStackTrace();
+		}
+
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{
 			command.sendChatToPlayer(new ChatMessageComponent().addText(pages.get(0).substring(1, pages.get(0).length() - 2)));
 			return;
 		}
-		
+
 		for (int i = 0; i < pages.size(); i++)
 		{
 			bookPages.appendTag(new NBTTagString("" + i, pages.get(i)));
 		}
 
-		nbttagcompound.setTag("pages", bookPages);		
+		nbttagcompound.setTag("pages", bookPages);
 
 		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack))
 			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(stack, 0);
 	}
-	
-	
+
 }

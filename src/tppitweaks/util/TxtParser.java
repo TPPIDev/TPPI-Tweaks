@@ -147,12 +147,11 @@ public class TxtParser
 		while (scanner.hasNextLine())
 		{
 			String temp = scanner.nextLine();
-
 			if (temp.startsWith(">") && temp.contains("<"))
 				if (temp.substring(1, temp.length() - 1).equals(modName))
 					break;
 		}
-
+			
 		while (scanner.hasNextLine())
 		{
 			String temp = scanner.nextLine();
@@ -249,13 +248,15 @@ public class TxtParser
 		parseFileMain(file);
 
 		for (String s : useableLines)
+		{
 			if (s.startsWith(">") && s.contains("<"))
 			{
 				String[] nameThatHasBeenSplit = s.substring(1, s.indexOf('<')).split(", ");
 				CommandTPPI.addProperNameMapping(nameThatHasBeenSplit[0], nameThatHasBeenSplit[1]);
 				mods.add(nameThatHasBeenSplit[0]);
+				System.out.println(nameThatHasBeenSplit[0] + " : " + nameThatHasBeenSplit[1]);
 			}
-
+		}
 		scanner.close();
 
 		return mods;
