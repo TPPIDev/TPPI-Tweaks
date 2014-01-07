@@ -29,35 +29,53 @@ Now I am after a blank line
 **Begin line after asterisks**
 ****************************************************************************
 >TPPITweaks<
-    TPPITweaks is the mod made especially for the TPPI Modpack, 
+TPPITweaks is the mod made especially for the TPPI Modpack, 
 which is the representative modpack for /r/feedthebeast.~
-    It contains many tweaks for mods to better improve balance, 
+~
+It contains many tweaks for mods to better improve balance, 
 and some helpful objects to better guide
 ~~~
 the player in the modpack.~
 ~
 Authors: wha-ha-ha, tterrag 
 >Thaumcraft<
-    Thaumcraft is a magical mod that requires you to "research" the items in the mod before you can craft/make them. 
-    In Thaumcraft you can find aura nodes to charge your wand, craft items in special altars, 
-    and even use magical robes and tools to improve your gameplay.~
-    To get started, craft a iron capped wooden wand (look it up in NEI you fool :P). 
-    Place a bookshelf on the ground (I prefer the ground, but the roof works too) and tap it with your magical mystic wand of powerfulness! 
-    Now you have a thauminomicon, and you're ready to be a magician!
+Thaumcraft is a magical mod that requires you to "research" its items before you can craft them.~
 ~
->Tinkers Construct<
-    Tinkers Construct is a mod for those people who like to customize their tools, 
-    but also adds a way to double ores using a unique mechanic I've never seen in a mod before. 
-    It's a very nice alternative to just crafting normal vanilla tools. ~
-    Luckily for me, I don't have to to into too much detail since 
-    you should've gotten another book in your inventory called "Materials And You" 
-    which is your guide to Tinkers Construct.
+There's all kinds of magical swag that you can build and play with, but it's probably best for you to 
+learn about it on your own.~
+To get started, craft a iron capped wooden wand, 
+place a bookshelf on the ground, and right-click your wand on it.~
 ~
->Thermal Expansions<
-    Thermal Expansion is a tech mod (like IC2, BC, etc.) that uses a power system called Redstone Flux (RF).
-    Thermal Expansion has itemducts, fluiducts, and energy conduits, used as "tubes" to transfer their respective
-    purpose. It is pretty much self explanatory stuff, after you know the basics, like configuration.
-    TE machines always have a config option. Blue is input, orange output, and sometimes there are other colors,
-    but it is very easy to understand. If you want to rotate machines, for instance, you can craft TE's "wrench"
-    which is called the crecent hammer.
+It should transform into a Thaumonomicon; the true guidebook for Thaumcraft!
+~
+>TinkersConstruct<
+Tinkers' Construct is a mod that lets you build custom tools out of 
+various materials, each with their own special properties.~
+~
+To get started with the basics, check out the book "Materials And You" that 
+you should have spawned with.
+~
+>ThermalExpansion<
+Thermal Expansion is a "technology" mod that adds a power system called Redstone Flux (RF). 
+It has itemducts, fluiducts, and energy conduits for transporting items, liquids, and RF power 
+respectively, as well as a bunch of useful blocks for ore processing, automatic crafting, storage, and more.~
+~
+You can start generating RF power using the mod's dynamos and some energy conduits, with leadstone conduits being the 
+lowest tier. 
+You can rotate and pick up machines by right clicking and shift right clicking with a Crescent Hammer, 
+the mod's version of a wrench.~
+~~~
+All machines in the mod have their own configuration settings in their GUIs.~
+~
+The redstone behavior tab lets you choose how the machine will respond to redstone.~
+The configuration tab lets you choose where the machine will input and output its products, 
+be that energy, liquids, or power, on a per block face basis.~
+~
+Blue indicates an input on a given face, while orange indicates an output.~
+There are other colors used situationally depending on the machine. 
+For these, it's best to select that color in the configuration menu, then look 
+back at the main GUI of the machine.~
+The slot in the machine associated with that color will 
+be highlighted in that color. This should help indicate what that color's purpose is 
+for that particular machine.
 ~

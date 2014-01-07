@@ -2,9 +2,10 @@ package tppitweaks.command;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -24,7 +25,7 @@ import cpw.mods.fml.common.network.Player;
 
 public class CommandTPPI extends CommandBase
 {
-
+	
 	private static HashSet<String> validCommands = new HashSet<String>();
 	
 	/** First index is list, rest are mod names **/
@@ -98,10 +99,20 @@ public class CommandTPPI extends CommandBase
 			}
 			
 		}
-		else if (astring.length <= 0)
+		else {
+			String validCommandString = "";
+			Iterator<String> it = validCommands.iterator();
+			for (int i = 0; i < validCommands.size(); i++)
+			{
+				validCommandString += it.next();
+				if (i < validCommands.size() - 1)
+					validCommandString += ", ";
+			}
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Proper Usage: /tppi <arg>"));
-		else
-			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument"));
+			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Valid args:"));
+			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(validCommandString));
+		}	
+			
 	}
 
 	private boolean processCommandMods(ICommandSender command, String[] args)
@@ -115,11 +126,16 @@ public class CommandTPPI extends CommandBase
 			}
 			else if (supportedModsAndList.contains(args[1]))
 				giveModBook(args[1], command);
-			else
-				command.sendChatToPlayer(new ChatMessageComponent().addText("Invalid Argument After: mods"));
+			else {
+				command.sendChatToPlayer(new ChatMessageComponent().addText("Valid mod names:"));
+				listMods(command);
+			}
+				
 		}
-		else
-			command.sendChatToPlayer(new ChatMessageComponent().addText("Proper Usage: /tppi mods <arg>"));
+		else {
+			command.sendChatToPlayer(new ChatMessageComponent().addText("Proper Usage: /tppi mods <modname>"));
+			command.sendChatToPlayer(new ChatMessageComponent().addText("or /tppi mods list to see valid names."));
+		}
 		
 		return false;
 	}
@@ -166,7 +182,7 @@ public class CommandTPPI extends CommandBase
 		ItemStack stack = new ItemStack(Item.writtenBook);
 		
 		stack.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
-		stack.setTagInfo("title", new NBTTagString("title", "Info on " + modName));
+		stack.setTagInfo("title", new NBTTagString("title", "Info On " + modName));
 
 		NBTTagCompound nbttagcompound = stack.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
