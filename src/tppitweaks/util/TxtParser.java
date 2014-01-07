@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import tppitweaks.command.CommandTPPI;
+
 /**
  * Beware all ye who enter here, for the sake of your sanity, turn back
  */
@@ -249,7 +251,9 @@ public class TxtParser
 		for (String s : useableLines)
 			if (s.startsWith(">") && s.contains("<"))
 			{
-				mods.add(s.substring(1, s.indexOf('<')));
+				String[] nameThatHasBeenSplit = s.substring(1, s.indexOf('<')).split(", ");
+				CommandTPPI.addProperNameMapping(nameThatHasBeenSplit[0], nameThatHasBeenSplit[1]);
+				mods.add(nameThatHasBeenSplit[0]);
 			}
 
 		scanner.close();

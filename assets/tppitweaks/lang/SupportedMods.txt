@@ -1,5 +1,8 @@
 **This is the file of supported mods and the info to go along with them**
-**To add a mod to the file, type >Modname< (ex. >Buildcraft<)**
+**To add a mod to the file, type >ModCommandName, ModProperName<**
+**The ModCommandName cannot have spaces, and will be used to call the mod's info command.**
+**The ModProperName can have spaces - this is the "real name" of the mod, to be used in its guidebook title.**
+**Example: >ThermalExpansion, Thermal Expansion 3<**
 **After that, type any info about the mod. Mod information is naturally separated by the names of mods (inside ><)**
 **To just specify a link, use <> (ex. <http://google.com>) and this will be put into the chat instead of a book**
 **You CANNOT have a mod's documentation be both a book and a link, due to current limitations of the mod**
@@ -28,7 +31,7 @@ Now I am after a blank line
 
 **Begin line after asterisks**
 ****************************************************************************
->TPPITweaks<
+>TPPITweaks, TPPI Tweaks<
 TPPITweaks is the mod made especially for the TPPI Modpack, 
 which is the representative modpack for /r/feedthebeast.~
 ~
@@ -38,7 +41,7 @@ and some helpful objects to better guide
 the player in the modpack.~
 ~
 Authors: wha-ha-ha, tterrag 
->Thaumcraft<
+>Thaumcraft, Thaumcraft 4<
 Thaumcraft is a magical mod that requires you to "research" its items before you can craft them.~
 ~
 There's all kinds of magical swag that you can build and play with, but it's probably best for you to 
@@ -48,14 +51,14 @@ place a bookshelf on the ground, and right-click your wand on it.~
 ~
 It should transform into a Thaumonomicon; the true guidebook for Thaumcraft!
 ~
->TinkersConstruct<
+>TinkersConstruct, Tinkers' Construct<
 Tinkers' Construct is a mod that lets you build custom tools out of 
 various materials, each with their own special properties.~
 ~
 To get started with the basics, check out the book "Materials And You" that 
 you should have spawned with.
 ~
->ThermalExpansion<
+>ThermalExpansion, Thermal Expansion 3<
 Thermal Expansion is a "technology" mod that adds a power system called Redstone Flux (RF). 
 It has itemducts, fluiducts, and energy conduits for transporting items, liquids, and RF power 
 respectively, as well as a bunch of useful blocks for ore processing, automatic crafting, storage, and more.~

@@ -26,6 +26,7 @@ import cpw.mods.fml.common.network.Player;
 public class CommandTPPI extends CommandBase
 {
 	
+	private static HashMap<String, String> modProperNames = new HashMap<String, String>();
 	private static HashSet<String> validCommands = new HashSet<String>();
 	
 	/** First index is list, rest are mod names **/
@@ -39,6 +40,10 @@ public class CommandTPPI extends CommandBase
 		supportedModsAndList.add("list");
 		
 		supportedModsAndList.addAll(TxtParser.getSupportedMods(file));
+	}
+	
+	public static void addProperNameMapping(String argName, String properName) {
+		modProperNames.put(argName, properName);
 	}
 
 	private boolean isValidArgument(String s)
@@ -124,8 +129,9 @@ public class CommandTPPI extends CommandBase
 				listMods(command);
 				return true;
 			}
-			else if (supportedModsAndList.contains(args[1]))
+			else if (supportedModsAndList.contains(args[1])) {
 				giveModBook(args[1], command);
+			}	
 			else {
 				command.sendChatToPlayer(new ChatMessageComponent().addText("Valid mod names:"));
 				listMods(command);
@@ -179,17 +185,18 @@ public class CommandTPPI extends CommandBase
 	
 	private void giveModBook(String modName, ICommandSender command)
 	{
+		String properName = modProperNames.get(modName);
+		
 		ItemStack stack = new ItemStack(Item.writtenBook);
 		
 		stack.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
-		stack.setTagInfo("title", new NBTTagString("title", "Info On " + modName));
+		stack.setTagInfo("title", new NBTTagString("title", "Guide To " + properName));
 
 		NBTTagCompound nbttagcompound = stack.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
 		
-		ArrayList<String> pages = TxtParser.parseFileMods(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"), modName);
+		ArrayList<String> pages = TxtParser.parseFileMods(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"), modName+", "+properName);
 		
-		System.out.println(pages.get(0) + "*");
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{
 			command.sendChatToPlayer(new ChatMessageComponent().addText(pages.get(0).substring(1, pages.get(0).length() - 2)));
