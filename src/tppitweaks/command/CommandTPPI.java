@@ -19,6 +19,7 @@ import net.minecraft.util.ChatMessageComponent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
+import tppitweaks.util.FileLoader;
 import tppitweaks.util.TxtParser;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
@@ -195,7 +196,7 @@ public class CommandTPPI extends CommandBase
 		NBTTagCompound nbttagcompound = stack.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
 		
-		ArrayList<String> pages = TxtParser.parseFileMods(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"), modName+", "+properName);
+		ArrayList<String> pages = TxtParser.parseFileMods(FileLoader.supportedMods, modName+", "+properName);
 		
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{
