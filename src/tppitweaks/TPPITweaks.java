@@ -54,7 +54,6 @@ public class TPPITweaks
 		CommandTPPI.initValidCommandArguments(FileLoader.supportedMods);
 		
 		ModItems.initItems();
-		
 
 		playerTracker = new TPPIPlayerTracker();
 		GameRegistry.registerPlayerTracker(playerTracker);

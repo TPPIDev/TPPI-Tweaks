@@ -75,7 +75,5 @@ public class FileLoader
 				e.printStackTrace();
 			}
 		}
-		
-		System.exit(0);
 	}
 }
