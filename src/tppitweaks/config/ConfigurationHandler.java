@@ -34,6 +34,8 @@ public class ConfigurationHandler
 	public static boolean ic2TEGlassInterchangeability;
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
+	
+	public static boolean doPlatinumInCentrifuge;
 
 	public static boolean showDownloadGUI;
 	
@@ -72,6 +74,7 @@ public class ConfigurationHandler
 		glassFuelRods = config.get("OPTIONS", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
 		eloraamBreakersAndDeployers = config.get("OPTIONS", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		
+		doPlatinumInCentrifuge = config.get("OPTIONS", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		

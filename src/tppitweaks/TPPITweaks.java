@@ -24,7 +24,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class TPPITweaks
 {
 
-	public static final String VERSION = "0.0.3";
+	public static final String VERSION = "0.0.4";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
@@ -60,7 +60,6 @@ public class TPPITweaks
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		RecipeTweaks.doRecipeTweaks();
-		System.out.println("Shut up, greg.");
 	}
 
 	@EventHandler

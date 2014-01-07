@@ -1,11 +1,10 @@
 package tppitweaks.recipetweaks;
 
+import gregtechmod.api.GregTech_API;
 import ic2.core.Ic2Items;
 
 import java.util.HashMap;
 import java.util.ListIterator;
-
-import openblocks.OpenBlocks;
 
 import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
@@ -15,6 +14,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import openblocks.OpenBlocks;
 import thermalexpansion.block.TEBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
@@ -41,6 +41,7 @@ public class RecipeTweaks {
 		initRemovableRecipesMap();
 		removeSomeRecipes();
 		addRevisedRecipes();
+		registerAdditionalRecipes();
 		
 	}
 	
@@ -224,6 +225,12 @@ public class RecipeTweaks {
 					'I', Block.blockIron,
 					'g', Item.ingotGold
 					);
+		}
+	}
+	
+	private static void registerAdditionalRecipes() {
+		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge) {
+			GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0), OreDictionary.getOres("dustSmallNickel").get(0), null, null, 3000);
 		}
 	}
 		
