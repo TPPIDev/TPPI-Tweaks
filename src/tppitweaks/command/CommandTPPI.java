@@ -71,6 +71,12 @@ public class CommandTPPI extends CommandBase
 	{
 		return 0;
 	}
+	
+	@Override
+	public boolean canCommandSenderUseCommand(ICommandSender par1iCommandSender)
+	{
+		return true;
+	}
 
 	@SuppressWarnings("rawtypes")
 	@Override
