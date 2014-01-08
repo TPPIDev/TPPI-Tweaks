@@ -23,6 +23,7 @@ public class UpdateGui extends GuiScreen
 
 	List<InstructionsGui> modScreens = new ArrayList<InstructionsGui>();
 	Iterator<InstructionsGui> iterator;
+	ConfigGui configGui = null;
 
 	public void initModInstallationMenus()
 	{
@@ -40,6 +41,8 @@ public class UpdateGui extends GuiScreen
 			modScreens.add(new InstructionsGui(new ModDownload("Mystcraft", "binarymage.com/mystcraft/publish/mystcraft-uni-1.6.4-0.10.11.00.zip", "Mystcraft")));
 		
 		iterator = modScreens.iterator();
+		
+		configGui = new ConfigGui();
 
 	}
 
@@ -100,6 +103,10 @@ public class UpdateGui extends GuiScreen
 					if (GuiHelper.updateGui.iterator.hasNext())
 					{
 						this.mc.displayGuiScreen(GuiHelper.updateGui.iterator.next());
+					}
+					else if (configGui != null)
+					{
+						this.mc.displayGuiScreen(configGui);
 					}
 					else
 					{
