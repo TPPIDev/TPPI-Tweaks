@@ -70,6 +70,10 @@ public class UpdateGui extends GuiScreen
 			this.mc.displayGuiScreen(this.parentScreen);
 			return;
 		}
+		else
+		{
+			this.mc.thePlayer.addChatMessage("You have all the mods, hooray!");
+		}
 
 		// Unsure exactly what this does but...it seems necessary
 		Keyboard.enableRepeatEvents(true);

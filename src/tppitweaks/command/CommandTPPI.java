@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -67,12 +66,6 @@ public class CommandTPPI extends CommandBase
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 		return "tppi <arg>";
-	}
-
-	@Override
-	public int getRequiredPermissionLevel()
-	{
-		return 0;
 	}
 	
 	@Override
