@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ChatMessageComponent;
+import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
 import tppitweaks.util.TxtParser;
@@ -38,6 +40,7 @@ public class CommandTPPI extends CommandBase
 	{
 		validCommands.add("download");
 		validCommands.add("mods");
+		validCommands.add("ores");
 
 		supportedModsAndList.add("list");
 
@@ -110,6 +113,8 @@ public class CommandTPPI extends CommandBase
 			else if (astring[0].equalsIgnoreCase("mods"))
 			{
 				processCommandMods(icommandsender, astring);
+			}else if(astring[0].equalsIgnoreCase("ores")) {
+				processCommandOres(icommandsender, astring);
 			}
 
 		}
@@ -128,6 +133,31 @@ public class CommandTPPI extends CommandBase
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(validCommandString));
 		}
 
+	}
+
+	private void processCommandOres(ICommandSender command, String[] astring) {
+		
+		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/OreGen.txt");
+		List<String> oreBookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
+		ItemStack book = new ItemStack(Item.writtenBook);
+		
+		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
+		book.setTagInfo("title", new NBTTagString("title", "TPPI Ore Generation Guide"));
+
+		NBTTagCompound nbttagcompound = book.getTagCompound();
+		NBTTagList bookPages = new NBTTagList("pages");
+
+		for (int i = 0; i < oreBookText.size(); i++)
+		{
+			bookPages.appendTag(new NBTTagString("" + i, oreBookText.get(i)));
+		}
+
+		nbttagcompound.setTag("pages", bookPages);
+		nbttagcompound.setString("version", TPPITweaks.VERSION);
+		
+		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(book))
+			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(book, 0);
+		
 	}
 
 	private boolean processCommandMods(ICommandSender command, String[] args)
