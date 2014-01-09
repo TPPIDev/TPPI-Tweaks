@@ -31,6 +31,27 @@ Now I am after a blank line
 
 **Begin line after asterisks**
 ****************************************************************************
+>AM2, Ars Magica 2<
+Ars Magica 2 is a magical mod, that allows customizable spells and
+effects, as well as a series of optional boss battles.~
+~
+In order to create an Arcane Compendium, take a book and an item frame to a pool 
+of essence, which you can find scattered around the landscape.  Place the item frame near the pool, 
+then place the book inside the frame.  The book should become infused with magic after a few seconds.
+~
+Author: Mithion
+>MFR, MineFactory Reloaded<
+MineFactory Reloaded is a vast mod, comprising many useful 
+machines and automation devices.  From conveyor belts to tree farms, 
+there is something in MFR for everybody.~
+~
+To get started, most of the MFR machines require rubber.  Rubber trees are 
+generated throughout the landscape.  Break the wood to acquire the flexible 
+material, then smelt it into rubber bars, and then again into raw plastic.  
+This plastic can then be crafted into sheets of plastic, which are the foundation 
+for most of the machines.
+~
+Authors: Powercrystals, skyboy026
 >TPPITweaks, TPPI Tweaks<
 TPPITweaks is the mod made especially for the TPPI Modpack, 
 which is the representative modpack for /r/feedthebeast.~
