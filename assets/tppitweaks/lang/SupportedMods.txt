@@ -58,6 +58,25 @@ various materials, each with their own special properties.~
 To get started with the basics, check out the book "Materials And You" that 
 you should have spawned with.
 ~
+>ArsMagica, Ars Magica 2<
+Ars Magica 2 is a very polished and developed magic mod with RPG elements.~
+~
+This mod comes with its own in-game guide! To get this guide, craft an Item Frame and
+a normal Book, and get exploring: you'll have to find liquid Essence.~
+~
+Essence is a cyan liquid found in small pools in forests and similar biomes.
+~~~
+To get the in-game guide, find a pool of Essence, place the Item Frame so that it is directly above
+the pool of Essence, and place the Book inside the Item Frame. After some flashes and sparkles,
+your guidebook will be ready.
+~
+>GregTech, GregTech<
+<gregtechcommunitywiki.wikispaces.com>
+
+**GregTech is far, far too complex for Minecraft's Written Book format.**
+**I think the only way to provide support for that mod is either a wiki link**
+**Or a book format resembling Thaumcraft's or RotaryCraft's.**
+
 >ThermalExpansion, Thermal Expansion 3<
 Thermal Expansion is a "technology" mod that adds a power system called Redstone Flux (RF). 
 It has itemducts, fluiducts, and energy conduits for transporting items, liquids, and RF power 
