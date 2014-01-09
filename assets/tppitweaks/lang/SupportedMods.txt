@@ -101,3 +101,16 @@ The slot in the machine associated with that color will
 be highlighted in that color. This should help indicate what that color's purpose is 
 for that particular machine.
 ~
+>Builcraft, Buildcraft 4<
+Buildcraft adds a load of cool ways to automate crafting, processing, and mining.~
+~
+This mod adds "engines" which are ways to produce MJ. You can also use Thermal Expansion's dynamos,
+but you must have an energy conduit between the dynamo and the machine.~
+~
+There are many different machines, for instance, the quarry. The quarry is an semi-automatic way to mine. You can use
+landmarks to set the size of the quarry, but keep in mind 64x64 is the maximum size. The automatic crafting table crafts
+stuff, automatically! Totally unexpected!
+~
+You can also use pipes to transport items, for instance you can make a automated smelter. If you want to learn better,
+just start practicing and you'll get the hang of it, or you can watch a mod spotlight.
+~
