@@ -37,8 +37,9 @@ public class InstructionsGui extends GuiScreen
 		this.drawDefaultBackground();
 		
 		this.drawCenteredString(this.fontRenderer, mod.name, this.width / 2,  10, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "1. Click the button below to download "+mod.name+",", this.width / 2, 40, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "or press continue at the bottom to skip installation.", this.width / 2, 50, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "1. Click the button below to download "+mod.name+",", this.width / 2, 30, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "or press continue at the bottom to skip installation.", this.width / 2, 40, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "(for adfly, wait 5 seconds then click \"download\" in the upper right)", this.width / 2, 55, 0xFFFFFF);
 		this.drawCenteredString(this.fontRenderer, "2. Drag it into the following folder when it's done downloading.", this.width / 2, 110, 0xFFFFFF);
 		this.drawCenteredString(this.fontRenderer, "3. Press the button below to continue.", this.width / 2, 180, 0xFFFFFF);
 				
