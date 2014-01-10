@@ -36,9 +36,6 @@ public class UpdateGui extends GuiScreen
 		if (!Loader.isModLoaded("blir-enderprospecting"))
 			modScreens.add(new InstructionsGui(new ModDownload("Ender Prospecting", "https://dl.dropboxusercontent.com/u/103112496/Forge%20Mods/Ender%20Prospecting/%5B1.6.4%5D%20Ender%20Prospecting%200.1.0.zip", "blir-enderprospecting")));
 		
-		if (!Loader.isModLoaded("Mystcraft"))
-			modScreens.add(new InstructionsGui(new ModDownload("Mystcraft", "binarymage.com/mystcraft/publish/mystcraft-uni-1.6.4-0.10.11.00.zip", "Mystcraft")));
-		
 		iterator = modScreens.iterator();
 
 	}
