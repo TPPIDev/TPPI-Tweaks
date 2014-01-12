@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import openblocks.OpenBlocks;
@@ -23,6 +24,7 @@ import appeng.api.Materials;
 import codechicken.enderstorage.EnderStorage;
 import codechicken.enderstorage.api.EnderStorageManager;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
 import erogenousbeef.bigreactors.common.BigReactors;
 import erogenousbeef.bigreactors.common.block.BlockReactorPart;
@@ -194,7 +196,7 @@ public class RecipeTweaks {
 		}
 		
 		//British fix
-		for(ItemStack s : OreDictionary.getOres("dustAluminium") {
+		for(ItemStack s : OreDictionary.getOres("dustAluminium")) {
 			OreDictionary.registerOre("dustAluminum", s);
 		}
 		
@@ -239,7 +241,16 @@ public class RecipeTweaks {
 			GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0), OreDictionary.getOres("dustSmallNickel").get(0), null, null, 3000);
 		}
 		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.addLapisDustPulverizerRecipe) {
-			//PulverizerManager.addIngotNameToDustRecipe(2400, "gemLapis", OreDictionary.getOres("dustLapis").get(1));
+			PulverizerManager.addIngotNameToDustRecipe(2400, "gemLapis", OreDictionary.getOres("dustLapis").get(1));
+			
+		}
+		if(Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("TConstruct") && ConfigurationHandler.tinkersAluminumPlates) {
+			int id = OreDictionary.getOres("ingotCobalt").get(0).itemID;
+			for(ItemStack s : OreDictionary.getOres("ingotAluminum")) {
+				if(s.itemID == id) {
+					GregTech_API.sRecipeAdder.addBenderRecipe(s, OreDictionary.getOres("plateAluminium").get(0), 52, 24);
+				}
+			}
 		}
 	}
 		

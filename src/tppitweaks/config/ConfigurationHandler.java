@@ -35,6 +35,7 @@ public class ConfigurationHandler
 	
 	public static boolean doPlatinumInCentrifuge;
 	public static boolean addLapisDustPulverizerRecipe;
+	public static boolean tinkersAluminumPlates;
 
 	public static boolean showDownloadGUI;
 	
@@ -74,7 +75,8 @@ public class ConfigurationHandler
 		eloraamBreakersAndDeployers = config.get("OPTIONS", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		
 		doPlatinumInCentrifuge = config.get("OPTIONS", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
-		addLapisDustPulverizerRecipe = config.get("OPTIONS", "addLapisDustPulverizerRecipe", true, "Adds a lapis lazuli -> lapis dust recipe to the TE pulverizer.").getBoolean(true);
+		addLapisDustPulverizerRecipe = config.get("OPTIONS", "addLapisDustPulverizerRecipe", true, "Lapis dust can be made from lapis using the TE pulverizer.").getBoolean(true);
+		tinkersAluminumPlates = config.get("OPTIONS", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
