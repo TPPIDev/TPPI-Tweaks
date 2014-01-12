@@ -16,6 +16,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import openblocks.OpenBlocks;
 import thermalexpansion.block.TEBlocks;
+import thermalexpansion.util.crafting.PulverizerManager;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
 import appeng.api.Materials;
@@ -231,6 +232,9 @@ public class RecipeTweaks {
 	private static void registerAdditionalRecipes() {
 		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge) {
 			GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0), OreDictionary.getOres("dustSmallNickel").get(0), null, null, 3000);
+		}
+		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.addLapisDustPulverizerRecipe) {
+			//PulverizerManager.addIngotNameToDustRecipe(2400, "gemLapis", OreDictionary.getOres("dustLapis").get(1));
 		}
 	}
 		
