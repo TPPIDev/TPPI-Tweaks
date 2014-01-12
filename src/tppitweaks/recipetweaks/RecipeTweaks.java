@@ -193,6 +193,11 @@ public class RecipeTweaks {
 			}
 		}
 		
+		//British fix
+		for(ItemStack s : OreDictionary.getOres("dustAluminium") {
+			OreDictionary.registerOre("dustAluminum", s);
+		}
+		
 	}
 	
 	private static void addBigReactorsRecipes() {
