@@ -36,6 +36,7 @@ public class ConfigurationHandler
 	public static boolean doPlatinumInCentrifuge;
 	public static boolean addLapisDustPulverizerRecipe;
 	public static boolean tinkersAluminumPlates;
+	public static boolean tinkersAluminumOreInGTMachines;
 
 	public static boolean showDownloadGUI;
 	
@@ -77,6 +78,7 @@ public class ConfigurationHandler
 		doPlatinumInCentrifuge = config.get("OPTIONS", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
 		addLapisDustPulverizerRecipe = config.get("OPTIONS", "addLapisDustPulverizerRecipe", true, "Lapis dust can be made from lapis using the TE pulverizer.").getBoolean(true);
 		tinkersAluminumPlates = config.get("OPTIONS", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
+		tinkersAluminumOreInGTMachines = config.get("OPTIONS", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
