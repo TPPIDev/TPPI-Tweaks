@@ -107,8 +107,6 @@ public class ConfigurationHandler
 			fr1.close();
 			read.close();
 			
-			System.out.println(strings.toString());
-
 			FileWriter fw = new FileWriter(cfg);
 			BufferedWriter bw = new BufferedWriter(fw);
 			

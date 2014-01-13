@@ -198,6 +198,8 @@ public class CommandTPPI extends CommandBase
 			PacketDispatcher.sendPacketToPlayer(packet, (Player) command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()));
 			return true;
 		}
+		
+		//TODO test
 
 		return false;
 	}
