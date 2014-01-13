@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks;
 
 import gregtechmod.api.GregTech_API;
+import gregtechmod.api.enums.GT_Items;
 import ic2.core.Ic2Items;
 
 import java.util.HashMap;
@@ -15,9 +16,9 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import openblocks.OpenBlocks;
 import thermalexpansion.block.TEBlocks;
-import thermalexpansion.util.crafting.PulverizerManager;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
 import appeng.api.Materials;
@@ -236,11 +237,15 @@ public class RecipeTweaks {
 	}
 	
 	private static void registerAdditionalRecipes() {
+		
 		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge) {
 			GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0), OreDictionary.getOres("dustSmallNickel").get(0), null, null, 3000);
 		}
-		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.addLapisDustPulverizerRecipe) {
-			PulverizerManager.addIngotNameToDustRecipe(2400, "gemLapis", OreDictionary.getOres("dustLapis").get(1));
+		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.addLapisDustMortarRecipes) {
+			for(ItemStack s : OreDictionary.getOres("dustLapis")) {
+				GameRegistry.addRecipe(new ShapelessOreRecipe(s, new Object[] {GT_Items.Tool_Mortar_Iron.getWildcard(1L, new Object[0]), new ItemStack(Item.dyePowder, 1, 4)}));
+				GameRegistry.addRecipe(new ShapelessOreRecipe(s, new Object[] {GT_Items.Tool_Mortar_Wood.getWildcard(1L, new Object[0]), new ItemStack(Item.dyePowder, 1, 4)}));
+			}
 			
 		}
 		
