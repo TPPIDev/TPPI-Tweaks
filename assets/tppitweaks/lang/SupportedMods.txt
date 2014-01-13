@@ -31,7 +31,7 @@ Now I am after a blank line
 
 **Begin line after asterisks**
 ****************************************************************************
->Builcraft, Buildcraft 4<
+>Buildcraft, Buildcraft 4<
 Buildcraft adds a load of cool ways to automate crafting, processing, and mining.~
 ~
 This mod adds "engines" which are ways to produce MJ. You can also use Thermal Expansion's dynamos,
