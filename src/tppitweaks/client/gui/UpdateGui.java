@@ -32,10 +32,11 @@ public class UpdateGui extends GuiScreen
 
 		if (!Loader.isModLoaded("TwilightForest"))
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
-		
+
 		if (!Loader.isModLoaded("blir-enderprospecting"))
-			modScreens.add(new InstructionsGui(new ModDownload("Ender Prospecting", "https://dl.dropboxusercontent.com/u/103112496/Forge%20Mods/Ender%20Prospecting/%5B1.6.4%5D%20Ender%20Prospecting%200.1.0.zip", "blir-enderprospecting")));
-		
+			modScreens.add(new InstructionsGui(new ModDownload("Ender Prospecting",
+					"https://dl.dropboxusercontent.com/u/103112496/Forge%20Mods/Ender%20Prospecting/%5B1.6.4%5D%20Ender%20Prospecting%200.1.0.zip", "blir-enderprospecting")));
+
 		iterator = modScreens.iterator();
 
 	}
@@ -69,7 +70,7 @@ public class UpdateGui extends GuiScreen
 		}
 		else
 		{
-			
+
 		}
 
 		// Unsure exactly what this does but...it seems necessary
@@ -139,7 +140,7 @@ public class UpdateGui extends GuiScreen
 			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, 70, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, 90, 0xFFFFFF);
 			this.drawCenteredString(this.fontRenderer, "help you all add them manually, to gain what we feel is the full TPPI experience.", this.width / 2, 100, 0xFFFFFF);
-			
+
 		}
 
 		super.drawScreen(par1, par2, par3);

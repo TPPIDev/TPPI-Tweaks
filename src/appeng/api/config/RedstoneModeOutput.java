@@ -1,18 +1,19 @@
 package appeng.api.config;
 
-
 // do not change names..
-public enum RedstoneModeOutput implements IConfigEnum  {
-	WhenOff,
-	WhenOn;
-	
+public enum RedstoneModeOutput implements IConfigEnum
+{
+	WhenOff, WhenOn;
+
 	@Override
-	public IConfigEnum[] getValues() {
+	public IConfigEnum[] getValues()
+	{
 		return values();
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "RedstoneMode";
 	}
 }

@@ -1,17 +1,19 @@
 package appeng.api.config;
 
-public enum InterfaceCraftingMode implements IConfigEnum {
-	Craft,
-	DontCraft;
-	
+public enum InterfaceCraftingMode implements IConfigEnum
+{
+	Craft, DontCraft;
+
 	@Override
-	public IConfigEnum[] getValues() {
+	public IConfigEnum[] getValues()
+	{
 		return values();
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "InterfaceCraftingMode";
 	}
-	
+
 }

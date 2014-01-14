@@ -9,46 +9,60 @@ import appeng.api.movable.IMovableRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public interface IAppEngApi {
+public interface IAppEngApi
+{
 
 	/**
-	 * Attempts to paint the block at the specified coords, the specified color, colors are based off of IColoredMETile.Colors
+	 * Attempts to paint the block at the specified coords, the specified color,
+	 * colors are based off of IColoredMETile.Colors
+	 * 
 	 * @param world
 	 * @param x
 	 * @param y
 	 * @param z
 	 * @param color
-	 * @return if the block was painted, or not you can use this to damage your item if you want.
+	 * @return if the block was painted, or not you can use this to damage your
+	 *         item if you want.
 	 */
 	boolean paintBlock(World world, int x, int y, int z, int color);
-	
+
 	/**
 	 * Use the movable registry to white list your tiles.
+	 * 
 	 * @param c
 	 */
 	IMovableRegistry getMovableRegistry();
-	
+
 	/**
-	 * Add new Grid Caches for use during run time, only use during loading phase.
-	 * @return 
+	 * Add new Grid Caches for use during run time, only use during loading
+	 * phase.
+	 * 
+	 * @return
 	 */
 	IGridCacheRegistry getGridCacheRegistry();
-	
+
 	/**
-	 * Add additional storage bus handlers to improve interplay with mod blocks that contains special inventories that function unlike vanilla chests.
-	 * AE uses this internally for barrels, dsu's, quantum chests, AE Networks and more.	 * 
+	 * Add additional storage bus handlers to improve interplay with mod blocks
+	 * that contains special inventories that function unlike vanilla chests. AE
+	 * uses this internally for barrels, dsu's, quantum chests, AE Networks and
+	 * more. *
+	 * 
 	 * @return IExternalStorageRegistry
 	 */
 	IExternalStorageRegistry getExternalStorageRegistry();
 
 	/**
-	 * Add additional special comparison functionality, AE Uses this internally for Bees.
+	 * Add additional special comparison functionality, AE Uses this internally
+	 * for Bees.
+	 * 
 	 * @return ISpecialComparisonRegistry
 	 */
 	ISpecialComparisonRegistry getSpecialComparsonRegistry();
-	
+
 	/**
-	 * gives you access to extractItemsByRecipe, other then this theres not much use for this.	
+	 * gives you access to extractItemsByRecipe, other then this theres not much
+	 * use for this.
+	 * 
 	 * @param mei
 	 * @return
 	 */
@@ -56,20 +70,23 @@ public interface IAppEngApi {
 
 	/**
 	 * Lets you register your items as wireless terminals
+	 * 
 	 * @return
 	 */
 	IWirelessTermRegistery getWirelessRegistry();
 
 	/**
-	 * return an locateable object by its serial
-	 * used internally by AE for QNBs / Network Controllers
+	 * return an locateable object by its serial used internally by AE for QNBs
+	 * / Network Controllers
+	 * 
 	 * @param serial
 	 * @return
 	 */
 	Object getLocateableBySerial(Long serial);
-	
+
 	/**
 	 * creates a new instance of IAEItemStack from a MC ItemStack
+	 * 
 	 * @param is
 	 * @return
 	 */
@@ -77,30 +94,35 @@ public interface IAppEngApi {
 
 	/**
 	 * Creates a new instance of IItemList
+	 * 
 	 * @return
 	 */
 	IItemList createItemList();
 
 	/**
 	 * Allows you to register new cell types, these will function in drives
+	 * 
 	 * @return
 	 */
 	ICellRegistry getCellRegistry();
 
 	/**
 	 * Manage grinder recipes via API
+	 * 
 	 * @return
 	 */
 	IGrinderRecipeManager getGrinderRecipeManage();
 
 	/**
 	 * get access to the locatable registry
+	 * 
 	 * @return
 	 */
 	ILocateableRegistry getLocateableRegistry();
 
 	/**
 	 * a simple wrapper around the AEItemStack version on IMEInventory
+	 * 
 	 * @param inv
 	 * @param is
 	 * @return
@@ -109,6 +131,7 @@ public interface IAppEngApi {
 
 	/**
 	 * a simple wrapper around the AEItemStack version on IMEInventory
+	 * 
 	 * @param inv
 	 * @param is
 	 * @return
@@ -117,13 +140,17 @@ public interface IAppEngApi {
 
 	/**
 	 * Blacklist this item from vanilla AE Terminals / IStorageCell
+	 * 
 	 * @param itemID
-	 * @param meta - if you use OreDictionary.WILDCARD_VALUE it will blacklist the entire itemID.
+	 * @param meta
+	 *            - if you use OreDictionary.WILDCARD_VALUE it will blacklist
+	 *            the entire itemID.
 	 */
 	void addBasicBlackList(int itemID, int meta);
 
 	/**
 	 * Acquire the inventory for a IStorageCell
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -131,6 +158,7 @@ public interface IAppEngApi {
 
 	/**
 	 * checks if the item is a basic storage cell.
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -138,6 +166,7 @@ public interface IAppEngApi {
 
 	/**
 	 * gives you access to assembler pattern inventories.
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -145,6 +174,7 @@ public interface IAppEngApi {
 
 	/**
 	 * allows you to check if an item is an assembler pattern.
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -152,6 +182,7 @@ public interface IAppEngApi {
 
 	/**
 	 * allows you to check if a pattern is blank.
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -159,15 +190,18 @@ public interface IAppEngApi {
 
 	/**
 	 * gives you the ability to interface with AE Memory Cards.
+	 * 
 	 * @return
 	 */
 	IMemoryCard getMemoryCardHandler();
 
 	/**
-	 * returns the ISpatialStorage for the ItemStack, if it can get from form its item ( or from AE )
+	 * returns the ISpatialStorage for the ItemStack, if it can get from form
+	 * its item ( or from AE )
+	 * 
 	 * @param is
 	 * @return
 	 */
-	ISpatialStorage getSpatialStorageForItem( ItemStack is );
-	
+	ISpatialStorage getSpatialStorageForItem(ItemStack is);
+
 }

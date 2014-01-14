@@ -10,14 +10,16 @@ public class CreativeTabTPPI extends CreativeTabs
 	{
 		super(id, Reference.TAB_NAME);
 	}
-	
+
 	@Override
-	public int getTabIconItemIndex() {
+	public int getTabIconItemIndex()
+	{
 		return ModItems.tppiBook.itemID;
 	}
-	
+
 	@Override
-	public String getTabLabel() {
+	public String getTabLabel()
+	{
 		return Reference.TAB_NAME;
 	}
 }

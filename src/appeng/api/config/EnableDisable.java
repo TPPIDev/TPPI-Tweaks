@@ -1,18 +1,19 @@
 package appeng.api.config;
 
+public enum EnableDisable implements IConfigEnum
+{
+	Enabled, Disabled;
 
-public enum EnableDisable implements IConfigEnum {
-	Enabled,
-	Disabled;
-	
 	@Override
-	public IConfigEnum[] getValues() {
+	public IConfigEnum[] getValues()
+	{
 		return values();
 	}
 
 	@Override
-	public String getName() {
+	public String getName()
+	{
 		return "CondenserOutput";
 	}
-	
+
 }
