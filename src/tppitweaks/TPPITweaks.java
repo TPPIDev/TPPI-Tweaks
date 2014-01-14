@@ -62,7 +62,9 @@ public class TPPITweaks
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
-	{		
+	{
+		AM2SpawnControls.doAM2SpawnControls();
+		
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
