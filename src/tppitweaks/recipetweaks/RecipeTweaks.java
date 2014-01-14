@@ -21,6 +21,8 @@ import openblocks.OpenBlocks;
 import thermalexpansion.block.TEBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
+import am2.blocks.BlocksCommonProxy;
+import am2.items.ItemsCommonProxy;
 import appeng.api.Materials;
 import codechicken.enderstorage.EnderStorage;
 import codechicken.enderstorage.api.EnderStorageManager;
@@ -70,7 +72,7 @@ public class RecipeTweaks {
 		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
 		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
-		okayToTweakAM2 = Loader.isModLoaded("AM2") && ConfigurationHandler.tweakAM2;
+		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -130,7 +132,7 @@ public class RecipeTweaks {
 	private static void addAM2Recipes()
 	{
 		if (okayToTweakAM2) {
-			// TODO Stuff
+			GameRegistry.addShapedRecipe(new ItemStack(ItemsCommonProxy.spawnEgg, 1, 12), new Object[] { "CCC", "CPC", "CCC", 'C', new ItemStack(ItemsCommonProxy.essence, 1, 5), 'P', new ItemStack(BlocksCommonProxy.aum)});
 		}
 	}
 

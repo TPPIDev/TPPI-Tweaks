@@ -54,17 +54,19 @@ you should have spawned with.
 ~
 
 >ArsMagica, Ars Magica 2<
-Ars Magica 2 is a very polished and developed magic mod with RPG elements.~
+Ars Magica 2 is a magical mod with RPG elements - think mana, spellcasting, levelling up, and fighting fearsome enemies!~
 ~
-This mod comes with its own in-game guide! To get this guide, craft an Item Frame and
-a normal Book, and get exploring: you'll have to find liquid Essence.~
-~
-Essence is a cyan liquid found in small pools in forests and similar biomes.
+It's worth noting that, due to our having had to disable Dryads in TPPI, Nature Guardians must be summoned from their spawn eggs, which we've added a crafting recipe for.
 ~~~
-To get the in-game guide, find a pool of Essence, place the Item Frame so that it is directly above
-the pool of Essence, and place the Book inside the Item Frame. After some flashes and sparkles,
-your guidebook will be ready.
+Other than that, check out the mod's own in-game guide! To get it, craft an Item Frame and
+a normal Book, and get exploring!~
 ~
+You'll have to find liquid Essence; a cyan liquid found in pools in forests and similar biomes.~
+~~~
+Once you've found an essence pool, place the Item Frame so that it is directly above
+the pool of Essence, and place the Book inside the Item Frame.~
+~
+After some flashes and sparkles, your guidebook will be ready!
 
 >GregTech, GregTech<
 <gregtechcommunitywiki.wikispaces.com>
