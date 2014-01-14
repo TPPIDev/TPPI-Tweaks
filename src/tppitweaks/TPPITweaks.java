@@ -40,7 +40,7 @@ public class TPPITweaks
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
-
+		
 		try
 		{
 			FileLoader.init(ConfigurationHandler.cfg, 0);
@@ -49,10 +49,10 @@ public class TPPITweaks
 		{
 			e.printStackTrace();
 		}
-
+		
 		ConfigurationHandler.loadBookText(FileLoader.bookText);
 		CommandTPPI.initValidCommandArguments(FileLoader.supportedMods);
-
+		
 		ModItems.initItems();
 
 		playerTracker = new TPPIPlayerTracker();
@@ -64,7 +64,7 @@ public class TPPITweaks
 	public void init(FMLInitializationEvent event)
 	{
 		AM2SpawnControls.doAM2SpawnControls();
-
+		
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();

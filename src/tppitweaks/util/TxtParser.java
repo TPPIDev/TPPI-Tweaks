@@ -11,16 +11,11 @@ import tppitweaks.command.CommandTPPI;
  */
 public class TxtParser
 {
-	/**
-	 * The useable lines (not commented) from the file last processed by
-	 * parseFileMain
-	 **/
+	/** The useable lines (not commented) from the file last processed by parseFileMain **/
 	private static ArrayList<String> useableLines = new ArrayList<String>();
 
 	/**
-	 * Parses a file, taking into account all comments, line-skips, and
-	 * pagination/formatting
-	 * 
+	 * Parses a file, taking into account all comments, line-skips, and pagination/formatting
 	 * @param file
 	 * @return an array of pages
 	 */
@@ -88,7 +83,7 @@ public class TxtParser
 						nextPage = temp;
 						temp = "";
 					}
-					else
+					else		
 						nextPage += temp;
 				}
 				// In the end just concatenate to the page
@@ -100,7 +95,7 @@ public class TxtParser
 						nextPage = temp;
 						temp = "";
 					}
-					else
+					else		
 						nextPage += temp + " ";
 				}
 			}
@@ -108,7 +103,7 @@ public class TxtParser
 
 		if (nextPage.length() > 1)
 			bookText.add(nextPage);
-
+		
 		scanner.close();
 
 		return bookText;
@@ -136,13 +131,10 @@ public class TxtParser
 	}
 
 	/**
-	 * Parses a file, identically to ParseFileMain, but takes into account mod
-	 * names, searching for the >< identifier.
-	 * 
+	 * Parses a file, identically to ParseFileMain, but takes into account mod names, searching for the >< identifier.
 	 * @param file
 	 * @param modName
-	 * @return an array of pages, only containing the lines of info about the
-	 *         passed in modname
+	 * @return an array of pages, only containing the lines of info about the passed in modname
 	 */
 	public static ArrayList<String> parseFileMods(InputStream file, String modName)
 	{
@@ -159,7 +151,7 @@ public class TxtParser
 				if (temp.substring(1, temp.length() - 1).equals(modName))
 					break;
 		}
-
+			
 		while (scanner.hasNextLine())
 		{
 			String temp = scanner.nextLine();
@@ -215,7 +207,7 @@ public class TxtParser
 						nextPage = temp;
 						temp = "";
 					}
-					else
+					else		
 						nextPage += temp;
 				}
 				// In the end just concatenate to the page
@@ -227,7 +219,7 @@ public class TxtParser
 						nextPage = temp;
 						temp = "";
 					}
-					else
+					else		
 						nextPage += temp + " ";
 				}
 			}
@@ -243,10 +235,8 @@ public class TxtParser
 
 	/**
 	 * Gets mod names from the file
-	 * 
 	 * @param file
-	 * @return an array of Strings, the names of mods that are described in the
-	 *         file, evidenced by the >< identifier
+	 * @return an array of Strings, the names of mods that are described in the file, evidenced by the >< identifier
 	 */
 	public static ArrayList<String> getSupportedMods(InputStream file)
 	{

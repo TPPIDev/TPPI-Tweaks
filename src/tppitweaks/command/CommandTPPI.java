@@ -67,7 +67,7 @@ public class CommandTPPI extends CommandBase
 	{
 		return "tppi <arg>";
 	}
-
+	
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender par1iCommandSender)
 	{
@@ -106,9 +106,7 @@ public class CommandTPPI extends CommandBase
 			else if (astring[0].equalsIgnoreCase("mods"))
 			{
 				processCommandMods(icommandsender, astring);
-			}
-			else if (astring[0].equalsIgnoreCase("ores"))
-			{
+			}else if(astring[0].equalsIgnoreCase("ores")) {
 				processCommandOres(icommandsender, astring);
 			}
 
@@ -130,13 +128,12 @@ public class CommandTPPI extends CommandBase
 
 	}
 
-	private void processCommandOres(ICommandSender command, String[] astring)
-	{
-
+	private void processCommandOres(ICommandSender command, String[] astring) {
+		
 		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/OreGen.txt");
 		List<String> oreBookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 		ItemStack book = new ItemStack(Item.writtenBook);
-
+		
 		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
 		book.setTagInfo("title", new NBTTagString("title", "TPPI Ore Generation Guide"));
 
@@ -150,10 +147,10 @@ public class CommandTPPI extends CommandBase
 
 		nbttagcompound.setTag("pages", bookPages);
 		nbttagcompound.setString("version", TPPITweaks.VERSION);
-
+		
 		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(book))
 			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(book, 0);
-
+		
 	}
 
 	private boolean processCommandMods(ICommandSender command, String[] args)
@@ -201,8 +198,8 @@ public class CommandTPPI extends CommandBase
 			PacketDispatcher.sendPacketToPlayer(packet, (Player) command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()));
 			return true;
 		}
-
-		// TODO test
+		
+		//TODO test
 
 		return false;
 	}

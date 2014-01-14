@@ -40,9 +40,9 @@ public class TPPIBook extends ItemEditableBook
 			{
 				stack.setTagCompound(new NBTTagCompound());
 				addTextToBook(stack);
-
+				
 				player.inventoryContainer.detectAndSendChanges();
-
+				
 				GuiHelper.doBookGUI(player, stack, false);
 				return stack;
 			}
@@ -58,9 +58,8 @@ public class TPPIBook extends ItemEditableBook
 		return ConfigurationHandler.bookTitle;
 	}
 
-	public ItemStack addTextToBook(ItemStack book)
-	{
-
+	public ItemStack addTextToBook(ItemStack book) {
+		
 		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
 		book.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
 
@@ -74,16 +73,16 @@ public class TPPIBook extends ItemEditableBook
 
 		nbttagcompound.setTag("pages", bookPages);
 		nbttagcompound.setString("version", TPPITweaks.VERSION);
-
+		
 		return book;
-
+		
 	}
-
+	
 	public ItemStack getBook()
 	{
 		return addTextToBook(new ItemStack(ModItems.tppiBook));
 	}
-
+	
 	@Override
 	public boolean hasEffect(ItemStack par1ItemStack)
 	{

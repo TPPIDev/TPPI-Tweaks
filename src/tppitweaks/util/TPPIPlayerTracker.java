@@ -34,10 +34,10 @@ public class TPPIPlayerTracker implements IPlayerTracker
 	{
 		System.out.println("adding NBT: " + TPPIEventHandler.NBTValOnDeath);
 		player.getEntityData().setTag("TPPI", TPPITweaks.eventHandler.getTag(player, true));
-
+		
 		addBook(player);
 	}
-
+	
 	private boolean addBook(EntityPlayer player)
 	{
 		if (player != null && !player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook") && FMLCommonHandler.instance().getEffectiveSide().isServer())
@@ -45,12 +45,12 @@ public class TPPIPlayerTracker implements IPlayerTracker
 			System.out.println("adding book");
 
 			player.getEntityData().setTag("TPPI", TPPITweaks.eventHandler.getTag(player, false));
-
+			
 			ItemStack stack = ModItems.tppiBook.getBook();
 			player.inventory.addItemStackToInventory(stack);
 			return true;
 		}
-
+		
 		return false;
 	}
 

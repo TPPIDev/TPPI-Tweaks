@@ -7,37 +7,31 @@ import net.minecraft.world.World;
 /**
  * Registratio record for a Custom Cell handler.
  */
-public interface IWirelessTermRegistery
-{
-
+public interface IWirelessTermRegistery {
+	
 	/**
 	 * add thsi handler to the list of other wireless handler.
-	 * 
 	 * @param handler
 	 */
-	void registerWirelessHandler(IWirelessTermHandler handler);
+	void registerWirelessHandler( IWirelessTermHandler handler );
 
 	/**
 	 * returns true if theres a handler for this item.
-	 * 
 	 * @param is
 	 * @return
 	 */
-	boolean isWirelessTerminal(ItemStack is);
-
+	boolean isWirelessTerminal( ItemStack is );
+	
 	/**
-	 * returns a register handler for the item in question, or null if there
-	 * isn't one.
-	 * 
+	 * returns a register handler for the item in question, or null if there isn't one.
 	 * @param is
 	 * @return
 	 */
-	IWirelessTermHandler getWirelessTerminalHandler(ItemStack is);
-
+	IWirelessTermHandler getWirelessTerminalHandler( ItemStack is );
+	
 	/**
-	 * opens the wireless terminal gui, the wireless terminal item, must be in
-	 * the active slot on the tool bar.
+	 * opens the wireless terminal gui, the wireless terminal item, must be in the active slot on the tool bar.
 	 */
-	void OpenWirelessTermainlGui(ItemStack item, World w, EntityPlayer player);
-
+	void OpenWirelessTermainlGui( ItemStack item, World w, EntityPlayer player );
+	
 }

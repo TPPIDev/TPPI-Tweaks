@@ -12,7 +12,7 @@ public class PacketHandler implements IPacketHandler
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{
-		switch (packet.data[0])
+		switch(packet.data[0])
 		{
 		case 0:
 			GuiHelper.doDownloaderGUI();

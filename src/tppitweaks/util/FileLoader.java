@@ -13,32 +13,32 @@ import tppitweaks.TPPITweaks;
 public class FileLoader
 {
 	public static InputStream bookText, supportedMods;
-
+	
 	public static void init(File file, int attempt) throws IOException
 	{
 		File dir = new File(file.getParent() + "");
 		if (!dir.exists())
 			dir.mkdir();
-
+		
 		try
 		{
 			bookText = new FileInputStream(new File(file.getParent() + "/BookText.txt"));
 		}
-		catch (FileNotFoundException e)
+		catch(FileNotFoundException e)
 		{
 			Scanner scan = new Scanner(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt"));
-
+			
 			FileWriter newBookText = new FileWriter(new File(file.getParent() + "/BookText.txt"));
-
+			
 			while (scan.hasNext())
 			{
 				newBookText.write(scan.nextLine() + "\n");
 			}
-
+			
 			scan.close();
-			newBookText.flush();
+			newBookText.flush(); 
 			newBookText.close();
-
+			
 			if (attempt < 1)
 				init(file, 1);
 			else
@@ -47,26 +47,26 @@ public class FileLoader
 				e.printStackTrace();
 			}
 		}
-
+		
 		try
 		{
 			supportedMods = new FileInputStream(new File(file.getParent() + "/SupportedMods.txt"));
 		}
-		catch (FileNotFoundException e)
+		catch(FileNotFoundException e)
 		{
 			Scanner scan = new Scanner(TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt"));
-
+			
 			FileWriter newBookText = new FileWriter(new File(file.getParent() + "/SupportedMods.txt"));
-
+			
 			while (scan.hasNext())
 			{
 				newBookText.write(scan.nextLine() + "\n");
 			}
-
+			
 			scan.close();
-			newBookText.flush();
+			newBookText.flush(); 
 			newBookText.close();
-
+			
 			if (attempt < 3)
 				init(file, 2);
 			else

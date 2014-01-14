@@ -2,13 +2,11 @@ package appeng.api.me.util;
 
 /**
  * Not used.
- * 
+ *
  */
-public interface ICraftWatcher
-{
-
+public interface ICraftWatcher {
+	
 	void markChainCrafted();
-
-	void markComplete(ICraftRequest cr);
-
+	void markComplete( ICraftRequest cr );
+	
 }

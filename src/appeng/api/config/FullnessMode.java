@@ -1,19 +1,19 @@
 package appeng.api.config;
 
-// do not change names..
-public enum FullnessMode implements IConfigEnum
-{
-	Empty, Half, Full;
 
+// do not change names..
+public enum FullnessMode implements IConfigEnum {
+	Empty,
+	Half,
+	Full;
+	
 	@Override
-	public IConfigEnum[] getValues()
-	{
+	public IConfigEnum[] getValues() {
 		return values();
 	}
-
+	
 	@Override
-	public String getName()
-	{
+	public String getName() {
 		return "FullnessMode";
 	}
 }

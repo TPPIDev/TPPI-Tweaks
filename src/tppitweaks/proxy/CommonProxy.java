@@ -6,14 +6,14 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class CommonProxy implements IGuiHandler
 {
-	public void initSounds()
+	public void initSounds() 
 	{
-
+		
 	}
 
-	public void initRenderers()
-	{
-
+	public void initRenderers() 
+	{		
+		
 	}
 
 	@Override
