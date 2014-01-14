@@ -37,6 +37,7 @@ public class RecipeTweaks {
 	private static boolean okayToTweakDA;
 	private static boolean okayToTweakSFM;
 	private static boolean okayToTweakOpenBlocks;
+	private static boolean okayToTweakAM2;
 	
 	public static void doRecipeTweaks() {
 		
@@ -69,6 +70,7 @@ public class RecipeTweaks {
 		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
 		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
+		okayToTweakAM2 = Loader.isModLoaded("AM2") && ConfigurationHandler.tweakAM2;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -102,8 +104,7 @@ public class RecipeTweaks {
 		if(okayToTweakOpenBlocks) {
 			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockBreaker).blockID, -1);
 			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockPlacer).blockID, -1);
-		}
-		
+		}		
 	}
 	
 	private static boolean canRemoveRecipe(ItemStack output) {
@@ -123,8 +124,16 @@ public class RecipeTweaks {
 		addDARecipe();
 		addSFMRecipes();
 		addOpenBlocksRecipes();
+		addAM2Recipes();
     }
 	
+	private static void addAM2Recipes()
+	{
+		if (okayToTweakAM2) {
+			// TODO Stuff
+		}
+	}
+
 	private static void addOpenBlocksRecipes() {
 		if(okayToTweakOpenBlocks) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron, 'P', Block.pistonBase, 'R', Item.redstone }));
