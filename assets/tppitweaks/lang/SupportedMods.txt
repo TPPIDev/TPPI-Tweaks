@@ -69,6 +69,11 @@ Once you've found an essence pool, place the Item Frame so that it is directly a
 the pool of Essence, and place the Book inside the Item Frame.~
 ~
 After some flashes and sparkles, your guidebook will be ready!
+~~~
+If you find the book confusing, the first things you should craft to unlock the rest of the mod would be the
+oculus, inscription table, and crafting alter, respectively.~
+~
+After doing that, the rest of the mod is yours to explore!
 
 >GregTech, GregTech<
 <gregtechcommunitywiki.wikispaces.com>
@@ -124,6 +129,7 @@ The slot in the machine associated with that color will
 be highlighted in that color. This should help indicate what that color's purpose is 
 for that particular machine.
 ~
+
 >TPPITweaks, TPPI Tweaks<
 TPPITweaks is the mod made especially for the TPPI Modpack, 
 which is the representative modpack for /r/feedthebeast.~
