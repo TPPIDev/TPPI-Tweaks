@@ -32,8 +32,12 @@ public class ConfigurationHandler
 	public static boolean ic2TEGlassInterchangeability;
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
-	
+	public static boolean tweakAM2;
+
 	public static boolean doPlatinumInCentrifuge;
+	public static boolean addLapisDustMortarRecipes;
+	public static boolean tinkersAluminumPlates;
+	public static boolean tinkersAluminumOreInGTMachines;
 
 	public static boolean showDownloadGUI;
 	
@@ -69,10 +73,14 @@ public class ConfigurationHandler
 		ic2TEGlassInterchangeability = config.get("OPTIONS", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
 		tweakDA = config.get("OPTIONS", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
 		tweakSFM = config.get("OPTIONS", "stevesFactoryManagerAERecipes", true, "Recipes from Steve's Factory Manager take items from Applied Energistics.").getBoolean(true);
+		tweakAM2 = config.get("OPTIONS", "addAM2NatureGuardianRecipe", true, "Add recipe for Ars Magica 2 Nature Guardian spawn egg. Useful when dryads are disabled.").getBoolean(true);
 		glassFuelRods = config.get("OPTIONS", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
 		eloraamBreakersAndDeployers = config.get("OPTIONS", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		
 		doPlatinumInCentrifuge = config.get("OPTIONS", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
+		addLapisDustMortarRecipes = config.get("OPTIONS", "addLapisDustMortarRecipes", true, "Lapis dust can be made from lapis using GregTech's mortars.").getBoolean(true);
+		tinkersAluminumPlates = config.get("OPTIONS", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
+		tinkersAluminumOreInGTMachines = config.get("OPTIONS", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
@@ -107,8 +115,6 @@ public class ConfigurationHandler
 			fr1.close();
 			read.close();
 			
-			System.out.println(strings.toString());
-
 			FileWriter fw = new FileWriter(cfg);
 			BufferedWriter bw = new BufferedWriter(fw);
 			

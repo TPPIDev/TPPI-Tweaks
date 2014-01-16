@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -68,11 +67,11 @@ public class CommandTPPI extends CommandBase
 	{
 		return "tppi <arg>";
 	}
-
+	
 	@Override
-	public int getRequiredPermissionLevel()
+	public boolean canCommandSenderUseCommand(ICommandSender par1iCommandSender)
 	{
-		return 0;
+		return true;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -199,6 +198,8 @@ public class CommandTPPI extends CommandBase
 			PacketDispatcher.sendPacketToPlayer(packet, (Player) command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()));
 			return true;
 		}
+		
+		//TODO test
 
 		return false;
 	}

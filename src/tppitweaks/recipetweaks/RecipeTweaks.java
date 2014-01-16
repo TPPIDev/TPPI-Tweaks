@@ -1,9 +1,11 @@
 package tppitweaks.recipetweaks;
 
 import gregtechmod.api.GregTech_API;
+import gregtechmod.api.enums.GT_Items;
 import ic2.core.Ic2Items;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ListIterator;
 
 import mods.immibis.chunkloader.DimensionalAnchors;
@@ -14,10 +16,13 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import openblocks.OpenBlocks;
 import thermalexpansion.block.TEBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
+import am2.blocks.BlocksCommonProxy;
+import am2.items.ItemsCommonProxy;
 import appeng.api.Materials;
 import codechicken.enderstorage.EnderStorage;
 import codechicken.enderstorage.api.EnderStorageManager;
@@ -34,6 +39,7 @@ public class RecipeTweaks {
 	private static boolean okayToTweakDA;
 	private static boolean okayToTweakSFM;
 	private static boolean okayToTweakOpenBlocks;
+	private static boolean okayToTweakAM2;
 	
 	public static void doRecipeTweaks() {
 		
@@ -66,6 +72,7 @@ public class RecipeTweaks {
 		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
 		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
+		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -99,8 +106,7 @@ public class RecipeTweaks {
 		if(okayToTweakOpenBlocks) {
 			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockBreaker).blockID, -1);
 			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockPlacer).blockID, -1);
-		}
-		
+		}		
 	}
 	
 	private static boolean canRemoveRecipe(ItemStack output) {
@@ -120,8 +126,16 @@ public class RecipeTweaks {
 		addDARecipe();
 		addSFMRecipes();
 		addOpenBlocksRecipes();
+		addAM2Recipes();
     }
 	
+	private static void addAM2Recipes()
+	{
+		if (okayToTweakAM2) {
+			GameRegistry.addShapedRecipe(new ItemStack(ItemsCommonProxy.spawnEgg, 1, 12), new Object[] { "CCC", "CPC", "CCC", 'C', new ItemStack(ItemsCommonProxy.essence, 1, 5), 'P', new ItemStack(BlocksCommonProxy.aum)});
+		}
+	}
+
 	private static void addOpenBlocksRecipes() {
 		if(okayToTweakOpenBlocks) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron, 'P', Block.pistonBase, 'R', Item.redstone }));
@@ -192,6 +206,11 @@ public class RecipeTweaks {
 			}
 		}
 		
+		//British fix
+		for(ItemStack s : OreDictionary.getOres("dustAluminium")) {
+			OreDictionary.registerOre("dustAluminum", s);
+		}
+		
 	}
 	
 	private static void addBigReactorsRecipes() {
@@ -229,8 +248,39 @@ public class RecipeTweaks {
 	}
 	
 	private static void registerAdditionalRecipes() {
+		
 		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge) {
 			GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0), OreDictionary.getOres("dustSmallNickel").get(0), null, null, 3000);
+		}
+		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.addLapisDustMortarRecipes) {
+			for(ItemStack s : OreDictionary.getOres("dustLapis")) {
+				GameRegistry.addRecipe(new ShapelessOreRecipe(s, new Object[] {GT_Items.Tool_Mortar_Iron.getWildcard(1L, new Object[0]), new ItemStack(Item.dyePowder, 1, 4)}));
+				GameRegistry.addRecipe(new ShapelessOreRecipe(s, new Object[] {GT_Items.Tool_Mortar_Wood.getWildcard(1L, new Object[0]), new ItemStack(Item.dyePowder, 1, 4)}));
+			}
+			
+		}
+		
+		if(Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("TConstruct") && ConfigurationHandler.tinkersAluminumPlates) {
+			int id = OreDictionary.getOres("ingotCobalt").get(0).itemID;
+			for(ItemStack s : OreDictionary.getOres("ingotAluminum")) {
+				if(s.itemID == id) {
+					GregTech_API.sRecipeAdder.addBenderRecipe(s, OreDictionary.getOres("plateAluminium").get(0), 52, 24);
+				}
+			}
+		}
+		if(Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("TConstruct") && ConfigurationHandler.tinkersAluminumOreInGTMachines) {
+			HashSet<Integer> okIds = new HashSet<Integer>();
+			for(ItemStack s : OreDictionary.getOres("oreCobalt")) {
+				okIds.add(s.itemID);
+			}
+			
+			for(ItemStack s : OreDictionary.getOres("oreAluminum")) {
+				if(okIds.contains(s.itemID)) {
+					ItemStack dust = OreDictionary.getOres("dustAluminium").get(0).copy();
+					dust.stackSize = 2;
+					GregTech_API.sRecipeAdder.addGrinderRecipe(s, Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallBauxite").get(0), OreDictionary.getOres("dustSmallBauxite").get(0), Ic2Items.cell);
+				}
+			}
 		}
 	}
 		
