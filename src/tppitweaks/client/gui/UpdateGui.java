@@ -33,9 +33,6 @@ public class UpdateGui extends GuiScreen
 		if (!Loader.isModLoaded("TwilightForest"))
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
 		
-		if (!Loader.isModLoaded("blir-enderprospecting"))
-			modScreens.add(new InstructionsGui(new ModDownload("Ender Prospecting", "https://dl.dropboxusercontent.com/u/103112496/Forge%20Mods/Ender%20Prospecting/%5B1.6.4%5D%20Ender%20Prospecting%200.1.0.zip", "blir-enderprospecting")));
-		
 		iterator = modScreens.iterator();
 
 	}
