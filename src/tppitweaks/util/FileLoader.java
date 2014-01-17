@@ -95,20 +95,41 @@ public class FileLoader
 		
 	}
 	
-	private static File[] getTT()
+	private static ArrayList<File> getTT()
 	{
 		
 		ArrayList<File> thaumicTinkererFiles = new ArrayList<File>();
 		File modJar;
 		
-		if((modJar = new File(Minecraft.getMinecraft().mcDataDir, "mods" + Reference.TT_FILENAME)).exists()) {
-			thaumicTinkererFiles.add(modJar);
-		}
-		if((modJar = new File(Minecraft.getMinecraft().mcDataDir, "mods" + Reference.TT_KAMI_FILENAME)).exists()) {
+		modJar = new File(Minecraft.getMinecraft().mcDataDir, "mods" + Reference.TT_FILENAME);
+		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}
 		
-		return (File[])thaumicTinkererFiles.toArray();
+		modJar = new File(Minecraft.getMinecraft().mcDataDir, "mods" + Reference.TT_KAMI_FILENAME);
+		if(modJar.exists()) {
+			thaumicTinkererFiles.add(modJar);
+		}
+		
+		return thaumicTinkererFiles;
 		
 	}
+	
+	public static void getThaumicTinkererFilenameState() {
+		
+		File modJar;
+		File modsFolder = new File(Minecraft.getMinecraft().mcDataDir, "mods");
+		
+		modJar = new File(modsFolder, Reference.TT_FILENAME).exists() ? new File(modsFolder, Reference.TT_FILENAME) : new File(modsFolder, Reference.TT_FILENAME + ".disabled");
+		if(modJar.exists()) {
+			Reference.TT_FILENAME = modJar.getName();
+		}
+		
+		modJar = new File(modsFolder, Reference.TT_KAMI_FILENAME).exists() ? new File(modsFolder, Reference.TT_KAMI_FILENAME) : new File(modsFolder, Reference.TT_KAMI_FILENAME + ".disabled");
+		if(modJar.exists()) {
+			Reference.TT_FILENAME = modJar.getName();
+		}
+		
+	}
+	
 }
