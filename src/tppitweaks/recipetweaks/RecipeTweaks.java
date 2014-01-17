@@ -3,11 +3,13 @@ package tppitweaks.recipetweaks;
 import gregtechmod.api.GregTech_API;
 import gregtechmod.api.enums.GT_Items;
 import ic2.core.Ic2Items;
+import ic2.core.block.machine.tileentity.TileEntityOreWashing;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ListIterator;
 
+import magicalcrops.mod_mCrops;
 import mods.immibis.chunkloader.DimensionalAnchors;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -40,6 +42,7 @@ public class RecipeTweaks {
 	private static boolean okayToTweakSFM;
 	private static boolean okayToTweakOpenBlocks;
 	private static boolean okayToTweakAM2;
+	private static boolean okayToTweakMagicalCrops;
 	
 	public static void doRecipeTweaks() {
 		
@@ -73,6 +76,7 @@ public class RecipeTweaks {
 		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
+		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -211,6 +215,11 @@ public class RecipeTweaks {
 			OreDictionary.registerOre("dustAluminum", s);
 		}
 		
+		if(okayToTweakMagicalCrops) {
+			OreDictionary.registerOre("oreMCropsEssence", new ItemStack(mod_mCrops.BlockOreEssence));
+			OreDictionary.registerOre("oreMCropsNetherEssence", new ItemStack(mod_mCrops.BlockOreEssenceNether));
+		}
+		
 	}
 	
 	private static void addBigReactorsRecipes() {
@@ -248,6 +257,10 @@ public class RecipeTweaks {
 	}
 	
 	private static void registerAdditionalRecipes() {
+		
+		if(ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty()) {
+			TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), Ic2Items.stoneDust });
+		}
 		
 		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge) {
 			GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0), OreDictionary.getOres("dustSmallNickel").get(0), null, null, 3000);

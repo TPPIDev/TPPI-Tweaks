@@ -38,6 +38,10 @@ public class ConfigurationHandler
 	public static boolean addLapisDustMortarRecipes;
 	public static boolean tinkersAluminumPlates;
 	public static boolean tinkersAluminumOreInGTMachines;
+	
+	public static boolean addOsmiumToOreWasher;
+	
+	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
 	
@@ -84,6 +88,9 @@ public class ConfigurationHandler
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
+		registerMagicalCropsOre = config.get("OPTIONS", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
+		addOsmiumToOreWasher = config.get("OPTIONS", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
+
 		config.save();
 	}
 
