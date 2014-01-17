@@ -58,9 +58,9 @@ public class TPPITweaks {
 
 		if (ConfigurationHandler.autoEnableTT) {
 			if (Loader.isModLoaded("Thaumcraft"))
-				FileLoader.enableTT(ConfigurationHandler.cfg);
+				FileLoader.enableTT();
 			else
-				FileLoader.disableTT(ConfigurationHandler.cfg);
+				FileLoader.disableTT();
 		}
 	}
 

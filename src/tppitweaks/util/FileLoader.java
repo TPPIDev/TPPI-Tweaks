@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import net.minecraft.client.Minecraft;
 import tppitweaks.TPPITweaks;
 import tppitweaks.lib.Reference;
 
@@ -78,27 +80,35 @@ public class FileLoader
 		}
 	}
 	
-	public static boolean isTTLoaded(File file)
+	public static void disableTT()
 	{
-		return getTT(file).exists();
+		for(File f : getTT()) {
+			f.renameTo(new File(f.getParent() + f.getName() + ".disabled"));
+		}
 	}
 	
-	public static void disableTT(File file)
+	public static void enableTT()
 	{
-		File tt = getTT(file);
+		for(File f : getTT()) {
+			f.renameTo(new File(f.getAbsolutePath().replace(".disabled", "")));
+		}
 		
-		tt.renameTo(new File(tt.getParent() + tt.getName() + ".disabled"));
 	}
 	
-	public static void enableTT(File file)
+	private static File[] getTT()
 	{
-		File tt = getTT(file);
 		
-		tt.renameTo(new File(tt.getAbsolutePath().replace(".disabled", "")));
-	}
-	
-	private static File getTT(File file)
-	{
-		return new File(new File(file.getParent() + "").getParent() + Reference.TT_FILENAME);
+		ArrayList<File> thaumicTinkererFiles = new ArrayList<File>();
+		File modJar;
+		
+		if((modJar = new File(Minecraft.getMinecraft().mcDataDir, "mods" + Reference.TT_FILENAME)).exists()) {
+			thaumicTinkererFiles.add(modJar);
+		}
+		if((modJar = new File(Minecraft.getMinecraft().mcDataDir, "mods" + Reference.TT_KAMI_FILENAME)).exists()) {
+			thaumicTinkererFiles.add(modJar);
+		}
+		
+		return (File[])thaumicTinkererFiles.toArray();
+		
 	}
 }

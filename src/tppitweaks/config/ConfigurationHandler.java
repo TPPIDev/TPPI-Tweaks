@@ -69,7 +69,7 @@ public class ConfigurationHandler
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		materialID = config.getItem("tppiMaterialId", 21001).getInt() - 256;
 		
-		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Field Guide", "The title of the custom spawn book", Type.STRING).getString();
+		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Welcome Packet", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("BOOK INFO", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
 		
 		enderChestTesseract = config.get("OPTIONS", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
