@@ -7,9 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
-import net.minecraft.client.Minecraft;
 import tppitweaks.TPPITweaks;
 import tppitweaks.lib.Reference;
 
@@ -129,6 +129,38 @@ public class FileLoader
 			Reference.TT_FILENAME = modJar.getName();
 		}
 		
+	}
+
+	public static Object manuallyGetConfigValue(Map<String, Object> m, String string, Object type) {
+		if (type instanceof Boolean)
+		{
+			File config = new File(((File) m.get("mcLocation")).getAbsolutePath() + "/config/TPPI/TPPITweaks.cfg");
+			boolean noConfig = false;
+			Scanner scan = null;
+			
+			try {
+				scan = new Scanner(config);
+			} catch (FileNotFoundException e) {
+				noConfig = true;
+			}	
+			
+			if (noConfig)
+				return true;
+			
+			while (scan.hasNext())
+			{
+				String s = scan.next();
+				
+				if (s.contains(string))
+				{
+					if (s.contains("true"))
+						return true;
+					else
+						return false;
+				}
+			}
+		}
+		return false;
 	}
 	
 }

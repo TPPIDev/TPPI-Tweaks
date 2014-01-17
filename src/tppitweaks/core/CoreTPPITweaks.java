@@ -1,44 +1,14 @@
 package tppitweaks.core;
 
 import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Map;
 
-import net.minecraft.client.Minecraft;
 import tppitweaks.lib.Reference;
 import tppitweaks.util.FileLoader;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
-public class CoreTPPITweaks implements IFMLLoadingPlugin{
+public class CoreTPPITweaks implements IFMLLoadingPlugin {
 
-	public CoreTPPITweaks()
-	{
-		
-		try {
-			//Likely incorrect - a placeholder location.
-			Reference.modsFolder = new File(CoreTPPITweaks.class.getResource("").toURI().getRawPath()).getParentFile().getParentFile();
-			System.out.println(Reference.modsFolder.getAbsolutePath()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		
-		} catch (Throwable e) { //asdf
-			e.printStackTrace();
-			System.exit(-1);
-		}
-		
-		FileLoader.getThaumicTinkererFilenameState();
-		
-		if (new File(Reference.modsFolder, Reference.THAUMCRAFT_FILENAME).exists()) {
-			System.out.println("FOUND THAUMCRAAAAAAAAAAAAAAAAAAAAAAAAAAAAFT");
-			
-			FileLoader.enableTT();
-			
-		}else {
-			
-			FileLoader.disableTT();
-			
-		}
-	}
-	
 	@Override
 	@Deprecated
 	public String[] getLibraryRequestClass() {
@@ -62,7 +32,19 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin{
 
 	@Override
 	public void injectData(Map<String, Object> data) {
-		
+		if ((Boolean) FileLoader.manuallyGetConfigValue(data, "autoEnableTT", new Boolean(true))) {
+
+			File modsDir = (File) data.get("mcLocation");
+
+			File thaumcraft = new File(modsDir.getAbsolutePath() + "/"
+					+ Reference.THAUMCRAFT_FILENAME);
+
+			if (thaumcraft.exists()) {
+				FileLoader.disableTT();
+			} else {
+				FileLoader.enableTT();
+			}
+		}
 	}
 
 }
