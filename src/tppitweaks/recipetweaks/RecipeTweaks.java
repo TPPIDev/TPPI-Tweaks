@@ -259,9 +259,7 @@ public class RecipeTweaks {
 	private static void registerAdditionalRecipes() {
 		
 		if(ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty()) {
-			for(ItemStack s : OreDictionary.getOres("dustOsmium") {
-				TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { s, Ic2Items.stoneDust });
-			}
+			TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), Ic2Items.stoneDust });
 		}
 		
 		if(Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge) {
