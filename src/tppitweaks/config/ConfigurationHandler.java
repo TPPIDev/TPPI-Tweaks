@@ -45,6 +45,8 @@ public class ConfigurationHandler
 
 	public static boolean showDownloadGUI;
 	
+	public static boolean autoEnableTT;
+	
 	public static File cfg;
 	
 	/** ArrayList of Strings, the strings are each one whole page **/
@@ -91,6 +93,8 @@ public class ConfigurationHandler
 		registerMagicalCropsOre = config.get("OPTIONS", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		addOsmiumToOreWasher = config.get("OPTIONS", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 
+		autoEnableTT = config.get("OPTIONS", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
+		
 		config.save();
 	}
 

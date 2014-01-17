@@ -3,22 +3,16 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/CodeChickenCore-dev 0.9.0.7.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/CodeChickenLib-dev-1.6.4-1.0.0.36.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/CoFHCore-2.0.0.0.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/NotEnoughItems-dev 1.6.1.8.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/scala-library-2.10.2.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/ThermalExpansion-3.0.0.0.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/EnderStorage-dev 1.4.3.5.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/BigReactors-0.2.10A.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/industrialcraft-2-dev-deobf_2.0.336-experimental.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/immibis-core-57.1.7.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/buildcraft-A-1.6.2-4.1.2.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/AM2_1.1.0.zip"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/RedstoneArsenal-1.0.0.0.jar"/>
-	<classpathentry kind="src" path="/Dimensional Anchors"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/OpenBlocks-1.2.2.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/gregtechmod.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/StevesFactoryManagerA14.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/BigReactors-0.2.10A.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/buildcraft-A-1.6.2-4.1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/dimensional-anchor-57.1.9.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/EnderStorage 1.4.3.5 9.15.52 PM.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/gregtechmod.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/industrialcraft-2-dev-deobf_2.0.336-experimental.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/OpenBlocks-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/RedstoneArsenal-1.0.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/scala-library-2.10.2.jar"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/StevesFactoryManagerA14.zip"/>
+	<classpathentry kind="lib" path="/Users/Janice/Development/forge/mcp/lib/ThermalExpansion-3.0.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

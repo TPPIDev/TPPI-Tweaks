@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 import tppitweaks.TPPITweaks;
+import tppitweaks.lib.Reference;
 
 public class FileLoader
 {
@@ -75,5 +76,29 @@ public class FileLoader
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static boolean isTTLoaded(File file)
+	{
+		return getTT(file).exists();
+	}
+	
+	public static void disableTT(File file)
+	{
+		File tt = getTT(file);
+		
+		tt.renameTo(new File(tt.getParent() + tt.getName() + ".disabled"));
+	}
+	
+	public static void enableTT(File file)
+	{
+		File tt = getTT(file);
+		
+		tt.renameTo(new File(tt.getAbsolutePath().replace(".disabled", "")));
+	}
+	
+	private static File getTT(File file)
+	{
+		return new File(new File(file.getParent() + "").getParent() + Reference.TT_FILENAME);
 	}
 }
