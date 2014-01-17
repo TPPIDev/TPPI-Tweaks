@@ -56,13 +56,6 @@ public class TPPITweaks {
 		GameRegistry.registerPlayerTracker(playerTracker);
 		MinecraftForge.EVENT_BUS.register(playerTracker);
 
-		FileLoader.getThaumicTinkererFilenameState();
-		if (ConfigurationHandler.autoEnableTT) {
-			if (Loader.isModLoaded("Thaumcraft"))
-				FileLoader.enableTT();
-			else
-				FileLoader.disableTT();
-		}
 	}
 
 	@EventHandler
