@@ -83,14 +83,18 @@ public class FileLoader
 	public static void disableTT()
 	{
 		for(File f : getTT()) {
-			f.renameTo(new File(f.getParent() + f.getName() + ".disabled"));
+			if(!f.getName().contains(".disabled")) {
+				f.renameTo(new File(f.getAbsolutePath()+".disabled"));
+			}
 		}
 	}
 	
 	public static void enableTT()
 	{
 		for(File f : getTT()) {
-			f.renameTo(new File(f.getAbsolutePath().replace(".disabled", "")));
+			if(f.getName().contains(".disabled")) {
+				f.renameTo(new File(f.getAbsolutePath().replace(".disabled", "")));
+			}
 		}
 		
 	}
@@ -126,7 +130,7 @@ public class FileLoader
 		
 		modJar = new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME).exists() ? new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME) : new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME + ".disabled");
 		if(modJar.exists()) {
-			Reference.TT_FILENAME = modJar.getName();
+			Reference.TT_KAMI_FILENAME = modJar.getName();
 		}
 		
 	}
