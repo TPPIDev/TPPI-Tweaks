@@ -40,7 +40,9 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 					+ Reference.THAUMCRAFT_FILENAME);
 
 			if (thaumcraft.exists()) {
+				System.out.println("Disabling TT.");
 				FileLoader.disableTT();
+				System.out.println("TT Disabled.");
 			} else {
 				FileLoader.enableTT();
 			}
