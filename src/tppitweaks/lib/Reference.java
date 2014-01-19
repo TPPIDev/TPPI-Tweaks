@@ -2,8 +2,6 @@ package tppitweaks.lib;
 
 import java.io.File;
 
-import net.minecraft.client.Minecraft;
-
 public class Reference
 {
 	public static final String CHANNEL = "tppitweaks";

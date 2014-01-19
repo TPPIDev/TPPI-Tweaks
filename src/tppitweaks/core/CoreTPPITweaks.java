@@ -3,7 +3,6 @@ package tppitweaks.core;
 import java.io.File;
 import java.util.Map;
 
-import tppitweaks.TPPITweaks;
 import tppitweaks.lib.Reference;
 import tppitweaks.util.FileLoader;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;

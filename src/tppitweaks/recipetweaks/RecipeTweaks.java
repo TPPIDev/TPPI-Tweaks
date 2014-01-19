@@ -7,6 +7,7 @@ import ic2.core.block.machine.tileentity.TileEntityOreWashing;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.ListIterator;
 
 import magicalcrops.mod_mCrops;
@@ -51,9 +52,30 @@ public class RecipeTweaks {
 		removeSomeRecipes();
 		addRevisedRecipes();
 		registerAdditionalRecipes();
-		
+		fixExURecipes();
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	private static void fixExURecipes() {
+		if (Loader.isModLoaded("ExtraUtilities"))
+		{
+			Iterator<IRecipe> iter = CraftingManager.getInstance().getRecipeList().listIterator();
+			while (iter.hasNext())
+			{
+				IRecipe recipe = iter.next();
+
+				ItemStack stack = recipe.getRecipeOutput();
+				if (stack != null && stack.getItem() == extrautils.ExtraUtils.unstableIngot && stack.stackSize == 9)
+				{
+					iter.remove();
+					break;
+				}
+			}
+			
+			GameRegistry.addShapelessRecipe(new ItemStack(extrautils.ExtraUtils.unstableIngot, 9), new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5));
+		}
+	}
+
 	@SuppressWarnings({ "unchecked", "unused" })
 	private static void removeSomeRecipes() {
 	
