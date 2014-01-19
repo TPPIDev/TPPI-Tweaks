@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
@@ -68,11 +69,21 @@ public class RecipeTweaks {
 				if (stack != null && stack.getItem() == extrautils.ExtraUtils.unstableIngot && stack.stackSize == 9)
 				{
 					iter.remove();
-					break;
+				}
+				if (stack != null && stack.getItem().itemID == extrautils.ExtraUtils.decorative1Id && stack.getItemDamage() == 1 && recipe instanceof ShapedRecipes && ((ItemStack)((ShapedRecipes)recipe).recipeItems[0]).getItem() == extrautils.ExtraUtils.unstableIngot)
+				{
+					iter.remove();
 				}
 			}
 			
 			GameRegistry.addShapelessRecipe(new ItemStack(extrautils.ExtraUtils.unstableIngot, 9), new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5));
+			GameRegistry.addRecipe(new ItemStack(extrautils.ExtraUtils.decorative1, 1, 1), new Object[]{
+				"iii",
+				"iii",
+				"iii",
+				
+				'i', extrautils.ExtraUtils.unstableIngot
+			});
 		}
 	}
 
