@@ -39,6 +39,8 @@ public class ConfigurationHandler
 	public static boolean tinkersAluminumPlates;
 	public static boolean tinkersAluminumOreInGTMachines;
 	
+	public static boolean removeStupidEnergyCrystalRecipe;
+	
 	public static boolean addOsmiumToOreWasher;
 	
 	public static boolean registerMagicalCropsOre;
@@ -87,6 +89,8 @@ public class ConfigurationHandler
 		addLapisDustMortarRecipes = config.get("OPTIONS", "addLapisDustMortarRecipes", true, "Lapis dust can be made from lapis using GregTech's mortars.").getBoolean(true);
 		tinkersAluminumPlates = config.get("OPTIONS", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
 		tinkersAluminumOreInGTMachines = config.get("OPTIONS", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
+		
+		removeStupidEnergyCrystalRecipe = config.get("OPTIONS", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
