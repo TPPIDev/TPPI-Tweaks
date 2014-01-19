@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
@@ -52,5 +53,14 @@ public class TPPIEventHandler
 		tag.setBoolean("hasBook", useClassVal ? NBTValOnDeath : true);
 		
 		return tag;
+	}
+	
+	@ForgeSubscribe
+	public void onItemTooltip(ItemTooltipEvent event)
+	{
+		if (event.itemStack.getItem().itemID == mods.immibis.chunkloader.DimensionalAnchors.instance.block.blockID)
+		{
+			event.toolTip.add("\u00A7oA chunk loader");
+		}
 	}
 }

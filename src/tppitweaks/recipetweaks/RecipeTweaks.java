@@ -28,7 +28,6 @@ import tppitweaks.item.ModItems;
 import am2.blocks.BlocksCommonProxy;
 import am2.items.ItemsCommonProxy;
 import appeng.api.Materials;
-import bluedart.core.recipes.ShapedDartCrafting;
 import codechicken.enderstorage.EnderStorage;
 import codechicken.enderstorage.api.EnderStorageManager;
 import cpw.mods.fml.common.Loader;
@@ -46,7 +45,6 @@ public class RecipeTweaks {
 	private static boolean okayToTweakOpenBlocks;
 	private static boolean okayToTweakAM2;
 	private static boolean okayToTweakMagicalCrops;
-	private static boolean okayToTweakDartCraft;
 	
 	public static void doRecipeTweaks() {
 		
@@ -72,21 +70,23 @@ public class RecipeTweaks {
 				{
 					iter.remove();
 				}
-				
-				//FIXME THIS LINE IS BROKEN AND GIVES AN NPE SOMEPLACE BUT IT'S A MESS AND I DON'T KNOW WHERE TO START.
-				if (stack != null && stack.getItem().itemID == extrautils.ExtraUtils.decorative1Id && stack.getItemDamage() == 1 && recipe instanceof ShapedRecipes && ((ItemStack)((ShapedRecipes)recipe).recipeItems[0]).getItem() == extrautils.ExtraUtils.unstableIngot)
+				if (recipe != null && stack != null && stack.getItem().itemID == extrautils.ExtraUtils.decorative1Id && stack.getItemDamage() == 1)
 				{
-					iter.remove();
+					ShapedRecipes shapedRecipe = (ShapedRecipes) recipe;
+					if (shapedRecipe.recipeItems.length > 0	&& shapedRecipe.recipeItems[0] != null && recipe instanceof ShapedRecipes && ((ItemStack)shapedRecipe.recipeItems[0]).getItem() == extrautils.ExtraUtils.unstableIngot)
+					{
+						iter.remove();
+					}
 				}
 			}
 			
 			GameRegistry.addShapelessRecipe(new ItemStack(extrautils.ExtraUtils.unstableIngot, 9), new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5));
-			GameRegistry.addRecipe(new ItemStack(extrautils.ExtraUtils.decorative1, 1, 1), new Object[]{
+			GameRegistry.addRecipe(new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5), new Object[]{
 				"iii",
 				"iii",
 				"iii",
 				
-				'i', extrautils.ExtraUtils.unstableIngot
+				'i', new ItemStack(extrautils.ExtraUtils.unstableIngot)
 			});
 		}
 	}
@@ -98,7 +98,8 @@ public class RecipeTweaks {
 		ItemStack recipeResult = null;
 		while(iterator.hasNext()) {
 			IRecipe r = iterator.next();
-			if(canRemoveRecipe(r)) {
+			ItemStack out = r.getRecipeOutput();
+			if(canRemoveRecipe(out)) {
 				iterator.remove();
 			}
 		}
@@ -113,7 +114,6 @@ public class RecipeTweaks {
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
-		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 	}
 	
 	private static void initRemovableRecipesMap() {
@@ -147,23 +147,16 @@ public class RecipeTweaks {
 		if(okayToTweakOpenBlocks) {
 			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockBreaker).blockID, -1);
 			recipesToRemove.put(((Block)OpenBlocks.Blocks.blockPlacer).blockID, -1);
-		}
-		
+		}		
 	}
 	
-	private static boolean canRemoveRecipe(IRecipe r) {
+	private static boolean canRemoveRecipe(ItemStack output) {
 		try {
-			ItemStack output = r.getRecipeOutput();
-			if(r instanceof ShapedDartCrafting && output.itemID == Ic2Items.energyCrystal.itemID) {
-				return okayToTweakDartCraft;
-			}else if(output.itemID != Ic2Items.energyCrystal.itemID){
-				int removeableValueTest = recipesToRemove.get(output.itemID);
-				return removeableValueTest == -1 || removeableValueTest == output.getItemDamage();
-			}
+			int removeableValueTest = recipesToRemove.get(output.itemID);
+			return removeableValueTest == -1 || removeableValueTest == output.getItemDamage();
 		}catch(Throwable e) {
 			return false;
 		}
-		return false;
 	}
 	
 	private static void addRevisedRecipes()

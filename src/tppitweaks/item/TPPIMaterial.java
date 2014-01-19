@@ -24,15 +24,14 @@ public class TPPIMaterial extends Item {
 	@SideOnly(Side.CLIENT)
 	private Icon[] icons;
 	
-	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked", "tppiChunkLoader"};
+	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked"};
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		icons = new Icon[3];
+		icons = new Icon[2];
 		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
 		icons[1] = par1IconRegister.registerIcon("tppitweaks:tppiProcessorUncooked");
-		icons[2] = par1IconRegister.registerIcon("tppitweaks:tppiChunkloader");
 	}
 	
 	@Override
@@ -49,20 +48,7 @@ public class TPPIMaterial extends Item {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 			list.add(new ItemStack(this.itemID, 1, i));
-	}
-	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack par1ItemStack,
-			EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if (par1ItemStack.getItemDamage() == 3)
-		{
-			par3List.add("This is not a real chunkloader.");
-			par3List.add("You are probably looking for a");
-			par3List.add("Dimensinal Anchor instead.");
-		}
 	}
 }
