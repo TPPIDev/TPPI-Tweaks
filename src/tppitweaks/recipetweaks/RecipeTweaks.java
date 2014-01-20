@@ -42,6 +42,8 @@ public class RecipeTweaks
 {
 
 	private static HashMap<Integer, Integer> recipesToRemove;
+	private static boolean okayToTweakIC2;
+	private static boolean okayToTweakGT;
 	private static boolean okayToTweakEnderStorage;
 	private static boolean okayToTweakBigReactors;
 	private static boolean okayToTweakDA;
@@ -50,6 +52,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakAM2;
 	private static boolean okayToTweakMagicalCrops;
 	private static boolean okayToTweakDartCraft;
+	private static boolean okayToTweakExU;
 
 	public static void doRecipeTweaks()
 	{
@@ -58,8 +61,12 @@ public class RecipeTweaks
 		initRemovableRecipesMap();
 		removeSomeRecipes();
 		addRevisedRecipes();
-		registerAdditionalRecipes();
-		fixExURecipes();
+		
+		if (okayToTweakGT)
+			registerAdditionalRecipes();
+		
+		if (okayToTweakExU)
+			fixExURecipes();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -114,6 +121,8 @@ public class RecipeTweaks
 
 	private static void checkWhatWeCanTweak()
 	{
+		okayToTweakIC2 = Loader.isModLoaded("IC2");
+		okayToTweakGT = Loader.isModLoaded("gregtech_addon");
 		okayToTweakEnderStorage = Loader.isModLoaded("EnderStorage") && Loader.isModLoaded("ThermalExpansion");
 		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty()
 				&& (ConfigurationHandler.steelReactorCasings || ConfigurationHandler.glassFuelRods);
@@ -123,6 +132,7 @@ public class RecipeTweaks
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
+		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -137,34 +147,59 @@ public class RecipeTweaks
 
 		if (okayToTweakEnderStorage)
 		{
-			recipesToRemove.put(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
-			recipesToRemove.put(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);
+			initEnderStorage();
 		}
 		if (okayToTweakBigReactors)
 		{
-			if (ConfigurationHandler.steelReactorCasings)
-			{
-				recipesToRemove.put(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart.blockID, 0);
-			}
-			if (ConfigurationHandler.glassFuelRods)
-			{
-				recipesToRemove.put(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod.blockID, -1);
-			}
+			initBigReactors();
 		}
 		if (okayToTweakDA)
 		{
-			recipesToRemove.put(((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID, -1);
+			initDA();
 		}
 		if (okayToTweakSFM)
 		{
-			recipesToRemove.put(((Block) vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
-			recipesToRemove.put(((Block) vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);
+			initSFM();
 		}
 		if (okayToTweakOpenBlocks)
 		{
-			recipesToRemove.put(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1);
-			recipesToRemove.put(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1);
+			initOB();
 		}
+	}
+
+	private static void initEnderStorage()
+	{
+		recipesToRemove.put(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
+		recipesToRemove.put(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);		
+	}
+
+	private static void initOB()
+	{
+		recipesToRemove.put(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1);
+		recipesToRemove.put(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1);
+	}
+
+	private static void initSFM()
+	{
+		recipesToRemove.put(((Block) vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
+		recipesToRemove.put(((Block) vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);	
+	}
+
+	private static void initDA()
+	{
+		recipesToRemove.put(((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID, -1);
+	}
+
+	private static void initBigReactors()
+	{
+		if (ConfigurationHandler.steelReactorCasings)
+		{
+			recipesToRemove.put(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart.blockID, 0);
+		}
+		if (ConfigurationHandler.glassFuelRods)
+		{
+			recipesToRemove.put(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod.blockID, -1);
+		}		
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
@@ -191,13 +226,29 @@ public class RecipeTweaks
 
 	private static void addRevisedRecipes()
 	{
-		doOreDictTweaks();
-		addEnderStorageRecipes();
-		addBigReactorsRecipes();
-		addDARecipe();
-		addSFMRecipes();
-		addOpenBlocksRecipes();
-		addAM2Recipes();
+		if (okayToTweakIC2)
+			doOreDictTweaks();
+		
+		if (okayToTweakMagicalCrops)
+			doMagicropsRegistration();
+		
+		if (okayToTweakEnderStorage)
+			addEnderStorageRecipes();
+		
+		if (okayToTweakBigReactors)
+			addBigReactorsRecipes();
+		
+		if (okayToTweakDA)
+			addDARecipe();
+		
+		if (okayToTweakSFM)
+			addSFMRecipes();
+		
+		if (okayToTweakOpenBlocks)
+			addOpenBlocksRecipes();
+		
+		if (okayToTweakAM2)
+			addAM2Recipes();
 	}
 
 	private static void addAM2Recipes()
@@ -280,13 +331,12 @@ public class RecipeTweaks
 		{
 			OreDictionary.registerOre("dustAluminum", s);
 		}
-
-		if (okayToTweakMagicalCrops)
-		{
-			OreDictionary.registerOre("oreMCropsEssence", new ItemStack(magicalcrops.mod_mCrops.BlockOreEssence));
-			OreDictionary.registerOre("oreMCropsNetherEssence", new ItemStack(magicalcrops.mod_mCrops.BlockOreEssenceNether));
-		}
-
+	}
+	
+	private static void doMagicropsRegistration()
+	{
+		OreDictionary.registerOre("oreMCropsEssence", new ItemStack(magicalcrops.mod_mCrops.BlockOreEssence));
+		OreDictionary.registerOre("oreMCropsNetherEssence", new ItemStack(magicalcrops.mod_mCrops.BlockOreEssenceNether));
 	}
 
 	private static void addBigReactorsRecipes()
