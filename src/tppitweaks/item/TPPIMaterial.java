@@ -4,10 +4,10 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import tppitweaks.TPPITweaks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -17,7 +17,7 @@ public class TPPIMaterial extends Item {
 	
 	public TPPIMaterial(int par1) {
 		super(par1);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(TPPITweaks.creativeTab);
 		setHasSubtypes(true);
 	}
 	

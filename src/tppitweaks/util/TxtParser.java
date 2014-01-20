@@ -254,7 +254,6 @@ public class TxtParser
 				String[] nameThatHasBeenSplit = s.substring(1, s.indexOf('<')).split(", ");
 				CommandTPPI.addProperNameMapping(nameThatHasBeenSplit[0], nameThatHasBeenSplit[1]);
 				mods.add(nameThatHasBeenSplit[0]);
-				System.out.println(nameThatHasBeenSplit[0] + " : " + nameThatHasBeenSplit[1]);
 			}
 		}
 		scanner.close();

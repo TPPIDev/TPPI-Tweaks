@@ -3,9 +3,11 @@ package tppitweaks;
 import java.io.File;
 import java.io.IOException;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.creativeTab.CreativeTabTPPI;
 import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
@@ -34,6 +36,8 @@ public class TPPITweaks {
 
 	public static TPPIEventHandler eventHandler;
 	public static TPPIPlayerTracker playerTracker;
+	
+	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -45,7 +49,7 @@ public class TPPITweaks {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
 		ConfigurationHandler.loadBookText(FileLoader.bookText);
 		CommandTPPI.initValidCommandArguments(FileLoader.supportedMods);
 

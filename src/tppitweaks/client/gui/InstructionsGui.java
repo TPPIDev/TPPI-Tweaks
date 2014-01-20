@@ -26,9 +26,9 @@ public class InstructionsGui extends GuiScreen
 	@Override
 	public void initGui()
 	{
-		this.buttonList.add(new GuiButton(11, this.width / 2 - 100, 70, 200, 20, "Download"));
-		this.buttonList.add(new GuiButton(12, this.width / 2 - 100, 130, 200, 20, "Open Folder"));
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, 200, 200, 20, "Continue"));
+		this.buttonList.add(new GuiButton(11, this.width / 2 - 100, this.height / 2 - 60, 200, 20, "Download"));
+		this.buttonList.add(new GuiButton(12, this.width / 2 - 100, this.height / 2, 200, 20, "Open Folder"));
+		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2 + 70, 200, 20, "Continue"));
 	}
 	
 	@Override
@@ -36,12 +36,12 @@ public class InstructionsGui extends GuiScreen
 	{
 		this.drawDefaultBackground();
 		
-		this.drawCenteredString(this.fontRenderer, mod.name, this.width / 2,  10, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "1. Click the button below to download "+mod.name+",", this.width / 2, 30, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "or press continue at the bottom to skip installation.", this.width / 2, 40, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "(for adfly, wait 5 seconds then click \"download\" in the upper right)", this.width / 2, 55, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "2. Drag it into the following folder when it's done downloading.", this.width / 2, 110, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "3. Press the button below to continue.", this.width / 2, 180, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, mod.name, this.width / 2,  this.height / 2 - 115, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "1. Click the button below to download "+mod.name+",", this.width / 2, this.height / 2 - 95, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "or press continue at the bottom to skip installation.", this.width / 2, this.height / 2 - 85, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "(for adfly, wait 5 seconds then click \"download\" in the upper right)", this.width / 2, this.height / 2 - 75, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "2. Drag it into the following folder when it's done downloading.", this.width / 2, this.height / 2 - 15, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "3. Press the button below to continue.", this.width / 2, this.height / 2 + 55, 0xFFFFFF);
 				
 		super.drawScreen(par1, par2, par3);
 	}
@@ -67,6 +67,10 @@ public class InstructionsGui extends GuiScreen
 					System.err.println("Minecraft mods folder not found!");
 					e.printStackTrace();
 				}
+			    break;
+			    
+			case 13:
+				System.exit(0);
 			    break;
 			    
 			default:

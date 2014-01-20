@@ -139,8 +139,6 @@ public class ConfigurationHandler
 					s = "    B:showDownloadGUI=false";
 				
 				fw.write(s + "\n");
-				
-				System.out.println(s);
 			}	
 			
 			bw.flush();

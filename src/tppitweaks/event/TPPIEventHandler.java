@@ -24,7 +24,7 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onGui(GuiOpenEvent event)	
 	{
-		if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI && event.gui instanceof GuiMainMenu)
+		if (shouldLoadGUI && /*ConfigurationHandler.showDownloadGUI && */event.gui instanceof GuiMainMenu)
 		{
 			event.gui = new UpdateGui(event.gui, true);
 			GuiHelper.updateGui = (UpdateGui)event.gui;
