@@ -95,14 +95,12 @@ public class TPPIEventHandler
 		{
 			ImmutableList<String> list = (ImmutableList<String>) f.get(FMLCommonHandler.instance());
 			List<String> newList = new ArrayList<String>();
-			boolean replaced = false;
 			
 			for (String s : list)
 			{
 				if (s.contains("Feed"))
 				{
-					newList.add("Test Pack Please Ignore");
-					replaced = true;
+					// Do nothing
 				}
 				else if (s.equals("Test Pack Please Ignore"))
 				{
@@ -120,8 +118,7 @@ public class TPPIEventHandler
 					newList.add(s);
 			}
 			
-			if (!replaced)
-				newList.add("Test Pack Please Ignore");
+			newList.add("Test Pack Please Ignore");
 				
 			f.set(FMLCommonHandler.instance(), ImmutableList.copyOf(newList));
 		}
