@@ -32,46 +32,49 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onGui(GuiOpenEvent event)
 	{
-		if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI && event.gui instanceof GuiMainMenu)
+		if (event.gui instanceof GuiMainMenu)
 		{
-			event.gui = new UpdateGui(event.gui, true);
-			GuiHelper.updateGui = (UpdateGui) event.gui;
-			shouldLoadGUI = false;
+			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI)
+			{
+				event.gui = new UpdateGui(event.gui, true);
+				GuiHelper.updateGui = (UpdateGui) event.gui;
+				shouldLoadGUI = false;
 
-			ConfigurationHandler.stopShowingGUI();
-		}
-		else
-		{
-			Field f = null;
-			try
-			{
-				f = FMLCommonHandler.class.getDeclaredField("brandings");
+				ConfigurationHandler.stopShowingGUI();
 			}
-			catch(Exception e)
+			else
 			{
-				e.printStackTrace();
-			}
-			
-			f.setAccessible(true);
-			try
-			{
-				if (f.get(FMLCommonHandler.instance()) == null)
+				Field f = null;
+				try
 				{
-					FMLCommonHandler.instance().computeBranding();
-					doThisAgain();
+					f = FMLCommonHandler.class.getDeclaredField("brandings");
 				}
-				else
+				catch (Exception e)
 				{
-					addStuff(f);
+					e.printStackTrace();
 				}
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
+
+				f.setAccessible(true);
+				try
+				{
+					if (f.get(FMLCommonHandler.instance()) == null)
+					{
+						FMLCommonHandler.instance().computeBranding();
+						doThisAgain();
+					}
+					else
+					{
+						addStuff(f);
+					}
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		}
 	}
-	
+
 	private void doThisAgain()
 	{
 		Field f = null;
@@ -79,14 +82,14 @@ public class TPPIEventHandler
 		{
 			f = FMLCommonHandler.class.getDeclaredField("brandings");
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		
+
 		addStuff(f);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void addStuff(Field f)
 	{
@@ -95,7 +98,7 @@ public class TPPIEventHandler
 		{
 			ImmutableList<String> list = (ImmutableList<String>) f.get(FMLCommonHandler.instance());
 			List<String> newList = new ArrayList<String>();
-			
+
 			for (String s : list)
 			{
 				if (s.contains("Feed"))
@@ -117,9 +120,9 @@ public class TPPIEventHandler
 				else
 					newList.add(s);
 			}
-			
+
 			newList.add("Test Pack Please Ignore");
-				
+
 			f.set(FMLCommonHandler.instance(), ImmutableList.copyOf(newList));
 		}
 		catch (Exception e)
