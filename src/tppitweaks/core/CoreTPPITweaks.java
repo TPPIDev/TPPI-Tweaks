@@ -1,6 +1,7 @@
 package tppitweaks.core;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 import tppitweaks.lib.Reference;
@@ -35,7 +36,16 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 		if ((Boolean) FileLoader.manuallyGetConfigValue(data, "autoEnableTT", new Boolean(true))) {
 
 			File mcDir = (File) data.get("mcLocation");
-			File modsDir = new File(mcDir.getParentFile(), "mods/");
+			File modsDir = null;
+			
+			try
+			{
+				modsDir = new File(mcDir.getCanonicalPath() + "/mods/");
+			}
+			catch (IOException e)
+			{
+				System.out.println("Mods dir does not exist. How did you mess that up?");
+			}
 
 			Reference.modsFolder = modsDir;
 			
@@ -53,5 +63,4 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 			}
 		}
 	}
-
 }

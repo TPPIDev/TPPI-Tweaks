@@ -83,8 +83,8 @@ public class FileLoader
 	public static void disableTT()
 	{
 		for(File f : getTT()) {
-			if(!f.getName().contains(".disabled")) {
-				f.renameTo(new File(f.getAbsolutePath()+".disabled"));
+			if(!f.getName().contains(".removed")) {
+				f.renameTo(new File(f.getAbsolutePath()+".removed"));
 			}
 		}
 	}
@@ -92,8 +92,8 @@ public class FileLoader
 	public static void enableTT()
 	{
 		for(File f : getTT()) {
-			if(f.getName().contains(".disabled")) {
-				f.renameTo(new File(f.getAbsolutePath().replace(".disabled", "")));
+			if(f.getName().contains(".removed")) {
+				f.renameTo(new File(f.getAbsolutePath().replace(".removed", "")));
 			}
 		}
 		
@@ -101,7 +101,6 @@ public class FileLoader
 	
 	private static ArrayList<File> getTT()
 	{
-		
 		ArrayList<File> thaumicTinkererFiles = new ArrayList<File>();
 		File modJar;
 		
@@ -109,14 +108,13 @@ public class FileLoader
 		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}
-		
+				
 		modJar = new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME);
 		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}
-		
+				
 		return thaumicTinkererFiles;
-		
 	}
 	
 	public static void getThaumicTinkererFilenameState() {
