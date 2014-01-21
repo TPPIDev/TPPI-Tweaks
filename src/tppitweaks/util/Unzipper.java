@@ -9,13 +9,14 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-/*
+/**
  * Provides two utility methods which can be used for zip deployment
  */
 public class Unzipper 
 {
     public static final int BUFFER_SIZE = 2048;
-    /*
+    
+    /**
      * Deletes the given file or folder. If the folder contains things, it recursively deletes those too
      */
 	public static void delete(File file) throws IOException
@@ -46,7 +47,7 @@ public class Unzipper
 		}
 	}
 	
-	/*
+	/**
 	 * Takes an InputStream pointing to a zip file, and extracts it to the directory at
 	 * destDirectory, creating it if necessary
 	 */

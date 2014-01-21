@@ -7,17 +7,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
-import tppitweaks.recipetweaks.modTweaks.DATweaks;
-import tppitweaks.recipetweaks.modTweaks.DCTweaks;
-import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
-import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
-import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
-import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
-import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
-import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
-import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
-import tppitweaks.recipetweaks.modTweaks.TweakerBase;
+import tppitweaks.recipetweaks.modTweaks.*;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
