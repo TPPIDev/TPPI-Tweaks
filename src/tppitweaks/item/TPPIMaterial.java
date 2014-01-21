@@ -7,6 +7,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import tppitweaks.TPPITweaks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TPPIMaterial extends Item {
 
@@ -14,31 +17,32 @@ public class TPPIMaterial extends Item {
 	
 	public TPPIMaterial(int par1) {
 		super(par1);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(TPPITweaks.creativeTab);
 		setHasSubtypes(true);
 	}
+	
+	@SideOnly(Side.CLIENT)
+	private Icon[] icons;
+	
+	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked"};
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
-		uncookedIcon = par1IconRegister.registerIcon("tppitweaks:tppiProcessorUncooked");
+		icons = new Icon[2];
+		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
+		icons[1] = par1IconRegister.registerIcon("tppitweaks:tppiProcessorUncooked");
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack)
 	{
-		return par1ItemStack.getItemDamage() == 0 ? "multicoreProcessor" : "multicoreProcessorUncooked";
+		return unlocNames[par1ItemStack.getItemDamage()];
 	}
 	
 	@Override
 	public Icon getIconFromDamage(int dmg) {
-		switch(dmg) {
-		case 1:
-			return uncookedIcon;
-		default:
-			return itemIcon;
-		}
+		return icons[dmg];
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -1,6 +1,7 @@
 package tppitweaks.client.gui;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,9 +34,6 @@ public class UpdateGui extends GuiScreen
 
 		if (!Loader.isModLoaded("TwilightForest"))
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
-		
-		if (!Loader.isModLoaded("blir-enderprospecting"))
-			modScreens.add(new InstructionsGui(new ModDownload("Ender Prospecting", "https://dl.dropboxusercontent.com/u/103112496/Forge%20Mods/Ender%20Prospecting/%5B1.6.4%5D%20Ender%20Prospecting%200.1.0.zip", "blir-enderprospecting")));
 		
 		iterator = modScreens.iterator();
 		
@@ -80,8 +78,8 @@ public class UpdateGui extends GuiScreen
 
 		this.buttonList.clear();
 
-		this.buttonList.add(new GuiButton(-1, this.width / 2 - 150, this.height / 4 + 125, 300, 20, "Continue"));
-		this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 4 + 150, 300, 20, "Skip the downloads completely"));
+		this.buttonList.add(new GuiButton(-1, this.width / 2 - 150, this.height / 2 + 30, 300, 20, "Continue"));
+		this.buttonList.add(new GuiButton(11, this.width / 2 - 150, this.height / 2 + 65, 300, 20, "Skip the downloads completely"));
 	}
 
 	@Override
@@ -107,7 +105,13 @@ public class UpdateGui extends GuiScreen
 					}
 					else if (configGui != null)
 					{
-						this.mc.displayGuiScreen(configGui);
+						File file=new File("config/TPPI/config/hardconfig.zip");
+						if (file.exists())	this.mc.displayGuiScreen(configGui);
+						configGui = null;
+					}
+					else if (GuiHelper.updateGui.modScreens.size() > 0)
+					{
+						this.mc.displayGuiScreen(new RestartGui());
 					}
 					else
 					{
@@ -137,15 +141,15 @@ public class UpdateGui extends GuiScreen
 
 			if (firstTime)
 			{
-				this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, 20, 0xFFFFFF);
-				this.drawCenteredString(this.fontRenderer, "This menu will not show again unless enabled in the TPPI Tweaks config.", this.width / 2, 145, 0xFFFFFF);
-				this.drawCenteredString(this.fontRenderer, "Alternatively, you may use the command \"/tppi download\" to show it in-game.", this.width / 2, 157, 0xFFFFFF);
+				this.drawCenteredString(this.fontRenderer, "Hey there! This seems like the first time you are starting TPPI. Welcome!", this.width / 2, this.height / 2 - 100, 0xFFFFFF);
+				this.drawCenteredString(this.fontRenderer, "This menu will not show again unless enabled in the TPPI Tweaks config.", this.width / 2, this.height / 2 - 10, 0xFFFFFF);
+				this.drawCenteredString(this.fontRenderer, "Alternatively, you may use the command \"/tppi download\" to show it in-game.", this.width / 2, this.height / 2, 0xFFFFFF);
 			}
 
-			this.drawCenteredString(this.fontRenderer, "As it turns out, there are some mods we really wanted to include,", this.width / 2, 60, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, 70, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, 90, 0xFFFFFF);
-			this.drawCenteredString(this.fontRenderer, "help you all add them manually, to gain what we feel is the full TPPI experience.", this.width / 2, 100, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "As it turns out, there are some mods we really wanted to include,", this.width / 2, this.height / 2 - 80, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "but couldn't ship directly with the rest of the pack.", this.width / 2, this.height / 2 - 70, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "Though we had to leave them out, we built this little utility to", this.width / 2, this.height / 2 - 50, 0xFFFFFF);
+			this.drawCenteredString(this.fontRenderer, "help you all add them manually, to gain what we feel is the full TPPI experience.", this.width / 2, this.height / 2 - 40, 0xFFFFFF);
 			
 		}
 

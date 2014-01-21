@@ -38,8 +38,16 @@ public class ConfigurationHandler
 	public static boolean addLapisDustMortarRecipes;
 	public static boolean tinkersAluminumPlates;
 	public static boolean tinkersAluminumOreInGTMachines;
+	
+	public static boolean removeStupidEnergyCrystalRecipe;
+	
+	public static boolean addOsmiumToOreWasher;
+	
+	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
+	
+	public static boolean autoEnableTT;
 	
 	public static File cfg;
 	
@@ -63,7 +71,7 @@ public class ConfigurationHandler
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		materialID = config.getItem("tppiMaterialId", 21001).getInt() - 256;
 		
-		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Field Guide", "The title of the custom spawn book", Type.STRING).getString();
+		bookTitle = config.get("BOOK INFO", "bookTitle", "TPPI Welcome Packet", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("BOOK INFO", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
 		
 		enderChestTesseract = config.get("OPTIONS", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
@@ -82,7 +90,14 @@ public class ConfigurationHandler
 		tinkersAluminumPlates = config.get("OPTIONS", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
 		tinkersAluminumOreInGTMachines = config.get("OPTIONS", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
 		
+		removeStupidEnergyCrystalRecipe = config.get("OPTIONS", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
+		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
+		
+		registerMagicalCropsOre = config.get("OPTIONS", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
+		addOsmiumToOreWasher = config.get("OPTIONS", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
+
+		autoEnableTT = config.get("OPTIONS", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		
 		config.save();
 	}
@@ -124,8 +139,6 @@ public class ConfigurationHandler
 					s = "    B:showDownloadGUI=false";
 				
 				fw.write(s + "\n");
-				
-				System.out.println(s);
 			}	
 			
 			bw.flush();

@@ -1,7 +1,6 @@
 package tppitweaks.item;
 
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemStack;
@@ -21,7 +20,7 @@ public class TPPIBook extends ItemEditableBook
 	public TPPIBook(int par1)
 	{
 		super(par1);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(TPPITweaks.creativeTab);
 		setUnlocalizedName("tppibook");
 	}
 
