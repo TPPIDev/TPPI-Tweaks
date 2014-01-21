@@ -45,7 +45,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakGT;
 	private static boolean okayToTweakEnderStorage;
 	private static boolean okayToTweakBigReactors;
-	private static boolean okayToTweakDA;
+	public static boolean okayToTweakDA;
 	private static boolean okayToTweakSFM;
 	private static boolean okayToTweakOpenBlocks;
 	private static boolean okayToTweakAM2;

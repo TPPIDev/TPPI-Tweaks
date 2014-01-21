@@ -2,7 +2,6 @@ package tppitweaks.client.gui;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

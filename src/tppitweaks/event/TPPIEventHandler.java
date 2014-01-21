@@ -14,6 +14,8 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeTweaks;
+import tppitweaks.recipetweaks.modTweaks.DATweaks;
 
 import com.google.common.collect.ImmutableList;
 
@@ -160,9 +162,10 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onItemTooltip(ItemTooltipEvent event)
 	{
-		if (event.itemStack.getItem().itemID == mods.immibis.chunkloader.DimensionalAnchors.instance.block.blockID)
+		
+		if (RecipeTweaks.okayToTweakDA)
 		{
-			event.toolTip.add("\u00A7oA chunk loader");
+			DATweaks.addTooltip(event);
 		}
 	}
 }
