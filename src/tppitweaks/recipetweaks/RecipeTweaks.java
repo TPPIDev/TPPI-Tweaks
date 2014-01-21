@@ -5,22 +5,16 @@ package tppitweaks.recipetweaks;
 //import ic2.core.Ic2Items;
 //import ic2.core.block.machine.tileentity.TileEntityOreWashing;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.ListIterator;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
-//import openblocks.OpenBlocks;
-//import thermalexpansion.block.TEBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
+import tppitweaks.recipetweaks.modTweaks.DCTweaks;
 import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
 import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
 import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
@@ -29,13 +23,15 @@ import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
 import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
+//import openblocks.OpenBlocks;
+//import thermalexpansion.block.TEBlocks;
 //import am2.blocks.BlocksCommonProxy;
 //import am2.items.ItemsCommonProxy;
 //import appeng.api.Materials;
 //import codechicken.enderstorage.EnderStorage;
 //import codechicken.enderstorage.api.EnderStorageManager;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 //import bluedart.core.recipes.ShapedDartCrafting;
 //import magicalcrops.mod_mCrops;
 //import mods.immibis.chunkloader.DimensionalAnchors;
@@ -62,7 +58,7 @@ public class RecipeTweaks
 
 		checkWhatWeCanTweak();
 		initRemovableRecipesMap();
-		//removeSomeRecipes();
+		removeSomeRecipes();
 		addRevisedRecipes();
 		
 		if (okayToTweakGT && okayToTweakIC2)
@@ -72,7 +68,6 @@ public class RecipeTweaks
 			ExUTweaks.fixRecipes();
 	}
 
-	/*
 	@SuppressWarnings({ "unchecked", "unused" })
 	private static void removeSomeRecipes()
 	{
@@ -89,7 +84,6 @@ public class RecipeTweaks
 		}
 
 	}
-	*/
 
 	private static void checkWhatWeCanTweak()
 	{
@@ -103,7 +97,7 @@ public class RecipeTweaks
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
-		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
+		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && Loader.isModLoaded("IC2") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
 	}
 
@@ -148,30 +142,19 @@ public class RecipeTweaks
 		}		
 	}
 
-	//FIXME This WILL NOT WORK, figure it out
-	/*
 	private static boolean canRemoveRecipe(IRecipe r)
 	{
 		try
 		{
 			ItemStack output = r.getRecipeOutput();
-			if (r instanceof bluedart.core.recipes.ShapedDartCrafting && output.itemID == ic2.core.Ic2Items.energyCrystal.itemID)
-			{
-				return okayToTweakDartCraft;
-			}
-			else if (output.itemID != ic2.core.Ic2Items.energyCrystal.itemID)
-			{
-				int removeableValueTest = TweakerBase.recipesToRemove.get(output.itemID);
-				return removeableValueTest == -1 || removeableValueTest == output.getItemDamage();
-			}
+			int removeableValueTest = TweakerBase.recipesToRemove.get(output.itemID);
+			return removeableValueTest == -1 || removeableValueTest == output.getItemDamage() || DCTweaks.dartCheck(okayToTweakDartCraft, r);
 		}
 		catch (Throwable e)
 		{
 			return false;
 		}
-		return false;
 	}
-	*/
 
 	private static void addRevisedRecipes()
 	{
