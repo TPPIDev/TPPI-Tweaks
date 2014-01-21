@@ -52,6 +52,8 @@ public class TPPIEventHandler
 				catch (Exception e)
 				{
 					e.printStackTrace();
+					System.out.println("Reflection error, TPPI watermark will not be shown");
+					return;
 				}
 
 				f.setAccessible(true);
@@ -70,6 +72,7 @@ public class TPPIEventHandler
 				catch (Exception e)
 				{
 					e.printStackTrace();
+					System.out.println("Reflection error, TPPI watermark may not be shown");
 				}
 			}
 		}
@@ -85,6 +88,7 @@ public class TPPIEventHandler
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			System.out.println("Reflection error, TPPI watermark may not be shown");
 		}
 
 		addStuff(f);
@@ -128,6 +132,7 @@ public class TPPIEventHandler
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			System.out.println("Reflection error, TPPI watermark may not be shown");
 		}
 	}
 
