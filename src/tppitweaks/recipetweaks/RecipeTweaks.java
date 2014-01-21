@@ -1,18 +1,13 @@
 package tppitweaks.recipetweaks;
 
-//import gregtechmod.api.GregTech_API;
-//import gregtechmod.api.enums.GT_Items;
-//import ic2.core.Ic2Items;
-//import ic2.core.block.machine.tileentity.TileEntityOreWashing;
-
 import java.util.ListIterator;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
 import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
@@ -25,19 +20,6 @@ import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-//import openblocks.OpenBlocks;
-//import thermalexpansion.block.TEBlocks;
-//import am2.blocks.BlocksCommonProxy;
-//import am2.items.ItemsCommonProxy;
-//import appeng.api.Materials;
-//import codechicken.enderstorage.EnderStorage;
-//import codechicken.enderstorage.api.EnderStorageManager;
-//import bluedart.core.recipes.ShapedDartCrafting;
-//import magicalcrops.mod_mCrops;
-//import mods.immibis.chunkloader.DimensionalAnchors;
-//import erogenousbeef.bigreactors.common.BigReactors;
-//import erogenousbeef.bigreactors.common.block.BlockReactorPart;
-//import gregtechmod.api.util.GT_ModHandler.ThermalExpansion;
 
 public class RecipeTweaks
 {
@@ -182,18 +164,9 @@ public class RecipeTweaks
 			OpenBlocksTweaks.addRecipes();
 		
 		if (okayToTweakAM2)
-			addAM2Recipes();
+			AM2Tweaks.addRecipes();
 	}
 
-	private static void addAM2Recipes()
-	{
-		if (okayToTweakAM2)
-		{
-			GameRegistry.addShapedRecipe(new ItemStack(am2.items.ItemsCommonProxy.spawnEgg, 1, 12), new Object[] { "CCC", "CPC", "CCC", 'C', new ItemStack(am2.items.ItemsCommonProxy.essence, 1, 5), 'P',
-					new ItemStack(am2.blocks.BlocksCommonProxy.aum) });
-		}
-	}
-	
 	/**
 	 * Adds aluminIUM oreDict registries to aluminUM as well
 	 */
