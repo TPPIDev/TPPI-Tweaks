@@ -1,6 +1,7 @@
 package tppitweaks.client.gui;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +24,7 @@ public class UpdateGui extends GuiScreen
 
 	List<InstructionsGui> modScreens = new ArrayList<InstructionsGui>();
 	Iterator<InstructionsGui> iterator;
+	ConfigGui configGui = null;
 
 	public void initModInstallationMenus()
 	{
@@ -34,6 +36,8 @@ public class UpdateGui extends GuiScreen
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
 		
 		iterator = modScreens.iterator();
+		
+		configGui = new ConfigGui();
 
 	}
 
@@ -98,6 +102,12 @@ public class UpdateGui extends GuiScreen
 					if (GuiHelper.updateGui.iterator.hasNext())
 					{
 						this.mc.displayGuiScreen(GuiHelper.updateGui.iterator.next());
+					}
+					else if (configGui != null)
+					{
+						File file=new File("config/TPPI/config/hardconfig.zip");
+						if (file.exists())	this.mc.displayGuiScreen(configGui);
+						configGui = null;
 					}
 					else if (GuiHelper.updateGui.modScreens.size() > 0)
 					{
