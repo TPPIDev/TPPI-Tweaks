@@ -199,8 +199,6 @@ public class CommandTPPI extends CommandBase
 			return true;
 		}
 		
-		//TODO test
-
 		return false;
 	}
 
