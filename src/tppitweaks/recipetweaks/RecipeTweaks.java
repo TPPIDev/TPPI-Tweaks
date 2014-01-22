@@ -104,10 +104,6 @@ public class RecipeTweaks
 		{
 			OpenBlocksTweaks.init();
 		}
-		if (okayToTweakDartCraft && okayToTweakIC2)
-		{
-			DCTweaks.init();
-		}
 	}
 
 	private static void initBigReactors()

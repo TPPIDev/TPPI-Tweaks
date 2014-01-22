@@ -15,12 +15,6 @@ import bluedart.core.recipes.ShapedDartCrafting;
 
 public class DCTweaks {
 
-	public static boolean dartCheck(boolean canTweak, IRecipe r) {
-		
-		//Don't think we need try/catch here due to how it's set up in canRemoveRecipe
-		return canTweak && r instanceof ShapedDartCrafting && r.getRecipeOutput().itemID == Ic2Items.energyCrystal.itemID;
-	}
-
 	public static void removeRecipe(ListIterator<IRecipe> listIterator)
 	{
 		while (listIterator.hasNext())
@@ -32,11 +26,5 @@ public class DCTweaks {
 				listIterator.remove();
 			}
 		}
-	}
-
-	public static void init()
-	{
-		//TweakerBase.recipesToRemove.put(((Item)Ic2Items.energyCrystal.getItem()).itemID - 256, -1);		
-	}
-	
+	}	
 }
