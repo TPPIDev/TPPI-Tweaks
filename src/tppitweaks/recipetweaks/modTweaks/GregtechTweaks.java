@@ -14,6 +14,30 @@ public class GregtechTweaks
 {
 	public static void doStuff()
 	{
+		
+		if(ConfigurationHandler.addOneToOnePlateHammerRecipes) {
+			
+			ItemStack tinCasing = ic2.core.Ic2Items.casingtin.copy();
+			tinCasing.stackSize = 2;
+			
+			for(ItemStack plate : OreDictionary.getOres("plateTin")) {
+				GameRegistry.addRecipe(new ShapelessOreRecipe(tinCasing, new Object[]{"craftingHardHammer", plate}));
+			}
+			
+			String[] plateNames = {"plateIron", "plateCopper", "plateTin", "plateBronze"};
+			String[] ingotNames = {"ingotIron", "ingotCopper", "ingotTin", "ingotBronze"};
+			
+			for(int i = 0; i < plateNames.length; i++) {
+				String plateName = plateNames[i];
+				for(ItemStack plate : OreDictionary.getOres(plateName)) {
+					for(ItemStack ingot : OreDictionary.getOres(ingotNames[i])) {
+						GameRegistry.addRecipe(new ShapelessOreRecipe(plate, new Object[]{"craftingHardHammer", ingot}));
+					}
+				}
+			}
+		}
+		
+		
 		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust });
@@ -65,4 +89,11 @@ public class GregtechTweaks
 			}
 		}
 	}
+	
+	public static void init() {	
+		if(ConfigurationHandler.addOneToOnePlateHammerRecipes) {
+			TweakerBase.markItemForRecipeRemoval(ic2.core.Ic2Items.casingtin.itemID, ic2.core.Ic2Items.casingtin.getItemDamage());
+		}
+	}
+	
 }

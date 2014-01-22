@@ -33,7 +33,7 @@ public class RecipeTweaks
 		removeSomeRecipes();
 		addRevisedRecipes();
 		
-		if (okayToTweakGT && okayToTweakIC2)
+		if (okayToTweakGT)
 			GregtechTweaks.doStuff();
 		
 		if (okayToTweakExU)
@@ -102,6 +102,9 @@ public class RecipeTweaks
 		if (okayToTweakDartCraft)
 		{
 			DCTweaks.init();
+		}
+		if(okayToTweakGT) {
+			GregtechTweaks.init();
 		}
 	}
 
