@@ -40,7 +40,7 @@ public class RecipeTweaks
 			ExUTweaks.fixRecipes();
 	}
 
-	@SuppressWarnings({ "unchecked", "unused" })
+	@SuppressWarnings({ "unchecked" })
 	private static void removeSomeRecipes()
 	{
 
@@ -53,11 +53,6 @@ public class RecipeTweaks
 			{
 				iterator.remove();
 			}
-		}
-		
-		if (okayToTweakDartCraft && okayToTweakIC2)
-		{
-			DCTweaks.removeRecipe(CraftingManager.getInstance().getRecipeList().listIterator());
 		}
 	}
 
@@ -90,7 +85,7 @@ public class RecipeTweaks
 		}
 		if (okayToTweakBigReactors)
 		{
-			initBigReactors();
+			BigReactorsTweaks.initBigReactors();
 		}
 		if (okayToTweakDA)
 		{
@@ -104,18 +99,10 @@ public class RecipeTweaks
 		{
 			OpenBlocksTweaks.init();
 		}
-	}
-
-	private static void initBigReactors()
-	{
-		if (ConfigurationHandler.steelReactorCasings)
+		if (okayToTweakDartCraft)
 		{
-			TweakerBase.recipesToRemove.put(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart.blockID, 0);
+			DCTweaks.init();
 		}
-		if (ConfigurationHandler.glassFuelRods)
-		{
-			TweakerBase.recipesToRemove.put(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod.blockID, -1);
-		}		
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
@@ -123,7 +110,7 @@ public class RecipeTweaks
 		try
 		{
 			ItemStack output = r.getRecipeOutput();
-			int removeableValueTest = TweakerBase.recipesToRemove.get(output.itemID);
+			int removeableValueTest = TweakerBase.getDamageValueToRemove(output.itemID);
 			return removeableValueTest == -1 || removeableValueTest == output.getItemDamage();
 		}
 		catch (Throwable e)
@@ -146,7 +133,7 @@ public class RecipeTweaks
 			EnderStorageTweaks.addRecipes();
 		
 		if (okayToTweakBigReactors)
-			addBigReactorsRecipes();
+			BigReactorsTweaks.addBigReactorsRecipes();
 		
 		if (okayToTweakDA)
 			DATweaks.addRecipe();
@@ -171,26 +158,5 @@ public class RecipeTweaks
 			OreDictionary.registerOre("dustAluminum", s);
 		}
 	}
-
-	private static void addBigReactorsRecipes()
-	{
-
-		if (okayToTweakBigReactors)
-		{
-
-			if (ConfigurationHandler.steelReactorCasings)
-			{
-				ItemStack reactorPartStack = ((erogenousbeef.bigreactors.common.block.BlockReactorPart) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).getReactorCasingItemStack();
-				reactorPartStack.stackSize = 4;
-				GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, new Object[] { "ICI", "CUC", "ICI", 'I', "ingotSteel", 'C', "ingotGraphite", 'U', "ingotYellorium" }));
-			}
-			if (ConfigurationHandler.glassFuelRods)
-			{
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, 1), new Object[] { "ICI", "GUG", "ICI", Character.valueOf('I'),
-					erogenousbeef.bigreactors.common.BigReactors.blockReactorGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium", Character.valueOf('G'), "ingotGraphite" }));
-			}
-
-		}
-
-	}
+	
 }

@@ -10,8 +10,8 @@ public class SFMTweaks
 {
 	public static void init()
 	{
-		TweakerBase.recipesToRemove.put(((Block) vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
-		TweakerBase.recipesToRemove.put(((Block) vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);	
+		TweakerBase.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);	
 	}
 	
 	public static void addRecipes()

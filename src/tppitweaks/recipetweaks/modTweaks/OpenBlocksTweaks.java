@@ -10,8 +10,8 @@ public class OpenBlocksTweaks
 {
 	public static void init()
 	{
-		TweakerBase.recipesToRemove.put(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1);
-		TweakerBase.recipesToRemove.put(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1);
 	}
 
 	public static void addRecipes()

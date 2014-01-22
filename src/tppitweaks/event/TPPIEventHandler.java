@@ -20,6 +20,7 @@ import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import com.google.common.collect.ImmutableList;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -162,7 +163,7 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onItemTooltip(ItemTooltipEvent event)
 	{
-		if (RecipeTweaks.okayToTweakDA)
+		if (Loader.isModLoaded("DimensionalAnchors") && !Loader.isModLoaded("ChickenChunks"))
 		{
 			DATweaks.addTooltip(event);
 		}

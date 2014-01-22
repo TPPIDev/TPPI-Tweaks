@@ -10,7 +10,7 @@ public class DATweaks
 {
 	public static void init()
 	{
-		TweakerBase.recipesToRemove.put(((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID, -1);
 	}
 	
 	public static void addRecipe()
@@ -21,7 +21,7 @@ public class DATweaks
 	
 	public static void addTooltip(ItemTooltipEvent event)
 	{
-		if (event.itemStack.getItem().itemID == ((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID)
+		if (event.itemStack.itemID == ((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID)
 		{
 			event.toolTip.add("\u00A7oA chunk loader");
 		}

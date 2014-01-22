@@ -10,8 +10,8 @@ public class EnderStorageTweaks extends TweakerBase
 {
 	public static void init()
 	{
-		TweakerBase.recipesToRemove.put(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
-		TweakerBase.recipesToRemove.put(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);		
+		TweakerBase.markItemForRecipeRemoval(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);		
 	}
 	
 	public static void addRecipes()
