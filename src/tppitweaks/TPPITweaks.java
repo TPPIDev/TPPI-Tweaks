@@ -29,7 +29,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
 public class TPPITweaks {
 
-	public static final String VERSION = "0.0.5";
+	public static final String VERSION = "0.6.2";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
@@ -50,8 +50,8 @@ public class TPPITweaks {
 			e.printStackTrace();
 		}
 		
-		ConfigurationHandler.loadBookText(FileLoader.bookText);
-		CommandTPPI.initValidCommandArguments(FileLoader.supportedMods);
+		ConfigurationHandler.loadBookText(FileLoader.getBookText());
+		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedMods());
 
 		ModItems.initItems();
 

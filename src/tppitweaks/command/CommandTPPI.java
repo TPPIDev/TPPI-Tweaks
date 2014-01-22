@@ -1,8 +1,5 @@
 package tppitweaks.command;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +19,7 @@ import net.minecraft.util.ChatMessageComponent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
+import tppitweaks.util.FileLoader;
 import tppitweaks.util.TxtParser;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
@@ -231,15 +229,15 @@ public class CommandTPPI extends CommandBase
 		NBTTagList bookPages = new NBTTagList("pages");
 
 		ArrayList<String> pages;
-		try
-		{
-			pages = TxtParser.parseFileMods(new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/SupportedMods.txt")), modName + ", " + properName);
-		}
+		//try
+		//{
+			pages = TxtParser.parseFileMods(FileLoader.getSupportedMods(), modName + ", " + properName);
+		/*}
 		catch (FileNotFoundException e)
 		{
 			pages = new ArrayList<String>();
 			e.printStackTrace();
-		}
+		}*/
 
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{

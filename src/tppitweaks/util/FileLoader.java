@@ -1,9 +1,7 @@
 package tppitweaks.util;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ import tppitweaks.lib.Reference;
 
 public class FileLoader
 {
-	public static InputStream bookText, supportedMods;
+	private static InputStream bookText, supportedMods;
 	
 	public static void init(File file, int attempt) throws IOException
 	{
@@ -23,6 +21,14 @@ public class FileLoader
 		if (!dir.exists())
 			dir.mkdir();
 		
+		/* 
+		 * From here down commented out as it was 
+		 * deemed useless and counter-productive. 
+		 * If we add versioning for user-added content,
+		 * this becomes useful again 
+		 */
+		
+		/*
 		try
 		{
 			bookText = new FileInputStream(new File(file.getParent() + "/BookText.txt"));
@@ -78,6 +84,7 @@ public class FileLoader
 				e.printStackTrace();
 			}
 		}
+		*/
 	}
 	
 	public static void disableTT()
@@ -104,12 +111,12 @@ public class FileLoader
 		ArrayList<File> thaumicTinkererFiles = new ArrayList<File>();
 		File modJar;
 		
-		modJar = new File(Reference.modsFolder, Reference.TT_FILENAME);
+		modJar = new File(Reference.modsFolder, Reference.TTFilename);
 		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}
 				
-		modJar = new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME);
+		modJar = new File(Reference.modsFolder, Reference.KAMIFilename);
 		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}
@@ -121,14 +128,14 @@ public class FileLoader
 		
 		File modJar;
 		
-		modJar = new File(Reference.modsFolder, Reference.TT_FILENAME).exists() ? new File(Reference.modsFolder, Reference.TT_FILENAME) : new File(Reference.modsFolder, Reference.TT_FILENAME + ".disabled");
+		modJar = new File(Reference.modsFolder, Reference.TTFilename).exists() ? new File(Reference.modsFolder, Reference.TTFilename) : new File(Reference.modsFolder, Reference.TTFilename + ".disabled");
 		if(modJar.exists()) {
-			Reference.TT_FILENAME = modJar.getName();
+			Reference.TTFilename = modJar.getName();
 		}
 		
-		modJar = new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME).exists() ? new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME) : new File(Reference.modsFolder, Reference.TT_KAMI_FILENAME + ".disabled");
+		modJar = new File(Reference.modsFolder, Reference.KAMIFilename).exists() ? new File(Reference.modsFolder, Reference.KAMIFilename) : new File(Reference.modsFolder, Reference.KAMIFilename + ".disabled");
 		if(modJar.exists()) {
-			Reference.TT_KAMI_FILENAME = modJar.getName();
+			Reference.KAMIFilename = modJar.getName();
 		}
 		
 	}
@@ -165,4 +172,15 @@ public class FileLoader
 		return false;
 	}
 	
+	public static InputStream getBookText()
+	{
+		bookText = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt");
+		return bookText;
+	}
+	
+	public static InputStream getSupportedMods()
+	{
+		supportedMods = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt");
+		return supportedMods;
+	}
 }

@@ -49,7 +49,7 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 
 			Reference.modsFolder = modsDir;
 			
-			File thaumcraft = new File(modsDir, Reference.THAUMCRAFT_FILENAME);
+			File thaumcraft = new File(modsDir, Reference.thaumcraftFilename);
 
 			FileLoader.getThaumicTinkererFilenameState();
 			
