@@ -21,7 +21,7 @@ public class GregtechTweaks
 			tinCasing.stackSize = 2;
 			
 			for(ItemStack plate : OreDictionary.getOres("plateTin")) {
-				GameRegistry.addRecipe(new ShapelessOreRecipe(tinCasing, new Object[]{"craftingHardHammer", plate}));
+				GameRegistry.addRecipe(new ShapelessOreRecipe(tinCasing, new Object[]{"craftingToolHardHammer", plate}));
 			}
 			
 			String[] plateNames = {"plateIron", "plateCopper", "plateTin", "plateBronze"};
