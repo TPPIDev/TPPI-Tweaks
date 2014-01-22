@@ -162,7 +162,6 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onItemTooltip(ItemTooltipEvent event)
 	{
-		
 		if (RecipeTweaks.okayToTweakDA)
 		{
 			DATweaks.addTooltip(event);

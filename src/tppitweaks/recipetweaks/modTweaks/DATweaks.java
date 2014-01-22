@@ -21,7 +21,7 @@ public class DATweaks
 	
 	public static void addTooltip(ItemTooltipEvent event)
 	{
-		if (event.itemStack.getItem().itemID == mods.immibis.chunkloader.DimensionalAnchors.instance.block.blockID)
+		if (event.itemStack.getItem().itemID == ((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID)
 		{
 			event.toolTip.add("\u00A7oA chunk loader");
 		}
