@@ -15,22 +15,6 @@ public class GregtechTweaks
 	public static void doStuff()
 	{
 		
-		if(ConfigurationHandler.addOneToOnePlateHammerRecipes) {
-			
-			String[] plateNames = {"plateIron", "plateTin"};
-			String[] ingotNames = {"ingotIron", "ingotTin"};
-			
-			for(int i = 0; i < plateNames.length; i++) {
-				String plateName = plateNames[i];
-				for(ItemStack plate : OreDictionary.getOres(plateName)) {
-					for(ItemStack ingot : OreDictionary.getOres(ingotNames[i])) {
-						GameRegistry.addRecipe(new ShapelessOreRecipe(plate, new Object[]{"ToolcraftingHardHammer", ingot}));
-					}
-				}
-			}
-		}
-		
-		
 		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust });
