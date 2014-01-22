@@ -9,7 +9,7 @@ public class RestartGui extends GuiScreen
 	@Override
 	public void initGui()
 	{
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2, 200, 20, "Exit the Game"));
+		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2, 200, 20, "Gotcha!"));
 	}
 	
 	@Override
@@ -17,7 +17,8 @@ public class RestartGui extends GuiScreen
 	{
 		this.drawDefaultBackground();
 		
-		this.drawCenteredString(this.fontRenderer, "You have installed all desired mods, the game will now exit.", this.width / 2, this.height / 2 - 20, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "You have installed all desired mods!", this.width / 2, this.height / 2 - 20, 0xFFFFFF);
+		this.drawCenteredString(this.fontRenderer, "However, you must restart Minecraft for your changes to take effect.", this.width / 2, this.height / 2 - 40, 0xFFFFFF);
 		
 		super.drawScreen(par1, par2, par3);
 	}
@@ -27,8 +28,8 @@ public class RestartGui extends GuiScreen
 	{
 		if (button.id == 0)
 		{
-			System.out.println("Mod installations finished, exiting the game.");
-			System.exit(0);
+			System.out.println("Mod installations finished! Restart minecraft for your changes to take effect.");
+			this.mc.displayGuiScreen(null);
 		}
 	}
 }

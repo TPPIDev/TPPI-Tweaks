@@ -20,23 +20,21 @@ Now I am after a blank line
 
 **Begin book text after asterisks**
 ****************************************************************************
-Greetings lovely beta testers, and welcome to TPPI! 
-We're really excited to bring this pack to you all.~
+Greetings everyone, and welcome to Test Pack Please Ignore!~
 ~
-Hopefully, if this testing period goes smoothly, 
-we'll be able to bring it to a lot more people soon!~
 ~
-<3
+We're really excited to bring this pack to you all.
 ~~~
-This book that you've spawned with is a welcome packet of sorts, 
-added by our own cute little mod called TPPI Tweaks.~
+We also couldn't have done so without the Feed The Beast subreddit community, 
+who the pack is made by and for.~
+~
+Thank you all so very much for making TPPI possible!
+~~~
+This book you're reading is added by our own custom mod, TPPI Tweaks.~
 ~
 It will always contain the most up-to-date information 
 on the pack, including the latest changelog, so check it 
-often!
-~~~
-The text updates automatically when you open it, so you don't have to 
-worry about having to craft a new one each release.~
+often!~
 ~
 Should you want a new copy, you can craft one with an iron ingot and three paper.
 ~~~
@@ -50,19 +48,19 @@ and /tppi mods list to see what mods we have documented so far.~
 ~
 Naturally, this is a big job, and it's not yet finished.
 ~~~
-It is our hope that the beta testing team will get 
+It is our hope that the community will get 
 involved in documenting these mods via our mod's system.~
-~
-If you'd like to help out, the github link 
-for the file that generates the documentation is in the beta reddit's sticky.
 ~~~
-Additionally, the /tppi ores command will give you a book on TPPI's unique layer-based 
+If you'd like to help out with this documentation project or any other parts of TPPI's 
+development, feel free to type the command /tppi getInvolved to learn more.
+~~~
+Lastly, the /tppi ores command will give you a book on TPPI's unique layer-based 
 ore generation system.~
 ~
 Judge has worked really hard on it, 
 and we in devland think it's really cool!
 ~~~
-Have fun! And give us those bug reports :P.~
+That's about it. Have fun!~
 ~
 ~
 ~

@@ -38,6 +38,7 @@ public class CommandTPPI extends CommandBase
 		validCommands.add("download");
 		validCommands.add("mods");
 		validCommands.add("ores");
+		validCommands.add("getInvolved");
 
 		supportedModsAndList.add("list");
 
@@ -105,7 +106,9 @@ public class CommandTPPI extends CommandBase
 			{
 				processCommandMods(icommandsender, astring);
 			}else if(astring[0].equalsIgnoreCase("ores")) {
-				processCommandOres(icommandsender, astring);
+				processVanillaBookCommand("TPPI Ore Generation Guide", "OreGen.txt", icommandsender, astring);
+			}else if(astring[0].equalsIgnoreCase("getInvolved")) {
+				processVanillaBookCommand("Getting Involved In TPPI", "GetInvolved.txt", icommandsender, astring);
 			}
 
 		}
@@ -126,21 +129,21 @@ public class CommandTPPI extends CommandBase
 
 	}
 
-	private void processCommandOres(ICommandSender command, String[] astring) {
+	private void processVanillaBookCommand(String title, String textFileName, ICommandSender command, String[] astring) {
 		
-		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/OreGen.txt");
-		List<String> oreBookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
+		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/"+textFileName);
+		List<String> vanillaBookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 		ItemStack book = new ItemStack(Item.writtenBook);
 		
 		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
-		book.setTagInfo("title", new NBTTagString("title", "TPPI Ore Generation Guide"));
+		book.setTagInfo("title", new NBTTagString("title", title));
 
 		NBTTagCompound nbttagcompound = book.getTagCompound();
 		NBTTagList bookPages = new NBTTagList("pages");
 
-		for (int i = 0; i < oreBookText.size(); i++)
+		for (int i = 0; i < vanillaBookText.size(); i++)
 		{
-			bookPages.appendTag(new NBTTagString("" + i, oreBookText.get(i)));
+			bookPages.appendTag(new NBTTagString("" + i, vanillaBookText.get(i)));
 		}
 
 		nbttagcompound.setTag("pages", bookPages);
