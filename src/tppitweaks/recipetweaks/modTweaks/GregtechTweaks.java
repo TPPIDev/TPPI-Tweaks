@@ -13,23 +13,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class GregtechTweaks
 {
 	public static void doStuff()
-	{
-		
-		if(ConfigurationHandler.addOneToOnePlateHammerRecipes) {
-			
-			String[] plateNames = {"plateIron", "plateTin"};
-			String[] ingotNames = {"ingotIron", "ingotTin"};
-			
-			for(int i = 0; i < plateNames.length; i++) {
-				String plateName = plateNames[i];
-				for(ItemStack plate : OreDictionary.getOres(plateName)) {
-					for(ItemStack ingot : OreDictionary.getOres(ingotNames[i])) {
-						GameRegistry.addRecipe(new ShapelessOreRecipe(plate, new Object[]{"ToolcraftingHardHammer", ingot}));
-					}
-				}
-			}
-		}
-		
+	{	
 		
 		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
@@ -80,12 +64,6 @@ public class GregtechTweaks
 							ic2.core.Ic2Items.cell);
 				}
 			}
-		}
-	}
-	
-	public static void init() {	
-		if(ConfigurationHandler.addOneToOnePlateHammerRecipes) {
-			TweakerBase.markItemForRecipeRemoval(ic2.core.Ic2Items.casingtin.itemID, ic2.core.Ic2Items.casingtin.getItemDamage());
 		}
 	}
 	

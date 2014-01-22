@@ -103,9 +103,6 @@ public class RecipeTweaks
 		{
 			DCTweaks.init();
 		}
-		if(okayToTweakGT) {
-			GregtechTweaks.init();
-		}
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
