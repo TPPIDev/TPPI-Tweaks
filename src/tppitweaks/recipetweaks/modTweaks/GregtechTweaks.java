@@ -17,21 +17,14 @@ public class GregtechTweaks
 		
 		if(ConfigurationHandler.addOneToOnePlateHammerRecipes) {
 			
-			ItemStack tinCasing = ic2.core.Ic2Items.casingtin.copy();
-			tinCasing.stackSize = 2;
-			
-			for(ItemStack plate : OreDictionary.getOres("plateTin")) {
-				GameRegistry.addRecipe(new ShapelessOreRecipe(tinCasing, new Object[]{"craftingToolHardHammer", plate}));
-			}
-			
-			String[] plateNames = {"plateIron", "plateCopper", "plateTin", "plateBronze"};
-			String[] ingotNames = {"ingotIron", "ingotCopper", "ingotTin", "ingotBronze"};
+			String[] plateNames = {"plateIron", "plateTin"};
+			String[] ingotNames = {"ingotIron", "ingotTin"};
 			
 			for(int i = 0; i < plateNames.length; i++) {
 				String plateName = plateNames[i];
 				for(ItemStack plate : OreDictionary.getOres(plateName)) {
 					for(ItemStack ingot : OreDictionary.getOres(ingotNames[i])) {
-						GameRegistry.addRecipe(new ShapelessOreRecipe(plate, new Object[]{"craftingHardHammer", ingot}));
+						GameRegistry.addRecipe(new ShapelessOreRecipe(plate, new Object[]{"ToolcraftingHardHammer", ingot}));
 					}
 				}
 			}
