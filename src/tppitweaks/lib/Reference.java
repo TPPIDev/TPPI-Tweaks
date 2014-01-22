@@ -11,4 +11,21 @@ public class Reference
 	public static String TT_KAMI_FILENAME = "ThaumicTinkererKAMI_j6.jar";
 	public static File modsFolder;
 	
+	public static final String DEPENDENCIES = 
+			"before:ThaumicTinkerer;"
+			+ "after:Thaumcraft;"
+			+ "after:TwilightForest;"
+			+ "after:AppliedEnergistics;"
+			+ "after:StevesFactoryManager;"
+			+ "after:DimensionalAnchors;"
+			+ "after:DartCraft;"
+			+ "after:arsmagica2;"
+			+ "after:ThermalExpansion;"
+			+ "after:magicalcrops;"
+			+ "after:gregtech_addon;"
+			+ "after:ExtraUtilities;"
+			+ "after:EnderStorage;"
+			+ "after:BigReactors;"
+			+ "after:BuildCraft|Core";
+	
 }

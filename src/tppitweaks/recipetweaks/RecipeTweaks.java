@@ -54,7 +54,11 @@ public class RecipeTweaks
 				iterator.remove();
 			}
 		}
-
+		
+		if (okayToTweakDartCraft && okayToTweakIC2)
+		{
+			DCTweaks.removeRecipe(CraftingManager.getInstance().getRecipeList().listIterator());
+		}
 	}
 
 	private static void checkWhatWeCanTweak()
@@ -100,6 +104,10 @@ public class RecipeTweaks
 		{
 			OpenBlocksTweaks.init();
 		}
+		if (okayToTweakDartCraft && okayToTweakIC2)
+		{
+			DCTweaks.init();
+		}
 	}
 
 	private static void initBigReactors()
@@ -120,7 +128,7 @@ public class RecipeTweaks
 		{
 			ItemStack output = r.getRecipeOutput();
 			int removeableValueTest = TweakerBase.recipesToRemove.get(output.itemID);
-			return removeableValueTest == -1 || removeableValueTest == output.getItemDamage() || DCTweaks.dartCheck(okayToTweakDartCraft, r);
+			return removeableValueTest == -1 || removeableValueTest == output.getItemDamage();
 		}
 		catch (Throwable e)
 		{
