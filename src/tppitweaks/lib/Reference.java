@@ -31,6 +31,8 @@ public class Reference
 			+ "after:ExtraUtilities;"
 			+ "after:EnderStorage;"
 			+ "after:BigReactors;"
-			+ "after:BuildCraft|Core";
+			+ "after:BuildCraft|Core;"
+			+ "after:PowersuitAddons;"
+			+ "after:powersuits";
 	
 }
