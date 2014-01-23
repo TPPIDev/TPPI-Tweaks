@@ -7,7 +7,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BigReactorsTweaks {
 	
-	public static void initBigReactors()
+	public static void init()
 	{
 		if (ConfigurationHandler.steelReactorCasings)
 		{
@@ -19,7 +19,7 @@ public class BigReactorsTweaks {
 		}		
 	}
 	
-	public static void addBigReactorsRecipes()
+	public static void addRecipes()
 	{
 		if (ConfigurationHandler.steelReactorCasings)
 		{

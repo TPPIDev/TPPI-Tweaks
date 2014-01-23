@@ -1,15 +1,26 @@
 package tppitweaks.recipetweaks;
 
 import java.util.ListIterator;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.modTweaks.*;
+import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
+import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
+import tppitweaks.recipetweaks.modTweaks.DATweaks;
+import tppitweaks.recipetweaks.modTweaks.DCTweaks;
+import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
+import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
+import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
+import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
+import tppitweaks.recipetweaks.modTweaks.MPSATweaks;
+import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
+import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
+import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
+import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeTweaks
 {
@@ -24,6 +35,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakMagicalCrops;
 	private static boolean okayToTweakDartCraft;
 	private static boolean okayToTweakExU;
+	private static boolean okayToTweakMPSA;
 
 	public static void doRecipeTweaks()
 	{
@@ -43,9 +55,7 @@ public class RecipeTweaks
 	@SuppressWarnings({ "unchecked" })
 	private static void removeSomeRecipes()
 	{
-
 		ListIterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().listIterator();
-		ItemStack recipeResult = null;
 		while (iterator.hasNext())
 		{
 			IRecipe r = iterator.next();
@@ -70,6 +80,7 @@ public class RecipeTweaks
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && Loader.isModLoaded("IC2") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
+		okayToTweakMPSA = Loader.isModLoaded("PowersuitAddons");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -85,7 +96,7 @@ public class RecipeTweaks
 		}
 		if (okayToTweakBigReactors)
 		{
-			BigReactorsTweaks.initBigReactors();
+			BigReactorsTweaks.init();
 		}
 		if (okayToTweakDA)
 		{
@@ -102,6 +113,10 @@ public class RecipeTweaks
 		if (okayToTweakDartCraft)
 		{
 			DCTweaks.init();
+		}
+		if (okayToTweakMPSA)
+		{
+			MPSATweaks.init();
 		}
 	}
 
@@ -133,10 +148,10 @@ public class RecipeTweaks
 			EnderStorageTweaks.addRecipes();
 		
 		if (okayToTweakBigReactors)
-			BigReactorsTweaks.addBigReactorsRecipes();
+			BigReactorsTweaks.addRecipes();
 		
 		if (okayToTweakDA)
-			DATweaks.addRecipe();
+			DATweaks.addRecipes();
 		
 		if (okayToTweakSFM)
 			SFMTweaks.addRecipes();
@@ -146,6 +161,9 @@ public class RecipeTweaks
 		
 		if (okayToTweakAM2)
 			AM2Tweaks.addRecipes();
+		
+		if (okayToTweakMPSA)
+			MPSATweaks.addRecipes();
 	}
 
 	/**

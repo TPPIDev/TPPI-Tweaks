@@ -13,7 +13,7 @@ public class DATweaks
 		TweakerBase.markItemForRecipeRemoval(((Block) mods.immibis.chunkloader.DimensionalAnchors.instance.block).blockID, -1);
 	}
 	
-	public static void addRecipe()
+	public static void addRecipes()
 	{
 			GameRegistry.addRecipe(new ItemStack(mods.immibis.chunkloader.DimensionalAnchors.instance.block, 1, 0), "ded", "oIo", "gog", 'd', Item.diamond, 'e', Item.enderPearl, 'o', Block.obsidian, 'I', Block.blockIron,
 					'g', Item.ingotGold);

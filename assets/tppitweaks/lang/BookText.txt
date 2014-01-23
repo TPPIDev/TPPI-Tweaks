@@ -32,11 +32,11 @@ Thank you all so very much for making TPPI possible!
 ~~~
 This book you're reading is added by our own custom mod, TPPI Tweaks.~
 ~
-It will always contain the most up-to-date information 
-on the pack, including the latest changelog, so check it 
-often!~
+It will always automatically contain the most up-to-date information 
+on the pack, including the latest changelog, so check it often!~
 ~
-Should you want a new copy, you can craft one with an iron ingot and three paper.
+Should you want a new copy, you can craft one with an iron ingot and three paper,
+but this is not necessary to recieve new info!.
 ~~~
 Another feature of TPPI Tweaks is the in-game commands it adds.~
 ~
