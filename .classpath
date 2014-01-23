@@ -21,7 +21,7 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/OpenBlocks-1.2.2.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/RedstoneArsenal-1.0.0.0.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/scala-library-2.10.2.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/StevesFactoryManagerA14.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/ThermalExpansion-3.0.0.0.jar"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/StevesFactoryManagerA32_deobf.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
