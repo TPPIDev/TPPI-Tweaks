@@ -15,6 +15,8 @@ public class FileLoader
 {
 	private static InputStream bookText, supportedMods;
 	
+	private static String EXTENSION = ".removed";
+	
 	public static void init(File file, int attempt) throws IOException
 	{
 		File dir = new File(file.getParent() + "");
@@ -90,8 +92,8 @@ public class FileLoader
 	public static void disableTT()
 	{
 		for(File f : getTT()) {
-			if(!f.getName().contains(".removed")) {
-				f.renameTo(new File(f.getAbsolutePath()+".removed"));
+			if(!f.getName().contains(EXTENSION)) {
+				f.renameTo(new File(f.getAbsolutePath() + EXTENSION));
 			}
 		}
 	}
@@ -99,8 +101,8 @@ public class FileLoader
 	public static void enableTT()
 	{
 		for(File f : getTT()) {
-			if(f.getName().contains(".removed")) {
-				f.renameTo(new File(f.getAbsolutePath().replace(".removed", "")));
+			if(f.getName().contains(EXTENSION)) {
+				f.renameTo(new File(f.getAbsolutePath().replace(EXTENSION, "")));
 			}
 		}
 		
@@ -128,12 +130,12 @@ public class FileLoader
 		
 		File modJar;
 		
-		modJar = new File(Reference.modsFolder, Reference.TTFilename).exists() ? new File(Reference.modsFolder, Reference.TTFilename) : new File(Reference.modsFolder, Reference.TTFilename + ".disabled");
+		modJar = new File(Reference.modsFolder, Reference.TTFilename).exists() ? new File(Reference.modsFolder, Reference.TTFilename) : new File(Reference.modsFolder, Reference.TTFilename + EXTENSION);
 		if(modJar.exists()) {
 			Reference.TTFilename = modJar.getName();
 		}
 		
-		modJar = new File(Reference.modsFolder, Reference.KAMIFilename).exists() ? new File(Reference.modsFolder, Reference.KAMIFilename) : new File(Reference.modsFolder, Reference.KAMIFilename + ".disabled");
+		modJar = new File(Reference.modsFolder, Reference.KAMIFilename).exists() ? new File(Reference.modsFolder, Reference.KAMIFilename) : new File(Reference.modsFolder, Reference.KAMIFilename + EXTENSION);
 		if(modJar.exists()) {
 			Reference.KAMIFilename = modJar.getName();
 		}
