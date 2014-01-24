@@ -35,7 +35,7 @@ public class MPSATweaks
 		while (iter.hasNext())
 		{
 			IRecipe recipe = iter.next();
-			if (recipe.getRecipeOutput().itemID == solarPanel.itemID && matchesDamage(recipe))
+			if (recipe.getRecipeOutput() != null && recipe.getRecipeOutput().itemID == solarPanel.itemID && matchesDamage(recipe))
 			{
 				iter.remove();
 			}
