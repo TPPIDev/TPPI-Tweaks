@@ -1,6 +1,10 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import java.util.Iterator;
+
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -14,9 +18,39 @@ public class MPSATweaks
 		magnet = andrew.powersuits.common.AddonComponent.magnet;
 		computerChip = andrew.powersuits.common.AddonComponent.computerChip;
 		
-		TweakerBase.markItemForRecipeRemoval(solarPanel.itemID, solarPanel.getItemDamage());
-		TweakerBase.markItemForRecipeRemoval(magnet.itemID, magnet.getItemDamage());
-		TweakerBase.markItemForRecipeRemoval(computerChip.itemID, computerChip.getItemDamage());
+		removeRecipes();
+		
+		/*
+		TweakerBase.markItemForRecipeRemoval(solarPanel.itemID, 17);
+		TweakerBase.markItemForRecipeRemoval(magnet.itemID, 18);
+		TweakerBase.markItemForRecipeRemoval(computerChip.itemID, 19);
+		*/
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static void removeRecipes()
+	{
+		Iterator<IRecipe> iter = CraftingManager.getInstance().getRecipeList().listIterator();
+		
+		while (iter.hasNext())
+		{
+			IRecipe recipe = iter.next();
+			if (recipe.getRecipeOutput().itemID == solarPanel.itemID && matchesDamage(recipe))
+			{
+				iter.remove();
+			}
+		}
+	}
+	
+	private static boolean matchesDamage(IRecipe recipe)
+	{
+		int[] damages = {17,18,19};
+		for (int i : damages)
+		{
+			if (i == recipe.getRecipeOutput().getItemDamage())
+				return true;
+		}
+		return false;
 	}
 	
 	public static void addRecipes()

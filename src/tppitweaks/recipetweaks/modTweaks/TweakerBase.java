@@ -2,10 +2,6 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import java.util.HashMap;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-
 public class TweakerBase
 {
 	private static HashMap<Integer, Integer> recipesToRemove = new HashMap<Integer, Integer>();
