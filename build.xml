@@ -13,7 +13,7 @@
         <property name="dev.home" location="${dir.project}"/>
         <property name="mcp.home" location="${dir.mcp}"/>
         <property name="release.home" location="${dir.release}"/>
-        <property name="release.zip" value="${mod.id}_${version}.zip"/>
+        <property name="release.zip" value="${mod.id}_${version}.jar"/>
 
         <!-- setup python -->
         <property name="python.win" location="${mcp.home}/runtime/bin/python/python_mcp"/>
@@ -83,7 +83,7 @@
     <target name="build-Forge-zip">
         <!-- build the jar -->
         <zip destfile="${release.home}/${release.zip}">
-            <fileset dir="${mcp.bin}" includes="com/tterrag/simpleTransmutations/**/*.class"/>
+            <fileset dir="${mcp.bin}" includes="tppitweaks/**/*.class"/>
             <fileset dir="${dev.resources}">
                 <exclude name="mcmod.template"/>
             </fileset>
