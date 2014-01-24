@@ -32,7 +32,7 @@ public class Reference
 			+ "after:EnderStorage;"
 			+ "after:BigReactors;"
 			+ "after:BuildCraft|Core;"
-			+ "after:PowersuitAddons;"
+			+ "after:powersuitaddons;"
 			+ "after:powersuits";
 	
 }

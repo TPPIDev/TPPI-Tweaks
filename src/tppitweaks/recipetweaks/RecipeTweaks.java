@@ -80,7 +80,7 @@ public class RecipeTweaks
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && Loader.isModLoaded("IC2") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
-		okayToTweakMPSA = Loader.isModLoaded("PowersuitAddons");
+		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons");
 	}
 
 	private static void initRemovableRecipesMap()
