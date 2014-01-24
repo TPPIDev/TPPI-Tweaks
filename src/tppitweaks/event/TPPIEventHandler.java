@@ -14,7 +14,6 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 
 import com.google.common.collect.ImmutableList;

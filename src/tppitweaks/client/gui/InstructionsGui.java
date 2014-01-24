@@ -67,12 +67,7 @@ public class InstructionsGui extends GuiScreen
 					System.err.println("Minecraft mods folder not found!");
 					e.printStackTrace();
 				}
-			    break;
-			    
-			case 13:
-				System.exit(0);
-			    break;
-			    
+			    break;			    
 			default:
 				GuiHelper.updateGui.actionPerformed(button);
 		}

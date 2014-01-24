@@ -15,6 +15,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@SuppressWarnings("unused")
 @SideOnly(Side.CLIENT)
 public class UpdateGui extends GuiScreen
 {
@@ -103,12 +104,14 @@ public class UpdateGui extends GuiScreen
 					{
 						this.mc.displayGuiScreen(GuiHelper.updateGui.iterator.next());
 					}
+					/*
 					else if (configGui != null)
 					{
 						File file=new File("config/TPPI/config/hardconfig.zip");
 						if (file.exists())	this.mc.displayGuiScreen(configGui);
 						configGui = null;
 					}
+					*/
 					else if (GuiHelper.updateGui.modScreens.size() > 0)
 					{
 						this.mc.displayGuiScreen(new RestartGui());
