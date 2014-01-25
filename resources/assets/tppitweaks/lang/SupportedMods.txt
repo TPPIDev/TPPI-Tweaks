@@ -31,6 +31,12 @@ Now I am after a blank line
 
 **Begin line after asterisks**
 ****************************************************************************
+**>AdditionalBuildcraftObjects, Additional Buildcraft Objects<**
+
+**>AdvancedSolarPanels, Advanced Solar Panels<**
+
+**>AppliedEnergistics, Applied Energistics<**
+
 >ArsMagica, Ars Magica 2<
 Ars Magica 2 is a magical mod with RPG elements. Think mana, spellcasting, levelling up, and fighting fearsome enemies!~
 ~
@@ -52,12 +58,6 @@ If you find the book confusing, the first things you should craft to unlock the 
 oculus, inscription table, and crafting alter, respectively.~
 ~
 After doing that, the rest of the mod is yours to explore!
-
-**>AdditionalBuildcraftObjects, Additional Buildcraft Objects<**
-
-**>AdvancedSolarPanels, Advanced Solar Panels<**
-
-**>AppliedEnergistics, Applied Energistics<**
 
 **>BiblioCraft, BiblioCraft<**
 
