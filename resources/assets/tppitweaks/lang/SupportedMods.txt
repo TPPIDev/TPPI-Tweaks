@@ -272,6 +272,8 @@ Finally, there are additional chisel-able blocks that this mod adds. They can be
 **>IndustrialCraft, IndustrialCraft (Experimental)<**
 
 **>Infinibows, Infinibows<**
+Infinibows is a small mod that just removes the need to have an arrow in your inventory to shoot a bow with the infinity
+enchant.
 
 **>LogisticsPipes, Logistics Pipes<**
 
