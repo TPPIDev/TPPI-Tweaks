@@ -93,4 +93,17 @@ Coal:~
 Like normal, with the exception that the ore veins are slightly larger and less frequently placed. 
 Spawns anywhere from levels 0 to 128.
 ~~~
-Hugs! Have fun!
+Unaffected Ores:~
+~
+-Power ore~
+-PR gems~
+-Dark Iron~
+-Ars Magica Ores~
+-Nether Ores~
+-End Ores~
+-Apatite~
+-Sulfur~
+-Thaumcraft Shards~
+-Gregtech Ores~
+~~~
+Have fun!

@@ -33,11 +33,6 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 
 	@Override
 	public void injectData(Map<String, Object> data) {
-		Reference.thaumcraftFilename = (String) FileLoader.manuallyGetConfigValue(data, "Thaumcraft_filename", "");
-		Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "ThaumicTinkerer_filename", "");
-		Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "KAMI_filename", "");
-		
-		FileLoader.removeDuplicateMods();
 		
 		File mcDir = (File) data.get("mcLocation");
 		File modsDir = null;
@@ -53,7 +48,12 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 
 		Reference.modsFolder = modsDir;
 		
+		Reference.thaumcraftFilename = (String) FileLoader.manuallyGetConfigValue(data, "Thaumcraft_filename", "");
+		Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "ThaumicTinkerer_filename", "");
+		Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "KAMI_filename", "");
 		
+		FileLoader.removeDuplicateMods();
+				
 		if ((Boolean) FileLoader.manuallyGetConfigValue(data, "autoEnableTT", new Boolean(true))) {
 			
 			File thaumcraft = new File(modsDir, Reference.thaumcraftFilename);
