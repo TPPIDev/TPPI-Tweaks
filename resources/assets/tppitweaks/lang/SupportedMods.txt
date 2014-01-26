@@ -319,10 +319,57 @@ Authors: Powercrystals, skyboy026
 **>NuclearControl, Nuclear Control<**
 
 **>ObsidiPlates, Obsidian Pressure Plates<**
+This mod adds a few pressure plates to the game.
+~~
+Obsidian Pressure Plates
+~
+Will only give off a redstone signal if a player is standing on them.
+~~
+Mossy Cobblestone Pressur Plates
+~
+Will only give off a signal if a NPC (ex: a villager) is standing on them.
+~~
+Both pressure plates can be silent (no clicking sound) and shrouded (see-through). It should be noted that to create a
+silent and shrouded pressure plate you must apply silent first and then shrouded.
 
 **>OpenBlocks, OpenBlocks<**
 
 **>OpenPeripheral, OpenPeripheral<**
+Open peripheral is an addon for ComputerCraft. It allows you to wrap a variety of items as peripherals.
+~~
+To see if an item is a valid peripheral (and to get the commands for it) do the following:
+~
+"side" is the side of the computer that the item to be wrapped as a peripheral is located (ex: "left", "top", etc). 
+The side should be enclosed in quotation marks.
+p = peripheral.wrap("side")
+print (p.listMethods())
+~~
+There are also some items that this mod adds, explained in the following page(s).
+~~~
+PIM
+~
+This item allows you to access a player's inventory (if he/she) is standing on it.
+~~
+Sensor
+~
+This item allows you to scan the nearby area for information. Use listMethods() for more information.
+~~
+Peripheral Proxy
+~
+This item allows you to wrap certain items as peripherals through a modem. Make sure the arrows are facing the item to be
+wrapped and the modem is on and is located on the back of the proxy.
+~~
+Ticket Machine
+~
+This item can be used to print out tickets for Railcraft.
+~~
+Terminal Glasses/Termianl Glasses Bridge
+~
+The glasses can be worn by a player and the information passed to the bridge will appear on the player's HUD.
+~~
+Duck Antenna
+~
+No idea :P
 
 **>PluginsForForestry, Plugins for Forestry<**
 
@@ -347,17 +394,24 @@ Authors: Powercrystals, skyboy026
 **>StevesFactoryManager, Steve's Factory Manager<**
 
 >Thaumcraft, Thaumcraft 4<
-Thaumcraft is a magical mod that requires you to "research" its items before you can craft them.~
+Thaumcraft is a magical mod that requires you to "research" its items before you can craft them.
+~
 ~
 There's all kinds of magical swag that you can build and play with, but it's probably best for you to 
-learn about it on your own.~
-To get started, craft a iron capped wooden wand, 
-place a bookshelf on the ground, and right-click your wand on it.~
+learn about it on your own.
 ~
-It should transform into a Thaumonomicon; the true guidebook for Thaumcraft!
+To get started, craft a iron capped wooden wand, 
+place a bookshelf on the ground, and right-click your wand on it.
+~
+~
+It should transform into a Thaumonomicon; the true guidebook for Thaumcraft! 
+The only thing to know that is not documented in the book is that some research will be impossible, you can throw it
+away and restart with newly generated research notes at any time though.
 ~
  
- **>ThaumicTinkerer, Thaumic Tinkerer<**
+**>ThaumicTinkerer, Thaumic Tinkerer<**
+Thaumic Tinkerer is an addon to Thaumcraft (a magical mod). All the information is documented in a book that
+the mod provides. Obtain the Thaumonomicon and all your questions should be answered.
  
 >ThermalExpansion, Thermal Expansion 3<
 Thermal Expansion (TE) is a "technology" mod that adds a power system called Redstone Flux (RF). 
@@ -393,6 +447,46 @@ you should have spawned with.
 ~
 
 **>TinkersMechworks, Tinkers' Mechworks<**
+Tinker's Mechworks is an addon for Tinkers' Construct. It adds drwabridges, an igniter, and signal busses/terminals, all
+of which are described on the following pages.
+~~~
+Drawbridge
+~~
+The drawbridge can extend and retract 15 blocks in the direction it is facing. It is activated with a redstone signal.
+The left slot is for a block that "disguises" the drawbridge to make it look like the block in the left slot.
+The right slot is for the blocks that are to be extended/retracted.
+~
+The extended drawbridge can extend up to 64 blocks.
+~
+The advanced drawbridge can extend more than one type of block, as each block is placed in the GUI.
+~~~
+Igniter
+~
+The igniter will light the block in front of it on fire when given a redstoen signal and will extinguish the flame when
+the resdtone signal is turned off.
+~~~
+Signal Bus/Terminal/Wire
+~
+These items function as redstone that can travel through blocks. To get started, craft a spool of wire by surrounding a
+stone tool rod with 8 lengths of wire in a crafting table. The spool of wire can be crafted with additional lengths of wire
+(up to 8 at a time maximum) to give the length of wire more length. The damage bar underneath the length of wire visually
+represents how much wire is left.
+~
+The spool of wire (truly the wire itself) is used to connect signal terminals to signal busses and back to signal terminals.
+To connect the two right click on the top red part of the terminal with the spool of wire and then right click on the
+signal bus with the same spool of wire. If you have enough wire and the terminal and the bus are 15 or less blocks away
+you should see a small red line connecting the two. If you move your cursor away from the spool of wire on your hotbar the
+red line will dissapear visually. Now you can connect the second terminal to the bus, using the length of wire, to
+complete the circuit.
+~~~
+Signal Bus/Terminal/Wire (continued)
+~
+A redstone signal can be applied to the terminal (or the block the terminal is placed upon) and the redstone signal will
+be transmitted to the terminal at the end of the wire. A terminal can connect to multiple busses but busses cannot connect
+to other busses.
+~
+Right clicking the white part of a signal terminal with an open hand will change the terminal's color. Only terminals of
+the same color will send redstone signals.
 
 >TPPITweaks, TPPI Tweaks<
 TPPITweaks is the mod made especially for the TPPI Modpack, 
@@ -406,13 +500,98 @@ the player in the modpack.~
 Authors: wha-ha-ha, tterrag
 
 **>Translocators, Translocators<**
+The Translocators mod adds 2 items to the game, the translocators themselves and a crafting grid.
+~
+Translocators allow for the movement of items through a 1-block space. More info is on the following page.
+~
+Th crafting grid can be accessed by pressing 'c' (configurable in keybinds) and will bring up a grid to place items in.
+Right click to place/remove items and press 'c' again on the grid to craft the item(s).
+~~~
+Translocators can be placed on the side of an inventory/machine/tank. There are both item and liquid translocators.
+~
+Right clicking on the protruding center of the translocator with an open hand will depress the center. Items/liquids will
+always flow from the translocator with a protruding center to the translocator(s) with an inset center.
+~
+Right clicking on the plate of the item translocator brings up a configurable filter.
+~~~
+Adding a diamond nugget (a diamond in a crafting table gives 9) puts a translocator in regulate mode.  
+In this mode it will maintain a certain amount of items set in the filter in the inventory it’s attached to.
+On an inserting face, it will only accept items to fill the inventory to the matching filter.
+On an ejecting face, it will eject any items that don’t match the filter.
+~
+Adding glowstone to the plate makes it transfer stacks at a time. 
+~
+Adding redstone lets you toggle input/output with a redstone signal.
+~
+Adding an iron ingot makes the translocator emit redstone signals to the attached inventory on certain conditions.
+On an inserting face, it will emit if there is no room for any item that matches the filter.
+On an ejecting face, it will emit if there is no place where any item can be put that matches the filter.
+~
+Shift-Right clicking on the plate will strip and drop all upgrades placed on the translocator.
+~~~
+Translocators will follow these rules:
+~
+Items/liquids will always travel to non-redstone outputs if they can.
+~
+Items/Liquids will be evenly split between available outputs. Items will be taken from the slot with the largest quantity.
+
 
 **>TwilightForest, Twilight Forest<** 
 
 **>Waila, Waila<**
+WAILA stands for "What Am I Looking At?" It introduces a HUD tooltip which indicates what block you are looking at.
+It tells you the block name and what mod it is from.
+~
+By adding the tooltip for the mod name in NEI you can now search "railcraft" instead of "@railcraft" to get the items
+added by railcraft.
+~
+It also adds some tooltip values for various items (ex: shows how much heat coal can produce in a firebox)
+~
+There are also, by default, some (numpad) keybinds that can be used
+as well:
+~
+1: Toggles on and off the HUD
+2: Toggles on and off showinq liquids
+3: Shows the uses for the item slected (through NEI)
+4: SHows how the item selected can be used (through NEI)
+
 
 **>Witchery, Witchery<**
 
 **>WRCBE, Wireless Redstone - CBE<**
+At it's core Wireless Redstone ChickenBones Edition (WR-CBE) is a very simple mod; it allows you to wirelessly transmit
+redstone signals. It even works across dimensions!
+~
+For the items besides the wireless transmitter/receiver and the wireless remote I reccomend you check out ChickenBones'
+Minecraft Forum page. He also describes SMP permissions commands on that post. However, The items stated above (the 
+only ones you will likely use) will be explained on the following page(s).
+~~~
+Wireless Transmitter/Receiver
+~
+Right click on the block to open the inventory. You can set a frequency for the redstone signal to transmit/receive from.
+You can also access the advanced tab from here.
+~
+In the advanced tab you will notice that you can add/remove names whick you can link to certain frequencies. This makes it
+simple to remember what your different frequencies do and it is easy to switch back and forth between them.
+~
+On the right you will notice a GUI that says Phase shift and some arrows. This allows you to color some frequencies with
+vanilla dyes. Note: This is purely for easy identification, it does not affect the technical properties!
+~~~
+Extra Info:
+~
+The wireless remote is simply a portable wireless transmitter. It's gui can be opened by right-clicking.
+~
+WR-CBE has ComputerCraft support. Wrap it as a peripheral and then use peripheral.getFreq(frequency) or 
+peripheral.setFreq(Frequency)
+
 
 **>ZansMinimap, Zan's Minimap<**
+Zan's Minimap (Voxel Map) provides the player with a convenient mini-map located in the top right hand corner of the
+screen. It provides a variety of features.
+~
+Adds an in-game waypoint system (that can show the location of your latest death).
+~
+Adds a radar that can show a customizable number of mobs, animals, and players.
+~
+The default key to access the menu is "M". There you can customize the look of your mini-map, configure the other keybinds
+for the mod, change the radar/waypoints, and more.
