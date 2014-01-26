@@ -174,6 +174,31 @@ public class FileLoader
 				}
 			}
 		}
+		if (type instanceof String)
+		{
+			File config = new File(((File) m.get("mcLocation")).getAbsolutePath() + "/config/TPPI/TPPITweaks.cfg");
+			boolean noConfig = false;
+			Scanner scan = null;
+			
+			try {
+				scan = new Scanner(config);
+			} catch (FileNotFoundException e) {
+				noConfig = true;
+			}	
+			
+			if (noConfig)
+				return "";
+			
+			while (scan.hasNext())
+			{
+				String s = scan.next();
+				
+				if (s.contains(string))
+				{
+					return s.substring(s.indexOf("=") + 1, s.length());
+				}
+			}
+		}
 		return false;
 	}
 	
