@@ -33,21 +33,28 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 
 	@Override
 	public void injectData(Map<String, Object> data) {
+		Reference.thaumcraftFilename = (String) FileLoader.manuallyGetConfigValue(data, "Thaumcraft_filename", "");
+		Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "ThaumicTinkerer_filename", "");
+		Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "KAMI_filename", "");
+		
+		FileLoader.removeDuplicateMods();
+		
+		File mcDir = (File) data.get("mcLocation");
+		File modsDir = null;
+		
+		try
+		{
+			modsDir = new File(mcDir.getCanonicalPath() + "/mods/");
+		}
+		catch (IOException e)
+		{
+			System.out.println("Mods dir does not exist. How did you mess that up?");
+		}
+
+		Reference.modsFolder = modsDir;
+		
+		
 		if ((Boolean) FileLoader.manuallyGetConfigValue(data, "autoEnableTT", new Boolean(true))) {
-
-			File mcDir = (File) data.get("mcLocation");
-			File modsDir = null;
-			
-			try
-			{
-				modsDir = new File(mcDir.getCanonicalPath() + "/mods/");
-			}
-			catch (IOException e)
-			{
-				System.out.println("Mods dir does not exist. How did you mess that up?");
-			}
-
-			Reference.modsFolder = modsDir;
 			
 			File thaumcraft = new File(modsDir, Reference.thaumcraftFilename);
 

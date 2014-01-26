@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.core.CoreTPPITweaks;
 import tppitweaks.lib.Reference;
 
 public class FileLoader
@@ -192,5 +193,24 @@ public class FileLoader
 	{
 		supportedMods = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt");
 		return supportedMods;
+	}
+	
+	public static void removeDuplicateMods()
+	{
+		ArrayList<File> jars = getTT();
+		File removedTT = new File(Reference.modsFolder.getAbsolutePath() + "/" + Reference.TTFilename + EXTENSION);
+		File removedKAMI = new File(Reference.modsFolder.getAbsolutePath() + "/" + Reference.KAMIFilename + EXTENSION);
+		
+		for (File f : jars)
+		{
+			if (f != null && removedTT.exists())
+			{
+				removedTT.delete();
+			}
+			if (f != null && removedKAMI.exists())
+			{
+				removedKAMI.delete();
+			}
+		}
 	}
 }
