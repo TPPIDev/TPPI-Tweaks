@@ -76,8 +76,8 @@ This mod adds "engines" which are ways to produce MJ. You can also use Thermal E
 but you must have an energy conduit between the dynamo and the machine.~
 ~
 There are many different machines, for instance, the quarry. The quarry is an semi-automatic way to mine. You can use
-landmarks to set the size of the quarry, but keep in mind 64x64 is the maximum size. The automatic crafting table crafts
-stuff, automatically! Totally unexpected!
+landmarks to set the size of the quarry, but keep in mind 64x64 is the maximum size. Apply a redstone signal to landmarks
+to see a red line extending for 64 blocks. The automatic crafting table crafts stuff, automatically! Totally unexpected!
 ~
 You can also use pipes to transport items, for instance you can make a automated smelter. If you want to learn better,
 just start practicing and you'll get the hang of it, or you can watch a mod spotlight.
@@ -90,6 +90,36 @@ just start practicing and you'll get the hang of it, or you can watch a mod spot
 **>CarpentersBlocks, Carpenter's Blocks<**
 
 **>Chisel, Chisel<**
+Chisel is a mod that adds decorative blocks to minecraft. It modifies existing blocks by use of a chisel to create
+aesthetic blocks similar to the original block.
+~
+Chisel adds two blocks to world-generation, marble and limestone. They are purely for looks.
+~
+To get started first craft a chisel with two sticks and an iron ingot (diagonally in a crafting table). There are two ways
+to use it, either in-world or in a crafting GUI.
+~~~
+To bring up the GUI, right click the chisel while it is in you hotbar. Here you can place the block to modify 
+in the center. Try it out with cobblestone, stone, dirt or something else that you have on hand. You will notice that
+blocks appear on the blank slots to the sides. To chisel the block in the center simply left click on the desired block
+that appears on the sides. 
+~
+You can hover over the chiseled blocks to get a more detailed description of each one. It should also be noted that if you
+have 32 blocks in the center and you choose a chiseled block all 32 will be transformed! However, you can chisel an
+already chiseled block and most chisel recipes will let you use this mechanism to get the vanilla item back from a
+chiseled block.
+~~~
+To chisel a block in-game simply left click the block to be altered. THIS IS CURRENTLY BUGGED. This will slightly damage 
+the chisel while the GUI method of chiseling does not damage the chisel. Keep left-clicking on the block to cycle through
+the available options.
+~
+There are also some special blocks that chisel adds.
+~~~
+The "Ball O' Moss" creates an Area of effect "explosion" that changes nearbly blocks into mossy versions of them.
+~
+The "Cloud in a bottle" will spawn a cloud when thrown/broken.
+~
+Finally, there are certain chisel-able blocks that this mod adds. They can be found in NEI.
+
 
 **>ComputerCraft, ComputerCraft<**
 
@@ -230,12 +260,12 @@ It should transform into a Thaumonomicon; the true guidebook for Thaumcraft!
  **>ThaumicTinkerer, Thaumic Tinkerer<**
  
 >ThermalExpansion, Thermal Expansion 3<
-Thermal Expansion is a "technology" mod that adds a power system called Redstone Flux (RF). 
+Thermal Expansion (TE) is a "technology" mod that adds a power system called Redstone Flux (RF). 
 It has itemducts, fluiducts, and energy conduits for transporting items, liquids, and RF power 
 respectively, as well as a bunch of useful blocks for ore processing, automatic crafting, storage, and more.~
 ~
 You can start generating RF power using the mod's dynamos and some energy conduits, with leadstone conduits being the 
-lowest tier. 
+lowest tier. All TE conduits convert RF to MJ (Buildcraft energy) if needed.
 You can rotate and pick up machines by right clicking and shift right clicking with a Crescent Hammer, 
 the mod's version of a wrench.~
 ~~~
