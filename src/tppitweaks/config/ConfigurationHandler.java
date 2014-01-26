@@ -24,6 +24,7 @@ public class ConfigurationHandler
 	
 	public static String bookTitle;
 	public static String bookAuthor;
+	public static String changelogTitle;
 	
 	public static boolean enderChestTesseract;
 	public static boolean enderPouchTesseract;
@@ -58,6 +59,7 @@ public class ConfigurationHandler
 	
 	/** ArrayList of Strings, the strings are each one whole page **/
 	public static List<String> bookText;
+	public static List<String> changelog;
 
 	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityLightMage", "EntityEarthElemental", "EntityFireElemental", "EntityWisp", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
 
@@ -78,6 +80,7 @@ public class ConfigurationHandler
 		
 		bookTitle = config.get("TPPI Guide Info", "bookTitle", "TPPI Welcome Packet", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("TPPI Guide Info", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
+		changelogTitle = config.get("TPPI Guide Info", "changelogTitle", "TPPI Changelog", "The title of the changelog").getString();
 		
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
 		enderPouchTesseract = config.get("Ender Storage Tweaks", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
@@ -118,9 +121,14 @@ public class ConfigurationHandler
 	 * @param file
 	 *            - The input stream to gather the text from
 	 */
-	public static void loadBookText(InputStream file)
+	public static void loadGuideText(InputStream file)
 	{
 		bookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
+	}
+	
+	public static void loadChangelogText(InputStream file)
+	{
+		changelog = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 	}
 
 	public static void stopShowingGUI()

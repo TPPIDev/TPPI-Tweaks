@@ -33,14 +33,17 @@ Thank you all so very much for making TPPI possible!
 This book you're reading is added by our own custom mod, TPPI Tweaks.~
 ~
 It will always automatically contain the most up-to-date information 
-on the pack, including the latest changelog, so check it often!~
+on the pack, so check it often!~
 ~
 Should you want a new copy, you can craft one with an iron ingot and three paper,
 but this is not necessary to recieve new info!.
 ~~~
 Another feature of TPPI Tweaks is the in-game commands it adds.~
 ~
-We're working on a project to add in-game documentation for all 
+The changelog can be found by typing /tppi changelog, which will of course always 
+be up to date, no need to ever get a new copy.~
+~
+Also, we're working on a project to add in-game documentation for all 
 the mods in the pack, to be accessed via commands.
 ~~~
 Type /tppi mods <modname> to view a mod's current documentation, 

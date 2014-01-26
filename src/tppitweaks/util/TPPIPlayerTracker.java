@@ -46,7 +46,7 @@ public class TPPIPlayerTracker implements IPlayerTracker
 
 			player.getEntityData().setTag("TPPI", TPPITweaks.eventHandler.getTag(player, false));
 			
-			ItemStack stack = ModItems.tppiBook.getBook();
+			ItemStack stack = ModItems.tppiBook.getGuide();
 			player.inventory.addItemStackToInventory(stack);
 			return true;
 		}

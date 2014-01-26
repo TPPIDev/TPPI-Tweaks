@@ -1,6 +1,7 @@
 package tppitweaks.util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,11 +10,12 @@ import java.util.Map;
 import java.util.Scanner;
 
 import tppitweaks.TPPITweaks;
+import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
 
 public class FileLoader
 {
-	private static InputStream bookText, supportedMods;
+	private static InputStream bookText, supportedMods, changelogText;
 	
 	private static String EXTENSION = ".removed";
 	
@@ -174,10 +176,16 @@ public class FileLoader
 		return false;
 	}
 	
-	public static InputStream getBookText()
+	public static InputStream getGuideText()
 	{
 		bookText = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt");
 		return bookText;
+	}
+	
+	public static InputStream getChangelogText() throws FileNotFoundException
+	{
+		changelogText = new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+		return changelogText;
 	}
 	
 	public static InputStream getSupportedMods()
