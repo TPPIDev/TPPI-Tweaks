@@ -206,12 +206,12 @@ textures! It should also be noted that if you have 32 blocks in the center and y
 transformed! However, you can chisel an already chiseled block and most chisel recipes will let you use this mechanism to 
 get the vanilla item back from an existing chiseled block.
 ~~~
-To chisel a block in-game simply left click the block to be altered. THIS IS CURRENTLY BUGGED. This will slightly damage 
-the chisel while the GUI method of chiseling does not damage the chisel. Keep left-clicking on the block to cycle through
-the available options.
+To chisel a block in-game simply left click the block to be altered. Keep left-clicking on the block to cycle through
+the available options. NOTE: THIS IS CURRENTLY BUGGED, IT WILL CREATE AN INVISIBLE BLOCK. IT IS RECCOMENDED YOU USE THE 
+GUI METHOD INSTEAD.
 ~
-There are also some special blocks that chisel adds.
-~~~
+There are also some special items that chisel adds:
+~
 The "Ball O' Moss" creates an Area of effect "explosion" that changes nearbly blocks into mossy versions of them.
 ~
 The "Cloud in a bottle" will spawn a cloud when thrown/broken.
