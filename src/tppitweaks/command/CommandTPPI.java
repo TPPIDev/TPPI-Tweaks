@@ -18,6 +18,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ChatMessageComponent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TxtParser;
@@ -39,6 +40,7 @@ public class CommandTPPI extends CommandBase
 		validCommands.add("mods");
 		validCommands.add("ores");
 		validCommands.add("getInvolved");
+		validCommands.add("changelog");
 
 		supportedModsAndList.add("list");
 
@@ -109,6 +111,8 @@ public class CommandTPPI extends CommandBase
 				processVanillaBookCommand("TPPI Ore Generation Guide", "OreGen.txt", icommandsender, astring);
 			}else if(astring[0].equalsIgnoreCase("getInvolved")) {
 				processVanillaBookCommand("Getting Involved In TPPI", "GetInvolved.txt", icommandsender, astring);
+			}else if(astring[0].equalsIgnoreCase("changelog")) {
+				processCommandChangelog(icommandsender);
 			}
 
 		}
@@ -201,6 +205,19 @@ public class CommandTPPI extends CommandBase
 		}
 		
 		return false;
+	}
+	
+	private boolean processCommandChangelog(ICommandSender command)
+	{
+		ItemStack changelog = ModItems.tppiBook.getChangelog();
+		
+		if (changelog == null)
+			return false;
+		
+		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(changelog));
+			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(changelog, 0);
+			
+		return true;
 	}
 
 	private void listMods(ICommandSender icommandsender)

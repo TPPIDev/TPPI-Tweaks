@@ -128,7 +128,7 @@ public class TPPIBook extends ItemEditableBook
 	
 	public ItemStack getChangelog()
 	{
-		return addTextToBook(new ItemStack(ModItems.tppiBook), 1);
+		return addTextToBook(new ItemStack(ModItems.tppiBook, 1, 1), 1);
 	}
 
 	@Override
