@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URI;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -59,7 +61,7 @@ public class InstructionsGui extends GuiScreen
 		case 11:
 			try
 			{
-                DesktopApi.browse(new URI(mod.link));
+				DesktopApi.browse(new URI(mod.link));
 			}
 			catch (Exception e1)
 			{
@@ -69,19 +71,31 @@ public class InstructionsGui extends GuiScreen
 			break;
 
 		case 12:
+			try
+			{
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			
 			final JFileChooser fc = new JFileChooser();
-			fc.showOpenDialog(null);
+			fc.setCurrentDirectory(FileUtils.getUserDirectory());
+			fc.showOpenDialog(new JFrame());
 			File mod = fc.getSelectedFile();
 			try
 			{
-				FileUtils.copyFile(mod, new File(Reference.modsFolder.getCanonicalPath() + "/" + mod.getName()));
+				if (mod != null)
+					FileUtils.copyFile(mod, new File(Reference.modsFolder.getCanonicalPath() + "/" + mod.getName()));
 			}
 			catch (IOException e)
 			{
 				e.printStackTrace();
 			}
+
 			break;
-			
+
 		default:
 			GuiHelper.updateGui.actionPerformed(button);
 		}
