@@ -3,6 +3,7 @@ package tppitweaks;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,6 +17,7 @@ import tppitweaks.proxy.PacketHandler;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TPPIPlayerTracker;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -38,10 +40,15 @@ public class TPPITweaks {
 	public static TPPIEventHandler eventHandler;
 	public static TPPIPlayerTracker playerTracker;
 	
+	public static final Logger logger = Logger.getLogger("TPPITweaks");
+	
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		
+	    logger.setParent(FMLCommonHandler.instance().getFMLLogger());
+
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory()
 				.getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
 
