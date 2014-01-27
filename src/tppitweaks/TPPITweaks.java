@@ -3,6 +3,7 @@ package tppitweaks;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -65,7 +66,7 @@ public class TPPITweaks {
 		}
 		catch (FileNotFoundException e)
 		{
-			System.err.println("TPPI Changelog not found, please check the TPPI config folder.");
+			logger.log(Level.WARNING, "TPPI Changelog not found, please check the TPPI config folder.");
 		}
 		
 		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedMods());

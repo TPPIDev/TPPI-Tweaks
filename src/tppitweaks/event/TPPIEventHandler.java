@@ -3,6 +3,7 @@ package tppitweaks.event;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +12,7 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
@@ -54,7 +56,7 @@ public class TPPIEventHandler
 				catch (Exception e)
 				{
 					e.printStackTrace();
-					System.out.println("Reflection error, TPPI watermark will not be shown");
+					TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
 					return;
 				}
 
@@ -74,7 +76,7 @@ public class TPPIEventHandler
 				catch (Exception e)
 				{
 					e.printStackTrace();
-					System.out.println("Reflection error, TPPI watermark may not be shown");
+					TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
 				}
 			}
 		}
@@ -90,7 +92,7 @@ public class TPPIEventHandler
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("Reflection error, TPPI watermark may not be shown");
+			TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
 		}
 
 		addStuff(f);
@@ -134,7 +136,7 @@ public class TPPIEventHandler
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			System.out.println("Reflection error, TPPI watermark may not be shown");
+			TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
 		}
 	}
 
