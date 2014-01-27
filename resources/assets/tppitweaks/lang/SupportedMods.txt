@@ -88,100 +88,101 @@ just start practicing and you'll get the hang of it, or you can watch a mod spot
 **>CalclaviaCore, Calclavia Core<**
 
 >CarpentersBlocks, Carpenter's Blocks<
-Carpenter's Blocks adds wooden frames of vanilla items that can be textured with other blocks to change the appearance. 
-This mod is mainly used for aesthetic purposes.
+Carpenter's Blocks adds wooden frames of vanilla items that can be textured with other blocks to change the appearance.~
+~
+This mod is mainly used for aesthetic purposes.~
 ~
 There are two tools in addition to the blocks added, the "Carpenter's Hammer" and the "Carpenter's Chisel". These are used 
 to alter the carpenter's blocks.
 ~~~
-Basics
+Basics~
 ~
 Once a Carpenter's block is placed in the world, right-click it with any full-size block (except TileEntities: chests, 
-machines, etc.) If the block is compatible, it will take on the appearance of the placed block and also any 
-properties of it (fire-resistance, explosion-resistance, etc.) To remove the block used for texturing shift left-click 
-with the carpenter's hammer. To alter the appearance further left/right click with the chisel to cycle through additional 
-patterns.
+machines, etc.) If the block is compatible, it will take on the appearance of the placed block and also any properties 
+of it (fire-resistance, explosion-resistance, etc.) To remove the block used for texturing shift left-click with the 
+carpenter's hammer. To alter the appearance further left/right click with the chisel to cycle through additional 
+patterns.~
 ~
 In general, left-clicking a carpenter's block with the hammer will re-orient it (turn it left/right) while right-clicking 
 will change the block (ex: stairs -> corner stairs -> upside-down stairs -> etc.) 
 ~~~
 Additionally, once a carpenter's block has an overlayed appearance another block can be placed on any side to create a 
-cover on the block. These can be altered indepently of the main block. 
+cover on the block. These can be altered indepently of the main block.~
 ~
 Some items can be used as overlays even though they are not full blocks. These include: seeds, snowballs, vines, string, 
-wheat and mushrooms.
+wheat and mushrooms.~
 ~
 All 16 dyes can be used to color a carpenter's blocks. This affects existing overlays, so placing dirt on a carpenter's 
 block and then putting purple dye on that will yield purple dirt! Also, the "chisel" mod plays nicely with this mod, so 
-many overlays are possible with that in mind.
+many overlays are possible with that in mind.~
 ~
 Since there are only a handful of blocks the following pages will describe the specifics on each block if special features 
 exist.
 ~~~
-Carpenter's Block
+Carpenter's Block~
 ~
 Left/Right click with the hammer to change the block into a slab. The direction you hit the block changes the orientation 
 of the slab.
 ~~~
-Carpenter's Slope
+Carpenter's Slope~
 ~
 This block is amazing. Remember that right clicking with a hammer will change the block (It has many options, try them out!) 
 while left-clicking will re-orient the block.
 ~~~
-Carpenter's Door/Hatch
+Carpenter's Door/Hatch~
 ~
 Right clicking with the hammer will change the appearance while left-clicking will make the door/hatch open to either the right 
 or the left (or in the hatch's case the top or the bottom as well). Shift right-clicking will make it behave like either 
 an iron door or a wooden door (default). Also, if you have two carpenter's doors side by side, opening/closing one will 
 make both open/close!
 ~~~
-Carpenter's Bed
+Carpenter's Bed~
 ~
 Right/Left clicking with the hammer will change the appearance of the bed-sheets/pillow to a few built in patterns. You can 
 still texture the frame of the bed (note it is two blocks so you will need two dye). Shift right-clicking will restore 
 the bed's pattern to default.
 ~~~
-Carpenter's Button/Lever/Pressure Plate
+Carpenter's Button/Lever/Pressure Plate~
 ~
 Left clicking with the hammer will invert the redstone output. For the pressure plate right clicking with the hammer will 
 cycle through triggers so that the pressure plate will only be activated by mobs, animals, players, or everyone.
 ~~~
-Carpenter's Collapsible Block
+Carpenter's Collapsible Block~
 ~
 This block is affected by left clicking any corner of the block with the hammer, as the corner selected will depress by 
 one pixel (to a maximum of only one pixel left). Right-clicking raises it by one pixel. Only the top of the block will 
 compress this way, trying to make a roof out of these blocks is not a good idea.
 ~~~
-Carpenter's Barrier/Gate
+Carpenter's Barrier/Gate~
 ~
 Right clicking with the hammer will rotate between a few textures. Shift right clicking while on the default fence will 
 alter the size of the gap in the fence by one pixel.
 ~~~
-Carpenter's Daylight Sensor
+Carpenter's Daylight Sensor~
 ~
 Left clicking with a hammer will invert the redstone output. Left clicking will cycle between activating for sunset/sunrise 
 or when light levels are low enough for monsters to spawn.
 ~~~
-Carpenter's Ladder
+Carpenter's Ladder~
 ~
 The only thing special about this block is that it can be free-floating (It acts as it's own block and doesn't have to 
 be placed on a wall).
 ~~~
-Carpenter's Safe
+Carpenter's Safe~
 ~
 Similar to the strongbox from Thermal Expansion, this item is linked to the user. Sneak right click with the hammer to  
 lock/unlock the safe so others can access it. Right click with the hammer to change automation rules (extraction is 
-allowed, not allowed, etc.) 
+allowed, not allowed, etc.)~
 ~
 The green/red light indicates if the safe is unlocked/locked respectively. The blue bar indicates how full the safe is. 
 Holding a gold ingot and right clicking on the safe will upgrade it to 54 slots (double chest's worth). The only way 
 to get the gold back is to break the safe.
 ~~~
-Carpenter's Flower Pot
+Carpenter's Flower Pot~
 ~
 Right click with some soil (dirt) to place it in the pot and allow plants to be placed in it. Covers are supprted, but so 
 are built in patterns (although not both simultaneously). Left/Right click with the hammer to cycle through the patterns. 
-Sneak right click with the hammer to reset it to default.
+Sneak right click with the hammer to reset it to default.~
 ~
 Most plants can be planted in this flower pot, you are no longer limited to flowers and cacti. Sneak left click with the 
 hammer to remove the plant and sneak right click to remove the cover.
@@ -189,9 +190,9 @@ hammer to remove the plant and sneak right click to remove the cover.
 
 >Chisel, Chisel<
 Chisel is a mod that adds decorative blocks to minecraft. It modifies existing blocks by use of a chisel to create 
-aesthetic blocks similar to the original one.
+aesthetic blocks similar to the original one.~
 ~
-Chisel adds two blocks to world-generation, marble and limestone. They are purely for looks. 
+Chisel adds two blocks to world-generation, marble and limestone. They are purely for looks.~ 
 ~
 To get started first craft a chisel with two sticks and an iron ingot (diagonally in a crafting table). There are two ways 
 to use it, either in-world or in a crafting GUI.
@@ -199,22 +200,20 @@ to use it, either in-world or in a crafting GUI.
 To bring up the GUI, right click the chisel while it is in you hotbar. Here you can place the block to modify 
 in the center. Try it out with cobblestone, stone, dirt or something else that you have on hand. You will notice that 
 blocks appear on the blank slots to the sides. To chisel the block in the center simply left click on the desired block 
-that appears on the sides. 
+that appears on the sides.~ 
 ~
 You can hover over the chiseled blocks to get a more detailed description of each one. Some blocks even have connected 
 textures! It should also be noted that if you have 32 blocks in the center and you choose a chiseled block all 32 will be 
 transformed! However, you can chisel an already chiseled block and most chisel recipes will let you use this mechanism to 
-get the vanilla item back from an existing chiseled block.
+get the vanilla item back from an existing chiseled block.~
 ~~~
 To chisel a block in-game simply left click the block to be altered. Keep left-clicking on the block to cycle through 
 the available options. NOTE: THIS IS CURRENTLY BUGGED, IT WILL CREATE AN INVISIBLE BLOCK. IT IS RECCOMENDED YOU USE THE 
-GUI METHOD INSTEAD.
+GUI METHOD INSTEAD.~
 ~
-There are also some special items that chisel adds: 
-
-The "Ball O' Moss" creates an Area of effect "explosion" that changes nearbly blocks into mossy versions of them. 
-
-The "Cloud in a bottle" will spawn a cloud when thrown/broken. 
+There are also some special items that chisel adds:~
+The "Ball O' Moss" creates an Area of effect "explosion" that changes nearbly blocks into mossy versions of them.~
+The "Cloud in a bottle" will spawn a cloud when thrown/broken.~ 
 ~
 Finally, there are additional chisel-able blocks that this mod adds. They can be found in NEI. 
 
@@ -319,13 +318,13 @@ Authors: Powercrystals, skyboy026
 **>NuclearControl, Nuclear Control<**
 
 >ObsidiPlates, Obsidian Pressure Plates<
-This mod adds a few pressure plates to the game.
+This mod adds a few pressure plates to the game.~
 ~
-Obsidian Pressure Plates 
-Will only give off a redstone signal if a player is standing on them. 
+Obsidian Pressure Plates~ 
+Will only give off a redstone signal if a player is standing on them.~ 
 ~
-Mossy Cobblestone Pressure Plates 
-Will only give off a signal if a NPC (ex: a villager) is standing on them. 
+Mossy Cobblestone Pressure Plates~ 
+Will only give off a signal if a NPC (ex: a villager) is standing on them.~ 
 ~
 Both pressure plates can be silent (no clicking sound) and shrouded (see-through). It should be noted that to create a 
 silent and shrouded pressure plate you must apply silent first and then shrouded.
@@ -333,33 +332,33 @@ silent and shrouded pressure plate you must apply silent first and then shrouded
 **>OpenBlocks, OpenBlocks<**
 
 >OpenPeripheral, OpenPeripheral<
-Open peripheral is an addon for ComputerCraft. It allows you to wrap a variety of items as peripherals. 
+Open peripheral is an addon for ComputerCraft. It allows you to wrap a variety of items as peripherals.~ 
 ~
-To see if an item is a valid peripheral (and to get the commands for it) do the following: 
+To see if an item is a valid peripheral (and to get the commands for it) do the following:~ 
 "side" is the side of the computer that the item to be wrapped as a peripheral is located (ex: "left", "top", etc). 
-The side should be enclosed in quotation marks. 
-p = peripheral.wrap("side") 
-print (p.listMethods()) 
+The side should be enclosed in quotation marks.~ 
+p = peripheral.wrap("side")~ 
+print (p.listMethods())~ 
 ~
 There are also some items that this mod adds, explained in the following page(s).
 ~~~
-PIM
-This item allows you to access a player's inventory (if he/she) is standing on it.
+PIM~
+This item allows you to access a player's inventory (if he/she) is standing on it.~
 ~
-Sensor
-This item allows you to scan the nearby area for information. Use listMethods() for more information.
+Sensor~
+This item allows you to scan the nearby area for information. Use listMethods() for more information.~
 ~
-Peripheral Proxy
+Peripheral Proxy~
 This item allows you to wrap certain items as peripherals through a modem. Make sure the arrows are facing the item to be 
-wrapped and the modem is on and is located on the back of the proxy.
+wrapped and the modem is on and is located on the back of the proxy.~
 ~
-Ticket Machine
-This item can be used to print out tickets for Railcraft.
+Ticket Machine~
+This item can be used to print out tickets for Railcraft.~
 ~
-Terminal Glasses/Termianl Glasses Bridge
-The glasses can be worn by a player and the information passed to the bridge will appear on the player's HUD.
+Terminal Glasses/Termianl Glasses Bridge~
+The glasses can be worn by a player and the information passed to the bridge will appear on the player's HUD.~
 ~
-Duck Antenna
+Duck Antenna~
 No idea :P
 
 **>PluginsForForestry, Plugins for Forestry<**
@@ -385,18 +384,18 @@ No idea :P
 **>StevesFactoryManager, Steve's Factory Manager<**
 
 >Thaumcraft, Thaumcraft 4<
-Thaumcraft is a magical mod that requires you to "research" its items before you can craft them.
+Thaumcraft is a magical mod that requires you to "research" its items before you can craft them.~
 ~
 There's all kinds of magical swag that you can build and play with, but it's probably best for you to 
-learn about it on your own.
+learn about it on your own.~
 ~
 To get started, craft a iron capped wooden wand, 
-place a bookshelf on the ground, and right-click your wand on it.
+place a bookshelf on the ground, and right-click your wand on it.~
 ~
-It should transform into a Thaumonomicon; the true guidebook for Thaumcraft! 
+It should transform into a Thaumonomicon; the true guidebook for Thaumcraft!~
+~
 The only thing to know that is not documented in the book is that some research will be impossible, you can throw it 
 away and restart with newly generated research notes at any time though.
-~
  
 >ThaumicTinkerer, Thaumic Tinkerer<
 Thaumic Tinkerer is an addon to Thaumcraft (a magical mod). All the information is documented in the Thaumonomicon.
@@ -438,27 +437,27 @@ you should have spawned with.
 Tinker's Mechworks is an addon for Tinkers' Construct. It adds drawbridges, an igniter, and signal busses/terminals, all 
 of which are described on the following pages.
 ~~~
-Drawbridge
+Drawbridge~
 ~
 The drawbridge can extend and retract 15 blocks in the direction it is facing. It is activated with a redstone signal. 
 The left slot is for a block that "disguises" the drawbridge to make it look like the block in the left slot. 
-The right slot is for the blocks that are to be extended/retracted. 
+The right slot is for the blocks that are to be extended/retracted.~ 
 ~
-The extended drawbridge can extend up to 64 blocks.
+The extended drawbridge can extend up to 64 blocks.~
 ~
 The advanced drawbridge can extend more than one type of block, as each block is placed in the GUI.
 ~~~
-Igniter
+Igniter~
 ~
 The igniter will light the block in front of it on fire when given a redstoen signal and will extinguish the flame when 
 the resdtone signal is turned off.
 ~~~
-Signal Bus/Terminal/Wire
+Signal Bus/Terminal/Wire~
 ~
 These items function as redstone that can travel through blocks. To get started, craft a spool of wire by surrounding a 
 stone tool rod with 8 lengths of wire in a crafting table. The spool of wire can be crafted with additional lengths of wire 
 (up to 8 at a time maximum) to give the length of wire more length. The damage bar underneath the length of wire visually 
-represents how much wire is left.
+represents how much wire is left.~
 ~
 The spool of wire (truly the wire itself) is used to connect signal terminals to signal busses and back to signal terminals. 
 To connect the two right click on the top red part of the terminal with the spool of wire and then right click on the 
@@ -467,11 +466,11 @@ you should see a small red line connecting the two. If you move your cursor away
 red line will dissapear visually. Now you can connect the second terminal to the bus, using the length of wire, to 
 complete the circuit.
 ~~~
-Signal Bus/Terminal/Wire (continued)
+Signal Bus/Terminal/Wire (continued)~
 ~
 A redstone signal can be applied to the terminal (or the block the terminal is placed upon) and the redstone signal will 
 be transmitted to the terminal at the end of the wire. A terminal can connect to multiple busses but busses cannot connect 
-to other busses.
+to other busses.~
 ~
 Right clicking the white part of a signal terminal with an open hand will change the terminal's color. Only terminals of 
 the same color will send redstone signals.
@@ -488,37 +487,37 @@ the player in the modpack.~
 Authors: wha-ha-ha, tterrag
 
 >Translocators, Translocators<
-The Translocators mod adds 2 items to the game, the translocators themselves and a crafting grid.
+The Translocators mod adds 2 items to the game, the translocators themselves and a crafting grid.~
 ~
-Translocators allow for the movement of items through a 1-block space. More info is on the following page.
+Translocators allow for the movement of items through a 1-block space. More info is on the following page.~
 ~
 The crafting grid can be accessed by pressing 'c' (configurable in keybinds) and will bring up a grid to place items in. 
 Right click to place/remove items and press 'c' again on the grid to craft the item(s).
 ~~~
-Translocators can be placed on the side of an inventory/machine/tank. There are both item and liquid translocators.
+Translocators can be placed on the side of an inventory/machine/tank. There are both item and liquid translocators.~
 ~
 Right clicking on the protruding center of the translocator with an open hand will depress the center. Items/liquids will 
-always flow from the translocator with a protruding center to the translocator(s) with an inset center.
+always flow from the translocator with a protruding center to the translocator(s) with an inset center.~
 ~
 Right clicking on the plate of the item translocator brings up a configurable filter.
 ~~~
 Adding a diamond nugget (a diamond in a crafting table gives 9) puts a translocator in regulate mode. 
 In this mode it will maintain a certain amount of items set in the filter in the inventory it’s attached to. 
 On an inserting face, it will only accept items to fill the inventory to the matching filter. 
-On an ejecting face, it will eject any items that don’t match the filter.
+On an ejecting face, it will eject any items that don’t match the filter.~
 ~
 Adding glowstone to the plate makes it transfer stacks at a time. 
-Adding redstone lets you toggle input/output with a redstone signal.
+Adding redstone lets you toggle input/output with a redstone signal.~
 ~
 Adding an iron ingot makes the translocator emit redstone signals to the attached inventory on certain conditions. 
 On an inserting face, it will emit if there is no room for any item that matches the filter. 
-On an ejecting face, it will emit if there is no place where any item can be put that matches the filter.
+On an ejecting face, it will emit if there is no place where any item can be put that matches the filter.~
 ~
 Shift-Right clicking on the plate will strip and drop all upgrades placed on the translocator.
 ~~~
-Translocators will follow these rules:
+Translocators will follow these rules:~
 ~
-Items/liquids will always travel to non-redstone outputs if they can. 
+Items/liquids will always travel to non-redstone outputs if they can.~ 
 Items/Liquids will be evenly split between available outputs. Items will be taken from the slot with the largest quantity.
 
 
@@ -526,48 +525,45 @@ Items/Liquids will be evenly split between available outputs. Items will be take
 
 >Waila, Waila<
 WAILA stands for "What Am I Looking At?" It introduces a HUD tooltip which indicates what block you are looking at. 
-It tells you the block name and what mod it is from.
+It tells you the block name and what mod it is from.~
 ~
 By adding the tooltip for the mod name in NEI you can now search "railcraft" instead of "@railcraft" to get the items 
-added by railcraft.
+added by railcraft.~
 ~
-It also adds some tooltip values for various items (ex: shows how much heat coal can produce in a firebox)
+It also adds some tooltip values for various items (ex: shows how much heat coal can produce in a firebox)~
 ~
 There are also, by default, some (numpad) keybinds that can be used
-as well: 
-1: Toggles on and off the HUD
-
-2: Toggles on and off showinq liquids
-
-3: Shows the uses for the item slected (through NEI)
-
-4: SHows how the item selected can be used (through NEI)
+as well:~ 
+1: Toggles on and off the HUD~
+2: Toggles on and off showinq liquids~
+3: Shows the uses for the item slected (through NEI)~
+4: SHows how the item selected can be used (through NEI)~
 
 
 **>Witchery, Witchery<**
 
 >WRCBE, Wireless Redstone - CBE<
 At it's core Wireless Redstone ChickenBones Edition (WR-CBE) is a very simple mod; it allows you to wirelessly transmit 
-redstone signals. It even works across dimensions!
+redstone signals. It even works across dimensions!~
 ~
 For the items besides the wireless transmitter/receiver and the wireless remote I reccomend you check out ChickenBones' 
 Minecraft Forum page. He also describes SMP permissions commands on that post. However, The items stated above (the 
 only ones you will likely use) will be explained on the following page(s).
 ~~~
-Wireless Transmitter/Receiver
+Wireless Transmitter/Receiver~
 ~
 Right click on the block to open the inventory. You can set a frequency for the redstone signal to transmit/receive from. 
-You can also access the advanced tab from here.
+You can also access the advanced tab from here.~
 ~
 In the advanced tab you will notice that you can add/remove names whick you can link to certain frequencies. This makes it 
-simple to remember what your different frequencies do and it is easy to switch back and forth between them.
+simple to remember what your different frequencies do and it is easy to switch back and forth between them.~
 ~
 On the right you will notice a GUI that says Phase shift and some arrows. This allows you to color some frequencies with 
 vanilla dyes. Note: This is purely for easy identification, it does not affect the technical properties!
 ~~~
-Extra Info:
+Extra Info:~
 ~
-The wireless remote is simply a portable wireless transmitter. It's gui can be opened by right-clicking.
+The wireless remote is simply a portable wireless transmitter. It's gui can be opened by right-clicking.~
 ~
 WR-CBE has ComputerCraft support. Wrap it as a peripheral and then use peripheral.getFreq(frequency) or 
 peripheral.setFreq(Frequency)
@@ -575,11 +571,11 @@ peripheral.setFreq(Frequency)
 
 >ZansMinimap, Zan's Minimap<
 Zan's Minimap (Voxel Map) provides the player with a convenient mini-map located in the top right hand corner of the 
-screen. It provides a variety of features.
+screen. It provides a variety of features.~
 ~
-Adds an in-game waypoint system (that can show the location of your latest death).
+Adds an in-game waypoint system (that can show the location of your latest death).~
 ~
-Adds a radar that can show a customizable number of mobs, animals, and players.
+Adds a radar that can show a customizable number of mobs, animals, and players.~
 ~
 The default key to access the menu is "M". There you can customize the look of your mini-map, configure the other keybinds 
 for the mod, change the radar/waypoints, and more.
