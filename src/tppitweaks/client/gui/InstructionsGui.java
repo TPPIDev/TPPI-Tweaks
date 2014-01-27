@@ -1,9 +1,12 @@
 package tppitweaks.client.gui;
 
+import java.awt.Component;
+import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -80,7 +83,16 @@ public class InstructionsGui extends GuiScreen
 				e.printStackTrace();
 			}
 			
-			final JFileChooser fc = new JFileChooser();
+			final JFileChooser fc = new JFileChooser() {
+				@Override
+				protected JDialog createDialog(Component parent) throws HeadlessException {
+					// intercept the dialog created by JFileChooser
+					JDialog dialog = super.createDialog(parent);
+					dialog.setModal(true);  // set modality (or setModalityType)
+					return dialog;
+				}
+			};
+
 			fc.setCurrentDirectory(FileUtils.getUserDirectory());
 			fc.showOpenDialog(new JFrame());
 			File mod = fc.getSelectedFile();
