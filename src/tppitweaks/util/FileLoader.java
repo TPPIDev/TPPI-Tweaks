@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.core.CoreTPPITweaks;
 import tppitweaks.lib.Reference;
 
 public class FileLoader

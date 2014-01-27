@@ -20,7 +20,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class UpdateGui extends GuiScreen
 {
 	protected GuiScreen parentScreen;
-	Desktop desktop;
 	private boolean noShow = true, firstTime;
 
 	List<InstructionsGui> modScreens = new ArrayList<InstructionsGui>();
@@ -45,8 +44,6 @@ public class UpdateGui extends GuiScreen
 	public UpdateGui(GuiScreen parentScreen, boolean firstTime)
 	{
 		this.parentScreen = parentScreen;
-
-		desktop = Desktop.getDesktop();
 
 		initModInstallationMenus();
 

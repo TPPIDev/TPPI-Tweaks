@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 
+import tppitweaks.util.DesktopApi;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -52,7 +53,7 @@ public class InstructionsGui extends GuiScreen
 		switch(button.id) {
 			case 11:
 			try {
-				Desktop.getDesktop().browse(new URI(mod.link));
+				DesktopApi.browse(new URI(mod.link));
 			} catch (Exception e1) {
 				System.err.println("Failed to reach "+mod.name+"'s download page!");
 				e1.printStackTrace();
@@ -61,13 +62,8 @@ public class InstructionsGui extends GuiScreen
 				
 			case 12:
 				File mods = new File(Minecraft.getMinecraft().mcDataDir, "mods");
-			    try {
-			    	Desktop.getDesktop().open(mods);
-				} catch (IOException e) {
-					System.err.println("Minecraft mods folder not found!");
-					e.printStackTrace();
-				}
-			    break;			    
+			    DesktopApi.open(mods);
+				break;			    
 			default:
 				GuiHelper.updateGui.actionPerformed(button);
 		}
