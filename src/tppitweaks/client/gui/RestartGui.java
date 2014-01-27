@@ -1,5 +1,8 @@
 package tppitweaks.client.gui;
 
+import java.util.logging.Level;
+
+import tppitweaks.TPPITweaks;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -33,7 +36,7 @@ public class RestartGui extends GuiScreen
 		}
 		else
 		{
-			System.out.println("Mod installations finished! Restart minecraft for your changes to take effect.");
+			TPPITweaks.logger.log(Level.INFO, "Mod installations finished! Restart minecraft for your changes to take effect.");
 			this.mc.displayGuiScreen(null);
 		}
 	}

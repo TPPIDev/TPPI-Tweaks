@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -102,7 +103,7 @@ public class CommandTPPI extends CommandBase
 			if (astring[0].equalsIgnoreCase("download"))
 			{
 				if (!processCommandDownload(icommandsender, astring))
-					System.err.println("Invalid Player");
+					TPPITweaks.logger.log(Level.SEVERE, "Invalid Player");
 			}
 			else if (astring[0].equalsIgnoreCase("mods"))
 			{

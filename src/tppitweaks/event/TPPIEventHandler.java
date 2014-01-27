@@ -146,7 +146,7 @@ public class TPPIEventHandler
 		EntityPlayer entityPlayer;
 		if (event.entityLiving instanceof EntityPlayer)
 		{
-			System.out.println("getting NBT");
+			TPPITweaks.logger.log(Level.INFO, "getting NBT");
 			entityPlayer = (EntityPlayer) event.entityLiving;
 
 			NBTValOnDeath = entityPlayer.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook");

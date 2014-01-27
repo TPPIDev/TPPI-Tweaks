@@ -1,5 +1,7 @@
 package tppitweaks.util;
 
+import java.util.logging.Level;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import tppitweaks.TPPITweaks;
@@ -32,7 +34,7 @@ public class TPPIPlayerTracker implements IPlayerTracker
 	@Override
 	public void onPlayerRespawn(EntityPlayer player)
 	{
-		System.out.println("adding NBT: " + TPPIEventHandler.NBTValOnDeath);
+		TPPITweaks.logger.log(Level.INFO, "adding NBT: " + TPPIEventHandler.NBTValOnDeath);
 		player.getEntityData().setTag("TPPI", TPPITweaks.eventHandler.getTag(player, true));
 		
 		addBook(player);
@@ -42,7 +44,7 @@ public class TPPIPlayerTracker implements IPlayerTracker
 	{
 		if (player != null && !player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook") && FMLCommonHandler.instance().getEffectiveSide().isServer())
 		{
-			System.out.println("adding book");
+			TPPITweaks.logger.log(Level.INFO, "Adding book");
 
 			player.getEntityData().setTag("TPPI", TPPITweaks.eventHandler.getTag(player, false));
 			

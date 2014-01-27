@@ -23,7 +23,7 @@ public class Unzipper
 	{
 		if(file.isDirectory())
 		{
-			if(file.list().length==0)
+			if(file.list().length == 0)
 			{
 				file.delete();
 			}

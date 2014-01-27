@@ -5,6 +5,7 @@ import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.logging.Level;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -16,6 +17,7 @@ import net.minecraft.client.gui.GuiScreen;
 
 import org.apache.commons.io.FileUtils;
 
+import tppitweaks.TPPITweaks;
 import tppitweaks.lib.Reference;
 import tppitweaks.util.DesktopApi;
 import cpw.mods.fml.relauncher.Side;
@@ -68,7 +70,7 @@ public class InstructionsGui extends GuiScreen
 			}
 			catch (Exception e1)
 			{
-				System.err.println("Failed to reach " + mod.name + "'s download page!");
+				TPPITweaks.logger.log(Level.SEVERE, "Failed to reach " + mod.name + "'s download page!");
 				e1.printStackTrace();
 			}
 			break;
@@ -83,6 +85,7 @@ public class InstructionsGui extends GuiScreen
 				e.printStackTrace();
 			}
 			
+			@SuppressWarnings("serial")
 			final JFileChooser fc = new JFileChooser() {
 				@Override
 				protected JDialog createDialog(Component parent) throws HeadlessException {

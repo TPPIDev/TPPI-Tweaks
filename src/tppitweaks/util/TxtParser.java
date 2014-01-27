@@ -3,7 +3,9 @@ package tppitweaks.util;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
 
+import tppitweaks.TPPITweaks;
 import tppitweaks.command.CommandTPPI;
 
 /**
@@ -56,7 +58,7 @@ public class TxtParser
 						}
 					}
 					else
-						System.err.println("TPPI - Invalid line-skip in changelog. This may not work as intended");
+						TPPITweaks.logger.log(Level.WARNING, "TPPI - Invalid line-skip in changelog. This may not work as intended");
 				}
 				// Finally, do not add this to the page
 				continue;
@@ -181,7 +183,7 @@ public class TxtParser
 						}
 					}
 					else
-						System.err.println("TPPI - Invalid line-skip in changelog. This may not work as intended");
+						TPPITweaks.logger.log(Level.WARNING, "TPPI - Invalid line-skip in changelog. This may not work as intended");
 				}
 
 				// Finally, do not add this to the page

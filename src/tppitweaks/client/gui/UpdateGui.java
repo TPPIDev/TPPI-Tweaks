@@ -5,11 +5,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
 import org.lwjgl.input.Keyboard;
+
+import tppitweaks.TPPITweaks;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
@@ -120,7 +123,7 @@ public class UpdateGui extends GuiScreen
 				}
 				catch (Exception e)
 				{
-					System.err.println("Error opening webpage, please contact TPPI Team.");
+					TPPITweaks.logger.log(Level.SEVERE, "Error opening webpage, please contact TPPI Team.");
 					e.printStackTrace();
 				}
 			}
