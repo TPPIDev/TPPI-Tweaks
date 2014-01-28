@@ -220,19 +220,68 @@ Finally, there are additional chisel-able blocks that this mod adds. They can be
 
 **>ComputerCraft, ComputerCraft<**
 
-**>DamageIndicators, Damge Indicators<**
+>DamageIndicators, Damge Indicators<
+Damage indicators is a small mod that adds a HUD displaying the health of the entity the player is looking at.~
+~
+Additionally, you can adjust the settings by pressing "."
+
 
 **>DartCraft, DartCraft<**
 
-**>DimensionalAnchors, Dimensional Anchors<**
+>DimensionalAnchors, Dimensional Anchors<
+This mod adds in only one block, the dimesional anchor. This block loads chunks (16x16 squares) for the player to make
+automation possible even if the player is absent.~
+~
+To open the GUI right click the block. The red arrow will decrease the number of loaded chunks while the green arrow will
+increase them.
 
-**>EmasherResource, Emashers Resource<**
+**>EmasherResource, Emashers Resource<
+Emasher Resource adds various ores and items to the game. It is meant to be an inclusion to the mod Engineer's Toolbox.
+Emasher Resource includes algae, hemp, limestone, red sandstone, and emery ore.~
+~
+Algae can be harvested by hand and when "planted" in water it will spead to every nearby water source block. It can also
+be harvested and burned in a photobioreactor to create hydrogen to be burned as an energy source.~
+~
+Hemp can be used for armor, string, paper, cactus green, and hemp seeds. The seeds can be crafted into hemp seed oil
+which can be used as a fuel.~
+~
+Limestone can be used to make quicklime which is used in Engineer's Toolbox's ore processing.~
+~
+Emery ore is simply used to make the grinder (Engineer's Toolbox). It is about as rare as diamonds.~
+~
+Red Sandstone is aesthetic?
 
 **>EnderIO, EnderIO<**
 
-**>EnderProspecting, Ender Prospecting<**
+>EnderProspecting, Ender Prospecting<
+Ender Prospecting adds a couple items to assist with manual mining. They are the Eye of Prospecting, the Talisman  
+of Prospecting, and the Totem of Prospecting.~
+~
+The Eye of prospecting can be crafted alongside any ore and will then be "tuned" to this ore. The next time you right 
+click the eye it will fly away from you, much liek an eye of ender, except it will fly toward the tuned ore. It will 
+then break, this item is one-time-use.~
+~
+The (Base) Talisman of Prospecting can be crafted with 5 tuned eyes to yield a tuned Talisman. It acts similarly to the 
+Eye, except it is reusable and has a smaller range. Every time the Talisman is right clicked it will indicate a direction 
+that the tuned or is.~
+~
+The Totem of Prospecting can be crafted/tuned similarly to the Talisman. It doesn't require being right clicked, but it 
+has an even smaller range and doesn't indicate a direction, only that the ore is in close proximity.
 
-**>EnderStorage, Ender Storage<**
+
+>EnderStorage, Ender Storage<
+Ender Storage adds the Ender chest, the ender tank and the ender pouch. Each chest/pounch and tank will link to each other
+assuming they are on the same "frequency" (indicated by the wool pads on top). The pads can be colored with each dye,
+either in-game by clicking on the pads with a dye in hand, or by crafting the item below the dye frequency in a crafting
+table.~
+~
+Ender pouches are merely a portable form of ender chests and can be linked to ender chests if they share the same frequency. 
+If you lose an ender item with item(s)/liquid(s) stored in it, they will remain stored in the chest with the frequency
+they were stored in.~
+~
+If you place a diamond in the latch of an ender chest it will become linked to the player that placed the placed the 
+diamond, meaning that each player in a SMP server can have access to all 4096 frequencies.
+
 
 **>EngineersToolbox, Engineer's Toolbox<**
 
@@ -242,17 +291,93 @@ Finally, there are additional chisel-able blocks that this mod adds. They can be
 
 **>ExtraTrees, Extra Trees<**
 
-**>ExtraUtilities, Extra Utilities<**
+>ExtraUtilities, Extra Utilities<
+Extra Utilities adds a bunch of useful blocks. It even adds it's own in game-documentation! Simply press use ("u") while 
+in NEI while hovering over an extra utilities block to see a description of the block.
 
 **>Factorization, Factorization<**
 
-**>FlatSigns, FlatSigns<**
+>FlatSigns, FlatSigns<
+Flat signs alters existing signs in Minecraft by allowing flat versions of signs to be placed on the floor or the ceiling 
+by shift right clicking a sign on the floor/ceiling.~
+~
+It also allows for signs to be edited by using a sponge or the more durable sponge wipe. To craft a sponge just throw yellow 
+wool in to water ot on the ground while it is raining.
 
 **>Forestry, Forestry<**
 
 **>GasCraft, GasCraft<**
 
-**>Gendustry, Gendustry<**
+>Gendustry, Gendustry<
+Gendustry is a mod that acts as an add-on for Forestry's bee and tree (and butterfly) breeding systems. It adds a number 
+of blocks that will be discussed on the following page(s).~
+~
+Each block can accept EU, MJ, or RF. All blocks can input/output from any side.
+~~~
+The Industrial Apiary~
+~
+This block requires 2 MJ/t to operate, has 4 slots for upgrades (but doesn't support frames), and also doesn't have the 
+90% production reduction of normal apiaries.~
+~
+The gague on the left is for power storage. The left slots are for a Queen/Princess and Drones, the middle 4 slots are for 
+upgrades, and the right 9 slots are for products and offspring.~
+~
+You can hover over the status icon (in the top right) to see more information about the block.~
+~
+Bees can be inserted and products can be extracted from any side. Upgrades cannot be automated, but the automation upgrade 
+will automatically move offspring back into the left slot to continue breeding~
+~
+The upgrades for gendustry are described by hovering over them in NEI.
+~~~
+The Mutagen Producer~
+~
+This item will convert solid items into Mutagen (a liquid used to mutate bees/trees in the Mutatron).~
+~
+Items can be inserted into any side, and liquids will be automatically ejected to any adjacent pipe or tank.~
+~
+The items that are used as valid fuel sources are, in decreasing order of effectiveness, uranium, glowstone, and then 
+redstone. CLick on the recipes bar in the machine to see the detailed values for each item (power needed, mutagen produced).
+~~~
+The Mutatron/Advanced Mutatron~
+~
+The Muatron consumes Mutagen to force mutations. It requires 1 bucket of mutagen (1000mb), 20,000 MJ per operation, and 
+a labware.~
+~
+The gauges on the left are for internal power and mutagen storage. For bees, princesses go in the top slot and 
+drones go in the bottom slot. For trees, saplings go in the top slot and pollen goes in the bottom slot. If a bee is 
+being mutated, the resulting bee will be a pure-bred bee. Ignoble bees have a 10% chance of not surviving the process.~
+~
+Bees and labware can be inserted from any side and results can be extracted from any side.~
+~
+The advanced mutatron allows a selection of mutation if there are multiple possible results. It can work twice as fast if 
+the energy supply is adequate.
+~~~
+The Genetic Sampler/Imprinter~
+~
+Takes genetic samples from Bees, Trees, or even Butterflies, randomly selecting one genetic trait from the input and killing 
+the sampled creature in the process. It can also convert Extra-Bees serums into gendustry samples~
+~
+It consumes labware (top right) and blank samples (top left), as well as 20,000 MJ per operation.~
+~
+To use the samples, craft them with a template (shapeless receipe, any number of samples can be added at once). Every chromosome 
+(ex: fertility, species, etc.) can only be added once to a template, any additions will overwrite previous samples. All 
+samples must belong to the same species (ex: no using tree species on a bee). Unneeded templates/samples can be cleaned 
+by applying heat (ex: putting them in a furnace).~
+~
+The implanter replaces the traits of the input bee with the traits on the template (top left slot).~
+~
+It 80,000 MJ and a labware (top right slot) per operation. The template will not be consumed (or altered). Ignoble bees 
+have a 10% chance to not survive the process.~
+~
+The template can be removed form any side, but only when no imprinting is ongoing and the input slot is empty.
+~~~
+The Industrial Grafter~
+~
+Acts as a powered Forestry grafter, that is very fast but also comsumes a lot of power.~
+~
+It can be charged in any machine that will charge MJ, RF, or tier 2 or higher EU (ex: capacitor bank, energetic infuser,
+MFE).
+
 
 >GregTech, GregTech<
 <gregtechcommunitywiki.wikispaces.com>
@@ -264,9 +389,17 @@ Finally, there are additional chisel-able blocks that this mod adds. They can be
 
 **>HardcoreEnderExpansion, Hardcore Ender Expansion<**
 
-**>Hats, Hats<**
+>ImmibisMicroblocks, Immibis Microblocks<
+Immibis Microblocks (along with Forge Multipart) creates the ability to cut down blocks into parts. This allows multiple 
+parts of blocks to exist in the same 1-block space, which wouldn't otherwise be possible. For example, torches are now 
+multiparts and so 2 of them can exist on the same intersection of a two walls. As another example, Thermal Expansion 
+pipes/conduits are multiparts, so a cover can be placed on them to "hide" the wiring while still retaining the 
+aesthetics of your house.~
+~
+To create multiparts simply craft a saw and then follow the NEI instructions to creaft your desired shape/size!~
+~
+Note: A large number of microblocks may cause lag. As long as you don't go beserk with them you should be fine though.
 
-**>ImmibisMicroblocks, Immibis Microblocks<**
 
 **>IndustrialCraft, IndustrialCraft (Experimental)<**
 
@@ -301,19 +434,70 @@ Authors: Powercrystals, skyboy026
 
 **>ModularPowersuits, Modular Powersuits<**
 
-**>Morph, Morph<**
+>Morph, Morph<
+Morph is a mod that allows you to take on the characteristics (shape/size/ability(s)) of any creature you kill (except 
+bosses, although that is a config option).~
+~
+The flight ability is not able to be used until you reach the Nether, and do note that you will lose your morphs on death.~
+~
+To access your morphs, press "[" or "]", and then scroll down. Press "Enter" to select your morph.~
+~
+Morph also has a wheel for your favorite morphs, accessed by pressing "~"/"`". To add a morph to your favorites, press 
+the same key, "~", while selecting the desired morph in the menu.
 
-**>MPSA, Modular Powersuits Addons
+**>MPSA, Modular Powersuits Addons<**
 
 **>MystCraft, MystCraft<**
 
-**>Natura, Natura<**
+>Natura, Natura<
+Natura adds world-generation, mainly in the form of some additional trees and some new blocks.~ 
+~
+The most notable are the berry bushes. These are found in the wild and will grow up and out and will produce berries 
+that can be harvested by right clicking on the bush. The berries don't fill your hunger very much, but they will 
+increase your saturation (a hidden value that determines when you will become hungry again), and you can even eat the 
+berries when full to max out your saturation.~
+~
+This mod also adds in generation to the Nether, allowing you to make bows that have a higher durability than vanilla ones.~
+~
+This mod also adds in cotton plants. These will grow until white balls appear on the plant, then can be harvested and will 
+revert to an earlier stage of growth rather than having to be replanted.~
+Finally, wheat/barley (wild form of wheat) can be crafted shapelessly into flour, which can then be smelted into bread.
 
-**>NEI, Not Enough Items<**
+>NEI, Not Enough Items<
+Not Enough Items (or NEI for short) adds the menu you see on your screen when opening your (or any) inventory. It is primarilly 
+used to show how to craft items and what items are used for. It can be disabled/hidden by pressing "o".~
+~
+To use NEI, hover over an item in the menu and press "r" for recipe to bring up how to make that item or press "u" for 
+use or what that item is used for. You will notice you also have a search bar on the bottom slot of your screen. This 
+can be used to limit the results shown on the right hand side tab. Double clicking the search bar will highlight results 
+that match whatever is typed into the search bar. Double clicking it agin will reset it.~
+~
+The left hand side of your screen contains saves, you can store your inventory in this save, and then loading it will 
+replace your inventory with the saved one (if cheat mode is enabled). In the top left you will see many options. Most 
+are self-explanatory, but the one you will likely use the most is next to the magnet; it will change your game mode.~
+~~~
+Options/NEI Modes~
+~
+At the bottom left you will see "options". Clicking on that will bring you to another menu screen. The most useful one 
+is the topmost one, "Inventory". There you can change between "recipe mode", "cheat mode", and "utility mode". Utility 
+mode will let you use the utilities in-game. Recipe mode will, when you left click an item on the main NEI panel, do the 
+same thing as pressing "r", while right clicking will do the same thing as pressing "u". Cheat mode will allow you to 
+obtain any number of items from the main NEI panel by clicking on them. Left clicking will give you 64 (a stack) of items, 
+while right clicking will give you one of the selected item. While in cheat mode you can drag items to the right hand 
+panel to delete them.
+~~~
+Tips/Tricks~
+~
+Type in "@modnamehere" to see all the items from a specific mod.~
+You can right click the search bar to instantly clear it!
 
-**>NetherOres, Nether Ores<**
+>NetherOres, Nether Ores<
+Nether ores adds ore generation to the Nether. These ores have a higher yield than their overworld counterparts, but 
+they also have a propesity to explode, so caution is necessary.
 
-**>NotEnoughKeys, Not Enough Keys<**
+>NotEnoughKeys, Not Enough Keys<
+This mod adds a key-binding menu so it is more simple to navigat through the mess of conflicting keybinds. To access it 
+simply go into options -> controls and then modify as you see fit.
 
 **>NuclearControl, Nuclear Control<**
 
@@ -361,7 +545,9 @@ The glasses can be worn by a player and the information passed to the bridge wil
 Duck Antenna~
 No idea :P
 
-**>PluginsForForestry, Plugins for Forestry<**
+>PluginsForForestry, Plugins for Forestry<
+Plugins for forestry adds compatability between forestry and other mods. It adds the ability to use sugar and cactus in 
+a coke oven (railcraft) to make sugar/coal charcoal/coke for power.
 
 **>PortalGun, Portal Gun<**
 
@@ -371,7 +557,8 @@ No idea :P
 
 **>Railcraft, Railcraft<**
 
-**>RCDusts, RCDusts<**
+>RCDusts, RCDusts<
+This mod adds more dusts to improve cross-mod compatibility.
 
 **>RedstoneArsenal, Redstone Arsenal<**
 
