@@ -224,17 +224,21 @@ public class CommandTPPI extends CommandBase
 	private void listMods(ICommandSender icommandsender)
 	{
 		String s = "";
-
+		String total = "";
+		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText("Listing mods:\n"));
 		for (int i = 1; i < supportedModsAndList.size(); i++)
 		{
 			s += supportedModsAndList.get(i);
 			if (i < supportedModsAndList.size() - 1)
 				s += ", ";
-			if (i % 4 == 0)
-				s += "\n";
+			if (s.length() > 40)
+			{
+				total += s + "\n";
+				s = "";
+			}
 		}
 
-		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(s));
+		icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(total));
 	}
 
 	private void giveModBook(String modName, ICommandSender command)

@@ -86,7 +86,7 @@ public class InstructionsGui extends GuiScreen
 			}
 			
 			@SuppressWarnings("serial")
-			final JFileChooser fc = new JFileChooser() {
+			JFileChooser fc = new JFileChooser() {
 				@Override
 				protected JDialog createDialog(Component parent) throws HeadlessException {
 					// intercept the dialog created by JFileChooser
