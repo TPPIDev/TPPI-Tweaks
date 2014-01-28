@@ -558,7 +558,9 @@ a coke oven (railcraft) to make sugar/coal charcoal/coke for power.
 **>Railcraft, Railcraft<**
 
 >RCDusts, RCDusts<
-This mod adds more dusts to improve cross-mod compatibility.
+This mod adds metal dusts and recipes to the Railcraft rock crusher to 
+make it a fully capable ore processing machine, as well as adding several 
+tweaks for compatibility and some useful dust and railcraft-related configuration options.
 
 **>RedstoneArsenal, Redstone Arsenal<**
 
