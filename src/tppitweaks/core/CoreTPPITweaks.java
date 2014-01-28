@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import tppitweaks.TPPITweaks;
 import tppitweaks.lib.Reference;
@@ -36,6 +37,8 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 	@Override
 	public void injectData(Map<String, Object> data) {
 		
+		Logger coreLogger = Logger.getLogger("TPPITweaksCore"); 
+		
 		File mcDir = (File) data.get("mcLocation");
 		File modsDir = null;
 		
@@ -63,11 +66,11 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin {
 			FileLoader.getThaumicTinkererFilenameState();
 			
 			if (!thaumcraft.exists()) {
-				TPPITweaks.logger.log(Level.INFO, "TPPITweaks failed to locate Thaumcraft. Disabling Thaumic Tinkerer.");
+				coreLogger.log(Level.INFO, "TPPITweaks failed to locate Thaumcraft. Disabling Thaumic Tinkerer.");
 				FileLoader.disableTT();
-				TPPITweaks.logger.log(Level.INFO, "Thaumic Tinkerer Disabled.");
+				coreLogger.log(Level.INFO, "Thaumic Tinkerer Disabled.");
 			}else {
-				TPPITweaks.logger.log(Level.INFO, "TPPITweaks found Thaumcraft! Enabling Thaumic Tinkerer and addons if needed.");
+				coreLogger.log(Level.INFO, "TPPITweaks found Thaumcraft! Enabling Thaumic Tinkerer and addons if needed.");
 				FileLoader.enableTT();
 			}
 		}

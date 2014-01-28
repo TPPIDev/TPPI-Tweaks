@@ -91,7 +91,7 @@ public class InstructionsGui extends GuiScreen
 				protected JDialog createDialog(Component parent) throws HeadlessException {
 					// intercept the dialog created by JFileChooser
 					JDialog dialog = super.createDialog(parent);
-					dialog.setModal(true);  // set modality (or setModalityType)
+					dialog.setModal(true);
 					dialog.setAlwaysOnTop(true);
 					return dialog;
 				}
