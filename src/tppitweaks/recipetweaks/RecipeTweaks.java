@@ -41,7 +41,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakExU;
 	private static boolean okayToTweakMPSA;
 
-	public static void doPreliminaryPreparations() {
+	public static void doPostInitRecipeTweaks() {
 		
 		recipesInitialized = false;
 		
@@ -62,15 +62,19 @@ public class RecipeTweaks
 		if (okayToTweakMagicalCrops)
 			MagicropsTweaks.registerOres();
 		
+		removeSomeRecipes();
+		addRevisedRecipes();
+		
 	}
 	
-	public static void doVanillaRecipeTweaks()
+	public static void doPlayerJoinRecipeTweaks()
 	{
 		if(!recipesInitialized) {
-			removeSomeRecipes();
-			addRevisedRecipes();
+			if (okayToTweakGT) {
+				GregtechTweaks.addRecipes();
+			}
 			recipesInitialized = true;
-		}	
+		}
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -145,9 +149,6 @@ public class RecipeTweaks
 	{
 		try
 		{
-			if(GregtechTweaks.paperRecipeCheck(r)) {
-				return true;
-			}
 			ItemStack output = r.getRecipeOutput();
 			HashSet<Integer> validMetas = TweakerBase.getDamageValuesToRemove(output.itemID);
 			return validMetas.contains(-1) || validMetas.contains(output.getItemDamage());
@@ -182,9 +183,6 @@ public class RecipeTweaks
 		if (okayToTweakMPSA)
 			MPSATweaks.addRecipes();
 		
-		if (okayToTweakGT) {
-			GregtechTweaks.addRecipes();
-		}
 	}
 
 	/**

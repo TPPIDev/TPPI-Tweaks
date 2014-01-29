@@ -1,9 +1,11 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import java.util.HashSet;
+import java.util.ListIterator;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
@@ -72,27 +74,12 @@ public class GregtechTweaks
 	
 	public static void addRecipes() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
-			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"###", '#', Item.reed});
+			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
+			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
 		}
 		if(ConfigurationHandler.readdResinSmelting) {
 			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
 		}
 	}
-	
-	public static boolean paperRecipeCheck(IRecipe recipe) {
-		if(!ConfigurationHandler.unnerfPaperRecipe) {
-			return false;
-		}
-		
-		boolean isVanillaPaperRecipe = false;
-		ShapedRecipes shapedRecipe = (ShapedRecipes) recipe;
-		ItemStack[] ins = shapedRecipe.recipeItems;
-		if (ins.length == 3) {
-			if(recipe.getRecipeOutput().itemID == Item.paper.itemID && ins[0].itemID == Item.reed.itemID && ins[1].itemID == Item.reed.itemID && ins[2].itemID == Item.reed.itemID) {
-				isVanillaPaperRecipe = true;
-			}
-		}
-		
-		return isVanillaPaperRecipe;
-	}
+
 }
