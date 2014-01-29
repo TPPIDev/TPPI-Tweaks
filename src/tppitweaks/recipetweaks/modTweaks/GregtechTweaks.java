@@ -72,7 +72,8 @@ public class GregtechTweaks
 	
 	public static void addRecipes() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
-			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"###", '#', Item.reed});
+			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
+			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
 		}
 		if(ConfigurationHandler.readdResinSmelting) {
 			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
