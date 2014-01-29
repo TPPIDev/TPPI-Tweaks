@@ -28,6 +28,7 @@ public class InstructionsGui extends GuiScreen
 {
 
 	ModDownload mod;
+	boolean hasOpened = false;
 
 	public InstructionsGui(ModDownload modDownload)
 	{
@@ -76,43 +77,49 @@ public class InstructionsGui extends GuiScreen
 			break;
 
 		case 12:
-			try
+			if (!hasOpened)
 			{
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-			
-			@SuppressWarnings("serial")
-			JFileChooser fc = new JFileChooser() {
-				@Override
-				protected JDialog createDialog(Component parent) throws HeadlessException {
-					// intercept the dialog created by JFileChooser
-					JDialog dialog = super.createDialog(parent);
-					dialog.setModal(true);
-					dialog.setAlwaysOnTop(true);
-					return dialog;
+				try
+				{
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 				}
-			};
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 
-			fc.setCurrentDirectory(FileUtils.getUserDirectory());
-			fc.showOpenDialog(new JFrame());
-			File mod = fc.getSelectedFile();
-			try
-			{
-				if (mod != null)
-					FileUtils.moveFile(mod, new File(Reference.modsFolder.getCanonicalPath() + "/" + mod.getName()));
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+				@SuppressWarnings("serial")
+				JFileChooser fc = new JFileChooser()
+				{
+					@Override
+					protected JDialog createDialog(Component parent) throws HeadlessException
+					{
+						// intercept the dialog created by JFileChooser
+						JDialog dialog = super.createDialog(parent);
+						dialog.setModal(true);
+						dialog.setAlwaysOnTop(true);
+						return dialog;
+					}
+				};
 
+				fc.setCurrentDirectory(FileUtils.getUserDirectory());
+				fc.showOpenDialog(new JFrame());
+				File mod = fc.getSelectedFile();
+				try
+				{
+					if (mod != null)
+						FileUtils.moveFile(mod, new File(Reference.modsFolder.getCanonicalPath() + "/" + mod.getName()));
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				hasOpened = true;
+			}
 			break;
 
 		default:
+			hasOpened = false;
 			GuiHelper.updateGui.actionPerformed(button);
 		}
 

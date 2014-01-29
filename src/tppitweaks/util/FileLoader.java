@@ -94,6 +94,7 @@ public class FileLoader
 	public static void disableTT()
 	{
 		for(File f : getTT()) {
+			System.out.println("Disabling: " + f.getName());
 			if(!f.getName().contains(EXTENSION)) {
 				f.renameTo(new File(f.getAbsolutePath() + EXTENSION));
 			}
@@ -116,11 +117,13 @@ public class FileLoader
 		File modJar;
 		
 		modJar = new File(Reference.modsFolder, Reference.TTFilename);
+		System.out.println("TT Exists? " + modJar.exists());
 		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}
 				
 		modJar = new File(Reference.modsFolder, Reference.KAMIFilename);
+		System.out.println("KAMI Exists? " + modJar.exists());
 		if(modJar.exists()) {
 			thaumicTinkererFiles.add(modJar);
 		}

@@ -33,7 +33,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
 public class TPPITweaks {
 
-	public static final String VERSION = "0.7.0b";
+	public static final String VERSION = "0.7.1c";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
