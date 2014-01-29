@@ -81,34 +81,5 @@ public class GregtechTweaks
 			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
 		}
 	}
-	
-	private static boolean paperRecipeCheck(IRecipe recipe) {
-		if(!ConfigurationHandler.unnerfPaperRecipe) {
-			return false;
-		}
-		
-		boolean isVanillaPaperRecipe = false;
-		ShapedRecipes shapedRecipe = (ShapedRecipes) recipe;
-		ItemStack[] ins = shapedRecipe.recipeItems;
-		if (ins.length == 3) {
-			if(recipe.getRecipeOutput().itemID == Item.paper.itemID && ins[0].itemID == Item.reed.itemID && ins[1].itemID == Item.reed.itemID && ins[2].itemID == Item.reed.itemID) {
-				isVanillaPaperRecipe = true;
-			}
-		}
-		
-		return isVanillaPaperRecipe;
-	}
-	
-	public static void removeRecipesLate() {
-		ListIterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().listIterator();
-		while (iterator.hasNext())
-		{
-			IRecipe r = iterator.next();
-			if (paperRecipeCheck(r))
-			{
-				iterator.remove();
-			}
-		}
-	}
 
 }

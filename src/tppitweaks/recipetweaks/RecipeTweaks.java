@@ -71,7 +71,6 @@ public class RecipeTweaks
 	{
 		if(!recipesInitialized) {
 			if (okayToTweakGT) {
-				GregtechTweaks.removeRecipesLate();
 				GregtechTweaks.addRecipes();
 			}
 			recipesInitialized = true;
