@@ -176,5 +176,4 @@ public class RecipeTweaks
 			OreDictionary.registerOre("dustAluminum", s);
 		}
 	}
-	
 }
