@@ -180,7 +180,7 @@ public class TPPIEventHandler
 	
 	@ForgeSubscribe
 	public void onPlayerJoin(EntityJoinWorldEvent event) {
-		RecipeTweaks.doVanillaRecipeTweaks();
+		RecipeTweaks.doPlayerJoinRecipeTweaks();
 	}
 	
 }

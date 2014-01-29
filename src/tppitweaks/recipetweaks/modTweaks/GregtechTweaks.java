@@ -1,9 +1,11 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import java.util.HashSet;
+import java.util.ListIterator;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
@@ -80,7 +82,7 @@ public class GregtechTweaks
 		}
 	}
 	
-	public static boolean paperRecipeCheck(IRecipe recipe) {
+	private static boolean paperRecipeCheck(IRecipe recipe) {
 		if(!ConfigurationHandler.unnerfPaperRecipe) {
 			return false;
 		}
@@ -96,4 +98,17 @@ public class GregtechTweaks
 		
 		return isVanillaPaperRecipe;
 	}
+	
+	public static void removeRecipesLate() {
+		ListIterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().listIterator();
+		while (iterator.hasNext())
+		{
+			IRecipe r = iterator.next();
+			if (paperRecipeCheck(r))
+			{
+				iterator.remove();
+			}
+		}
+	}
+
 }
