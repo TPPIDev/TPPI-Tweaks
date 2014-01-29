@@ -16,6 +16,7 @@ import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 
 import com.google.common.collect.ImmutableList;
@@ -38,7 +39,10 @@ public class TPPIEventHandler
 	{
 		if (event.gui instanceof GuiMainMenu)
 		{
-			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI || true)
+			
+			RecipeTweaks.doVanillaRecipeTweaks();
+			
+			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI)
 			{
 				event.gui = new UpdateGui(event.gui, true);
 				GuiHelper.updateGui = (UpdateGui) event.gui;

@@ -18,16 +18,14 @@ public class MPSATweaks
 		magnet = andrew.powersuits.common.AddonComponent.magnet;
 		computerChip = andrew.powersuits.common.AddonComponent.computerChip;
 		
-		removeRecipes();
+		//removeRecipes();
 		
-		/*
 		TweakerBase.markItemForRecipeRemoval(solarPanel.itemID, 17);
 		TweakerBase.markItemForRecipeRemoval(magnet.itemID, 18);
 		TweakerBase.markItemForRecipeRemoval(computerChip.itemID, 19);
-		*/
 	}
 	
-	@SuppressWarnings("unchecked")
+	/*@SuppressWarnings("unchecked")
 	private static void removeRecipes()
 	{
 		Iterator<IRecipe> iter = CraftingManager.getInstance().getRecipeList().listIterator();
@@ -51,7 +49,7 @@ public class MPSATweaks
 				return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public static void addRecipes()
 	{

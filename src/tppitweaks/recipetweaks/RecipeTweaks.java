@@ -1,5 +1,6 @@
 package tppitweaks.recipetweaks;
 
+import java.util.HashSet;
 import java.util.ListIterator;
 
 import net.minecraft.item.ItemStack;
@@ -37,19 +38,33 @@ public class RecipeTweaks
 	private static boolean okayToTweakExU;
 	private static boolean okayToTweakMPSA;
 
-	public static void doRecipeTweaks()
-	{
-
+	public static void doPostInitRecipeTweaks() {
+		
 		checkWhatWeCanTweak();
-		initRemovableRecipesMap();
-		removeSomeRecipes();
-		addRevisedRecipes();
 		
 		if (okayToTweakGT)
 			GregtechTweaks.doStuff();
 		
 		if (okayToTweakExU)
 			ExUTweaks.fixRecipes();
+		
+		doOreDictTweaks();
+
+		if (okayToTweakIC2)
+			IC2Tweaks.registerOres();
+		
+		if (okayToTweakMagicalCrops)
+			MagicropsTweaks.registerOres();
+		
+	}
+	
+	public static void doVanillaRecipeTweaks()
+	{
+
+		initRemovableRecipesMap();
+		removeSomeRecipes();
+		addRevisedRecipes();
+		
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -125,8 +140,8 @@ public class RecipeTweaks
 		try
 		{
 			ItemStack output = r.getRecipeOutput();
-			int removeableValueTest = TweakerBase.getDamageValueToRemove(output.itemID);
-			return removeableValueTest == -1 || removeableValueTest == output.getItemDamage();
+			HashSet<Integer> validMetas = TweakerBase.getDamageValuesToRemove(output.itemID);
+			return validMetas.contains(-1) || validMetas.contains(output.getItemDamage());
 		}
 		catch (Throwable e)
 		{
@@ -136,13 +151,6 @@ public class RecipeTweaks
 
 	private static void addRevisedRecipes()
 	{
-		doOreDictTweaks();
-
-		if (okayToTweakIC2)
-			IC2Tweaks.registerOres();
-		
-		if (okayToTweakMagicalCrops)
-			MagicropsTweaks.registerOres();
 		
 		if (okayToTweakEnderStorage)
 			EnderStorageTweaks.addRecipes();
