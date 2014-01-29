@@ -90,7 +90,7 @@ public class TPPITweaks {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		RecipeTweaks.doPostInitRecipeTweaks();
+		RecipeTweaks.doPreliminaryPreparations();
 	}
 
 	@EventHandler

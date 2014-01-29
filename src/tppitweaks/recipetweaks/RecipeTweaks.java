@@ -25,11 +25,14 @@ import cpw.mods.fml.common.Loader;
 
 public class RecipeTweaks
 {
+	
+	private static boolean recipesInitialized;
+	
 	private static boolean okayToTweakIC2;
 	private static boolean okayToTweakGT;
 	private static boolean okayToTweakEnderStorage;
 	private static boolean okayToTweakBigReactors;
-	public static boolean okayToTweakDA;
+	private static boolean okayToTweakDA;
 	private static boolean okayToTweakSFM;
 	private static boolean okayToTweakOpenBlocks;
 	private static boolean okayToTweakAM2;
@@ -38,9 +41,12 @@ public class RecipeTweaks
 	private static boolean okayToTweakExU;
 	private static boolean okayToTweakMPSA;
 
-	public static void doPostInitRecipeTweaks() {
+	public static void doPreliminaryPreparations() {
+		
+		recipesInitialized = false;
 		
 		checkWhatWeCanTweak();
+		initRemovableRecipesMap();
 		
 		if (okayToTweakGT)
 			GregtechTweaks.doStuff();
@@ -60,11 +66,11 @@ public class RecipeTweaks
 	
 	public static void doVanillaRecipeTweaks()
 	{
-
-		initRemovableRecipesMap();
-		removeSomeRecipes();
-		addRevisedRecipes();
-		
+		if(!recipesInitialized) {
+			removeSomeRecipes();
+			addRevisedRecipes();
+			recipesInitialized = true;
+		}	
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -139,6 +145,9 @@ public class RecipeTweaks
 	{
 		try
 		{
+			if(GregtechTweaks.paperRecipeCheck(r)) {
+				return true;
+			}
 			ItemStack output = r.getRecipeOutput();
 			HashSet<Integer> validMetas = TweakerBase.getDamageValuesToRemove(output.itemID);
 			return validMetas.contains(-1) || validMetas.contains(output.getItemDamage());
@@ -172,6 +181,10 @@ public class RecipeTweaks
 		
 		if (okayToTweakMPSA)
 			MPSATweaks.addRecipes();
+		
+		if (okayToTweakGT) {
+			GregtechTweaks.addRecipes();
+		}
 	}
 
 	/**

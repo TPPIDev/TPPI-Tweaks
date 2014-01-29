@@ -4,6 +4,9 @@ import java.util.HashSet;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
@@ -67,4 +70,26 @@ public class GregtechTweaks
 		}
 	}
 	
+	public static void addRecipes() {
+		if(ConfigurationHandler.unnerfPaperRecipe) {
+			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"###", '#', Item.reed});
+		}
+	}
+	
+	public static boolean paperRecipeCheck(IRecipe recipe) {
+		if(!ConfigurationHandler.unnerfPaperRecipe) {
+			return false;
+		}
+		
+		boolean isVanillaPaperRecipe = false;
+		ShapedRecipes shapedRecipe = (ShapedRecipes) recipe;
+		ItemStack[] ins = shapedRecipe.recipeItems;
+		if (ins.length == 3) {
+			if(recipe.getRecipeOutput().itemID == Item.paper.itemID && ins[0].itemID == Item.reed.itemID && ins[1].itemID == Item.reed.itemID && ins[2].itemID == Item.reed.itemID) {
+				isVanillaPaperRecipe = true;
+			}
+		}
+		
+		return isVanillaPaperRecipe;
+	}
 }
