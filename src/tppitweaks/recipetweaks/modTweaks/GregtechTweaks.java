@@ -74,6 +74,9 @@ public class GregtechTweaks
 		if(ConfigurationHandler.unnerfPaperRecipe) {
 			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"###", '#', Item.reed});
 		}
+		if(ConfigurationHandler.readdResinSmelting) {
+			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
+		}
 	}
 	
 	public static boolean paperRecipeCheck(IRecipe recipe) {

@@ -7,15 +7,21 @@ import java.util.logging.Level;
 
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.item.ModItems;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 
@@ -39,8 +45,6 @@ public class TPPIEventHandler
 	{
 		if (event.gui instanceof GuiMainMenu)
 		{
-			
-			RecipeTweaks.doVanillaRecipeTweaks();
 			
 			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI)
 			{
@@ -173,4 +177,10 @@ public class TPPIEventHandler
 			DATweaks.addTooltip(event);
 		}
 	}
+	
+	@ForgeSubscribe
+	public void onPlayerJoin(EntityJoinWorldEvent event) {
+		RecipeTweaks.doVanillaRecipeTweaks();
+	}
+	
 }

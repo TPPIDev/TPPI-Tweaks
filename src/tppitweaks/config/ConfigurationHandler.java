@@ -45,6 +45,7 @@ public class ConfigurationHandler
 	public static boolean tinkersAluminumOreInGTMachines;
 	public static boolean addOneToOnePlateHammerRecipes;
 	public static boolean unnerfPaperRecipe;
+	public static boolean readdResinSmelting;
 	
 	public static boolean removeStupidEnergyCrystalRecipe;
 	
@@ -102,6 +103,7 @@ public class ConfigurationHandler
 		tinkersAluminumPlates = config.get("Gregtech Tweaks", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
 		tinkersAluminumOreInGTMachines = config.get("Gregtech Tweaks", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
 		unnerfPaperRecipe = config.get("Gregtech Tweaks", "unnerfPaperRecipe", true, "Revert GregTech's paper recipe output nerf.").getBoolean(true);
+		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		
