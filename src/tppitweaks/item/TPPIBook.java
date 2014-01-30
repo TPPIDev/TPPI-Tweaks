@@ -18,7 +18,6 @@ import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.config.ConfigurationHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TPPIBook extends ItemEditableBook
 {
@@ -29,7 +28,6 @@ public class TPPIBook extends ItemEditableBook
 		setUnlocalizedName("tppibook");
 	}
 
-	@SideOnly(Side.CLIENT)
 	Icon[] icons = new Icon[2];
 
 	@Override

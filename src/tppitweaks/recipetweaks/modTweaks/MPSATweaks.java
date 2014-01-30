@@ -1,10 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import java.util.Iterator;
-
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 

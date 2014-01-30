@@ -21,7 +21,6 @@ public class TPPIMaterial extends Item {
 		setHasSubtypes(true);
 	}
 	
-	@SideOnly(Side.CLIENT)
 	private Icon[] icons;
 	
 	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked"};
