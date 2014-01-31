@@ -1,17 +1,15 @@
 package tppitweaks.client.gui.library.gui.button;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.library.gui.element.ElementBase;
 
-public class SmallButton extends ElementBase
+public class GuideButton extends ElementBase
 {
 	private ResourceLocation myButtons = new ResourceLocation("tppitweaks", "textures/gui/guiGuide.png");
 	private int renderID;
@@ -20,7 +18,7 @@ public class SmallButton extends ElementBase
 
 	public final static int LINE_HEIGHT = 11;
 
-	public SmallButton(GuiBase gui, int id, int x, int y)
+	public GuideButton(GuiBase gui, int id, int x, int y)
 	{
 		super(gui, x, y, 25, 18);
 		renderID = id;
