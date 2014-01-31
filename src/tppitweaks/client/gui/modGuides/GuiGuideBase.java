@@ -45,4 +45,10 @@ public class GuiGuideBase extends GuiBase
 		this.addElement(new GuideButton(this, 6, 228, 70));
 		this.addElement(new GuideButton(this, 7, 228, 100));
 	}
+
+	@Override
+	public boolean hideItemPanelSlot(GuiContainer gui, int x, int y, int w, int h)
+	{
+		return true;
+	}
 }

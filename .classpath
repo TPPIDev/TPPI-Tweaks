@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/DartCraft Beta 0.2.15_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/industrialcraft-2-dev-deobf_2.0.336-experimental.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/AM2_1.1.1c.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/BigReactors-0.2.10A.jar"/>
@@ -24,5 +23,6 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/powersuitaddons-1.6.4-884_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/CoFHCore-2.0.0.0.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/StevesFactoryManagerA32.zip"/>
+	<classpathentry kind="lib" path="/EnderIO/lib/NotEnoughItems-dev 1.6.1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

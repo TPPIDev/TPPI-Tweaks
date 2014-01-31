@@ -27,13 +27,13 @@ public class GuideButton extends ElementBase
 	@Override
 	public void draw()
 	{
-		draw(this.gui.mc, 0, 0);
+		draw(this.gui.getMinecraft(), 0, 0);
 	}
 
 	@Override
 	public void draw(int x, int y)
 	{
-		draw(this.gui.mc, x, y);
+		draw(this.gui.getMinecraft(), x, y);
 	}
 
 	public void draw(Minecraft minecraft, int i, int j)
