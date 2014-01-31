@@ -75,7 +75,7 @@
     <target name="reobfuscate">
         <!-- reobfuscate -->
         <exec executable="${python}" dir="${mcp.home}" failonerror="true">
-            <arg value="${mcp.home}\runtime\reobfuscate.py"/>
+            <arg value="${mcp.home}/runtime/reobfuscate.py"/>
         	<arg value="--srgnames"/>
         </exec>
     </target>
