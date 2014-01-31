@@ -52,7 +52,36 @@ public class GuideButton extends ElementBase
 	@Override
 	public boolean handleMouseClicked(int x, int y, int mouseButton)
 	{
-		if (!clicked) ((GuiGuideBase)gui).modifyGui(this.renderID);
+		if (!clicked) 
+		{
+			switch(renderID)
+			{
+			case 0:
+				((GuiGuideBase)gui).showModRange('a', 'c');
+				break;
+			case 1:
+				((GuiGuideBase)gui).showModRange('d', 'f');
+				break;
+			case 2:
+				((GuiGuideBase)gui).showModRange('g', 'i');
+				break;
+			case 3:
+				((GuiGuideBase)gui).showModRange('j', 'l');
+				break;
+			case 4:
+				((GuiGuideBase)gui).showModRange('m', 'o');
+				break;
+			case 5:
+				((GuiGuideBase)gui).showModRange('p', 's');
+				break;
+			case 6:
+				((GuiGuideBase)gui).showModRange('t', 'v');
+				break;
+			case 7:
+				((GuiGuideBase)gui).showModRange('w', 'z');
+				break;
+			}
+		}
 		clicked = Mouse.isButtonDown(0);
 		return clicked;
 	}

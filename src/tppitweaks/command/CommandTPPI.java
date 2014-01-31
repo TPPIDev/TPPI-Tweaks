@@ -256,7 +256,7 @@ public class CommandTPPI extends CommandBase
 		ArrayList<String> pages;
 		//try
 		//{
-			pages = TxtParser.parseFileMods(FileLoader.getSupportedMods(), modName + ", " + properName);
+			pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
 		/*}
 		catch (FileNotFoundException e)
 		{
@@ -279,6 +279,11 @@ public class CommandTPPI extends CommandBase
 
 		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack))
 			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(stack, 0);
+	}
+	
+	public static String getProperName(String modid)
+	{
+		return modProperNames.get(modid);
 	}
 
 }

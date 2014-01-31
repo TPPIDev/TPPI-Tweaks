@@ -150,8 +150,11 @@ public class TxtParser
 		{
 			String temp = scanner.nextLine();
 			if (temp.startsWith(">") && temp.contains("<"))
-				if (temp.substring(1, temp.length() - 1).equals(modName))
+			{
+				String test = temp.substring(1, temp.length() - 1);
+				if (test.contains(modName))
 					break;
+			}
 		}
 			
 		while (scanner.hasNextLine())

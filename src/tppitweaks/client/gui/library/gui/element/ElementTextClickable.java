@@ -17,6 +17,7 @@ public class ElementTextClickable extends ElementText
 	@Override
 	public boolean handleMouseClicked(int x, int y, int mouseButton)
 	{
+		System.out.println(modid);
 		((GuiGuideBase)this.gui).displayModInfo(modid);
 		return true;
 	}

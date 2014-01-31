@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import tppitweaks.client.gui.modGuides.GuiGuideBase;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.creativeTab.CreativeTabTPPI;
@@ -69,7 +70,7 @@ public class TPPITweaks {
 			logger.log(Level.WARNING, "TPPI Changelog not found, please check the TPPI config folder.");
 		}
 		
-		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedMods());
+		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 
 		ModItems.initItems();
 
@@ -77,6 +78,7 @@ public class TPPITweaks {
 		GameRegistry.registerPlayerTracker(playerTracker);
 		MinecraftForge.EVENT_BUS.register(playerTracker);
 
+		GuiGuideBase.initMap();
 	}
 
 	@EventHandler

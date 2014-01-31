@@ -186,7 +186,7 @@ public class FileLoader
 		return changelogText;
 	}
 
-	public static InputStream getSupportedMods()
+	public static InputStream getSupportedModsFile()
 	{
 		supportedMods = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/SupportedMods.txt");
 		return supportedMods;
