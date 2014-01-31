@@ -8,6 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.library.gui.element.ElementBase;
+import tppitweaks.client.gui.modGuides.GuiGuideBase;
 
 public class GuideButton extends ElementBase
 {
@@ -51,6 +52,7 @@ public class GuideButton extends ElementBase
 	@Override
 	public boolean handleMouseClicked(int x, int y, int mouseButton)
 	{
+		if (!clicked) ((GuiGuideBase)gui).modifyGui(this.renderID);
 		clicked = Mouse.isButtonDown(0);
 		return clicked;
 	}
