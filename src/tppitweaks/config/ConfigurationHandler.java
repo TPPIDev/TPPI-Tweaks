@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import tppitweaks.lib.Reference;
-import tppitweaks.util.TxtParser;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property.Type;
+import tppitweaks.lib.Reference;
+import tppitweaks.util.TxtParser;
 
 public class ConfigurationHandler
 {

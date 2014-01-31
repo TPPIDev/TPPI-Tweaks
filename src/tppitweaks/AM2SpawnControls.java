@@ -2,8 +2,8 @@ package tppitweaks;
 
 import java.util.logging.Level;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import tppitweaks.config.ConfigurationHandler;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 public class AM2SpawnControls {
 

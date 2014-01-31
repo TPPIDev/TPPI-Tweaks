@@ -1,9 +1,9 @@
 package appeng.api.me.items;
 
-import appeng.api.WorldCoord;
-import appeng.api.me.util.TransitionResult;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import appeng.api.WorldCoord;
+import appeng.api.me.util.TransitionResult;
 
 public interface ISpatialStorage {
 	

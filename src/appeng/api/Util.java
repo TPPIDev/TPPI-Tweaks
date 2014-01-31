@@ -1,11 +1,11 @@
 package appeng.api;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.item.ItemStack;
 import appeng.api.me.util.ICraftingPatternMAC;
 import appeng.api.me.util.IMEInventory;
 import appeng.api.me.util.IMEInventoryHandler;
 import appeng.api.me.util.IMEInventoryUtil;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
  * Returns useful stuff of various sorts to access internal features and stuff, the meat of the important stuff is accessed here...

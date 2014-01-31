@@ -1,7 +1,7 @@
 package appeng.api.me.items;
 
-import appeng.api.IAEItemStack;
 import net.minecraft.item.ItemStack;
+import appeng.api.IAEItemStack;
 
 /**
  * Any item which implements this can be treated as an IMEInventory via Util.getCell / Util.isCell

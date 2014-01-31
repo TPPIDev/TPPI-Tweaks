@@ -1,13 +1,13 @@
 package appeng.api;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import appeng.api.me.items.IMemoryCard;
 import appeng.api.me.items.ISpatialStorage;
 import appeng.api.me.util.ICraftingPatternMAC;
 import appeng.api.me.util.IMEInventory;
 import appeng.api.me.util.IMEInventoryUtil;
 import appeng.api.movable.IMovableRegistry;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public interface IAppEngApi {
 

@@ -1,10 +1,10 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import tppitweaks.item.ModItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import tppitweaks.item.ModItems;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SFMTweaks
 {
