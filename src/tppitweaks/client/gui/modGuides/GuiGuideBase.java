@@ -43,6 +43,7 @@ public class GuiGuideBase extends GuiBase
 		initPanel();
 	}
 	
+	// Initializes the panel by first clearing all panels/scrollbars from the element list and then re-adding with updated text
 	protected void initPanel()
 	{
 		System.out.println("init panel");
@@ -69,6 +70,7 @@ public class GuiGuideBase extends GuiBase
 		this.addElement(new ElementScrollBar(this, 217, 15, 6, 139, panel));
 	}
 	
+	// Splits the body text into correctly sized lines based on the LENGTH constant
 	private List<String> getLines()
 	{
 		List<String> lines = new ArrayList<String>();
@@ -90,6 +92,7 @@ public class GuiGuideBase extends GuiBase
 		return lines;
 	}
 	
+	// No NEI, too crowded
 	@Override
 	public VisiblityData modifyVisiblity(GuiContainer gui, VisiblityData currentVisibility)
 	{
@@ -115,9 +118,19 @@ public class GuiGuideBase extends GuiBase
 		return true;
 	}
 	
+	// Sets the body/title and reinitializs the text
 	public void modifyGui(int buttonID)
 	{
+		if (buttonID <= 7)
+			
 		this.body = "This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. ";
 		this.initPanel();
+	}
+
+	// TODO shows the info for the given modid
+	public void displayModInfo(String modid)
+	{
+		this.title = ""; //TODO
+		this.body = ""; //TODO
 	}
 }
