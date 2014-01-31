@@ -54,13 +54,13 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 
 		Reference.modsFolder = modsDir;
 
-		Reference.thaumcraftFilename = (String) FileLoader.manuallyGetConfigValue(data, "Thaumcraft_filename", "");
-		//Reference.TTFilename = (String) FileLoader.manuallyGetConfigValue(data, "ThaumicTinkerer_filename", "");
-		Reference.KAMIFilename = (String) FileLoader.manuallyGetConfigValue(data, "KAMI_filename", "");
+		Reference.thaumcraftFilename = FileLoader.manuallyGetConfigValue(data, "Thaumcraft_filename");
+		//Reference.TTFilename = FileLoader.manuallyGetConfigValue(data, "ThaumicTinkerer_filename");
+		Reference.KAMIFilename = FileLoader.manuallyGetConfigValue(data, "KAMI_filename");
 
 		//FileLoader.removeDuplicateMods();
 
-		if ((Boolean) FileLoader.manuallyGetConfigValue(data, "autoEnableTT", new Boolean(true)))
+		if (FileLoader.manuallyGetConfigValue(data, "autoEnableTT").equals("true"))
 		{
 			try
 			{
