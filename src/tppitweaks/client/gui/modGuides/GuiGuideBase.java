@@ -51,7 +51,7 @@ public class GuiGuideBase extends GuiBase
 				page = page.replace("\n", " ");
 				page = page.replace("~", " ");
 				page = page.replace("  ", " ");
-				page = page.replace("  ", " ");	
+				page = page.replace("  ", " ");
 				text += page + " ";
 			}
 			mods.put(s, new GuiMod(CommandTPPI.getProperName(s), text, s));
@@ -126,6 +126,12 @@ public class GuiGuideBase extends GuiBase
 		List<String> lines = new ArrayList<String>();
 		lines.add(title);
 		lines.add("");
+		if (body.startsWith("<"))
+		{
+			body = "No information for this mod yet! "
+					+ "Use /tppi mods [modname] to get a link to a helpful webpage for this mod, "
+					+ "or contribute some documentation on the github!";
+		}
 		FontRenderer render = this.mc.fontRenderer;
 		String[] words = body.split(" ");
 		String currentLine = "";
@@ -185,11 +191,11 @@ public class GuiGuideBase extends GuiBase
 		this.body = mods.get(modid).body;
 		initPanel();
 	}
-	
+
 	public void showModRange(char start, char end)
 	{
 		List<String> lines = new ArrayList<String>(), modids = new ArrayList<String>();
-		
+
 		for (GuiMod m : mods.values())
 		{
 			if (m.modid.toLowerCase().charAt(0) >= start && m.modid.toLowerCase().charAt(0) <= end)
@@ -198,9 +204,9 @@ public class GuiGuideBase extends GuiBase
 				modids.add(m.modid);
 			}
 		}
-		
+
 		initPanel(lines, modids);
-		
+
 		mods.keySet();
 	}
 }
