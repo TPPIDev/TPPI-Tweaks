@@ -27,7 +27,7 @@ public class GuiGuideBase extends GuiBase
 
 	protected String title, body;
 
-	protected static final int LENGTH = 140;
+	protected static final int LENGTH = 180;
 
 	public GuiGuideBase()
 	{
@@ -48,8 +48,10 @@ public class GuiGuideBase extends GuiBase
 			String text = "";
 			for (String page : pages)
 			{
-				page.replace("\n", "                                                                     ");
-				page.replace("~", "                                                                      ");
+				page = page.replace("\n", " ");
+				page = page.replace("~", " ");
+				page = page.replace("  ", " ");
+				page = page.replace("  ", " ");	
 				text += page + " ";
 			}
 			mods.put(s, new GuiMod(CommandTPPI.getProperName(s), text, s));
@@ -129,7 +131,7 @@ public class GuiGuideBase extends GuiBase
 		String currentLine = "";
 		for (String s : words)
 		{			
-			if (render.getStringWidth(currentLine) < this.xSize - (this.xSize - LENGTH))
+			if (render.getStringWidth(currentLine + s + " ") < this.xSize - (this.xSize - LENGTH))
 				currentLine += s + " ";
 			else
 			{
