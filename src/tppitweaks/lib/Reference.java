@@ -35,4 +35,7 @@ public class Reference
 			+ "after:powersuitaddons;"
 			+ "after:powersuits";
 	
+	
+	public static final String PACK_VERSION = "0.2.0";
+	
 }

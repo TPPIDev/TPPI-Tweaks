@@ -48,6 +48,8 @@ public class GuiGuideBase extends GuiBase
 			String text = "";
 			for (String page : pages)
 			{
+				page.replace("\n", "                                                                     ");
+				page.replace("~", "                                                                      ");
 				text += page + " ";
 			}
 			mods.put(s, new GuiMod(CommandTPPI.getProperName(s), text, s));
@@ -126,12 +128,13 @@ public class GuiGuideBase extends GuiBase
 		String[] words = body.split(" ");
 		String currentLine = "";
 		for (String s : words)
-		{
-			currentLine += s + " ";
-			if (render.getStringWidth(currentLine) > this.xSize - (this.xSize - LENGTH))
+		{			
+			if (render.getStringWidth(currentLine) < this.xSize - (this.xSize - LENGTH))
+				currentLine += s + " ";
+			else
 			{
 				lines.add(currentLine);
-				currentLine = "";
+				currentLine = s + " ";
 			}
 		}
 		lines.add(currentLine);
@@ -195,5 +198,7 @@ public class GuiGuideBase extends GuiBase
 		}
 		
 		initPanel(lines, modids);
+		
+		mods.keySet();
 	}
 }
