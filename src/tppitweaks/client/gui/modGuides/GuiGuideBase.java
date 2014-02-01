@@ -194,7 +194,7 @@ public class GuiGuideBase extends GuiBase
 		{
 			if (m.modid.toLowerCase().charAt(0) >= start && m.modid.toLowerCase().charAt(0) <= end)
 			{
-				lines.add(m.body);
+				lines.add(m.title);
 				modids.add(m.modid);
 			}
 		}
