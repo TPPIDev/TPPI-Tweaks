@@ -10,9 +10,9 @@ public class MekanismTweaks
 {
 	public static void init()
 	{
-		TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.AtomicDisassembler.itemID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Item)mekanism.common.Mekanism.AtomicDisassembler).itemID, -1);
 		TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
-		TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.AtomicCore.itemID, -1);
+		TweakerBase.markItemForRecipeRemoval(((Item)mekanism.common.Mekanism.AtomicCore).itemID, -1);
 	}
 	
 	public static void addRecipes()
