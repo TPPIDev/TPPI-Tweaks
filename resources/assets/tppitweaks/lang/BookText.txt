@@ -44,24 +44,27 @@ The changelog can be found by typing /tppi changelog, which will of course alway
 be up to date, no need to ever get a new copy.~
 ~
 Also, we're working on a project to add in-game documentation for all 
-the mods in the pack, to be accessed via commands.
+the mods in the pack, to be accessed via commands.~
 ~~~
-Type /tppi mods <modname> to view a mod's current documentation, 
-and /tppi mods list to see what mods we have documented so far.~
-~
+Type /tppi guide to recipe an all-around guide to the documentation system, 
+the easiest way to obtain info on any mod you wish.~
+~~~
+Type /tppi mods <modname> to get an individual book for a mod, or to get
+a link if the mod has not had in-game documentation written for it yet.~
+/tppi mods list will give you a list of all mods that are possible to be used in the command.
+~~~
 Naturally, this is a big job, and it's not yet finished.
-~~~
+~
 It is our hope that the community will get 
 involved in documenting these mods via our mod's system.~
-~~~
+~
 If you'd like to help out with this documentation project or any other parts of TPPI's 
 development, feel free to type the command /tppi getInvolved to learn more.
 ~~~
 Lastly, the /tppi ores command will give you a book on TPPI's unique layer-based 
 ore generation system.~
 ~
-Judge has worked really hard on it, 
-and we in devland think it's really cool!
+Judge has worked very hard on it, and we're very happy that almost everyone sees it as a good change.
 ~~~
 That's about it. Have fun!~
 ~

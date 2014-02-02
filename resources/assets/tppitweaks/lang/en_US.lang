@@ -4,4 +4,4 @@ multicoreProcessor.name=ME Multicore Processor
 multicoreProcessorUncooked.name=ME Multicore Processor Assembly
 itemGroup.tabTPPI=TPPI Tweaks
 tppiGuide.name=TPPI Mod Guide
-disassemblyCore=Disassembly Core
+disassemblerCore.name=Disassembly Core
