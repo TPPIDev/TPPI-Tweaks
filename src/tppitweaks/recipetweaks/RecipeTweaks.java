@@ -12,6 +12,7 @@ import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
+import tppitweaks.recipetweaks.modTweaks.DCandIC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
 import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
 import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
@@ -105,7 +106,7 @@ public class RecipeTweaks
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
-		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && Loader.isModLoaded("IC2") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
+		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
 		okayToTweakMekanism = Loader.isModLoaded("Mekanism") && ConfigurationHandler.harderDisassemblerRecipe;
@@ -141,6 +142,10 @@ public class RecipeTweaks
 		if (okayToTweakDartCraft)
 		{
 			DCTweaks.init();
+		}
+		if (okayToTweakDartCraft && okayToTweakIC2)
+		{
+			DCandIC2Tweaks.init();
 		}
 		if (okayToTweakMPSA)
 		{
