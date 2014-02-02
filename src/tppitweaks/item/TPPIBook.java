@@ -2,6 +2,7 @@ package tppitweaks.item;
 
 import java.util.List;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +16,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
+import tppitweaks.client.gui.modGuides.GuiGuideBase;
 import tppitweaks.config.ConfigurationHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -35,7 +37,7 @@ public class TPPIBook extends ItemEditableBook
 	{
 		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppibook");
 		icons[1] = Item.writtenBook.getIconFromDamage(0);
-		icons[2] = par1IconRegister.registerIcon("tppitweaks:guide");
+		icons[2] = par1IconRegister.registerIcon("tppitweaks:tppiGuide");
 	}
 	
 	@Override
@@ -53,7 +55,11 @@ public class TPPIBook extends ItemEditableBook
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (stack.stackTagCompound == null || !stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
+		if (stack.getItemDamage() == 2 && FMLCommonHandler.instance().getEffectiveSide().isClient())
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiGuideBase());
+		}
+		else if (stack.stackTagCompound == null || !stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
 		{
 			if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 			{
@@ -69,12 +75,6 @@ public class TPPIBook extends ItemEditableBook
 		else if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 			GuiHelper.doBookGUI(player, stack, false);
 		return stack;
-	}
-
-	@Override
-	public String getItemDisplayName(ItemStack par1ItemStack)
-	{
-		return par1ItemStack.getItemDamage() == 0 ? ConfigurationHandler.bookTitle : ConfigurationHandler.changelogTitle;
 	}
 
 	public ItemStack addTextToBook(ItemStack book, int damage)

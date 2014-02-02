@@ -42,7 +42,8 @@ public class CommandTPPI extends CommandBase
 		validCommands.add("ores");
 		validCommands.add("getInvolved");
 		validCommands.add("changelog");
-
+		validCommands.add("guide");
+		
 		supportedModsAndList.add("list");
 
 		supportedModsAndList.addAll(TxtParser.getSupportedMods(file));
@@ -114,6 +115,8 @@ public class CommandTPPI extends CommandBase
 				processVanillaBookCommand("Getting Involved In TPPI", "GetInvolved.txt", icommandsender, astring);
 			}else if(astring[0].equalsIgnoreCase("changelog")) {
 				processCommandChangelog(icommandsender);
+			}else if(astring[0].equalsIgnoreCase("guide")) {
+				processCommandGuide(icommandsender);
 			}
 
 		}
@@ -132,6 +135,14 @@ public class CommandTPPI extends CommandBase
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(validCommandString));
 		}
 
+	}
+
+	private void processCommandGuide(ICommandSender command)
+	{
+		ItemStack stack = new ItemStack(ModItems.tppiBook, 1, 2);
+		
+		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack))
+			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(stack, 0);
 	}
 
 	private void processVanillaBookCommand(String title, String textFileName, ICommandSender command, String[] astring) {

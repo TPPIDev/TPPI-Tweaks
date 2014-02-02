@@ -12,7 +12,6 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.modGuides.GuiGuideBase;
-import tppitweaks.client.gui.modGuides.GuiMod;
 
 public class TPPIMaterial extends Item {
 
@@ -53,12 +52,5 @@ public class TPPIMaterial extends Item {
 	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int i = 0; i < 3; i++)
 			list.add(new ItemStack(this.itemID, 1, i));
-	}
-	
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	{
-		Minecraft.getMinecraft().displayGuiScreen(new GuiGuideBase());
-		return par1ItemStack;
 	}
 }

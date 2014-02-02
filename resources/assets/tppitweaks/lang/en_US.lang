@@ -1,4 +1,7 @@
-tppibook.name=TPPI Book
+tppiWelcomePacket.name=TPPI Welcome Packet
+tppiChangelog.name=TPPI Changelog
 multicoreProcessor.name=ME Multicore Processor
 multicoreProcessorUncooked.name=ME Multicore Processor Assembly
 itemGroup.tabTPPI=TPPI Tweaks
+tppiGuide.name=TPPI Mod Guide
+disassemblyCore=Disassembly Core
