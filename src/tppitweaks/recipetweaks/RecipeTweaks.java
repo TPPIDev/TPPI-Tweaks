@@ -1,12 +1,14 @@
 package tppitweaks.recipetweaks;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.ListIterator;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
@@ -24,6 +26,7 @@ import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeTweaks
 {
@@ -208,6 +211,16 @@ public class RecipeTweaks
 		for (ItemStack s : OreDictionary.getOres("dustAluminium"))
 		{
 			OreDictionary.registerOre("dustAluminum", s);
+		}
+		
+		List<ItemStack> stacks = OreDictionary.getOres("dustBrass");
+		if (!stacks.isEmpty())
+		{
+			ItemStack stack = stacks.get(0);
+			stack.stackSize++;
+			GameRegistry.addRecipe(new ShapelessOreRecipe(stack, new Object[]{
+					"dustCopper", "dustCopper", "dustCopper", "dustImpureZinc"
+			}));			
 		}
 	}
 }
