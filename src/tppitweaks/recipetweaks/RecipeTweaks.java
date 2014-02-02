@@ -212,15 +212,5 @@ public class RecipeTweaks
 		{
 			OreDictionary.registerOre("dustAluminum", s);
 		}
-		
-		List<ItemStack> stacks = OreDictionary.getOres("dustBrass");
-		if (!stacks.isEmpty())
-		{
-			ItemStack stack = stacks.get(0);
-			stack.stackSize++;
-			GameRegistry.addRecipe(new ShapelessOreRecipe(stack, new Object[]{
-					"dustCopper", "dustCopper", "dustCopper", "dustImpureZinc"
-			}));			
-		}
 	}
 }
