@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
 import tppitweaks.client.gui.library.gui.element.ElementBase;
 import tppitweaks.client.gui.library.gui.element.ElementFakeItemSlot;
-import cofh.gui.element.TabBase;
 
 public interface IGuiBase
 {

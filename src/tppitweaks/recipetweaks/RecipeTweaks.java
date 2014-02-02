@@ -6,9 +6,9 @@ import java.util.ListIterator;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
@@ -26,7 +26,6 @@ import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeTweaks
 {
@@ -197,7 +196,7 @@ public class RecipeTweaks
 
 		if (okayToTweakMPSA)
 			MPSATweaks.addRecipes();
-		
+
 		if (okayToTweakMekanism)
 			MekanismTweaks.addRecipes();
 
@@ -211,6 +210,14 @@ public class RecipeTweaks
 		for (ItemStack s : OreDictionary.getOres("dustAluminium"))
 		{
 			OreDictionary.registerOre("dustAluminum", s);
+		}
+		
+		List<ItemStack> dirtyZincs = OreDictionary.getOres("dustImpureZinc");
+		for (ItemStack stack : dirtyZincs)
+		{
+			ItemStack newStack = stack.copy();
+			for (ItemStack stack1 : OreDictionary.getOres("ingotZinc"))
+				FurnaceRecipes.smelting().addSmelting(newStack.itemID, newStack.getItemDamage(), stack1.copy(), 0.1F);
 		}
 	}
 }

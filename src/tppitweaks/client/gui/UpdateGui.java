@@ -15,7 +15,6 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SuppressWarnings("unused")
 @SideOnly(Side.CLIENT)
 public class UpdateGui extends GuiScreen
 {

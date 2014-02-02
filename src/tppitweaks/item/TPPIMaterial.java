@@ -2,16 +2,12 @@ package tppitweaks.item;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import net.minecraft.world.World;
 import tppitweaks.TPPITweaks;
-import tppitweaks.client.gui.modGuides.GuiGuideBase;
 
 public class TPPIMaterial extends Item {
 

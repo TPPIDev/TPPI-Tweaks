@@ -138,7 +138,6 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 		String currentLine = "";
 		for (String[] ss : words)
 		{
-			String tab = "    ";
 			for (String s : ss)
 			{
 				if (s.endsWith(" "))
@@ -153,7 +152,6 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 					lines.add(currentLine);
 					currentLine = s + " ";
 				}
-				tab = "";
 			}
 			System.out.println();
 			lines.add(currentLine);

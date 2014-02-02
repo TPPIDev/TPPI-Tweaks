@@ -1,7 +1,5 @@
 package tppitweaks.client.gui.library.gui.button;
 
-import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
