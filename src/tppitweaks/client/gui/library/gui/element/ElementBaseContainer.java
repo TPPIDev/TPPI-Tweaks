@@ -5,36 +5,43 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 import tppitweaks.client.gui.library.gui.Parser;
 
 public abstract class ElementBaseContainer extends ElementBase
 {
     protected ArrayList<ElementBase> elements;
 
-    public ElementBaseContainer(GuiBase parent, int x, int y, int w, int h)
+    public ElementBaseContainer(IGuiBase parent, int x, int y, int w, int h)
     {
         super(parent, x, y, w, h);
         elements = new ArrayList<ElementBase>();
     }
 
-    public ElementBaseContainer parseElements(String string)
-    {
-        for (ElementBase element : new Parser(gui).setMaxWidth(sizeX).parse(string))
-        {
-            addElement(element);
-        }
-        
-        return this;
-    }
-    
     public ElementBaseContainer addElement(ElementBase element)
     {
         elements.add(element);
-        
+
         return this;
     }
-    
+
+    @Override
+    public void addTooltip(List<String> list)
+    {
+        for (ElementBase element : elements)
+        {
+            if (element.intersectsWith(gui.getMouseX(), gui.getMouseY()))
+            {
+                element.addTooltip(list);
+
+                if (!list.isEmpty())
+                {
+                    return;
+                }
+            }
+        }
+    }
+
     public void clear()
     {
         elements.clear();
@@ -52,7 +59,12 @@ public abstract class ElementBaseContainer extends ElementBase
             }
         }
     }
-    
+
+    public ArrayList<ElementBase> getElements()
+    {
+        return elements;
+    }
+
     @Override
     public boolean handleMouseClicked(int x, int y, int mouseButton)
     {
@@ -66,8 +78,18 @@ public abstract class ElementBaseContainer extends ElementBase
                 }
             }
         }
-        
+
         return false;
+    }
+
+    public ElementBaseContainer parseElements(String string)
+    {
+        for (ElementBase element : new Parser(gui).setMaxWidth(sizeX).parse(string))
+        {
+            addElement(element);
+        }
+
+        return this;
     }
 
     @Override
@@ -77,27 +99,5 @@ public abstract class ElementBaseContainer extends ElementBase
         {
             element.update();
         }
-    }
-    
-    @Override
-    public void addTooltip(List<String> list)
-    {
-        for (ElementBase element : elements)
-        {
-            if (element.intersectsWith(gui.getMouseX(), gui.getMouseY()))
-            {
-                element.addTooltip(list);
-                
-                if (!list.isEmpty())
-                {
-                    return;
-                }
-            }
-        }
-    }
-    
-    public ArrayList<ElementBase> getElements()
-    {
-        return elements;
     }
 }

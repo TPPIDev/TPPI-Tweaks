@@ -2,22 +2,22 @@ package tppitweaks.client.gui.library.gui.element;
 
 import java.util.List;
 
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 
 public class ElementTextBox extends ElementText
 {
     List<String> textStrings;
 
-    public ElementTextBox(GuiBase parent, int x, int y, String text, int width)
+    public ElementTextBox(IGuiBase parent, int x, int y, String text, int width)
     {
         this(parent, x, y, text, width, 0x404040, false);
     }
 
     @SuppressWarnings("unchecked")
-    public ElementTextBox(GuiBase parent, int x, int y, String text, int width, int c, boolean s)
+    public ElementTextBox(IGuiBase parent, int x, int y, String text, int width, int c, boolean s)
     {
         super(parent, x, y, text, null, c, s);
-        
+
         textStrings = parent.getFontRenderer().listFormattedStringToWidth(text, width);
         sizeX = width;
         sizeY = textStrings.size() * parent.getFontRenderer().FONT_HEIGHT;
@@ -27,7 +27,7 @@ public class ElementTextBox extends ElementText
     public void draw()
     {
         int y = 0;
-        
+
         for (String s : textStrings)
         {
             if (shadow)
@@ -38,7 +38,7 @@ public class ElementTextBox extends ElementText
             {
                 gui.getFontRenderer().drawString(s, posX, posY + y, colour);
             }
-            
+
             y += gui.getFontRenderer().FONT_HEIGHT;
         }
     }

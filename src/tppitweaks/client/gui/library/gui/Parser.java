@@ -23,11 +23,11 @@ import tppitweaks.client.gui.library.gui.element.ElementText;
 public class Parser
 {
     FontRenderer fontRenderer;
-    GuiBase parentGui;
+    IGuiBase parentGui;
     ArrayList<ElementBase> parsedElements;
     int maxWidth, currentX, currentY;
-    
-    public Parser(GuiBase parent)
+
+    public Parser(IGuiBase parent)
     {
         parsedElements = new ArrayList<ElementBase>();
         parentGui = parent;
@@ -35,29 +35,23 @@ public class Parser
         currentX = currentY = 0;
         fontRenderer = Minecraft.getMinecraft().fontRenderer;
     }
-    
-    public Parser setMaxWidth(int width)
-    {
-        maxWidth = width;
-        return this;
-    }
 
     public ArrayList<ElementBase> parse(String string)
     {
         // testing, for now
-        parsedElements.add(new ElementCrafting(parentGui, maxWidth / 2 - 5, currentY, 0).addAllGridSlots(new ItemStack[] { new ItemStack(Block.stone), new ItemStack(Block.stone), null,  new ItemStack(Block.stone), new ItemStack(Block.stone), null, null, null, null }).addOutputSlot(new ItemStack(Block.stoneBrick)));
+        parsedElements.add(new ElementCrafting(parentGui, maxWidth / 2 - 5, currentY, 0).addAllGridSlots(new ItemStack[] { new ItemStack(Block.stone), new ItemStack(Block.stone), null, new ItemStack(Block.stone), new ItemStack(Block.stone), null, null, null, null }).addOutputSlot(new ItemStack(Block.stoneBrick)));
         parsedElements.add(new ElementCrafting(parentGui, 0, currentY, 1).addBothFurnaceSlots(new ItemStack[] { new ItemStack(Block.cobblestone), new ItemStack(Item.coal) }).addOutputSlot(new ItemStack(Block.stone)));
         currentY += parsedElements.get(parsedElements.size() - 1).getHeight() + 5;
         parseText(string);
         currentY += 5;
-        parsedElements.add(new ElementCrafting(parentGui, maxWidth / 2 - 5, currentY, 0).addAllGridSlots(new ItemStack[] { new ItemStack(Block.stone), new ItemStack(Block.stone), null,  new ItemStack(Block.stone), new ItemStack(Block.stone), null, null, null, null }).addOutputSlot(new ItemStack(Block.stoneBrick)));
+        parsedElements.add(new ElementCrafting(parentGui, maxWidth / 2 - 5, currentY, 0).addAllGridSlots(new ItemStack[] { new ItemStack(Block.stone), new ItemStack(Block.stone), null, new ItemStack(Block.stone), new ItemStack(Block.stone), null, null, null, null }).addOutputSlot(new ItemStack(Block.stoneBrick)));
         parsedElements.add(new ElementCrafting(parentGui, 0, currentY, 1).addBothFurnaceSlots(new ItemStack[] { new ItemStack(Block.cobblestone), new ItemStack(Item.coal) }).addOutputSlot(new ItemStack(Block.stone)));
         currentY += parsedElements.get(parsedElements.size() - 1).getHeight() + 5;
         parseText("And that's how you make Stone Bricks!");
-        
+
         return parsedElements;
     }
-    
+
     @SuppressWarnings("unchecked")
     private void parseText(String string)
     {
@@ -75,5 +69,11 @@ public class Parser
             parsedElements.add(new ElementText(parentGui, currentX, currentY, string, null, 0xFFFFFF, false));
             currentX += fontRenderer.getStringWidth(string);
         }
+    }
+
+    public Parser setMaxWidth(int width)
+    {
+        maxWidth = width;
+        return this;
     }
 }

@@ -6,11 +6,13 @@ import java.util.List;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.ResourceLocation;
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.GuiBaseContainer;
+import tppitweaks.client.gui.library.gui.IGuiBase;
+import tppitweaks.client.gui.library.gui.utils.GuiUtils;
 import cpw.mods.fml.client.FMLClientHandler;
 
 /**
- * Base class for a modular GUI element. Has self-contained rendering methods and a link back to the {@link GuiBase} it is a part of.
+ * Base class for a modular GUI element. Has self-contained rendering methods and a link back to the {@link GuiBaseContainer} it is a part of.
  * 
  * @author King Lemming, Alz454
  */
@@ -19,7 +21,7 @@ public abstract class ElementBase
     public static final SoundManager elementSoundManager = FMLClientHandler.instance().getClient().sndManager;
     public static final FontRenderer elementFontRenderer = FMLClientHandler.instance().getClient().fontRenderer;
 
-    protected GuiBase gui;
+    protected IGuiBase gui;
     protected ResourceLocation texture = new ResourceLocation("alzlib", "textures/gui/elements.png");
 
     protected int posX, posY, relativePosX, relativePosY, sizeX, sizeY, texW = 256, texH = 256;
@@ -29,16 +31,16 @@ public abstract class ElementBase
     protected boolean visible = true, disabled = false;
     protected ArrayList<String> hoverText;
 
-    public ElementBase(GuiBase gui, int posX, int posY)
+    public ElementBase(IGuiBase gui, int posX, int posY)
     {
         this.gui = gui;
-        this.relativePosX = posX;
-        this.relativePosY = posY;
+        relativePosX = posX;
+        relativePosY = posY;
         this.posX = gui.getGuiLeft() + posX;
         this.posY = gui.getGuiTop() + posY;
     }
 
-    public ElementBase(GuiBase gui, int posX, int posY, int sizeX, int sizeY)
+    public ElementBase(IGuiBase gui, int posX, int posY, int sizeX, int sizeY)
     {
         this(gui, posX, posY);
         this.sizeX = sizeX;
@@ -61,7 +63,7 @@ public abstract class ElementBase
 
     public void drawTexturedModalRect(int x, int y, int u, int v, int width, int height)
     {
-        gui.drawSizedTexturedModalRect(x, y, u, v, width, height, texW, texH);
+        GuiUtils.drawSizedTexturedModalRect(gui, x, y, u, v, width, height, texW, texH);
     }
 
     public int getHeight()
@@ -78,12 +80,12 @@ public abstract class ElementBase
     {
         return relativePosX;
     }
-    
+
     public int getRelativeY()
     {
         return relativePosY;
     }
-    
+
     public int getWidth()
     {
         return sizeX;
@@ -135,8 +137,8 @@ public abstract class ElementBase
     {
         this.posX = gui.getGuiLeft() + posX;
         this.posY = gui.getGuiTop() + posY;
-        this.relativePosX = posX;
-        this.relativePosY = posY;
+        relativePosX = posX;
+        relativePosY = posY;
 
         return this;
     }

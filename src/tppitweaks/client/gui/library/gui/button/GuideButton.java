@@ -1,5 +1,7 @@
 package tppitweaks.client.gui.library.gui.button;
 
+import java.util.ArrayList;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
@@ -14,14 +16,15 @@ public class GuideButton extends ElementBase
 {
 	private ResourceLocation myButtons = new ResourceLocation("tppitweaks", "textures/gui/guiGuide.png");
 	private int renderID;
-	
+
 	private boolean clicked = false;
 
 	public final static int LINE_HEIGHT = 11;
 
 	public GuideButton(GuiBase gui, int id, int x, int y)
 	{
-		super(gui, x, y, 25, 18);
+		super(gui, x, y, id < 8 ? 25 : 31, 18);
+		// super(gui, x, y, 25, 18);
 		renderID = id;
 	}
 
@@ -41,44 +44,49 @@ public class GuideButton extends ElementBase
 	{
 		if (clicked && !Mouse.isButtonDown(0))
 			clicked = false;
-		
+
 		minecraft.getTextureManager().bindTexture(myButtons);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		
+
 		if (this.renderID <= 7)
 			this.drawTexturedModalRect((int) this.posX, this.posY, renderID * 25, clicked ? 197 : 179, this.sizeX, this.sizeY);
+		else if (this.renderID == 8)
+			this.drawTexturedModalRect(posX, posY, renderID * 25, clicked ? 197 : 179, sizeX, sizeY);
 	}
-	
+
 	@Override
 	public boolean handleMouseClicked(int x, int y, int mouseButton)
 	{
-		if (!clicked) 
+		if (!clicked)
 		{
-			switch(renderID)
+			switch (renderID)
 			{
 			case 0:
-				((GuiGuideBase)gui).showModRange('a', 'c');
+				((GuiGuideBase) gui).showModRange('a', 'c');
 				break;
 			case 1:
-				((GuiGuideBase)gui).showModRange('d', 'f');
+				((GuiGuideBase) gui).showModRange('d', 'f');
 				break;
 			case 2:
-				((GuiGuideBase)gui).showModRange('g', 'i');
+				((GuiGuideBase) gui).showModRange('g', 'i');
 				break;
 			case 3:
-				((GuiGuideBase)gui).showModRange('j', 'l');
+				((GuiGuideBase) gui).showModRange('j', 'l');
 				break;
 			case 4:
-				((GuiGuideBase)gui).showModRange('m', 'o');
+				((GuiGuideBase) gui).showModRange('m', 'o');
 				break;
 			case 5:
-				((GuiGuideBase)gui).showModRange('p', 's');
+				((GuiGuideBase) gui).showModRange('p', 's');
 				break;
 			case 6:
-				((GuiGuideBase)gui).showModRange('t', 'v');
+				((GuiGuideBase) gui).showModRange('t', 'v');
 				break;
 			case 7:
-				((GuiGuideBase)gui).showModRange('w', 'z');
+				((GuiGuideBase) gui).showModRange('w', 'z');
+				break;
+			case 8:
+				((GuiGuideBase) gui).setDefaultText(false);
 				break;
 			}
 		}

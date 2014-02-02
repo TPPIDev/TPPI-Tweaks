@@ -4,23 +4,23 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 
 public class ElementPlus extends ElementProgressBar
 {
     boolean showTooltip, horizontal;
 
-    public ElementPlus(GuiBase parent, int x, int y)
+    public ElementPlus(IGuiBase parent, int x, int y)
     {
         this(parent, x, y, 0, 100, false, false);
     }
 
-    public ElementPlus(GuiBase parent, int x, int y, int max)
+    public ElementPlus(IGuiBase parent, int x, int y, int max)
     {
         this(parent, x, y, 0, max, false, false);
     }
 
-    public ElementPlus(GuiBase parent, int x, int y, int progress, int max, boolean tooltip, boolean horiz)
+    public ElementPlus(IGuiBase parent, int x, int y, int progress, int max, boolean tooltip, boolean horiz)
     {
         super(parent, x, y, progress, max);
         sizeX = 13;
@@ -30,19 +30,28 @@ public class ElementPlus extends ElementProgressBar
     }
 
     @Override
+    public void addTooltip(List<String> list)
+    {
+        if (showTooltip)
+        {
+            super.addTooltip(list);
+        }
+    }
+
+    @Override
     public void draw()
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         gui.getTextureManager().bindTexture(texture);
         drawTexturedModalRect(posX, posY, 116, 0, sizeX, sizeY);
-        
+
         if (horizontal)
         {
             int width = 0;
 
             if (currentProgress > 0)
             {
-                width = Math.round((float)currentProgress * sizeX / maxProgress);
+                width = Math.round((float) currentProgress * sizeX / maxProgress);
             }
 
             drawTexturedModalRect(posX, posY, 116 + sizeX, 0, width, sizeY);
@@ -53,7 +62,7 @@ public class ElementPlus extends ElementProgressBar
 
             if (currentProgress > 0)
             {
-                height = Math.round((float)currentProgress * sizeY / maxProgress);
+                height = Math.round((float) currentProgress * sizeY / maxProgress);
             }
 
             drawTexturedModalRect(posX, posY + sizeY - height, 116 + sizeX, sizeY - height, sizeX, height);
@@ -62,15 +71,6 @@ public class ElementPlus extends ElementProgressBar
         if (isDisabled())
         {
             drawTexturedModalRect(posX - 1, posY - 1, 0, 53, 15, 15);
-        }
-    }
-
-    @Override
-    public void addTooltip(List<String> list)
-    {
-        if (showTooltip)
-        {
-            super.addTooltip(list);
         }
     }
 }

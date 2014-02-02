@@ -25,16 +25,17 @@ public class TPPIBook extends ItemEditableBook
 	{
 		super(par1);
 		setCreativeTab(TPPITweaks.creativeTab);
-		setUnlocalizedName("tppibook");
 	}
 
-	Icon[] icons = new Icon[2];
+	private Icon[] icons = new Icon[3];
+	private String[] unlocNames = {"tppiWelcomePacket", "tppiChangelog", "tppiGuide"};
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
 		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppibook");
 		icons[1] = Item.writtenBook.getIconFromDamage(0);
+		icons[2] = par1IconRegister.registerIcon("tppitweaks:guide");
 	}
 	
 	@Override
@@ -141,6 +142,19 @@ public class TPPIBook extends ItemEditableBook
 	{
 		par3List.add(new ItemStack(this, 1, 0));
 		par3List.add(new ItemStack(this, 1, 1));
+		par3List.add(new ItemStack(this, 1, 2));
+	}
+	
+	@Override
+	public String getUnlocalizedName()
+	{
+		return "TPPIBook";
+	}
+	
+	@Override
+	public String getUnlocalizedName(ItemStack par1ItemStack)
+	{
+		return unlocNames[par1ItemStack.getItemDamage()];
 	}
 
 }

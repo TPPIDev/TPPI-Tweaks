@@ -1,7 +1,5 @@
 package tppitweaks.client.gui.library.gui.element;
 
-import org.lwjgl.input.Mouse;
-
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.modGuides.GuiGuideBase;
 
@@ -19,7 +17,6 @@ public class ElementTextClickable extends ElementText
 	@Override
 	public boolean handleMouseClicked(int x, int y, int mouseButton)
 	{
-		System.out.println(modid);
 		((GuiGuideBase) this.gui).displayModInfo(modid);
 		return true;
 	}
@@ -27,7 +24,6 @@ public class ElementTextClickable extends ElementText
 	@Override
 	public void draw()
 	{
-		System.out.println(Mouse.getX());
 		if (intersectsWith(gui.getMouseX(), gui.getMouseY()))
 			this.colour = 0x505050;
 		else

@@ -4,23 +4,23 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 
 public class ElementRightArrow extends ElementProgressBar
 {
     boolean showTooltip;
 
-    public ElementRightArrow(GuiBase parent, int x, int y)
+    public ElementRightArrow(IGuiBase parent, int x, int y)
     {
         this(parent, x, y, 0, 100, false);
     }
 
-    public ElementRightArrow(GuiBase parent, int x, int y, int max)
+    public ElementRightArrow(IGuiBase parent, int x, int y, int max)
     {
         this(parent, x, y, 0, max, false);
     }
 
-    public ElementRightArrow(GuiBase parent, int x, int y, int progress, int max, boolean tooltip)
+    public ElementRightArrow(IGuiBase parent, int x, int y, int progress, int max, boolean tooltip)
     {
         super(parent, x, y, progress, max);
         sizeX = 22;
@@ -29,17 +29,26 @@ public class ElementRightArrow extends ElementProgressBar
     }
 
     @Override
+    public void addTooltip(List<String> list)
+    {
+        if (showTooltip)
+        {
+            super.addTooltip(list);
+        }
+    }
+
+    @Override
     public void draw()
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         gui.getTextureManager().bindTexture(texture);
         drawTexturedModalRect(posX, posY, 44, 0, sizeX, sizeY);
-        
+
         int width = 0;
 
         if (currentProgress > 0)
         {
-            width = Math.round((float)currentProgress * sizeX / maxProgress);
+            width = Math.round((float) currentProgress * sizeX / maxProgress);
         }
 
         drawTexturedModalRect(posX, posY, 44 + sizeX, 0, width, sizeY);
@@ -47,15 +56,6 @@ public class ElementRightArrow extends ElementProgressBar
         if (isDisabled())
         {
             drawTexturedModalRect(posX + 3, posY, 0, 53, 15, 15);
-        }
-    }
-
-    @Override
-    public void addTooltip(List<String> list)
-    {
-        if (showTooltip)
-        {
-            super.addTooltip(list);
         }
     }
 }

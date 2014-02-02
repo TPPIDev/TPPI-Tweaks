@@ -5,19 +5,19 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 
 public class ElementItemText extends ElementText
 {
     ItemStack item;
 
-    public ElementItemText(GuiBase parent, int x, int y, ItemStack stack)
+    public ElementItemText(IGuiBase parent, int x, int y, ItemStack stack)
     {
         super(parent, x, y, stack.getDisplayName(), "");
         item = stack;
     }
 
-    public ElementItemText(GuiBase parent, int x, int y, ItemStack stack, int c, boolean s)
+    public ElementItemText(IGuiBase parent, int x, int y, ItemStack stack, int c, boolean s)
     {
         super(parent, x, y, stack.getDisplayName(), "", c, s);
         item = stack;
@@ -42,7 +42,7 @@ public class ElementItemText extends ElementText
                     stringList.set(k, EnumChatFormatting.GRAY + stringList.get(k));
                 }
             }
-            
+
             for (String s : stringList) // Otherwise we're creating a new list - not adding to the existing one
             {
                 list.add(s);

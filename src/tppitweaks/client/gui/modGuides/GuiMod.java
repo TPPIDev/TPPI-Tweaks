@@ -15,9 +15,8 @@ public class GuiMod extends GuiGuideBase
 		this.modid = modid;
 	}
 
-	@Override
-	protected void drawGuiContainerForegroundLayer(int x, int y)
+	public void drawGuiForegroundLayer(int mouseX, int mouseY)
 	{
-		super.drawGuiContainerForegroundLayer(x, y);
+		super.drawGuiForegroundLayer(mouseX, mouseY);
 	}
 }

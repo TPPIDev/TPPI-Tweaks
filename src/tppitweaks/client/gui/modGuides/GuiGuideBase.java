@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.library.gui.button.GuideButton;
@@ -20,8 +21,10 @@ import tppitweaks.command.CommandTPPI;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TxtParser;
 import codechicken.nei.VisiblityData;
+import codechicken.nei.api.INEIGuiHandler;
+import codechicken.nei.api.TaggedInventoryArea;
 
-public class GuiGuideBase extends GuiBase
+public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 {
 	protected static Map<String, GuiMod> mods = new TreeMap<String, GuiMod>();
 
@@ -32,12 +35,10 @@ public class GuiGuideBase extends GuiBase
 	public GuiGuideBase()
 	{
 		super(new ResourceLocation("tppitweaks", "textures/gui/guiGuide.png"));
-		drawInventory = false;
 		this.xSize = 256;
 		this.ySize = 178;
 
-		title = "Main menu";
-		body = "This is a test. This is a test. This is a test. This is a test. ";
+		setDefaultText(true);
 	}
 
 	public static void initMap()
@@ -48,7 +49,6 @@ public class GuiGuideBase extends GuiBase
 			String text = "";
 			for (String page : pages)
 			{
-				page = page.replace("\n", " ");
 				page = page.replace("~", " ");
 				page = page.replace("  ", " ");
 				page = page.replace("  ", " ");
@@ -70,14 +70,15 @@ public class GuiGuideBase extends GuiBase
 	// element list and then re-adding with updated text
 	protected void initPanel()
 	{
-		System.out.println("init panel");
-
 		ElementScrollPanel panel = new ElementScrollPanel(this, this.xSize / 6, this.ySize / 9, this.xSize, (int) (this.ySize / 1.35));
 		List<String> lines = getLines();
 
+		int length = 0;
 		for (int i = 0; i < lines.size(); i++)
 		{
-			panel.addElement(new ElementText(this, 0, (i * 10), lines.get(i), null, 0x282828, false));
+			panel.addElement(new ElementText(this, 0, (length * 10), lines.get(i), null, 0x282828, false));
+			length++;
+
 		}
 
 		ArrayList<ElementBase> elementsNew = new ArrayList<ElementBase>();
@@ -96,8 +97,6 @@ public class GuiGuideBase extends GuiBase
 
 	private void initPanel(List<String> lines, List<String> modids)
 	{
-		System.out.println("init panel");
-
 		ElementScrollPanel panel = new ElementScrollPanel(this, this.xSize / 6, this.ySize / 9, this.xSize, (int) (this.ySize / 1.35));
 
 		for (int i = 0; i < lines.size(); i++)
@@ -128,24 +127,40 @@ public class GuiGuideBase extends GuiBase
 		lines.add("");
 		if (body.startsWith("<"))
 		{
-			body = "No information for this mod yet! "
-					+ "Use /tppi mods [modname] to get a link to a helpful webpage for this mod, "
-					+ "or contribute some documentation on the github!";
+			body = "No information for this mod yet! " + "Use /tppi mods [modname] to get a link to a helpful webpage for this mod, " + "or contribute some documentation on the github!";
 		}
 		FontRenderer render = this.mc.fontRenderer;
-		String[] words = body.split(" ");
-		String currentLine = "";
-		for (String s : words)
-		{			
-			if (render.getStringWidth(currentLine + s + " ") < this.xSize - (this.xSize - LENGTH))
-				currentLine += s + " ";
-			else
-			{
-				lines.add(currentLine);
-				currentLine = s + " ";
-			}
+		String[] paragraphs = body.split("\n");
+		List<String[]> words = new ArrayList<String[]>();
+		for (String ss : paragraphs)
+		{
+			words.add(ss.split(" "));
 		}
-		lines.add(currentLine);
+		String currentLine = "";
+		for (String[] ss : words)
+		{
+			String tab = "    ";
+			for (String s : ss)
+			{
+				if (s.endsWith(" "))
+				{
+					s = s.substring(0, s.length() - 1);
+				}
+				System.out.print(s + " ");
+				if (render.getStringWidth(currentLine + s + " ") < this.xSize - (this.xSize - LENGTH))
+					currentLine += s + " ";
+				else
+				{
+					lines.add(currentLine);
+					currentLine = s + " ";
+				}
+				tab = "";
+			}
+			System.out.println();
+			lines.add(currentLine);
+			currentLine = "";
+			lines.add("");
+		}
 		return lines;
 	}
 
@@ -167,6 +182,7 @@ public class GuiGuideBase extends GuiBase
 		this.addElement(new GuideButton(this, 5, 228, 40));
 		this.addElement(new GuideButton(this, 6, 228, 70));
 		this.addElement(new GuideButton(this, 7, 228, 100));
+		this.addElement(new GuideButton(this, 8, 114, 157));
 	}
 
 	@Override
@@ -184,7 +200,6 @@ public class GuiGuideBase extends GuiBase
 		this.initPanel();
 	}
 
-	// TODO shows the info for the given modid
 	public void displayModInfo(String modid)
 	{
 		this.title = mods.get(modid).title;
@@ -208,5 +223,31 @@ public class GuiGuideBase extends GuiBase
 		initPanel(lines, modids);
 
 		mods.keySet();
+	}
+
+	@Override
+	public int getItemSpawnSlot(GuiContainer gui, ItemStack item)
+	{
+		return -1;
+	}
+
+	@Override
+	public List<TaggedInventoryArea> getInventoryAreas(GuiContainer gui)
+	{
+		return null;
+	}
+
+	@Override
+	public boolean handleDragNDrop(GuiContainer gui, int mousex, int mousey, ItemStack draggedStack, int button)
+	{
+		return false;
+	}
+
+	public void setDefaultText(boolean startup)
+	{
+		title = "Main menu";
+		body = "Welcome to the TPPI Documentation System, your source documentation for all mods in this pack. To start, click on a button signifying the letter the mod starts with, then click on the mod name to read the documentation related to it that we have available. To return to this menu, press the home button at any time.";
+		if (!startup)
+			initPanel();
 	}
 }

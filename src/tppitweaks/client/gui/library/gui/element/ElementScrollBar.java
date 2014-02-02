@@ -4,7 +4,7 @@ import net.minecraft.client.gui.Gui;
 
 import org.lwjgl.input.Mouse;
 
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 
 public class ElementScrollBar extends ElementBase
 {
@@ -13,7 +13,7 @@ public class ElementScrollBar extends ElementBase
     boolean isMouseButtonDown;
     float scroll, oldMouse;
 
-    public ElementScrollBar(GuiBase parent, int x, int y, int w, int h, ElementScrollPanel scroll)
+    public ElementScrollBar(IGuiBase parent, int x, int y, int w, int h, ElementScrollPanel scroll)
     {
         super(parent, x, y, w, h);
         panel = scroll;
@@ -28,20 +28,34 @@ public class ElementScrollBar extends ElementBase
     }
 
     @Override
+    public boolean isDisabled()
+    {
+        disabled = panel.isDisabled();
+        return super.isDisabled();
+    }
+
+    @Override
+    public boolean isVisible()
+    {
+        visible = panel.isVisible();
+        return super.isVisible();
+    }
+
+    @Override
     public void update()
     {
-        barSize = (int)(((float) panel.sizeY / (float) panel.contentHeight) * sizeY);
-        
+        barSize = (int) ((float) panel.sizeY / (float) panel.contentHeight * sizeY);
+
         if (barSize >= sizeY)
         {
             barSize = 0;
         }
-        
+
         if (panel.contentHeight < panel.sizeY || !isVisible() || isDisabled())
         {
             return;
         }
-        
+
         if (Mouse.isButtonDown(0))
         {
             if (intersectsWith(gui.getMouseX(), gui.getMouseY()))
@@ -71,15 +85,15 @@ public class ElementScrollBar extends ElementBase
         }
         else
         {
-            scroll = (-panel.scrollY / panel.contentHeight) * sizeY;
+            scroll = -panel.scrollY / panel.contentHeight * sizeY;
             isMouseButtonDown = false;
         }
-        
+
         if (!isMouseButtonDown)
         {
-            scroll = (-panel.scrollY / panel.contentHeight) * sizeY;
+            scroll = -panel.scrollY / panel.contentHeight * sizeY;
         }
-        
+
         oldMouse = gui.getMouseY();
 
         if (scroll < 0)
@@ -91,19 +105,5 @@ public class ElementScrollBar extends ElementBase
         {
             scroll = sizeY - barSize;
         }
-    }
-    
-    @Override
-    public boolean isVisible()
-    {
-        visible = panel.isVisible();
-        return super.isVisible();
-    }
-    
-    @Override
-    public boolean isDisabled()
-    {
-        disabled = panel.isDisabled();
-        return super.isDisabled();
     }
 }

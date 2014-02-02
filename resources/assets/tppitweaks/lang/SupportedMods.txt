@@ -821,7 +821,7 @@ Redstone Arsenal adds tools and weaponry which harness the power of Redstone Flu
 energy system added by Thermal Expansion.
 
 >Reliquary, Reliquary<
-[http://www.minecraftforum.net/topic/1596973-xenos-reliquary-v106d/]
+<http://www.minecraftforum.net/topic/1596973-xenos-reliquary-v106d/>
 **Outdated source but I don't think a lot has changed, it was merely ported to 1.6**
 
 >RemoteIO, RemoteIO<

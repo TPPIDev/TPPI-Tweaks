@@ -2,13 +2,13 @@ package tppitweaks.client.gui.library.gui.element;
 
 import java.util.List;
 
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
 
 public class ElementItemStackPanel extends ElementBaseContainer
 {
     int lastX = 0, lastY = 0, highestRow = 0;
 
-    public ElementItemStackPanel(GuiBase parent, int x, int y, int w, int h)
+    public ElementItemStackPanel(IGuiBase parent, int x, int y, int w, int h)
     {
         super(parent, x, y, w, h);
     }
@@ -22,7 +22,7 @@ public class ElementItemStackPanel extends ElementBaseContainer
             {
                 highestRow = element.getHeight();
             }
-            
+
             element.setPosition(lastX, lastY);
             lastX += element.getWidth() + 4;
         }
@@ -34,10 +34,10 @@ public class ElementItemStackPanel extends ElementBaseContainer
             lastX += element.getWidth() + 4;
             highestRow = element.getHeight();
         }
-        
+
         return super.addElement(element);
     }
-    
+
     @Override
     public void addTooltip(List<String> list)
     {
@@ -46,8 +46,8 @@ public class ElementItemStackPanel extends ElementBaseContainer
             if (element.intersectsWith(gui.getMouseX(), gui.getMouseY()))
             {
                 element.addTooltip(list);
-                ElementItemIconWithCount el = ((ElementItemIconWithCount) element);
-                
+                ElementItemIconWithCount el = (ElementItemIconWithCount) element;
+
                 if (!list.isEmpty() && el.item.stackSize > 1)
                 {
                     list.set(0, el.item.stackSize + "x " + list.get(0));

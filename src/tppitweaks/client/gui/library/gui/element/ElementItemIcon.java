@@ -5,27 +5,17 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import tppitweaks.client.gui.library.gui.GuiBase;
+import tppitweaks.client.gui.library.gui.IGuiBase;
+import tppitweaks.client.gui.library.gui.utils.GuiUtils;
 
 public class ElementItemIcon extends ElementBase
 {
     ItemStack item;
 
-    public ElementItemIcon(GuiBase parent, int x, int y, ItemStack stack)
+    public ElementItemIcon(IGuiBase parent, int x, int y, ItemStack stack)
     {
         super(parent, x, y, 16, 16);
         item = stack;
-    }
-    
-    public void setItem(ItemStack stack)
-    {
-        item = stack;
-    }
-
-    @Override
-    public void draw()
-    {
-        gui.drawItemStack(item, posX, posY);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,5 +43,16 @@ public class ElementItemIcon extends ElementBase
                 list.add(s);
             }
         }
+    }
+
+    @Override
+    public void draw()
+    {
+        GuiUtils.drawItemStack(gui, item, posX, posY);
+    }
+
+    public void setItem(ItemStack stack)
+    {
+        item = stack;
     }
 }
