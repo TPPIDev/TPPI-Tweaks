@@ -25,6 +25,7 @@ public class ConfigurationHandler
 	public static String bookTitle;
 	public static String bookAuthor;
 	public static String changelogTitle;
+	public static String supportedModsName;
 	
 	public static boolean enderChestTesseract;
 	public static boolean enderPouchTesseract;
@@ -47,6 +48,7 @@ public class ConfigurationHandler
 	public static boolean unnerfPaperRecipe;
 	public static boolean readdResinSmelting;
 	public static boolean harderDisassemblerRecipe;
+	public static boolean disableCardboardBox;
 
 	public static boolean removeStupidEnergyCrystalRecipe;
 	
@@ -84,19 +86,22 @@ public class ConfigurationHandler
 		bookTitle = config.get("TPPI Guide Info", "bookTitle", "TPPI Welcome Packet", "The title of the custom spawn book", Type.STRING).getString();
 		bookAuthor = config.get("TPPI Guide Info", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
 		changelogTitle = config.get("TPPI Guide Info", "changelogTitle", "TPPI Changelog", "The title of the changelog").getString();
+		supportedModsName = config.get("TPPI Guide Info", "supportedModsFilename", "SupportedMods.txt", "The file name of the file to read the mod documentation from (used to support translation). Do not include the extension in the filename (it is .txt)").getString();
 		
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
 		enderPouchTesseract = config.get("Ender Storage Tweaks", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
 		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
+		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("Other Mod Tweaks", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
 		tweakDA = config.get("Other Mod Tweaks", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
 		tweakSFM = config.get("Other Mod Tweaks", "stevesFactoryManagerAERecipes", true, "Recipes from Steve's Factory Manager take items from Applied Energistics.").getBoolean(true);
 		tweakAM2 = config.get("Other Mod Tweaks", "addAM2NatureGuardianRecipe", true, "Add recipe for Ars Magica 2 Nature Guardian spawn egg. Useful when dryads are disabled.").getBoolean(true);
-		glassFuelRods = config.get("OPTIONS", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
+		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		fixExURecipes = config.get("Other Mod Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
+		
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
 		
 		doPlatinumInCentrifuge = config.get("Gregtech Tweaks", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
@@ -111,6 +116,7 @@ public class ConfigurationHandler
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		addOsmiumToOreWasher = config.get("Other Mod Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Other Mod Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
+		disableCardboardBox = config.get("Other Mod Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
 		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		

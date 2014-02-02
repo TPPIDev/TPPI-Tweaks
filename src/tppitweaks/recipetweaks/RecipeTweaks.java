@@ -111,7 +111,7 @@ public class RecipeTweaks
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
-		okayToTweakMekanism = Loader.isModLoaded("Mekanism") && ConfigurationHandler.harderDisassemblerRecipe;
+		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -197,7 +197,7 @@ public class RecipeTweaks
 		if (okayToTweakMPSA)
 			MPSATweaks.addRecipes();
 
-		if (okayToTweakMekanism)
+		if (okayToTweakMekanism && ConfigurationHandler.harderDisassemblerRecipe)
 			MekanismTweaks.addRecipes();
 
 	}
