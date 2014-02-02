@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
-import tppitweaks.client.gui.modGuides.GuiGuideBase;
+import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.creativeTab.CreativeTabTPPI;
@@ -34,7 +34,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
 public class TPPITweaks {
 
-	public static final String VERSION = "0.8.0-beta1c";
+	public static final String VERSION = "0.8.0-beta1d";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
@@ -78,7 +78,8 @@ public class TPPITweaks {
 		GameRegistry.registerPlayerTracker(playerTracker);
 		MinecraftForge.EVENT_BUS.register(playerTracker);
 
-		GuiGuideBase.initMap();
+		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
+			GuiHelper.initMap();
 	}
 
 	@EventHandler

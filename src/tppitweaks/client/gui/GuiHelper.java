@@ -25,4 +25,9 @@ public class GuiHelper {
 	{
 		Minecraft.getMinecraft().displayGuiScreen(new GuiGuideBase());
 	}
+
+	public static void initMap()
+	{
+		GuiGuideBase.initMap();
+	}
 }
