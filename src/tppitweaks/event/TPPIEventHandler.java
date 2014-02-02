@@ -176,7 +176,8 @@ public class TPPIEventHandler
 	
 	@ForgeSubscribe
 	public void onPlayerJoin(EntityJoinWorldEvent event) {
-		RecipeTweaks.doPlayerJoinRecipeTweaks();
+		if (!RecipeTweaks.recipesInitialized)
+			RecipeTweaks.doPlayerJoinRecipeTweaks();
 	}
 	
 }

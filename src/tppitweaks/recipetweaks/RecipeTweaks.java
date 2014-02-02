@@ -18,6 +18,7 @@ import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
 import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.MPSATweaks;
 import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
+import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
 import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
@@ -25,9 +26,9 @@ import cpw.mods.fml.common.Loader;
 
 public class RecipeTweaks
 {
-	
-	private static boolean recipesInitialized;
-	
+
+	public static boolean recipesInitialized;
+
 	private static boolean okayToTweakIC2;
 	private static boolean okayToTweakGT;
 	private static boolean okayToTweakEnderStorage;
@@ -40,41 +41,42 @@ public class RecipeTweaks
 	private static boolean okayToTweakDartCraft;
 	private static boolean okayToTweakExU;
 	private static boolean okayToTweakMPSA;
+	private static boolean okayToTweakMekanism;
 
-	public static void doPostInitRecipeTweaks() {
-		
+	public static void doPostInitRecipeTweaks()
+	{
+
 		recipesInitialized = false;
-		
+
 		checkWhatWeCanTweak();
 		initRemovableRecipesMap();
-		
+
 		if (okayToTweakGT)
 			GregtechTweaks.doStuff();
-		
+
 		if (okayToTweakExU)
 			ExUTweaks.fixRecipes();
-		
+
 		doOreDictTweaks();
 
 		if (okayToTweakIC2)
 			IC2Tweaks.registerOres();
-		
+
 		if (okayToTweakMagicalCrops)
 			MagicropsTweaks.registerOres();
-		
+
 		removeSomeRecipes();
 		addRevisedRecipes();
-		
+
 	}
-	
+
 	public static void doPlayerJoinRecipeTweaks()
 	{
-		if(!recipesInitialized) {
-			if (okayToTweakGT) {
-				GregtechTweaks.addRecipes();
-			}
-			recipesInitialized = true;
+		if (okayToTweakGT)
+		{
+			GregtechTweaks.addRecipes();
 		}
+		recipesInitialized = true;
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -106,6 +108,7 @@ public class RecipeTweaks
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && Loader.isModLoaded("IC2") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
+		okayToTweakMekanism = Loader.isModLoaded("Mekanism") && ConfigurationHandler.harderDisassemblerRecipe;
 	}
 
 	private static void initRemovableRecipesMap()
@@ -143,6 +146,10 @@ public class RecipeTweaks
 		{
 			MPSATweaks.init();
 		}
+		if (okayToTweakMekanism)
+		{
+			MekanismTweaks.init();
+		}
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
@@ -161,28 +168,31 @@ public class RecipeTweaks
 
 	private static void addRevisedRecipes()
 	{
-		
+
 		if (okayToTweakEnderStorage)
 			EnderStorageTweaks.addRecipes();
-		
+
 		if (okayToTweakBigReactors)
 			BigReactorsTweaks.addRecipes();
-		
+
 		if (okayToTweakDA)
 			DATweaks.addRecipes();
-		
+
 		if (okayToTweakSFM)
 			SFMTweaks.addRecipes();
-		
+
 		if (okayToTweakOpenBlocks)
 			OpenBlocksTweaks.addRecipes();
-		
+
 		if (okayToTweakAM2)
 			AM2Tweaks.addRecipes();
-		
+
 		if (okayToTweakMPSA)
 			MPSATweaks.addRecipes();
 		
+		if (okayToTweakMekanism)
+			MekanismTweaks.addRecipes();
+
 	}
 
 	/**

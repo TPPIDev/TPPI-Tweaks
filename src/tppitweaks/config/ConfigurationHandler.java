@@ -46,7 +46,8 @@ public class ConfigurationHandler
 	public static boolean addOneToOnePlateHammerRecipes;
 	public static boolean unnerfPaperRecipe;
 	public static boolean readdResinSmelting;
-	
+	public static boolean harderDisassemblerRecipe;
+
 	public static boolean removeStupidEnergyCrystalRecipe;
 	
 	public static boolean addOsmiumToOreWasher;
@@ -109,7 +110,8 @@ public class ConfigurationHandler
 		
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		addOsmiumToOreWasher = config.get("Other Mod Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
-
+		harderDisassemblerRecipe = config.get("Other Mod Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
+		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		
 		Reference.thaumcraftFilename = config.get("Mod Loading Tweaks", "Thaumcraft_filename", Reference.DEFAULT_THAUMCRAFT_FILENAME, "The filename for Thaumcraft4 to use to check for its presence").getString();

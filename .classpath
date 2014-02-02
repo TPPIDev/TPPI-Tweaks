@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/CoFHCore-2.0.0.0.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/StevesFactoryManagerA32.zip"/>
 	<classpathentry kind="lib" path="/EnderIO/lib/NotEnoughItems-dev 1.6.1.4.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Mekanism"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

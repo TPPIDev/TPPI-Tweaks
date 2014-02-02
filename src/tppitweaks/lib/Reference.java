@@ -33,7 +33,8 @@ public class Reference
 			+ "after:BigReactors;"
 			+ "after:BuildCraft|Core;"
 			+ "after:powersuitaddons;"
-			+ "after:powersuits";
+			+ "after:powersuits;"
+			+ "after:Mekanism";
 	
 	
 	public static final String PACK_VERSION = "0.2.0";
