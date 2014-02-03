@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileFilter;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -28,7 +29,7 @@ public class InstructionsGui extends GuiScreen
 {
 
 	ModDownload mod;
-	boolean hasOpened = false;
+	int hasOpened = 0;
 	
 	private static File lastDir = FileUtils.getUserDirectory();
 
@@ -58,6 +59,8 @@ public class InstructionsGui extends GuiScreen
 		this.drawCenteredString(this.fontRenderer, "Select the file from your computer and it will be added to the mods directory.", this.width / 2, this.height / 2 - 15, 0xFFFFFF);
 		this.drawCenteredString(this.fontRenderer, "3. Press the button below to continue.", this.width / 2, this.height / 2 + 55, 0xFFFFFF);
 
+		hasOpened = hasOpened <= 0 ? 0 : hasOpened - 1;
+		
 		super.drawScreen(par1, par2, par3);
 	}
 
@@ -79,7 +82,7 @@ public class InstructionsGui extends GuiScreen
 			break;
 
 		case 12:
-			if (!hasOpened)
+			if (hasOpened == 0)
 			{
 				try
 				{
@@ -103,7 +106,22 @@ public class InstructionsGui extends GuiScreen
 						return dialog;
 					}
 				};
-
+				
+				fc.setFileFilter(new FileFilter()
+				{	
+					@Override
+					public String getDescription()
+					{
+						return "*.jar, *.zip";
+					}
+					
+					@Override
+					public boolean accept(File arg0)
+					{
+						return (arg0.getName().endsWith(".zip") || arg0.getName().endsWith(".jar") || arg0.isDirectory());
+					}
+				});
+				
 				fc.setCurrentDirectory(lastDir);
 				fc.showOpenDialog(new JFrame());
 				File mod = fc.getSelectedFile();
@@ -117,12 +135,12 @@ public class InstructionsGui extends GuiScreen
 				{
 					e.printStackTrace();
 				}
-				hasOpened = true;
+				hasOpened = 50;
 			}
 			break;
 
 		default:
-			hasOpened = false;
+			hasOpened = 0;
 			GuiHelper.updateGui.actionPerformed(button);
 		}
 

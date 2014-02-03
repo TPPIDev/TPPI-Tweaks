@@ -42,7 +42,7 @@ public class TPPIEventHandler
 		if (event.gui instanceof GuiMainMenu)
 		{
 			
-			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI)
+			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI || true)
 			{
 				event.gui = new UpdateGui(event.gui, true);
 				GuiHelper.updateGui = (UpdateGui) event.gui;
