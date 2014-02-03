@@ -203,7 +203,7 @@ public class RecipeTweaks
 		if (okayToTweakMekanism && ConfigurationHandler.harderDisassemblerRecipe)
 			MekanismTweaks.addRecipes();
 		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"ingotSteel", Item.flint}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}
 
 	/**
