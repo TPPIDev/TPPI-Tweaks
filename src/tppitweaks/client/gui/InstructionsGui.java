@@ -29,6 +29,8 @@ public class InstructionsGui extends GuiScreen
 
 	ModDownload mod;
 	boolean hasOpened = false;
+	
+	private File lastDir = FileUtils.getUserDirectory();
 
 	public InstructionsGui(ModDownload modDownload)
 	{
@@ -105,6 +107,7 @@ public class InstructionsGui extends GuiScreen
 				fc.setCurrentDirectory(FileUtils.getUserDirectory());
 				fc.showOpenDialog(new JFrame());
 				File mod = fc.getSelectedFile();
+				lastDir = new File(mod.getParent());
 				try
 				{
 					if (mod != null)

@@ -57,7 +57,7 @@ public class TPPIBook extends ItemEditableBook
 		{
 			GuiHelper.doGuideGUI();
 		}
-		else if (stack.stackTagCompound == null || !stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION))
+		else if (stack.stackTagCompound == null || !stack.getTagCompound().getString("version").equals(TPPITweaks.VERSION) || stack.getItemDamage() == 1)
 		{
 			if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 			{
