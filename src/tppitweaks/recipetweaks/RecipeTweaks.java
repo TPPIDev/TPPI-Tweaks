@@ -4,11 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
@@ -26,6 +28,7 @@ import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeTweaks
 {
@@ -199,7 +202,8 @@ public class RecipeTweaks
 
 		if (okayToTweakMekanism && ConfigurationHandler.harderDisassemblerRecipe)
 			MekanismTweaks.addRecipes();
-
+		
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"ingotSteel", Item.flint}));
 	}
 
 	/**
