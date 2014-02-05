@@ -65,8 +65,10 @@ public class RecipeTweaks
 
 		doOreDictTweaks();
 
-		if (okayToTweakIC2)
+		if (okayToTweakIC2) {
 			IC2Tweaks.registerOres();
+			IC2Tweaks.addRecipes();
+		}	
 
 		if (okayToTweakMagicalCrops)
 			MagicropsTweaks.registerOres();

@@ -1,5 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
@@ -22,6 +23,14 @@ public class IC2Tweaks
 			for (ItemStack stack : OreDictionary.getOres("glassHardened"))
 			{
 				OreDictionary.registerOre("glassReinforced", stack);
+			}
+		}
+	}
+	
+	public static void addRecipes() {
+		if(ConfigurationHandler.doCharcoalBlockCompression) {
+			if(!OreDictionary.getOres("blockCharcoal").isEmpty()) {
+				ic2.core.block.machine.tileentity.TileEntityCompressor.addRecipe("blockCharcoal", 1, new ItemStack(Item.coal, 1, 0));
 			}
 		}
 	}
