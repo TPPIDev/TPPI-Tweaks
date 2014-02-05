@@ -25,13 +25,14 @@ public class MekanismTweaks
 	public static void addRecipes()
 	{
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(mekanism.common.Mekanism.AtomicDisassembler), new Object[]{
-			"DtD",
-			"DoD",
+			"AtA",
+			"ADA",
 			" o ",
 
 			'D', new ItemStack(ModItems.tppiMaterial, 1, 2),
 			't', mekanism.common.Mekanism.EnergyTablet,
-			'o', "ingotRefinedObsidian"
+			'o', "ingotRefinedObsidian",
+			'A', mekanism.common.Mekanism.AtomicCore
 		}));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(mekanism.common.Mekanism.AtomicCore), new Object[]{

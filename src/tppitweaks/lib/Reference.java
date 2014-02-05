@@ -37,6 +37,6 @@ public class Reference
 			+ "after:Mekanism";
 	
 	
-	public static final String PACK_VERSION = "0.2.0";
+	public static final String PACK_VERSION = "0.2.1";
 	
 }

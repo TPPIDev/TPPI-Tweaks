@@ -5,8 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ChatMessageComponent;
 
 import org.lwjgl.input.Keyboard;
 
@@ -45,7 +47,10 @@ public class UpdateGui extends GuiScreen
 		this.parentScreen = parentScreen;
 
 		initModInstallationMenus();
-
+		
+		if (modScreens.isEmpty())
+			Minecraft.getMinecraft().thePlayer.sendChatToPlayer(new ChatMessageComponent().addText("You have all optional mods installed!"));
+		
 		for (InstructionsGui g : modScreens)
 		{
 			if (!Loader.isModLoaded(g.mod.modid))
