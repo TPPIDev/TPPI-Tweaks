@@ -482,7 +482,7 @@ Flat signs alters existing signs in Minecraft by allowing flat versions of signs
 by shift right clicking a sign on the floor/ceiling.~
 ~
 It also allows for signs to be edited by using a sponge or the more durable sponge wipe. To craft a sponge just throw yellow 
-wool in to water ot on the ground while it is raining.
+wool into water or on the ground while it is raining.
 
 >Forestry-Machines, Forestry-Machines<
 <http://forestry.sengir.net/wiki.new/doku.php>
