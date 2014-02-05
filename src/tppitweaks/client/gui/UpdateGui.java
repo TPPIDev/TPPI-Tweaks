@@ -48,7 +48,7 @@ public class UpdateGui extends GuiScreen
 
 		initModInstallationMenus();
 		
-		if (modScreens.isEmpty())
+		if (modScreens.isEmpty() && !firstTime)
 			Minecraft.getMinecraft().thePlayer.sendChatToPlayer(new ChatMessageComponent().addText("You have all optional mods installed!"));
 		
 		for (InstructionsGui g : modScreens)
