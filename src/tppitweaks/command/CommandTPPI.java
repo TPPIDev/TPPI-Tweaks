@@ -10,6 +10,7 @@ import java.util.logging.Level;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -43,6 +44,7 @@ public class CommandTPPI extends CommandBase
 		validCommands.add("getInvolved");
 		validCommands.add("changelog");
 		validCommands.add("guide");
+		validCommands.add("removeBooks");
 		
 		supportedModsAndList.add("list");
 
@@ -117,6 +119,8 @@ public class CommandTPPI extends CommandBase
 				processCommandChangelog(icommandsender);
 			}else if(astring[0].equalsIgnoreCase("guide")) {
 				processCommandGuide(icommandsender);
+			}else if(astring[0].equalsIgnoreCase("removeBooks")) {
+				removeGuideBooks(icommandsender);
 			}
 
 		}
@@ -135,6 +139,20 @@ public class CommandTPPI extends CommandBase
 			icommandsender.sendChatToPlayer(new ChatMessageComponent().addText(validCommandString));
 		}
 
+	}
+
+	private void removeGuideBooks(ICommandSender command) {
+		EntityPlayer player = command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName());
+		
+		for(ItemStack s : player.inventory.mainInventory) {
+			try{
+				if(s.itemID == Item.writtenBook.itemID && s.stackTagCompound.getTag("author").equals(ConfigurationHandler.bookAuthor)) {
+					s.stackSize = 0;
+					player.inventoryContainer.detectAndSendChanges();
+				}
+			}catch(Throwable t) {}
+		}
+		
 	}
 
 	private void processCommandGuide(ICommandSender command)
