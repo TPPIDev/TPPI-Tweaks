@@ -49,6 +49,7 @@ public class ConfigurationHandler
 	public static boolean readdResinSmelting;
 	public static boolean doCharcoalBlockCompression;
 	
+	public static boolean harderActivatorRecipe;
 	public static boolean harderDisassemblerRecipe;
 	public static boolean disableCardboardBox;
 
@@ -120,6 +121,7 @@ public class ConfigurationHandler
 		addOsmiumToOreWasher = config.get("Other Mod Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Other Mod Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
 		disableCardboardBox = config.get("Other Mod Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
+		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		

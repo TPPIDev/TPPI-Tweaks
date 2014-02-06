@@ -26,6 +26,7 @@ import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
 import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
 import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
+import tppitweaks.recipetweaks.modTweaks.TETweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -48,6 +49,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakExU;
 	private static boolean okayToTweakMPSA;
 	private static boolean okayToTweakMekanism;
+	private static boolean okayToTweakTE;
 
 	public static void doPostInitRecipeTweaks()
 	{
@@ -117,6 +119,7 @@ public class RecipeTweaks
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
 		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
+		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -162,6 +165,14 @@ public class RecipeTweaks
 		{
 			MekanismTweaks.init();
 		}
+		if (okayToTweakTE && ConfigurationHandler.harderActivatorRecipe)
+		{
+			TETweaks.init();
+		}
+		if (okayToTweakMagicalCrops)
+		{
+			MagicropsTweaks.init();
+		}
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
@@ -204,6 +215,9 @@ public class RecipeTweaks
 
 		if (okayToTweakMekanism && ConfigurationHandler.harderDisassemblerRecipe)
 			MekanismTweaks.addRecipes();
+		
+		if (okayToTweakTE && ConfigurationHandler.harderActivatorRecipe)
+			TETweaks.addRecipes();
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}
