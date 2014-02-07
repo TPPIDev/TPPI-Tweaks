@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
@@ -31,6 +33,8 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 
 	protected static final int LENGTH = 180;
 
+	protected GuideButton homeButton;
+	
 	public GuiGuideBase()
 	{
 		super(new ResourceLocation("tppitweaks", "textures/gui/guiGuide.png"));
@@ -69,13 +73,13 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 	// element list and then re-adding with updated text
 	protected void initPanel()
 	{
-		ElementScrollPanel panel = new ElementScrollPanel(this, this.xSize / 6, this.ySize / 9, this.xSize, (int) (this.ySize / 1.35));
+		ElementScrollPanel panel = new ElementScrollPanel(this, (this.xSize / 6) - 7, (this.ySize / 9) - 5, this.xSize - 75, (int) (this.ySize / 1.35) + 14);
 		List<String> lines = getLines();
 
 		int length = 0;
 		for (int i = 0; i < lines.size(); i++)
 		{
-			panel.addElement(new ElementText(this, 0, (length * 10), lines.get(i), null, 0x282828, false));
+			panel.addElement(new ElementText(this, 0, 3 + (length * 10), lines.get(i), null, 0x282828, false));
 			length++;
 
 		}
@@ -94,14 +98,32 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 		this.addElement(new ElementScrollBar(this, 217, 15, 6, 139, panel));
 	}
 
+	@Override
+	public void drawGuiBackgroundLayer(float f, int mouseX, int mouseY)
+	{
+	    super.drawGuiBackgroundLayer(f, mouseX, mouseY);
+	    
+	    if (texture != null) // Draw these parts of the texture again, so they overlap a portion of the scroll panel, allowing for smooth-looking scrolling
+	    {
+	        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+            getMinecraft().renderEngine.bindTexture(texture);
+            drawTexturedModalRect(guiLeft + 35, guiTop, 35, 0, this.xSize - 75, 14);
+            drawTexturedModalRect(guiLeft + 35, guiTop + ySize - 24, 35, ySize - 24, this.xSize - 75, 14);
+	    }
+	    
+	    homeButton.draw(); // Make sure this button is on top of the overlay
+	}
+	
 	private void initPanel(List<String> lines, List<String> modids)
 	{
-		ElementScrollPanel panel = new ElementScrollPanel(this, this.xSize / 6, this.ySize / 9, this.xSize, (int) (this.ySize / 1.35));
+	    ElementScrollPanel panel = new ElementScrollPanel(this, (this.xSize / 6) - 7, (this.ySize / 9) - 5, this.xSize - 75, (int) (this.ySize / 1.35) + 14);
 
 		for (int i = 0; i < lines.size(); i++)
 		{
-			panel.addElement(new ElementTextClickable(this, 0, i * 10, lines.get(i), null, 0x282828, modids.get(i)));
+			panel.addElement(new ElementTextClickable(this, 0, 3 + i * 10, lines.get(i), null, 0x282828, modids.get(i)));
 		}
+		
+		panel.addElement(new ElementText(this, 0, 3 + (lines.size() * 10), "", null)); // Adding an extra element because of the overlays & positions of the first element, stops the last element from being half visible when fully scrolled
 
 		ArrayList<ElementBase> elementsNew = new ArrayList<ElementBase>();
 
@@ -179,7 +201,8 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 		this.addElement(new GuideButton(this, 5, 228, 40));
 		this.addElement(new GuideButton(this, 6, 228, 70));
 		this.addElement(new GuideButton(this, 7, 228, 100));
-		this.addElement(new GuideButton(this, 8, 114, 157));
+		homeButton = new GuideButton(this, 8, 114, 157);
+		this.addElement(homeButton);
 	}
 
 	@Override
