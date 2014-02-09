@@ -28,7 +28,6 @@ import codechicken.nei.api.TaggedInventoryArea;
 import cpw.mods.fml.common.Optional.Interface;
 import cpw.mods.fml.common.Optional.InterfaceList;
 
-@InterfaceList(value = { @Interface(iface = "INEIGuiHandler", modid = "NotEnoughItems") })
 public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 {
 	protected static Map<String, GuiMod> mods = new TreeMap<String, GuiMod>();
