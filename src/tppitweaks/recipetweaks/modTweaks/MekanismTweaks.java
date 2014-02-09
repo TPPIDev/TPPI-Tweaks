@@ -30,7 +30,7 @@ public class MekanismTweaks
 			" o ",
 
 			'D', new ItemStack(ModItems.tppiMaterial, 1, 2),
-			't', mekanism.common.Mekanism.EnergyTablet,
+			't', new ItemStack(mekanism.common.Mekanism.EnergyTablet, 1, 1),
 			'o', "ingotRefinedObsidian",
 			'A', mekanism.common.Mekanism.AtomicCore
 		}));
