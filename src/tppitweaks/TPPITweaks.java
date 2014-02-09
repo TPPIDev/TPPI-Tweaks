@@ -29,10 +29,13 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = Reference.DEPENDENCIES)
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
-public class TPPITweaks {
+public class TPPITweaks
+{
 
 	public static final String VERSION = "0.8.2";
 
@@ -41,9 +44,9 @@ public class TPPITweaks {
 
 	public static TPPIEventHandler eventHandler;
 	public static TPPIPlayerTracker playerTracker;
-	
+
 	public static final Logger logger = Logger.getLogger("TPPITweaks");
-	
+
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
 
 	@EventHandler
@@ -77,13 +80,11 @@ public class TPPITweaks {
 		playerTracker = new TPPIPlayerTracker();
 		GameRegistry.registerPlayerTracker(playerTracker);
 		MinecraftForge.EVENT_BUS.register(playerTracker);
-
-		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
-			GuiHelper.initMap();
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
 		AM2SpawnControls.doAM2SpawnControls();
 
 		eventHandler = new TPPIEventHandler();
@@ -92,12 +93,19 @@ public class TPPITweaks {
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		RecipeTweaks.doPostInitRecipeTweaks();
+		
+		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
+		{
+			GuiHelper.initMap();
+		}
 	}
 
 	@EventHandler
-	public void onFMLServerStart(FMLServerStartingEvent event) {
+	public void onFMLServerStart(FMLServerStartingEvent event)
+	{
 		event.registerServerCommand(new CommandTPPI());
 	}
 }
