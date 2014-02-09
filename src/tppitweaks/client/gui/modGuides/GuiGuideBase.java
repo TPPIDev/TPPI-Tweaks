@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.library.gui.button.GuideButton;
 import tppitweaks.client.gui.library.gui.element.ElementBase;
@@ -24,7 +25,10 @@ import tppitweaks.util.TxtParser;
 import codechicken.nei.VisiblityData;
 import codechicken.nei.api.INEIGuiHandler;
 import codechicken.nei.api.TaggedInventoryArea;
+import cpw.mods.fml.common.Optional.Interface;
+import cpw.mods.fml.common.Optional.InterfaceList;
 
+@InterfaceList(value = { @Interface(iface = "INEIGuiHandler", modid = "NotEnoughItems") })
 public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 {
 	protected static Map<String, GuiMod> mods = new TreeMap<String, GuiMod>();
