@@ -53,7 +53,7 @@ public class TPPIBook extends ItemEditableBook
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if (stack.getItemDamage() == 2 && FMLCommonHandler.instance().getEffectiveSide().isClient())
+		if (stack.getItemDamage() == 2 && FMLCommonHandler.instance().getSide().isClient())
 		{
 			GuiHelper.doGuideGUI();
 		}

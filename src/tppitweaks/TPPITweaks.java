@@ -97,7 +97,7 @@ public class TPPITweaks
 	{
 		RecipeTweaks.doPostInitRecipeTweaks();
 		
-		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
+		if (FMLCommonHandler.instance().getSide().isClient())
 		{
 			GuiHelper.initMap();
 		}
