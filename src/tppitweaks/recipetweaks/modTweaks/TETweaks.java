@@ -3,6 +3,7 @@ package tppitweaks.recipetweaks.modTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -29,5 +30,8 @@ public class TETweaks {
 			'c', Block.chest,
 			'n', thermalexpansion.item.TEItems.pneumaticServo
 		}));
+		
+		if (OreDictionary.getOres("dustRuby").size() != 0)
+			thermalexpansion.util.crafting.PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
 	}
 }
