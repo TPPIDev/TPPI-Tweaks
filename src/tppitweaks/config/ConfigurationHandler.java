@@ -54,6 +54,7 @@ public class ConfigurationHandler
 	public static boolean disableCardboardBox;
 
 	public static boolean removeStupidEnergyCrystalRecipe;
+	public static boolean disableForceShears;
 	
 	public static boolean addOsmiumToOreWasher;
 	
@@ -103,6 +104,7 @@ public class ConfigurationHandler
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
+		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
 		fixExURecipes = config.get("Other Mod Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);

@@ -8,6 +8,12 @@ import cpw.mods.fml.common.Loader;
 
 public class IC2Tweaks
 {
+	public static void init()
+	{
+		if (ConfigurationHandler.removeStupidEnergyCrystalRecipe)
+			TweakerBase.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1);
+	}
+	
 	public static void registerOres()
 	{
 		if (ConfigurationHandler.ic2TEGlassInterchangeability)

@@ -16,7 +16,6 @@ import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
-import tppitweaks.recipetweaks.modTweaks.DCandIC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
 import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
 import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
@@ -153,9 +152,9 @@ public class RecipeTweaks
 		{
 			DCTweaks.init();
 		}
-		if (okayToTweakDartCraft && okayToTweakIC2)
+		if (okayToTweakIC2)
 		{
-			DCandIC2Tweaks.init();
+			IC2Tweaks.init();
 		}
 		if (okayToTweakMPSA)
 		{

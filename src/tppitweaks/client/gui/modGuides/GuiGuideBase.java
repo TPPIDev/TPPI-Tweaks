@@ -25,8 +25,6 @@ import tppitweaks.util.TxtParser;
 import codechicken.nei.VisiblityData;
 import codechicken.nei.api.INEIGuiHandler;
 import codechicken.nei.api.TaggedInventoryArea;
-import cpw.mods.fml.common.Optional.Interface;
-import cpw.mods.fml.common.Optional.InterfaceList;
 
 public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 {
