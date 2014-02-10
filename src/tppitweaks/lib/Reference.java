@@ -35,7 +35,8 @@ public class Reference
 			+ "after:powersuitaddons;"
 			+ "after:powersuits;"
 			+ "after:Mekanism;"
-			+ "after:xreliquary";
+			+ "after:xreliquary;"
+			+ "required-after:NotEnoughItems";
 	
 	public static final String PACK_VERSION = "0.2.2";
 }
