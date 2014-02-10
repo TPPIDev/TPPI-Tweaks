@@ -1,8 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import tppitweaks.config.ConfigurationHandler;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import tppitweaks.config.ConfigurationHandler;
 
 public class DCTweaks {
 

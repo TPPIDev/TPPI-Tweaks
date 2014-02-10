@@ -49,9 +49,13 @@ public class ConfigurationHandler
 	public static boolean readdResinSmelting;
 	public static boolean doCharcoalBlockCompression;
 	
+	public static boolean addEssenceSeedRecipe;
+	
 	public static boolean harderActivatorRecipe;
 	public static boolean harderDisassemblerRecipe;
 	public static boolean disableCardboardBox;
+	
+	public static boolean harderLillipadRecipe;
 
 	public static boolean removeStupidEnergyCrystalRecipe;
 	public static boolean disableForceShears;
@@ -124,6 +128,8 @@ public class ConfigurationHandler
 		harderDisassemblerRecipe = config.get("Other Mod Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
 		disableCardboardBox = config.get("Other Mod Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
+		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
+		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
 		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		

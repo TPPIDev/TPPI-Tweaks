@@ -30,7 +30,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TPPIEventHandler
 {
-
 	private boolean shouldLoadGUI = true;
 
 	public static boolean NBTValOnDeath;
@@ -179,5 +178,4 @@ public class TPPIEventHandler
 		if (!RecipeTweaks.recipesInitialized)
 			RecipeTweaks.doPlayerJoinRecipeTweaks();
 	}
-	
 }

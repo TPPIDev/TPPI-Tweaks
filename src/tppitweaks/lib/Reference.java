@@ -34,9 +34,8 @@ public class Reference
 			+ "after:BuildCraft|Core;"
 			+ "after:powersuitaddons;"
 			+ "after:powersuits;"
-			+ "after:Mekanism";
-	
+			+ "after:Mekanism;"
+			+ "after:xreliquary";
 	
 	public static final String PACK_VERSION = "0.2.2";
-	
 }
