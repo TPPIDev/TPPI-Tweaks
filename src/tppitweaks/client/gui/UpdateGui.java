@@ -29,17 +29,12 @@ public class UpdateGui extends GuiScreen
 
 	public void initModInstallationMenus()
 	{
-
-		if (!Loader.isModLoaded("Thaumcraft"))
-			modScreens.add(new InstructionsGui(new ModDownload("Thaumcraft 4", "http://adf.ly/1311628/thaumcraft-4", "Thaumcraft")));
-
 		if (!Loader.isModLoaded("TwilightForest"))
 			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
 		
 		iterator = modScreens.iterator();
 		
 		configGui = new ConfigGui();
-
 	}
 
 	public UpdateGui(GuiScreen parentScreen, boolean firstTime)
