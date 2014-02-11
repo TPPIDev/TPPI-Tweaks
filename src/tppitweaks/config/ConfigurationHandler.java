@@ -137,6 +137,10 @@ public class ConfigurationHandler
 		Reference.TTFilename = config.get("Mod Loading Tweaks", "ThaumicTinkerer_filename", Reference.DEFAULT_TT_FILENAME, "The filename for Thaumic Tinkerer to use to check for its presence and disable/enable it automatically").getString();
 		Reference.KAMIFilename = config.get("Mod Loading Tweaks", "KAMI_filename", Reference.DEFAULT_KAMI_FILENAME, "The filename for KAMI to use to check for its presence and disable/enable it automatically").getString();
 		
+		Reference.packName = config.get("Pack Info", "packName", "Test Pack Please Ignore", "The full name of the pack").getString();
+		Reference.packVersion = config.get("Pack Info", "packVerison", "0.0.1", "The version of the pack").getString();
+		Reference.packAcronym = config.get("Pack Info", "packAcronym", "TPPI", "The acronym of the pack (required, can be the same as name)").getString();
+		
 		config.save();
 	}
 
