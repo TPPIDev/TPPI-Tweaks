@@ -16,16 +16,19 @@ import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
-import tppitweaks.recipetweaks.modTweaks.DCandIC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
 import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
 import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
 import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.MPSATweaks;
+import tppitweaks.recipetweaks.modTweaks.MagicropsAndIC2Tweaks;
+import tppitweaks.recipetweaks.modTweaks.MagicropsAndTETweaks;
 import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
 import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
 import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
+import tppitweaks.recipetweaks.modTweaks.ReliquaryTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
+import tppitweaks.recipetweaks.modTweaks.TETweaks;
 import tppitweaks.recipetweaks.modTweaks.TweakerBase;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -48,10 +51,11 @@ public class RecipeTweaks
 	private static boolean okayToTweakExU;
 	private static boolean okayToTweakMPSA;
 	private static boolean okayToTweakMekanism;
+	private static boolean okayToTweakTE;
+	private static boolean okayToTweakReliquary;
 
 	public static void doPostInitRecipeTweaks()
-	{
-
+	{		
 		recipesInitialized = false;
 
 		checkWhatWeCanTweak();
@@ -75,7 +79,6 @@ public class RecipeTweaks
 
 		removeSomeRecipes();
 		addRevisedRecipes();
-
 	}
 
 	public static void doPlayerJoinRecipeTweaks()
@@ -112,11 +115,13 @@ public class RecipeTweaks
 		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
 		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
-		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops") && ConfigurationHandler.registerMagicalCropsOre;
+		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops");
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
 		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
 		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
+		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
+		okayToTweakReliquary = Loader.isModLoaded("xreliquary") && ConfigurationHandler.harderLillipadRecipe;
 	}
 
 	private static void initRemovableRecipesMap()
@@ -150,9 +155,9 @@ public class RecipeTweaks
 		{
 			DCTweaks.init();
 		}
-		if (okayToTweakDartCraft && okayToTweakIC2)
+		if (okayToTweakIC2)
 		{
-			DCandIC2Tweaks.init();
+			IC2Tweaks.init();
 		}
 		if (okayToTweakMPSA)
 		{
@@ -161,6 +166,14 @@ public class RecipeTweaks
 		if (okayToTweakMekanism)
 		{
 			MekanismTweaks.init();
+		}
+		if (okayToTweakTE && ConfigurationHandler.harderActivatorRecipe)
+		{
+			TETweaks.init();
+		}
+		if (okayToTweakMagicalCrops)
+		{
+			MagicropsTweaks.init();
 		}
 	}
 
@@ -204,6 +217,21 @@ public class RecipeTweaks
 
 		if (okayToTweakMekanism && ConfigurationHandler.harderDisassemblerRecipe)
 			MekanismTweaks.addRecipes();
+		
+		if (okayToTweakTE && ConfigurationHandler.harderActivatorRecipe)
+			TETweaks.addRecipes();
+		
+		if (okayToTweakMagicalCrops)
+			MagicropsTweaks.addRecipes();
+		
+		if (okayToTweakMagicalCrops && okayToTweakIC2)
+			MagicropsAndIC2Tweaks.addRecipes();
+		
+		if (okayToTweakMagicalCrops && okayToTweakTE)
+			MagicropsAndTETweaks.addRecipes();
+		
+		if (okayToTweakReliquary)
+			ReliquaryTweaks.addRecipes();
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}

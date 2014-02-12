@@ -30,10 +30,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TPPIEventHandler
 {
-
 	private boolean shouldLoadGUI = true;
 
 	public static boolean NBTValOnDeath;
+	private String name, version, acronym;
 
 	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
@@ -52,6 +52,10 @@ public class TPPIEventHandler
 			}
 			else
 			{
+				name = Reference.packName;
+				version = Reference.packVersion;
+				acronym = Reference.packAcronym;
+				
 				Field f = null;
 				try
 				{
@@ -60,7 +64,7 @@ public class TPPIEventHandler
 				catch (Exception e)
 				{
 					e.printStackTrace();
-					TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
+					TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
 					return;
 				}
 
@@ -80,7 +84,7 @@ public class TPPIEventHandler
 				catch (Exception e)
 				{
 					e.printStackTrace();
-					TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
+					TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
 				}
 			}
 		}
@@ -96,7 +100,7 @@ public class TPPIEventHandler
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
+			TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
 		}
 
 		addStuff(f);
@@ -117,7 +121,7 @@ public class TPPIEventHandler
 				{
 					// Do nothing
 				}
-				else if (s.equals("Test Pack Please Ignore " + Reference.PACK_VERSION))
+				else if (s.equals(name + " " + version))
 				{
 					// Do nothing
 				}
@@ -133,14 +137,14 @@ public class TPPIEventHandler
 					newList.add(s);
 			}
 
-			newList.add("Test Pack Please Ignore " + Reference.PACK_VERSION);
+			newList.add(name + " " + version);
 
 			f.set(FMLCommonHandler.instance(), ImmutableList.copyOf(newList));
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			TPPITweaks.logger.log(Level.WARNING, "Reflection error, TPPI watermark will not be shown");
+			TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
 		}
 	}
 
@@ -179,5 +183,4 @@ public class TPPIEventHandler
 		if (!RecipeTweaks.recipesInitialized)
 			RecipeTweaks.doPlayerJoinRecipeTweaks();
 	}
-	
 }

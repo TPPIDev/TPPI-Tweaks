@@ -49,10 +49,16 @@ public class ConfigurationHandler
 	public static boolean readdResinSmelting;
 	public static boolean doCharcoalBlockCompression;
 	
+	public static boolean addEssenceSeedRecipe;
+	
+	public static boolean harderActivatorRecipe;
 	public static boolean harderDisassemblerRecipe;
 	public static boolean disableCardboardBox;
+	
+	public static boolean harderLillipadRecipe;
 
 	public static boolean removeStupidEnergyCrystalRecipe;
+	public static boolean disableForceShears;
 	
 	public static boolean addOsmiumToOreWasher;
 	
@@ -102,6 +108,7 @@ public class ConfigurationHandler
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", true, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(true);
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
+		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
 		fixExURecipes = config.get("Other Mod Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
@@ -120,12 +127,19 @@ public class ConfigurationHandler
 		addOsmiumToOreWasher = config.get("Other Mod Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Other Mod Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
 		disableCardboardBox = config.get("Other Mod Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
+		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
+		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
+		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
 		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		
 		Reference.thaumcraftFilename = config.get("Mod Loading Tweaks", "Thaumcraft_filename", Reference.DEFAULT_THAUMCRAFT_FILENAME, "The filename for Thaumcraft4 to use to check for its presence").getString();
 		Reference.TTFilename = config.get("Mod Loading Tweaks", "ThaumicTinkerer_filename", Reference.DEFAULT_TT_FILENAME, "The filename for Thaumic Tinkerer to use to check for its presence and disable/enable it automatically").getString();
 		Reference.KAMIFilename = config.get("Mod Loading Tweaks", "KAMI_filename", Reference.DEFAULT_KAMI_FILENAME, "The filename for KAMI to use to check for its presence and disable/enable it automatically").getString();
+		
+		Reference.packName = config.get("Pack Info", "packName", "Test Pack Please Ignore", "The full name of the pack").getString();
+		Reference.packVersion = config.get("Pack Info", "packVerison", "0.0.1", "The version of the pack").getString();
+		Reference.packAcronym = config.get("Pack Info", "packAcronym", "TPPI", "The acronym of the pack (required, can be the same as name)").getString();
 		
 		config.save();
 	}

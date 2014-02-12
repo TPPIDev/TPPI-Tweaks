@@ -143,16 +143,16 @@ public class CommandTPPI extends CommandBase
 
 	private void removeGuideBooks(ICommandSender command) {
 		EntityPlayer player = command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName());
-		
-		for(ItemStack s : player.inventory.mainInventory) {
-			try{
-				if(s.itemID == Item.writtenBook.itemID && s.stackTagCompound.getTag("author").equals(ConfigurationHandler.bookAuthor)) {
-					s.stackSize = 0;
-					player.inventoryContainer.detectAndSendChanges();
-				}
-			}catch(Throwable t) {}
+		ItemStack[] inv = player.inventory.mainInventory;
+		for (int i = 0; i < inv.length; i++)
+		{
+			if (inv[i] != null && // no null itemstack
+				inv[i].stackTagCompound != null && // no null stack tag
+				inv[i].stackTagCompound.toString().contains(ConfigurationHandler.bookAuthor) && // has the author 
+				inv[i].itemID == Item.writtenBook.itemID) // is a vanilla book
+				
+					inv[i] = null;
 		}
-		
 	}
 
 	private void processCommandGuide(ICommandSender command)

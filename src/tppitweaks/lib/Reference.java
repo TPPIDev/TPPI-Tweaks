@@ -34,9 +34,11 @@ public class Reference
 			+ "after:BuildCraft|Core;"
 			+ "after:powersuitaddons;"
 			+ "after:powersuits;"
-			+ "after:Mekanism";
+			+ "after:Mekanism;"
+			+ "after:xreliquary;"
+			+ "required-after:NotEnoughItems";
 	
-	
-	public static final String PACK_VERSION = "0.2.1";
-	
+	public static String packName = "Test Pack Please Ignore";
+	public static String packVersion = "0.2.2";
+	public static String packAcronym = "TPPI";
 }

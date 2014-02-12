@@ -73,7 +73,7 @@ public class GregtechTweaks
 	public static void addRecipes() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
-			TETweaks.addPaperRecipe();
+			TETweaks.addRecipes();
 			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
 		}
 		if(ConfigurationHandler.readdResinSmelting) {

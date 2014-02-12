@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.library.gui.button.GuideButton;
 import tppitweaks.client.gui.library.gui.element.ElementBase;
