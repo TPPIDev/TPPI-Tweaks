@@ -22,6 +22,7 @@ public class MekanismTweaks
 		{
 			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
 		}
+		TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
 	}
 
 	public static void addRecipes()
