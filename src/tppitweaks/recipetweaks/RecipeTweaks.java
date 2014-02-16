@@ -175,6 +175,10 @@ public class RecipeTweaks
 		{
 			MagicropsTweaks.init();
 		}
+		if (okayToTweakReliquary)
+		{
+			ReliquaryTweaks.init();
+		}
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
