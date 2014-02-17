@@ -22,7 +22,10 @@ public class MekanismTweaks
 		{
 			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
 		}
-		TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
+		if (ConfigurationHandler.disableMiner)
+		{
+			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
+		}
 	}
 
 	public static void addRecipes()
@@ -58,9 +61,9 @@ public class MekanismTweaks
 			'e', mekanism.common.Mekanism.EnergyUpgrade,
 			'a', mekanism.common.Mekanism.AtomicCore
 		}));
-		
+
 		ArrayList<ItemStack> oreIn = null, dustOut = null;
-		
+
 		if (!(oreIn = OreDictionary.getOres("oreAluminum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustAluminum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
@@ -68,7 +71,7 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("oreVinteum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustVinteum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
@@ -76,7 +79,7 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("oreYellorite")).isEmpty() && !(dustOut = OreDictionary.getOres("dustYellorium")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
@@ -84,7 +87,7 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("oreRuby")).isEmpty() && !(dustOut = OreDictionary.getOres("dustRuby")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
@@ -92,7 +95,7 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("oreSapphire")).isEmpty() && !(dustOut = OreDictionary.getOres("dustSapphire")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
@@ -100,7 +103,7 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("oreOlivine")).isEmpty() && !(dustOut = OreDictionary.getOres("dustOlivine")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
@@ -108,49 +111,49 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("ingotAluminum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustAluminum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("ingotYellorium")).isEmpty() && !(dustOut = OreDictionary.getOres("dustYellorium")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("gemRuby")).isEmpty() && !(dustOut = OreDictionary.getOres("dustRuby")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("gemSapphire")).isEmpty() && !(dustOut = OreDictionary.getOres("dustSapphire")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("gemGreenSapphire")).isEmpty() && !(dustOut = OreDictionary.getOres("dustGreenSapphire")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("gemOlivine")).isEmpty() && !(dustOut = OreDictionary.getOres("dustOlivine")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
-		
+
 		if (!(oreIn = OreDictionary.getOres("ingotAluminum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustAluminum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
