@@ -19,6 +19,7 @@ import tppitweaks.proxy.PacketHandler;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TPPIPlayerTracker;
+import tppitweaks.util.TPPITickHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -29,6 +30,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = Reference.DEPENDENCIES)
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
@@ -45,6 +48,8 @@ public class TPPITweaks
 	public static final Logger logger = Logger.getLogger("TPPITweaks");
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
+	
+	public static TPPITickHandler tickhandler = new TPPITickHandler();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -87,6 +92,8 @@ public class TPPITweaks
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
+		
+		TickRegistry.registerTickHandler(tickhandler, Side.CLIENT);
 	}
 
 	@EventHandler

@@ -76,6 +76,8 @@ public class ConfigurationHandler
 	public static List<String> changelog;
 
 	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityLightMage", "EntityEarthElemental", "EntityFireElemental", "EntityWisp", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
+	
+	public static boolean allowCapes = true;
 
 	public static void init(File file)
 	{
@@ -142,6 +144,7 @@ public class ConfigurationHandler
 		Reference.packName = config.get("Pack Info", "packName", "Test Pack Please Ignore", "The full name of the pack").getString();
 		Reference.packVersion = config.get("Pack Info", "packVerison", "0.0.1", "The version of the pack").getString();
 		Reference.packAcronym = config.get("Pack Info", "packAcronym", "TPPI", "The acronym of the pack (required, can be the same as name)").getString();
+		allowCapes = config.get("Pack Info", "allowDevCapes", true, "Enables/Disables the visibility of dev capes. This only affects the user and does NOT have to be the same between client and server.").getBoolean(true);
 		
 		config.save();
 	}
