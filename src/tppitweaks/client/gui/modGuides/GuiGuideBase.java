@@ -149,7 +149,7 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 		lines.add("");
 		if (body.startsWith("<"))
 		{
-			body = "No information for this mod yet! " + "Use /tppi mods [modname] to get a link to a helpful webpage for this mod, " + "or contribute some documentation on the github!";
+			body = "No in-game information for this mod yet! " + "Use /tppi mods [modname] to get a link to a helpful webpage for this mod, " + "or contribute some documentation on the github!";
 		}
 		FontRenderer render = this.mc.fontRenderer;
 		String[] paragraphs = body.split("\n");
