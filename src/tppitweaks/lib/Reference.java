@@ -35,8 +35,8 @@ public class Reference
 			+ "after:powersuitaddons;"
 			+ "after:powersuits;"
 			+ "after:Mekanism;"
-			+ "after:xreliquary;";
-			//+ "required-after:NotEnoughItems";
+			+ "after:xreliquary;"
+			+ "required-after:NotEnoughItems";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";
