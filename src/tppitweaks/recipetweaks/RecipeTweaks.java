@@ -77,6 +77,10 @@ public class RecipeTweaks
 		if (okayToTweakMagicalCrops)
 			MagicropsTweaks.registerOres();
 
+		if (Loader.isModLoaded("ExtraUtilities")) {
+			ExUTweaks.addRecipes();
+		}
+		
 		removeSomeRecipes();
 		addRevisedRecipes();
 	}
@@ -150,6 +154,10 @@ public class RecipeTweaks
 		if (okayToTweakOpenBlocks)
 		{
 			OpenBlocksTweaks.init();
+		}
+		if (Loader.isModLoaded("ExtraUtilities"))
+		{
+			ExUTweaks.init();
 		}
 		if (okayToTweakDartCraft)
 		{

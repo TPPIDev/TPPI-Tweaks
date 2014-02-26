@@ -39,6 +39,7 @@ public class ConfigurationHandler
 	public static boolean tweakAM2;
 	public static boolean fixExURecipes;
 	public static boolean changeMPSARecipes;
+	public static boolean nerfEnderQuarry;
 
 	public static boolean doPlatinumInCentrifuge;
 	public static boolean addLapisDustMortarRecipes;
@@ -113,6 +114,8 @@ public class ConfigurationHandler
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
 		fixExURecipes = config.get("Other Mod Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
+		nerfEnderQuarry = config.get("Other Mod Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
+		
 		
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
 		

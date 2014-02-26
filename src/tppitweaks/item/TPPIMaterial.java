@@ -21,7 +21,7 @@ public class TPPIMaterial extends Item {
 	
 	private Icon[] icons;
 	
-	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked", "disassemblerCore"};
+	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked", "disassemblerCore", "miningCore"};
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
@@ -30,12 +30,18 @@ public class TPPIMaterial extends Item {
 		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
 		icons[1] = par1IconRegister.registerIcon("tppitweaks:tppiProcessorUncooked");
 		icons[2] = par1IconRegister.registerIcon("tppitweaks:disassemblerCore");
+		icons[3] = par1IconRegister.registerIcon("tppitweaks:miningCore");
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack)
 	{
 		return unlocNames[par1ItemStack.getItemDamage()];
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return stack.getItemDamage() == 3;
 	}
 	
 	@Override
@@ -46,7 +52,7 @@ public class TPPIMaterial extends Item {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 4; i++)
 			list.add(new ItemStack(this.itemID, 1, i));
 	}
 }
