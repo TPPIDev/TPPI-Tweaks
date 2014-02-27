@@ -51,7 +51,7 @@ public class ConfigurationHandler
 	public static boolean readdResinSmelting;
 	public static boolean doCharcoalBlockCompression;
 	
-	public static boolean addEssenceSeedRecipe;
+	public static boolean changeEssenceSeedRecipe;
 	
 	public static boolean harderActivatorRecipe;
 	public static boolean harderDisassemblerRecipe;
@@ -135,7 +135,7 @@ public class ConfigurationHandler
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
-		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
+		changeEssenceSeedRecipe = config.get("Other Mod Tweaks", "changeEssenceSeedRecipe", true, "Alter the recipe for the essence seeds in magical crops").getBoolean(true);
 		
 		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);

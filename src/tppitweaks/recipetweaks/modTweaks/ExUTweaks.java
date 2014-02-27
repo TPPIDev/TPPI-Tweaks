@@ -50,7 +50,7 @@ public class ExUTweaks
 	public static void addRecipes() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
 				
-			ItemStack enderSlave = new ItemStack(extrautils.ExtraUtils.portal);
+			ItemStack portal = new ItemStack(extrautils.ExtraUtils.portal);
 			ItemStack octoCobble = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 7);
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
@@ -62,7 +62,7 @@ public class ExUTweaks
 		    	'W', extrautils.ExtraUtils.buildersWand, 
 		    	'S', extrautils.ExtraUtils.erosionShovel, 
 		    	'P', octoCobble, 
-		    	'E', enderSlave, 
+		    	'E', portal, 
 		    	'G', extrautils.ExtraUtils.cursedEarth,
 		    	'B', Block.fenceIron 
 		    ));
@@ -76,7 +76,7 @@ public class ExUTweaks
 		    	'W', extrautils.ExtraUtils.buildersWand, 
 		    	'S', extrautils.ExtraUtils.erosionShovel, 
 		    	'P', octoCobble, 
-		    	'E', enderSlave, 
+		    	'E', portal, 
 		    	'G', extrautils.ExtraUtils.cursedEarth,
 		    	'B', Block.fenceIron 
 		    ));
