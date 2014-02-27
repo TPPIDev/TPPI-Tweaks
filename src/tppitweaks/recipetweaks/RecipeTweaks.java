@@ -76,10 +76,6 @@ public class RecipeTweaks
 
 		if (okayToTweakMagicalCrops)
 			MagicropsTweaks.registerOres();
-
-		if (Loader.isModLoaded("ExtraUtilities")) {
-			ExUTweaks.addRecipes();
-		}
 		
 		removeSomeRecipes();
 		addRevisedRecipes();
@@ -90,6 +86,10 @@ public class RecipeTweaks
 		if (okayToTweakGT)
 		{
 			GregtechTweaks.addRecipes();
+		}
+		if (okayToTweakExU)
+		{
+			ExUTweaks.reAddRecipeAfterLoad();
 		}
 		recipesInitialized = true;
 	}
@@ -155,7 +155,7 @@ public class RecipeTweaks
 		{
 			OpenBlocksTweaks.init();
 		}
-		if (Loader.isModLoaded("ExtraUtilities"))
+		if (Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.nerfEnderQuarry)
 		{
 			ExUTweaks.init();
 		}
@@ -244,6 +244,9 @@ public class RecipeTweaks
 		
 		if (okayToTweakReliquary)
 			ReliquaryTweaks.addRecipes();
+		
+		if (okayToTweakExU && ConfigurationHandler.nerfEnderQuarry)
+			ExUTweaks.addRecipes();
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}

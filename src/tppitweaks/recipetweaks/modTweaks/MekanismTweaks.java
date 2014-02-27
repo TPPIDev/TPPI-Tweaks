@@ -2,6 +2,7 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import java.util.ArrayList;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -22,7 +23,7 @@ public class MekanismTweaks
 		{
 			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
 		}
-		if (ConfigurationHandler.disableMiner)
+		if (ConfigurationHandler.disableMiner || ConfigurationHandler.nerfMiner)
 		{
 			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
 		}
@@ -30,37 +31,11 @@ public class MekanismTweaks
 
 	public static void addRecipes()
 	{
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.AtomicDisassembler), new Object[]{
-			"AtA",
-			"ADA",
-			" o ",
+		if (ConfigurationHandler.harderDisassemblerRecipe)
+			doMaterialNerfs();
 
-			'D', new ItemStack(ModItems.tppiMaterial, 1, 2),
-			't', new ItemStack(mekanism.common.Mekanism.EnergyTablet, 1, 1),
-			'o', "ingotRefinedObsidian",
-			'A', mekanism.common.Mekanism.AtomicCore
-		}));
-
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.AtomicCore), new Object[]{
-			"aea",
-			"ede",
-			"aea",
-
-			'a', mekanism.common.Mekanism.EnrichedAlloy,
-			'e', mekanism.common.Mekanism.ElectrolyticCore,
-			'd', Item.diamond
-		}));
-
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), new Object[]{
-			"tst",
-			"eae",
-			"tst",
-
-			't', mekanism.common.Mekanism.TeleportationCore,
-			's', mekanism.common.Mekanism.SpeedUpgrade,
-			'e', mekanism.common.Mekanism.EnergyUpgrade,
-			'a', mekanism.common.Mekanism.AtomicCore
-		}));
+		if (ConfigurationHandler.nerfMiner)
+			doMinerNerf();
 
 		ArrayList<ItemStack> oreIn = null, dustOut = null;
 
@@ -160,5 +135,81 @@ public class MekanismTweaks
 			for (ItemStack i : oreIn)
 				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
+
+		if (!(oreIn = OreDictionary.getOres("ingotPlatinum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustPlatinum")).isEmpty())
+		{
+			ItemStack out = dustOut.get(0).copy();
+			for (ItemStack i : oreIn)
+				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+		}
+
+		if (!(oreIn = OreDictionary.getOres("ingotElectrum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustElectrum")).isEmpty())
+		{
+			ItemStack out = dustOut.get(0).copy();
+			for (ItemStack i : oreIn)
+				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+		}
+
+		if (!(oreIn = OreDictionary.getOres("ingotInvar")).isEmpty() && !(dustOut = OreDictionary.getOres("dustInvar")).isEmpty())
+		{
+			ItemStack out = dustOut.get(0).copy();
+			for (ItemStack i : oreIn)
+				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+		}
+
+		mekanism.common.recipe.RecipeHandler.addCrusherRecipe(new ItemStack(Item.bone), new ItemStack(Item.dyePowder, 5, 15));
+		mekanism.common.recipe.RecipeHandler.addCrusherRecipe(new ItemStack(Block.plantRed), new ItemStack(Item.dyePowder, 2, 1));
+		mekanism.common.recipe.RecipeHandler.addCrusherRecipe(new ItemStack(Block.plantYellow), new ItemStack(Item.dyePowder, 2, 11));
+	}
+
+	private static void doMaterialNerfs()
+	{
+		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.AtomicDisassembler), new Object[]{
+			"AtA",
+			"ADA",
+			" o ",
+
+			'D', new ItemStack(ModItems.tppiMaterial, 1, 2),
+			't', new ItemStack(mekanism.common.Mekanism.EnergyTablet, 1, 1),
+			'o', "ingotRefinedObsidian",
+			'A', mekanism.common.Mekanism.AtomicCore
+		}));
+
+		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.AtomicCore), new Object[]{
+			"aea",
+			"ede",
+			"aea",
+
+			'a', mekanism.common.Mekanism.EnrichedAlloy,
+			'e', mekanism.common.Mekanism.ElectrolyticCore,
+			'd', Item.diamond
+		}));
+
+		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), new Object[]{
+			"tst",
+			"eae",
+			"tst",
+
+			't', mekanism.common.Mekanism.TeleportationCore,
+			's', mekanism.common.Mekanism.SpeedUpgrade,
+			'e', mekanism.common.Mekanism.EnergyUpgrade,
+			'a', mekanism.common.Mekanism.AtomicCore
+		}));
+	}
+
+	private static void doMinerNerf()
+	{
+		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 4), new Object[]{
+			"AcA",
+			"LRL",
+			"MCM",
+
+			'A', mekanism.common.Mekanism.AtomicCore,
+			'c', mekanism.common.Mekanism.ControlCircuit,
+			'L', new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 15),
+			'R', mekanism.common.Mekanism.Robit,
+			'M', new ItemStack(mekanism.common.Mekanism.BasicBlock, 1, 8),
+			'C', mekanism.common.Mekanism.AtomicDisassembler
+		}));
 	}
 }
