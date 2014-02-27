@@ -64,7 +64,7 @@ public class MagicropsTweaks
 		for (Object[] oa : items)
 		{
 			if ((oa[2] instanceof String && !OreDictionary.getOres((String) oa[2]).isEmpty()) || !(oa[2] instanceof String))
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((Item) oa[0], (int) oa[1]), "XEX", "ESE", "XEX", 'X', oa[2], 'E', new ItemStack(magicalcrops.mod_mCrops.MagicEssence, 1, (int) oa[3]), 'S', Item.seeds));
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((Item) oa[0], (Integer) oa[1]), "XEX", "ESE", "XEX", 'X', oa[2], 'E', new ItemStack(magicalcrops.mod_mCrops.MagicEssence, 1, (Integer) oa[3]), 'S', Item.seeds));
 		}
 		
 		/* anything below here was too special of a recipe and had to be added manually */
