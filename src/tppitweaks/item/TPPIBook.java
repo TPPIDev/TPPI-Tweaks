@@ -35,7 +35,7 @@ public class TPPIBook extends ItemEditableBook
 	{
 		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppibook");
 		icons[1] = Item.writtenBook.getIconFromDamage(0);
-		icons[2] = par1IconRegister.registerIcon("tppitweaks:tppiGuide");
+		icons[2] = par1IconRegister.registerIcon(ConfigurationHandler.guideSkin == 0 ? "tppitweaks:tppiGuide1" : "tppitweaks:tppiGuide2");
 	}
 	
 	@Override

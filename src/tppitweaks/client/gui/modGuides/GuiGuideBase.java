@@ -20,6 +20,7 @@ import tppitweaks.client.gui.library.gui.element.ElementScrollPanel;
 import tppitweaks.client.gui.library.gui.element.ElementText;
 import tppitweaks.client.gui.library.gui.element.ElementTextClickable;
 import tppitweaks.command.CommandTPPI;
+import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TxtParser;
 import codechicken.nei.VisiblityData;
@@ -38,7 +39,7 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 	
 	public GuiGuideBase()
 	{
-		super(new ResourceLocation("tppitweaks", "textures/gui/guiGuide.png"));
+		super(new ResourceLocation("tppitweaks", ConfigurationHandler.guideSkin == 0 ? "textures/gui/guiGuide.png" : "textures/gui/guiGuide_alt.png"));
 		this.xSize = 256;
 		this.ySize = 178;
 
@@ -74,7 +75,7 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 	// element list and then re-adding with updated text
 	protected void initPanel()
 	{
-		ElementScrollPanel panel = new ElementScrollPanel(this, (this.xSize / 6) - 7, (this.ySize / 9) - 5, this.xSize - 75, (int) (this.ySize / 1.35) + 14);
+		ElementScrollPanel panel = new ElementScrollPanel(this, (this.xSize / 6) - 3, (this.ySize / 9) + 5, this.xSize - 75, (int) (this.ySize / 1.35) + 14);
 		List<String> lines = getLines();
 
 		int length = 0;
@@ -117,7 +118,7 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 	
 	private void initPanel(List<String> lines, List<String> modids)
 	{
-	    ElementScrollPanel panel = new ElementScrollPanel(this, (this.xSize / 6) - 7, (this.ySize / 9) - 5, this.xSize - 75, (int) (this.ySize / 1.35) + 14);
+	    ElementScrollPanel panel = new ElementScrollPanel(this, (this.xSize / 6) - 3, (this.ySize / 9) + 5, this.xSize - 75, (int) (this.ySize / 1.35) + 10);
 
 		for (int i = 0; i < lines.size(); i++)
 		{
@@ -167,7 +168,6 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 				{
 					s = s.substring(0, s.length() - 1);
 				}
-				System.out.print(s + " ");
 				if (render.getStringWidth(currentLine + s + " ") < this.xSize - (this.xSize - LENGTH))
 					currentLine += s + " ";
 				else
@@ -176,7 +176,6 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 					currentLine = s + " ";
 				}
 			}
-			System.out.println();
 			lines.add(currentLine);
 			currentLine = "";
 			lines.add("");
@@ -194,14 +193,14 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 
 	private void initButtons()
 	{
-		this.addElement(new GuideButton(this, 0, 2, 10));
-		this.addElement(new GuideButton(this, 1, 2, 40));
-		this.addElement(new GuideButton(this, 2, 2, 70));
-		this.addElement(new GuideButton(this, 3, 2, 100));
-		this.addElement(new GuideButton(this, 4, 228, 10));
-		this.addElement(new GuideButton(this, 5, 228, 40));
-		this.addElement(new GuideButton(this, 6, 228, 70));
-		this.addElement(new GuideButton(this, 7, 228, 100));
+		this.addElement(new GuideButton(this, 0, 2, 20));
+		this.addElement(new GuideButton(this, 1, 2, 50));
+		this.addElement(new GuideButton(this, 2, 2, 80));
+		this.addElement(new GuideButton(this, 3, 2, 110));
+		this.addElement(new GuideButton(this, 4, 228, 20));
+		this.addElement(new GuideButton(this, 5, 228, 50));
+		this.addElement(new GuideButton(this, 6, 228, 80));
+		this.addElement(new GuideButton(this, 7, 228, 110));
 		homeButton = new GuideButton(this, 8, 114, 157);
 		this.addElement(homeButton);
 	}
