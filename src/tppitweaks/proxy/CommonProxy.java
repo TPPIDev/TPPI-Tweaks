@@ -27,4 +27,9 @@ public class CommonProxy implements IGuiHandler
 	{
 		return null;
 	}
+
+	public void initTickHandler()
+	{
+		// Overriden
+	}
 }

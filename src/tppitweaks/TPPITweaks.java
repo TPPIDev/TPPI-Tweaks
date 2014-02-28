@@ -15,23 +15,22 @@ import tppitweaks.creativeTab.CreativeTabTPPI;
 import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
+import tppitweaks.proxy.CommonProxy;
 import tppitweaks.proxy.PacketHandler;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TPPIPlayerTracker;
-import tppitweaks.util.TPPITickHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = Reference.DEPENDENCIES)
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
@@ -41,6 +40,9 @@ public class TPPITweaks
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
+	
+	@SidedProxy(clientSide = "tppitweaks.proxy.ClientProxy", serverSide = "tppitweaks.proxy.CommonProxy")
+	public static CommonProxy proxy;
 
 	public static TPPIEventHandler eventHandler;
 	public static TPPIPlayerTracker playerTracker;
@@ -49,8 +51,6 @@ public class TPPITweaks
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
 	
-	public static TPPITickHandler tickhandler = new TPPITickHandler();
-
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
@@ -93,7 +93,8 @@ public class TPPITweaks
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
 		
-		TickRegistry.registerTickHandler(tickhandler, Side.CLIENT);
+		if (event.getSide().isClient())
+			proxy.initTickHandler();
 	}
 
 	@EventHandler
