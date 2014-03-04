@@ -17,8 +17,6 @@ public class FileLoader
 {
 	private static InputStream bookText, supportedMods, changelogText;
 
-	private static String EXTENSION = ".removed";
-
 	public static void init(File file, int attempt) throws IOException
 	{
 		File dir = new File(file.getParent() + "");
@@ -91,46 +89,49 @@ public class FileLoader
 		 */
 	}
 
-	public static void disableTT()
+	public static void disableMod(String partOfName, String extension)
 	{
-		for(File f : getTT()) {
+		for(File f : getMod(partOfName)) {
 			System.out.println("Disabling: " + f.getName());
-			if(!f.getName().contains(EXTENSION)) {
-				f.renameTo(new File(f.getAbsolutePath() + EXTENSION));
+			if(!f.getName().contains(extension)) {
+				f.renameTo(new File(f.getAbsolutePath() + extension));
 			}
 		}
 	}
 
-	public static void enableTT()
+	public static void enableMod(String partOfName, String extensionToRemove)
 	{
-		for(File f : getTT()) {
-			if(f.getName().contains(EXTENSION)) {
-				f.renameTo(new File(f.getAbsolutePath().replace(EXTENSION, "")));
+		for(File f : getMod(partOfName)) {
+			System.out.println("Enabling: " + f.getName());
+			if(f.getName().contains(extensionToRemove)) {
+				f.renameTo(new File(f.getAbsolutePath().replace(extensionToRemove, "")));
 			}
 		}
-
 	}
 
-	private static ArrayList<File> getTT()
+	private static ArrayList<File> getMod(String partOfName)
 	{
-		ArrayList<File> thaumicTinkererFiles = new ArrayList<File>();
-		File modJar;
+		ArrayList<File> files = new ArrayList<File>();
+		File mods;
 
-		modJar = new File(Reference.modsFolder, Reference.TTFilename);
-		System.out.println("TT Exists? " + modJar.exists());
-		if(modJar.exists()) {
-			thaumicTinkererFiles.add(modJar);
+		mods = Reference.modsFolder;
+		
+		String[] fileNames = mods.list();
+		ArrayList<String> foundNames = new ArrayList<String>();
+		
+		for (String s : fileNames)
+		{
+			if (s.contains(partOfName))
+				foundNames.add(s);
 		}
-
-		modJar = new File(Reference.modsFolder, Reference.KAMIFilename);
-		System.out.println("KAMI Exists? " + modJar.exists());
-		if(modJar.exists()) {
-			thaumicTinkererFiles.add(modJar);
-		}
-
-		return thaumicTinkererFiles;
+		
+		for (String s : foundNames)
+			files.add(new File(mods, s));
+		
+		return files;
 	}
 
+	/*
 	public static void getThaumicTinkererFilenameState() {
 
 		File modJar;
@@ -146,6 +147,7 @@ public class FileLoader
 		}
 
 	}
+	*/
 
 	public static String manuallyGetConfigValue(Map<String, Object> m, String string) {
 		File config = new File(((File) m.get("mcLocation")).getAbsolutePath() + "/config/TPPI/TPPITweaks.cfg");
@@ -192,9 +194,10 @@ public class FileLoader
 		return supportedMods;
 	}
 
+	/*
 	public static void removeDuplicateMods()
 	{
-		ArrayList<File> jars = getTT();
+		ArrayList<File> jars = getMod();
 		File removedTT = new File(Reference.modsFolder.getAbsolutePath() + "/" + Reference.TTFilename + EXTENSION);
 		File removedKAMI = new File(Reference.modsFolder.getAbsolutePath() + "/" + Reference.KAMIFilename + EXTENSION);
 
@@ -210,4 +213,5 @@ public class FileLoader
 			}
 		}
 	}
+	*/
 }

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import tppitweaks.lib.Reference;
-import tppitweaks.util.FileLoader;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
 public class CoreTPPITweaks implements IFMLLoadingPlugin
@@ -39,6 +38,7 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 	@Override
 	public void injectData(Map<String, Object> data)
 	{
+		System.out.println("TPPITweaks coremod, we knew ye well, you have served your purpose. We need you no more.");
 
 		File mcDir = (File) data.get("mcLocation");
 		File modsDir = null;
@@ -53,7 +53,8 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 		}
 
 		Reference.modsFolder = modsDir;
-
+		
+		/*
 		Reference.thaumcraftFilename = FileLoader.manuallyGetConfigValue(data, "Thaumcraft_filename");
 		//Reference.TTFilename = FileLoader.manuallyGetConfigValue(data, "ThaumicTinkerer_filename");
 		Reference.KAMIFilename = FileLoader.manuallyGetConfigValue(data, "KAMI_filename");
@@ -80,7 +81,7 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 			if (!thaumcraft.exists())
 			{
 				System.out.println("TPPITweaks failed to locate Thaumcraft. Disabling Thaumic Tinkerer.");
-				FileLoader.disableTT();
+				FileLoader.disableMod();
 				System.out.println("Thaumic Tinkerer Disabled.");
 			}
 			else
@@ -89,5 +90,6 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 				FileLoader.enableTT();
 			}
 		}
+		*/
 	}
 }

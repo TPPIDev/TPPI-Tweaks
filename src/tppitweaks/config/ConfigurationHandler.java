@@ -69,6 +69,7 @@ public class ConfigurationHandler
 	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
+	public static boolean showMaricultureGui;
 	
 	public static boolean autoEnableTT;
 	
@@ -119,7 +120,6 @@ public class ConfigurationHandler
 		fixExURecipes = config.get("Other Mod Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		nerfEnderQuarry = config.get("Other Mod Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
 		
-		
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
 		
 		doPlatinumInCentrifuge = config.get("Gregtech Tweaks", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
@@ -131,6 +131,7 @@ public class ConfigurationHandler
 		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
+		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", true, "Show the mariculture fix GUI on startup.").getBoolean(true);
 		
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
@@ -173,7 +174,13 @@ public class ConfigurationHandler
 		changelog = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 	}
 
-	public static void stopShowingGUI()
+	/**
+	 * Sets a config value manually by editing the text file
+	 * @param prefix - The prefix of the config option (anythin before the '=')
+	 * @param from - The setting to change it from 
+	 * @param to - The setting to change it to
+	 */
+	public static void manuallyChangeConfigValue(String prefix, String from, String to)
 	{
 		try
 		{
@@ -195,7 +202,7 @@ public class ConfigurationHandler
 			
 			for (String s : strings)
 			{
-				if (s.equals("    B:showDownloadGUI=true"))
+				if (s.equals("    " + prefix + "=" + from))
 					s = "    B:showDownloadGUI=false";
 				
 				fw.write(s + "\n");
@@ -204,9 +211,9 @@ public class ConfigurationHandler
 			bw.flush();
 			bw.close();
 		}
-		catch (Exception e)
+		catch (Throwable t)
 		{
-			e.printStackTrace();
+			t.printStackTrace();
 		}
 	}
 }

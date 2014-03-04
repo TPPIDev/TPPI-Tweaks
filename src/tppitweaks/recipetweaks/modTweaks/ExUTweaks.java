@@ -10,6 +10,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ExUTweaks
@@ -44,7 +45,8 @@ public class ExUTweaks
 		OreDictionary.registerOre("burntquartz", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 2));
 		OreDictionary.registerOre("icestone", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 3));
 		
-		TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
+		if (Loader.isModLoaded("gregtech_addon"))
+			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 	}
 
 	public static void addRecipes() {

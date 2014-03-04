@@ -15,6 +15,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
+import tppitweaks.client.gui.MaricultureGui;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
@@ -41,14 +42,18 @@ public class TPPIEventHandler
 	{
 		if (event.gui instanceof GuiMainMenu)
 		{
-			
 			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI)
 			{
 				event.gui = new UpdateGui(event.gui, true);
 				GuiHelper.updateGui = (UpdateGui) event.gui;
 				shouldLoadGUI = false;
 
-				ConfigurationHandler.stopShowingGUI();
+				ConfigurationHandler.manuallyChangeConfigValue("B:showDownloadGUI", "true", "false");
+			}
+			else if (shouldLoadGUI && ConfigurationHandler.showMaricultureGui)
+			{
+				event.gui = new MaricultureGui();
+				shouldLoadGUI = false;
 			}
 			else
 			{
