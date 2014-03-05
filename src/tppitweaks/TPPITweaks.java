@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import tppitweaks.block.ModBlocks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
@@ -78,6 +79,7 @@ public class TPPITweaks
 		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 
 		ModItems.initItems();
+		ModBlocks.initBlocks();
 
 		playerTracker = new TPPIPlayerTracker();
 		GameRegistry.registerPlayerTracker(playerTracker);
@@ -92,6 +94,7 @@ public class TPPITweaks
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
+		ModBlocks.registerRecipes();
 		
 		if (event.getSide().isClient())
 			proxy.initTickHandler();

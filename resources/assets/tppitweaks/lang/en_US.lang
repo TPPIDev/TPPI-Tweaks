@@ -6,3 +6,4 @@ itemGroup.tabTPPI=TPPI Tweaks
 tppiGuide.name=TPPI Mod Guide
 disassemblerCore.name=Disassembly Core
 miningCore.name="Enderman Mining Assistant Source"
+tile.redstoneCompressed.name=Compressed Redstone Block

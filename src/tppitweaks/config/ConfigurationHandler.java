@@ -21,6 +21,7 @@ public class ConfigurationHandler
 	public static HashMap<String, Boolean> am2SpawnControls = new HashMap<String, Boolean>();
 	public static int bookID;
 	public static int materialID;
+	public static int blockID;
 	
 	public static String bookTitle;
 	public static String bookAuthor;
@@ -94,6 +95,8 @@ public class ConfigurationHandler
 		{
 			am2SpawnControls.put(s, config.get("GLOBAL ARS MAGICA 2 MOB SPAWN CONTROLS", "globallyDisable" + s, true).getBoolean(true));
 		}
+		
+		blockID = config.getBlock("tppiBlockId", 3115).getInt();
 		
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		materialID = config.getItem("tppiMaterialId", 21001).getInt() - 256;
