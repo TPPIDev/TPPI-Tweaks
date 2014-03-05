@@ -205,7 +205,7 @@ public class GuiGuideBase extends GuiBase implements INEIGuiHandler
 		this.addElement(homeButton);
 	}
 
-	@Override
+	// There should be @Override here but people shadowing OUT OF DATE NEI INTERFACES screws up the build. I blame greg. 
 	public boolean hideItemPanelSlot(GuiContainer gui, int x, int y, int w, int h)
 	{
 		return true;
