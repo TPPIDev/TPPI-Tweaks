@@ -27,6 +27,7 @@ import tppitweaks.recipetweaks.modTweaks.MagicropsAndTETweaks;
 import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
 import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
 import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
+import tppitweaks.recipetweaks.modTweaks.RailcraftTweaks;
 import tppitweaks.recipetweaks.modTweaks.ReliquaryTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TETweaks;
@@ -55,6 +56,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakTE;
 	private static boolean okayToTweakReliquary;
 	private static boolean okayToTweakAdvancedGenetics;
+	private static boolean okayToTweakRailcraft;
 
 	public static void doPostInitRecipeTweaks()
 	{		
@@ -93,6 +95,10 @@ public class RecipeTweaks
 		{
 			ExUTweaks.reAddRecipeAfterLoad();
 		}
+		if (okayToTweakRailcraft)
+		{
+			RailcraftTweaks.registerOres();
+		}
 		recipesInitialized = true;
 	}
 
@@ -129,7 +135,7 @@ public class RecipeTweaks
 		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
 		okayToTweakReliquary = Loader.isModLoaded("xreliquary") && ConfigurationHandler.harderLillipadRecipe;
 		okayToTweakAdvancedGenetics = Loader.isModLoaded("advancedgenetics");
-	
+		okayToTweakRailcraft = Loader.isModLoaded("Railcraft");
 	}
 
 	private static void initRemovableRecipesMap()

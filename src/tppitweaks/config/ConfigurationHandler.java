@@ -217,7 +217,7 @@ public class ConfigurationHandler
 			for (String s : strings)
 			{
 				if (s.equals("    " + prefix + "=" + from))
-					s = "    B:showDownloadGUI=false";
+					s = "    " + prefix + "=" + to;
 				
 				fw.write(s + "\n");
 			}	
