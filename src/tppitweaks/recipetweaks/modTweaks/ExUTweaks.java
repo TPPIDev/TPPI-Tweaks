@@ -4,10 +4,12 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.TPPITweaks;
+import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
 import cpw.mods.fml.common.Loader;
@@ -18,7 +20,14 @@ public class ExUTweaks
 	
 	public static void init() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
-			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1);		}
+			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1);
+		}
+		if(ConfigurationHandler.nerfRedstoneGen) {
+			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4);
+		}
+		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
+			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 3);
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -97,6 +106,33 @@ public class ExUTweaks
 		    	'p', extrautils.ExtraUtils.enderThermicPump == null ? new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12) : extrautils.ExtraUtils.enderThermicPump 
 		    ));
 		}
+		
+		if(ConfigurationHandler.nerfRedstoneGen) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
+			    	"RRR", 
+			    	"RGR", 
+			    	"DFD", 
+			    	
+			    	'R', ModBlocks.tppiBlock, 
+			    	'G', new ItemStack(extrautils.ExtraUtils.gen, 1, 2), 
+			    	'D', Item.redstone, 
+			    	'F', Block.furnaceIdle
+			    ));
+		}
+		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
+			    	"PPP", 
+			    	"EBE", 
+			    	"DFD", 
+			    	
+			    	'P', Item.enderPearl,
+			    	'E', Item.eyeOfEnder, 
+			    	'B', "blockEnderium", 
+			    	'D', Item.redstone, 
+			    	'F', Block.furnaceIdle
+			    ));
+		}
+		
 	}
 	
 	public static void reAddRecipeAfterLoad()

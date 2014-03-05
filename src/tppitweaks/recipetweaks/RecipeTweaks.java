@@ -64,7 +64,7 @@ public class RecipeTweaks
 		if (okayToTweakGT)
 			GregtechTweaks.doStuff();
 
-		if (okayToTweakExU)
+		if (okayToTweakExU && ConfigurationHandler.fixExURecipes)
 			ExUTweaks.fixRecipes();
 
 		doOreDictTweaks();
@@ -121,7 +121,7 @@ public class RecipeTweaks
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops");
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
-		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
+		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
 		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
 		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
@@ -155,7 +155,7 @@ public class RecipeTweaks
 		{
 			OpenBlocksTweaks.init();
 		}
-		if (Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.nerfEnderQuarry)
+		if (Loader.isModLoaded("ExtraUtilities"))
 		{
 			ExUTweaks.init();
 		}
@@ -245,7 +245,7 @@ public class RecipeTweaks
 		if (okayToTweakReliquary)
 			ReliquaryTweaks.addRecipes();
 		
-		if (okayToTweakExU && ConfigurationHandler.nerfEnderQuarry)
+		if (okayToTweakExU)
 			ExUTweaks.addRecipes();
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
