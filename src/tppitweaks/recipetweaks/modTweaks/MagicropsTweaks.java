@@ -32,7 +32,7 @@ public class MagicropsTweaks
 
 	public static void addRecipes()
 	{
-		if (ConfigurationHandler.changeEssenceSeedRecipe)
+		if (ConfigurationHandler.addEssenceSeedRecipe)
 		{
 			GameRegistry.addRecipe(new ItemStack(magicalcrops.mod_mCrops.mSeedsEssence, 8), new Object[]{
 				"sRs",
