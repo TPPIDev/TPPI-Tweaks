@@ -108,7 +108,7 @@ public class ExUTweaks
 		}
 		
 		if(ConfigurationHandler.nerfRedstoneGen) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(extrautils.ExtraUtils.gen, 1, 4),
 			    	"RRR", 
 			    	"RGR", 
 			    	"DFD", 
@@ -120,7 +120,7 @@ public class ExUTweaks
 			    ));
 		}
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(extrautils.ExtraUtils.gen, 1, 3),
 			    	"PPP", 
 			    	"EBE", 
 			    	"DFD", 

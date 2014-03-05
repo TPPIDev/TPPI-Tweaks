@@ -13,6 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
+import tppitweaks.recipetweaks.modTweaks.AdvancedGeneticsTweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
@@ -53,6 +54,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakMekanism;
 	private static boolean okayToTweakTE;
 	private static boolean okayToTweakReliquary;
+	private static boolean okayToTweakAdvancedGenetics;
 
 	public static void doPostInitRecipeTweaks()
 	{		
@@ -126,6 +128,8 @@ public class RecipeTweaks
 		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
 		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
 		okayToTweakReliquary = Loader.isModLoaded("xreliquary") && ConfigurationHandler.harderLillipadRecipe;
+		okayToTweakAdvancedGenetics = Loader.isModLoaded("advancedgenetics");
+	
 	}
 
 	private static void initRemovableRecipesMap()
@@ -158,6 +162,10 @@ public class RecipeTweaks
 		if (Loader.isModLoaded("ExtraUtilities"))
 		{
 			ExUTweaks.init();
+		}
+		if (okayToTweakAdvancedGenetics)
+		{
+			AdvancedGeneticsTweaks.init();
 		}
 		if (okayToTweakDartCraft)
 		{

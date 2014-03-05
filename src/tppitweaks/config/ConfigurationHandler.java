@@ -39,6 +39,9 @@ public class ConfigurationHandler
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
 	public static boolean tweakAM2;
+	
+	public static boolean disableAGAutoOutputter;
+	
 	public static boolean fixExURecipes;
 	public static boolean changeMPSARecipes;
 	public static boolean nerfEnderQuarry;
@@ -123,6 +126,8 @@ public class ConfigurationHandler
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
+		
+		disableAGAutoOutputter = config.get("Other Mod Tweaks", "disableAGAutoOutputter", true, "Remove the recipe for the Advanced Genetics auto output upgrade, because crashes.").getBoolean(true);
 		
 		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
