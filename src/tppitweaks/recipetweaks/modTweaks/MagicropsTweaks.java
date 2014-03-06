@@ -11,6 +11,7 @@ public class MagicropsTweaks
 {
 	public static void init()
 	{
+		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsEssence.itemID, -1);
 		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsDiamond.itemID, -1);
 		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsEmerald.itemID, -1);
 		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsXP.itemID, -1);
