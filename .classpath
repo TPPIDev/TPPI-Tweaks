@@ -20,7 +20,6 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/ThermalExpansion-3.0.0.0.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/powersuitaddons-1.6.4-884_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/CoFHCore-2.0.0.0.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/StevesFactoryManagerA32.zip"/>
 	<classpathentry kind="lib" path="/EnderIO/lib/NotEnoughItems-dev 1.6.1.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Mekanism"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/DartCraft Beta 0.2.15_deobf.jar"/>
@@ -31,5 +30,6 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/Magical_crops_1.6.4_3.2.0_BETA_15a_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/advancedGenetics_v1.4.1.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/Railcraft_1.6.4-8.4.0.0_deobf.jar"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/StevesFactoryManagerA78.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
