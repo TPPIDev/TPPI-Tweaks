@@ -30,7 +30,7 @@ public class ConfigurationHandler
 	public static int guideSkin;
 	
 	public static boolean enderChestTesseract;
-	public static boolean enderPouchPyrotheum;
+	public static boolean enderPouchNerf;
 	public static boolean enderTankTesseract;
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
@@ -114,7 +114,7 @@ public class ConfigurationHandler
 		guideSkin = config.get("TPPI Guide Info", "TPPIGuideSkin", 0, "The skin of the guide GUI/item, 0=tech, 1=scroll").getInt();
 		
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
-		enderPouchPyrotheum = config.get("Ender Storage Tweaks", "enderPouchPyrotheum", true, "EnderStorage Ender Pouches require pyrotheum dust instead of ender pearls.").getBoolean(true);
+		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
 		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", true, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(true);
 		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
