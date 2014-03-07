@@ -13,6 +13,7 @@ import net.minecraft.util.ChatMessageComponent;
 import org.lwjgl.input.Keyboard;
 
 import tppitweaks.TPPITweaks;
+import tppitweaks.config.ConfigurationHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -91,7 +92,7 @@ public class UpdateGui extends GuiScreen
 		if (button.enabled)
 		{
 			if (button.id == 11)
-				this.mc.displayGuiScreen(this.parentScreen);
+				this.mc.displayGuiScreen(ConfigurationHandler.showMaricultureGui ? new MaricultureGui() : this.parentScreen);
 			else
 			{
 				try
@@ -114,7 +115,7 @@ public class UpdateGui extends GuiScreen
 					}
 					else
 					{
-						this.mc.displayGuiScreen(this.parentScreen);
+						this.mc.displayGuiScreen(ConfigurationHandler.showMaricultureGui ? new MaricultureGui() : this.parentScreen);
 					}
 				}
 				catch (Exception e)
