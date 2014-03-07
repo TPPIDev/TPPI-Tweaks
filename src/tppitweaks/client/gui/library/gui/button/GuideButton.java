@@ -9,10 +9,11 @@ import org.lwjgl.opengl.GL11;
 import tppitweaks.client.gui.library.gui.GuiBase;
 import tppitweaks.client.gui.library.gui.element.ElementBase;
 import tppitweaks.client.gui.modGuides.GuiGuideBase;
+import tppitweaks.config.ConfigurationHandler;
 
 public class GuideButton extends ElementBase
 {
-	private ResourceLocation myButtons = new ResourceLocation("tppitweaks", "textures/gui/guiGuide.png");
+	private ResourceLocation myButtons = new ResourceLocation("tppitweaks", ConfigurationHandler.guideSkin == 0 ? "textures/gui/guiGuide.png" : "textures/gui/guiGuide_alt.png");
 	private int renderID;
 
 	private boolean clicked = false;

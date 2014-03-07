@@ -13,6 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
+import tppitweaks.recipetweaks.modTweaks.AdvancedGeneticsTweaks;
 import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
@@ -26,6 +27,7 @@ import tppitweaks.recipetweaks.modTweaks.MagicropsAndTETweaks;
 import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
 import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
 import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
+import tppitweaks.recipetweaks.modTweaks.RailcraftTweaks;
 import tppitweaks.recipetweaks.modTweaks.ReliquaryTweaks;
 import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
 import tppitweaks.recipetweaks.modTweaks.TETweaks;
@@ -53,6 +55,8 @@ public class RecipeTweaks
 	private static boolean okayToTweakMekanism;
 	private static boolean okayToTweakTE;
 	private static boolean okayToTweakReliquary;
+	private static boolean okayToTweakAdvancedGenetics;
+	private static boolean okayToTweakRailcraft;
 
 	public static void doPostInitRecipeTweaks()
 	{		
@@ -64,7 +68,7 @@ public class RecipeTweaks
 		if (okayToTweakGT)
 			GregtechTweaks.doStuff();
 
-		if (okayToTweakExU)
+		if (okayToTweakExU && ConfigurationHandler.fixExURecipes)
 			ExUTweaks.fixRecipes();
 
 		doOreDictTweaks();
@@ -76,7 +80,7 @@ public class RecipeTweaks
 
 		if (okayToTweakMagicalCrops)
 			MagicropsTweaks.registerOres();
-
+		
 		removeSomeRecipes();
 		addRevisedRecipes();
 	}
@@ -86,6 +90,14 @@ public class RecipeTweaks
 		if (okayToTweakGT)
 		{
 			GregtechTweaks.addRecipes();
+		}
+		if (okayToTweakExU)
+		{
+			ExUTweaks.reAddRecipeAfterLoad();
+		}
+		if (okayToTweakRailcraft)
+		{
+			RailcraftTweaks.registerOres();
 		}
 		recipesInitialized = true;
 	}
@@ -117,11 +129,13 @@ public class RecipeTweaks
 		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
 		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops");
 		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
-		okayToTweakExU = Loader.isModLoaded("ExtraUtilities") && ConfigurationHandler.fixExURecipes;
+		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
 		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
 		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
 		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
 		okayToTweakReliquary = Loader.isModLoaded("xreliquary") && ConfigurationHandler.harderLillipadRecipe;
+		okayToTweakAdvancedGenetics = Loader.isModLoaded("advancedgenetics");
+		okayToTweakRailcraft = Loader.isModLoaded("Railcraft");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -150,6 +164,14 @@ public class RecipeTweaks
 		if (okayToTweakOpenBlocks)
 		{
 			OpenBlocksTweaks.init();
+		}
+		if (Loader.isModLoaded("ExtraUtilities"))
+		{
+			ExUTweaks.init();
+		}
+		if (okayToTweakAdvancedGenetics)
+		{
+			AdvancedGeneticsTweaks.init();
 		}
 		if (okayToTweakDartCraft)
 		{
@@ -236,6 +258,9 @@ public class RecipeTweaks
 		
 		if (okayToTweakReliquary)
 			ReliquaryTweaks.addRecipes();
+		
+		if (okayToTweakExU)
+			ExUTweaks.addRecipes();
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}

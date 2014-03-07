@@ -36,7 +36,9 @@ public class Reference
 			+ "after:powersuits;"
 			+ "after:Mekanism;"
 			+ "after:xreliquary;"
-			+ "required-after:NotEnoughItems";
+			+ "required-after:NotEnoughItems;"
+			+ "after:Railcraft;"
+			+ "after:advancedgenetics";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";

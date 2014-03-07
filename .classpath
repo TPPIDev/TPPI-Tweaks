@@ -11,10 +11,8 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/CodeChickenLib-dev-1.6.4-1.0.0.36.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/dimensional-anchor-57.1.9.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/EnderStorage-dev 1.4.3.5.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/ExU_1.0.3_dev_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/gregtechmod.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/immibis-core-57.1.8.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/magical_crops_1.6.4_3.1.6.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/NotEnoughItems-dev 1.6.1.8.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/OpenBlocks-1.2.2.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/RedstoneArsenal-1.0.0.0.jar"/>
@@ -22,11 +20,16 @@
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/ThermalExpansion-3.0.0.0.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/powersuitaddons-1.6.4-884_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/CoFHCore-2.0.0.0.jar"/>
-	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/jars/mods/StevesFactoryManagerA32.zip"/>
 	<classpathentry kind="lib" path="/EnderIO/lib/NotEnoughItems-dev 1.6.1.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Mekanism"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/DartCraft Beta 0.2.15_deobf.jar"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/Mariculture-1.6.X-v1.1.4e_deobf.zip"/>
 	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/Reliquary-1.6.4-1.1-TPPI_deobf.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TinkersConstruct"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/ExU_1.0.3a_deobf.jar"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/Magical_crops_1.6.4_3.2.0_BETA_15a_deobf.jar"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/advancedGenetics_v1.4.1.jar"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/Railcraft_1.6.4-8.4.0.0_deobf.jar"/>
+	<classpathentry kind="lib" path="E:/Development/Let&apos;s Mod/development/forge/mcp/lib/StevesFactoryManagerA78.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

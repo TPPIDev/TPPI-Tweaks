@@ -21,14 +21,16 @@ public class ConfigurationHandler
 	public static HashMap<String, Boolean> am2SpawnControls = new HashMap<String, Boolean>();
 	public static int bookID;
 	public static int materialID;
+	public static int blockID;
 	
 	public static String bookTitle;
 	public static String bookAuthor;
 	public static String changelogTitle;
 	public static String supportedModsName;
+	public static int guideSkin;
 	
 	public static boolean enderChestTesseract;
-	public static boolean enderPouchTesseract;
+	public static boolean enderPouchNerf;
 	public static boolean enderTankTesseract;
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
@@ -37,8 +39,15 @@ public class ConfigurationHandler
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
 	public static boolean tweakAM2;
+	
+	public static boolean disableAGAutoOutputter;
+	
 	public static boolean fixExURecipes;
 	public static boolean changeMPSARecipes;
+	public static boolean nerfEnderQuarry;
+	
+	public static boolean nerfRedstoneGen;
+	public static boolean nerfEnderGen;
 
 	public static boolean doPlatinumInCentrifuge;
 	public static boolean addLapisDustMortarRecipes;
@@ -54,6 +63,8 @@ public class ConfigurationHandler
 	public static boolean harderActivatorRecipe;
 	public static boolean harderDisassemblerRecipe;
 	public static boolean disableCardboardBox;
+	public static boolean disableMiner;
+	public static boolean nerfMiner;
 	
 	public static boolean harderLillipadRecipe;
 
@@ -65,6 +76,7 @@ public class ConfigurationHandler
 	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
+	public static boolean showMaricultureGui;
 	
 	public static boolean autoEnableTT;
 	
@@ -75,6 +87,8 @@ public class ConfigurationHandler
 	public static List<String> changelog;
 
 	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityLightMage", "EntityEarthElemental", "EntityFireElemental", "EntityWisp", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
+	
+	public static boolean allowCapes = true;
 
 	public static void init(File file)
 	{
@@ -88,6 +102,8 @@ public class ConfigurationHandler
 			am2SpawnControls.put(s, config.get("GLOBAL ARS MAGICA 2 MOB SPAWN CONTROLS", "globallyDisable" + s, true).getBoolean(true));
 		}
 		
+		blockID = config.getBlock("tppiBlockId", 3115).getInt();
+		
 		bookID = config.getItem("tppiBookId", 21000).getInt() - 256;
 		materialID = config.getItem("tppiMaterialId", 21001).getInt() - 256;
 		
@@ -95,10 +111,11 @@ public class ConfigurationHandler
 		bookAuthor = config.get("TPPI Guide Info", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
 		changelogTitle = config.get("TPPI Guide Info", "changelogTitle", "TPPI Changelog", "The title of the changelog").getString();
 		supportedModsName = config.get("TPPI Guide Info", "supportedModsFilename", "SupportedMods", "The file name of the file to read the mod documentation from (used to support translation). Do not include the extension in the filename (it is .txt)").getString();
+		guideSkin = config.get("TPPI Guide Info", "TPPIGuideSkin", 0, "The skin of the guide GUI/item, 0=tech, 1=scroll").getInt();
 		
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
-		enderPouchTesseract = config.get("Ender Storage Tweaks", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
-		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
+		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
+		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", true, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(true);
 		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("Other Mod Tweaks", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);
@@ -109,7 +126,13 @@ public class ConfigurationHandler
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
-		fixExURecipes = config.get("Other Mod Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
+		
+		disableAGAutoOutputter = config.get("Other Mod Tweaks", "disableAGAutoOutputter", true, "Remove the recipe for the Advanced Genetics auto output upgrade, because crashes.").getBoolean(true);
+		
+		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
+		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
+		nerfRedstoneGen = config.get("ExtraUtils Tweaks", "nerfRedstoneGen", true, "Make the Extra Utilities heated redstone generator expensive.").getBoolean(true);
+		nerfEnderGen = config.get("ExtraUtils Tweaks", "nerfEnderGen", true, "Make the Extra Utilities ender generator expensive.").getBoolean(true);
 		
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
 		
@@ -122,14 +145,18 @@ public class ConfigurationHandler
 		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
+		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", true, "Show the mariculture fix GUI on startup.").getBoolean(true);
 		
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
-		addOsmiumToOreWasher = config.get("Other Mod Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
-		harderDisassemblerRecipe = config.get("Other Mod Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
-		disableCardboardBox = config.get("Other Mod Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
 		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
+		
+		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
+		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
+		disableCardboardBox = config.get("Mekanism Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
+		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);
+		nerfMiner = config.get("Mekanism Tweaks", "nerfDigitalMiner", true, "Make the recipe for the digital miner a bit...ok a lot harder").getBoolean(true);
 		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		
@@ -140,6 +167,7 @@ public class ConfigurationHandler
 		Reference.packName = config.get("Pack Info", "packName", "Test Pack Please Ignore", "The full name of the pack").getString();
 		Reference.packVersion = config.get("Pack Info", "packVerison", "0.0.1", "The version of the pack").getString();
 		Reference.packAcronym = config.get("Pack Info", "packAcronym", "TPPI", "The acronym of the pack (required, can be the same as name)").getString();
+		allowCapes = config.get("Pack Info", "allowDevCapes", true, "Enables/Disables the visibility of dev capes. This only affects the user and does NOT have to be the same between client and server.").getBoolean(true);
 		
 		config.save();
 	}
@@ -160,7 +188,13 @@ public class ConfigurationHandler
 		changelog = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 	}
 
-	public static void stopShowingGUI()
+	/**
+	 * Sets a config value manually by editing the text file
+	 * @param prefix - The prefix of the config option (anythin before the '=')
+	 * @param from - The setting to change it from 
+	 * @param to - The setting to change it to
+	 */
+	public static void manuallyChangeConfigValue(String prefix, String from, String to)
 	{
 		try
 		{
@@ -182,8 +216,8 @@ public class ConfigurationHandler
 			
 			for (String s : strings)
 			{
-				if (s.equals("    B:showDownloadGUI=true"))
-					s = "    B:showDownloadGUI=false";
+				if (s.equals("    " + prefix + "=" + from))
+					s = "    " + prefix + "=" + to;
 				
 				fw.write(s + "\n");
 			}	
@@ -191,9 +225,9 @@ public class ConfigurationHandler
 			bw.flush();
 			bw.close();
 		}
-		catch (Exception e)
+		catch (Throwable t)
 		{
-			e.printStackTrace();
+			t.printStackTrace();
 		}
 	}
 }

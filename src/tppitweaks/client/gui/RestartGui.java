@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import tppitweaks.TPPITweaks;
+import tppitweaks.config.ConfigurationHandler;
 
 public class RestartGui extends GuiScreen
 {
@@ -37,7 +38,7 @@ public class RestartGui extends GuiScreen
 		else
 		{
 			TPPITweaks.logger.log(Level.INFO, "Mod installations finished! Restart minecraft for your changes to take effect.");
-			this.mc.displayGuiScreen(null);
+			this.mc.displayGuiScreen(ConfigurationHandler.showMaricultureGui ? new MaricultureGui() : null);
 		}
 	}
 }

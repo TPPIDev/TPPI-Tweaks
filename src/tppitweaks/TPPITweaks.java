@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import tppitweaks.block.ModBlocks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
@@ -15,6 +16,7 @@ import tppitweaks.creativeTab.CreativeTabTPPI;
 import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
+import tppitweaks.proxy.CommonProxy;
 import tppitweaks.proxy.PacketHandler;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.util.FileLoader;
@@ -23,6 +25,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -34,10 +37,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
 public class TPPITweaks
 {
-	public static final String VERSION = "0.8.3";
+	public static final String VERSION = "0.9.0";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
+	
+	@SidedProxy(clientSide = "tppitweaks.proxy.ClientProxy", serverSide = "tppitweaks.proxy.CommonProxy")
+	public static CommonProxy proxy;
 
 	public static TPPIEventHandler eventHandler;
 	public static TPPIPlayerTracker playerTracker;
@@ -45,7 +51,7 @@ public class TPPITweaks
 	public static final Logger logger = Logger.getLogger("TPPITweaks");
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
-
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
@@ -73,6 +79,7 @@ public class TPPITweaks
 		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 
 		ModItems.initItems();
+		ModBlocks.initBlocks();
 
 		playerTracker = new TPPIPlayerTracker();
 		GameRegistry.registerPlayerTracker(playerTracker);
@@ -87,6 +94,10 @@ public class TPPITweaks
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
+		ModBlocks.registerRecipes();
+		
+		if (event.getSide().isClient())
+			proxy.initTickHandler();
 	}
 
 	@EventHandler

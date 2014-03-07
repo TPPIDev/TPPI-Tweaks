@@ -5,3 +5,5 @@ multicoreProcessorUncooked.name=ME Multicore Processor Assembly
 itemGroup.tabTPPI=TPPI Tweaks
 tppiGuide.name=TPPI Mod Guide
 disassemblerCore.name=Disassembly Core
+miningCore.name=Enderman Mining Assistant
+tile.redstoneCompressed.name=Compressed Redstone Block
