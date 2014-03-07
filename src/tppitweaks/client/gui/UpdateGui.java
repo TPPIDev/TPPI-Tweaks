@@ -111,7 +111,7 @@ public class UpdateGui extends GuiScreen
 					*/
 					else if (GuiHelper.updateGui.modScreens.size() > 0)
 					{
-						this.mc.displayGuiScreen(new RestartGui());
+						this.mc.displayGuiScreen(ConfigurationHandler.showMaricultureGui ? new MaricultureGui() : new RestartGui());
 					}
 					else
 					{
