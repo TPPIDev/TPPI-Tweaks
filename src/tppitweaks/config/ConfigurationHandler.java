@@ -30,7 +30,7 @@ public class ConfigurationHandler
 	public static int guideSkin;
 	
 	public static boolean enderChestTesseract;
-	public static boolean enderPouchTesseract;
+	public static boolean enderPouchPyrotheum;
 	public static boolean enderTankTesseract;
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
@@ -114,8 +114,8 @@ public class ConfigurationHandler
 		guideSkin = config.get("TPPI Guide Info", "TPPIGuideSkin", 0, "The skin of the guide GUI/item, 0=tech, 1=scroll").getInt();
 		
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
-		enderPouchTesseract = config.get("Ender Storage Tweaks", "enderPouchTesseract", false, "EnderStorage Ender Pouches require tesseracts instead of ender pearls.").getBoolean(false);
-		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", false, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(false);
+		enderPouchPyrotheum = config.get("Ender Storage Tweaks", "enderPouchPyrotheum", true, "EnderStorage Ender Pouches require pyrotheum dust instead of ender pearls.").getBoolean(true);
+		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", true, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(true);
 		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", true, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("Other Mod Tweaks", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(true);

@@ -17,7 +17,7 @@ public class EnderStorageTweaks extends TweakerBase
 	public static void addRecipes()
 	{
 		Object chestEnderElement = ConfigurationHandler.enderChestTesseract ? thermalexpansion.block.TEBlocks.blockTesseract : Item.enderPearl;
-		Object pouchEnderElement = ConfigurationHandler.enderPouchTesseract ? thermalexpansion.block.TEBlocks.blockTesseract : Item.enderPearl;
+		Object pouchEnderElement = ConfigurationHandler.enderPouchPyrotheum ? thermalexpansion.item.TEItems.dustPyrotheum : Item.enderPearl;
 		Object tankEnderElement = ConfigurationHandler.enderTankTesseract ? thermalexpansion.block.TEBlocks.blockTesseract : Item.enderPearl;
 
 		for (int i = 0; i < 16; i++)
