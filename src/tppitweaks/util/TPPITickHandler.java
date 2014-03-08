@@ -31,13 +31,13 @@ public class TPPITickHandler implements ITickHandler
 	public static String[] AbstractClientPlayer_locationCape = new String[] {"locationCape", "field_110313_e", "e"};
 	public static String[] AbstractClientPlayer_getDownloadImage = new String[] {"getDownloadImage", "func_110301_a", "a"};
 	
-	private int ticksElapsed = 0;
+	//private int ticksElapsed = 0;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
-		if (ticksElapsed < 200 && ConfigurationHandler.allowCapes && mc.theWorld != null && !isPaused())
+		if (ConfigurationHandler.allowCapes && mc.theWorld != null && mc.theWorld.getWorldTime() % 20 == 0 && !isPaused())
 		{
 			for (EntityPlayer entityPlayer : (List<EntityPlayer>) mc.theWorld.playerEntities)
 			{
@@ -72,7 +72,7 @@ public class TPPITickHandler implements ITickHandler
 					}
 				}
 			}
-			ticksElapsed++;
+		//ticksElapsed++;
 		}
 	}
 
