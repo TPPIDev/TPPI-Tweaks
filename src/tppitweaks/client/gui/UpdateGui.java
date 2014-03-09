@@ -30,8 +30,7 @@ public class UpdateGui extends GuiScreen
 
 	public void initModInstallationMenus()
 	{
-		if (!Loader.isModLoaded("TwilightForest"))
-			modScreens.add(new InstructionsGui(new ModDownload("Twilight Forest", "http://adf.ly/Zvi5J", "TwilightForest")));
+		// No mods here! I'll leave the code for posterity's sake, as well as for others to use.
 		
 		iterator = modScreens.iterator();
 		
