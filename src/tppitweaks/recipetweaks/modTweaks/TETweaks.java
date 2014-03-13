@@ -34,4 +34,9 @@ public class TETweaks {
 		if (OreDictionary.getOres("dustRuby").size() != 0)
 			thermalexpansion.util.crafting.PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
 	}
+	
+	public static ItemStack getEnderium()
+	{
+		return thermalexpansion.item.TEItems.ingotEnderium;
+	}
 }
