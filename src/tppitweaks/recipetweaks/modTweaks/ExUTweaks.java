@@ -17,11 +17,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ExUTweaks
 {
-	
 	public static void init() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
 			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1);
-			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.decorative1.blockID, 1);
 		}
 		if(ConfigurationHandler.nerfRedstoneGen) {
 			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4);
@@ -63,6 +61,7 @@ public class ExUTweaks
 		if(ConfigurationHandler.nerfEnderQuarry) {
 				
 			ItemStack portal = new ItemStack(extrautils.ExtraUtils.portal);
+			ItemStack septCobble = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 6);
 			ItemStack quadDirt = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 11);
 			ItemStack enderObs = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 1);
 		    
@@ -74,7 +73,7 @@ public class ExUTweaks
 		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
 		    	'W', extrautils.ExtraUtils.buildersWand, 
 		    	'S', extrautils.ExtraUtils.erosionShovel, 
-		    	'P', quadDirt, 
+		    	'P', septCobble, 
 		    	'E', portal, 
 		    	'G', extrautils.ExtraUtils.cursedEarth,
 		    	'B', Block.fenceIron 
@@ -88,50 +87,25 @@ public class ExUTweaks
 		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
 		    	'W', extrautils.ExtraUtils.buildersWand, 
 		    	'S', extrautils.ExtraUtils.erosionShovel, 
-		    	'P', quadDirt, 
+		    	'P', septCobble, 
 		    	'E', portal, 
 		    	'G', extrautils.ExtraUtils.cursedEarth,
 		    	'B', Block.fenceIron 
 		    ));
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
-		    	"EsE", 
+		    	"EQE", 
 		    	"CDC", 
 		    	"pPp", 
 		    	
 		    	'E', enderObs,
-		    	's', "treeSapling", 
+		    	'Q', quadDirt, 
 		    	'M', new ItemStack(extrautils.ExtraUtils.decorative1, 1, 8), 
 		    	'C', new ItemStack(extrautils.ExtraUtils.decorative1, 1, 11), 
 		    	'D', new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12), 
 		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 3), 
 		    	'p', extrautils.ExtraUtils.enderThermicPump == null ? new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12) : extrautils.ExtraUtils.enderThermicPump 
 		    ));
-		    
-		    if (Loader.isModLoaded("ThermalExpansion"))
-		    {
-		    	enderObs.stackSize = 4;
-		    	GameRegistry.addRecipe(new ShapedOreRecipe(enderObs, 
-		    		" e ",
-		    		"eOe",
-		    		" e ",
-		    	
-		    		'e', TETweaks.getEnderium(),
-		    		'O', Block.obsidian
-		    	));
-		    }
-		    else
-		    {
-		    	enderObs.stackSize = 2;
-		    	GameRegistry.addRecipe(new ShapedOreRecipe(enderObs, 
-			    		" e ",
-			    		"eOe",
-			    		" e ",
-			    	
-			    		'e', Item.enderPearl,
-			    		'O', Block.obsidian
-			    ));
-		    }
 		}
 		
 		if(ConfigurationHandler.nerfRedstoneGen) {
