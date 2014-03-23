@@ -23,15 +23,14 @@ public class BigReactorsTweaks {
 	{
 		if (ConfigurationHandler.steelReactorCasings)
 		{
-			ItemStack reactorPartStack = ((erogenousbeef.bigreactors.common.block.BlockReactorPart) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).getReactorCasingItemStack();
+			ItemStack reactorPartStack = ((erogenousbeef.bigreactors.common.multiblock.block.BlockReactorPart) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).getReactorCasingItemStack();
 			reactorPartStack.stackSize = 4;
 			GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, new Object[] { "ICI", "CUC", "ICI", 'I', "ingotSteel", 'C', "ingotGraphite", 'U', "ingotYellorium" }));
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, 1), new Object[] { "ICI", "GUG", "ICI", Character.valueOf('I'),
-				erogenousbeef.bigreactors.common.BigReactors.blockReactorGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium", Character.valueOf('G'), "ingotGraphite" }));
+				erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium", Character.valueOf('G'), "ingotGraphite" }));
 		}
 	}
-	
 }
