@@ -5,13 +5,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class IC2Tweaks
 {
+	private static ItemStack mvTransformer, copperCable, machineBlock;
 	public static void init()
 	{
+		mvTransformer = ic2.core.Ic2Items.mvTransformer;
+		copperCable = ic2.core.Ic2Items.copperCableItem;
+		machineBlock = ic2.core.Ic2Items.machine;
+
 		if (ConfigurationHandler.removeStupidEnergyCrystalRecipe)
 			TweakerBase.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1);
+			
+		TweakerBase.markItemForRecipeRemoval(mvTransformer.itemID, -1);
 	}
 	
 	public static void registerOres()
@@ -39,5 +47,14 @@ public class IC2Tweaks
 				ic2.core.block.machine.tileentity.TileEntityCompressor.addRecipe("blockCharcoal", 1, new ItemStack(Item.coal, 1, 0));
 			}
 		}
+		
+		GameRegistry.addRecipe(mvTransformer.copy(), 
+				"C",
+				"M",
+				"C",
+				
+				'C', copperCable.copy(),
+				'M', machineBlock.copy()
+		);
 	}
 }
