@@ -38,7 +38,8 @@ public class Reference
 			+ "after:xreliquary;"
 			+ "required-after:NotEnoughItems;"
 			+ "after:Railcraft;"
-			+ "after:advancedgenetics";
+			+ "after:advancedgenetics;"
+			+ "after:IC2";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";

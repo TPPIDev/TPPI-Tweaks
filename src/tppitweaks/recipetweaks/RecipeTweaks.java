@@ -99,6 +99,10 @@ public class RecipeTweaks
 		{
 			RailcraftTweaks.registerOres();
 		}
+		if (okayToTweakIC2)
+		{
+			IC2Tweaks.doPostLoadRecipeAdditions();
+		}
 		recipesInitialized = true;
 	}
 
