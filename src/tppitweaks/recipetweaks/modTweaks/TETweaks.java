@@ -37,6 +37,11 @@ public class TETweaks {
 	
 	public static ItemStack getEnderium()
 	{
-		return thermalexpansion.item.TEItems.ingotEnderium;
+		return thermalexpansion.item.TEItems.ingotEnderium.copy();
+	}
+
+	public static ItemStack getResonantCell()
+	{
+		return thermalexpansion.block.energycell.BlockEnergyCell.cellResonant.copy();
 	}
 }

@@ -20,6 +20,7 @@ public class ExUTweaks
 	public static void init() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
 			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1);
+			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.decorative1Id, 11);
 		}
 		if(ConfigurationHandler.nerfRedstoneGen) {
 			TweakerBase.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4);
@@ -61,22 +62,25 @@ public class ExUTweaks
 		if(ConfigurationHandler.nerfEnderQuarry) {
 				
 			ItemStack portal = new ItemStack(extrautils.ExtraUtils.portal);
-			ItemStack septCobble = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 6);
 			ItemStack quadDirt = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 11);
 			ItemStack enderObs = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 1);
+			ItemStack magicalWood = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 8);
+			ItemStack enderCore = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 11);
+			ItemStack DECM = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12);
+
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
 		    	"AWS", 
 		    	"PBP", 
-		    	"GEG", 
+		    	"GEG",
 		    	
 		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
 		    	'W', extrautils.ExtraUtils.buildersWand, 
 		    	'S', extrautils.ExtraUtils.erosionShovel, 
-		    	'P', septCobble, 
-		    	'E', portal, 
-		    	'G', extrautils.ExtraUtils.cursedEarth,
-		    	'B', Block.fenceIron 
+		    	'P', portal, 
+		    	'B', Block.fenceIron,
+		    	'G', enderCore,
+		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Item.enderPearl
 		    ));
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
@@ -87,10 +91,10 @@ public class ExUTweaks
 		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
 		    	'W', extrautils.ExtraUtils.buildersWand, 
 		    	'S', extrautils.ExtraUtils.erosionShovel, 
-		    	'P', septCobble, 
-		    	'E', portal, 
-		    	'G', extrautils.ExtraUtils.cursedEarth,
-		    	'B', Block.fenceIron 
+		    	'P', portal, 
+		    	'B', Block.fenceIron,
+		    	'G', enderCore,
+		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Item.enderPearl
 		    ));
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
@@ -100,12 +104,22 @@ public class ExUTweaks
 		    	
 		    	'E', enderObs,
 		    	'Q', quadDirt, 
-		    	'M', new ItemStack(extrautils.ExtraUtils.decorative1, 1, 8), 
-		    	'C', new ItemStack(extrautils.ExtraUtils.decorative1, 1, 11), 
-		    	'D', new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12), 
+		    	'M', magicalWood,
+		    	'C', enderCore, 
+		    	'D', DECM, 
 		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 3), 
 		    	'p', extrautils.ExtraUtils.enderThermicPump == null ? new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12) : extrautils.ExtraUtils.enderThermicPump 
 		    ));
+		    
+		    GameRegistry.addRecipe(enderCore, 
+		    	"ABA",
+		    	"BEB",
+		    	"ABA",
+		    	
+		    	'A', magicalWood,
+		    	'B', DECM,
+		    	'E', Item.eyeOfEnder
+		    );
 		}
 		
 		if(ConfigurationHandler.nerfRedstoneGen) {
