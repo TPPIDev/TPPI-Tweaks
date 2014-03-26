@@ -1,5 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
@@ -11,11 +12,11 @@ public class BigReactorsTweaks {
 	{
 		if (ConfigurationHandler.steelReactorCasings)
 		{
-			TweakerBase.markItemForRecipeRemoval(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart.blockID, 0);
+			TweakerBase.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).blockID, 0);
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
-			TweakerBase.markItemForRecipeRemoval(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod.blockID, -1);
+			TweakerBase.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod).blockID, -1);
 		}		
 	}
 	
