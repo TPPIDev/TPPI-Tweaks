@@ -20,6 +20,16 @@ public class GregtechTweaks
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust });
 		}
+		
+		if (ConfigurationHandler.balanceOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		{
+			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("CrushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyGold").get(0) });
+		}
+		
+		if (ConfigurationHandler.balanceOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		{
+			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("CrushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyGold").get(0) });
+		}
 
 		if (Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge)
 		{
@@ -61,7 +71,7 @@ public class GregtechTweaks
 			{
 				if (okIds.contains(s.itemID))
 				{
-					ItemStack dust = OreDictionary.getOres("dustAluminium").get(0).copy();
+					ItemStack dust = OreDictionary.getOres("crushedPurifiedAluminium").get(0).copy();
 					dust.stackSize = 2;
 					gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallBauxite").get(0), OreDictionary.getOres("dustSmallBauxite").get(0),
 							ic2.core.Ic2Items.cell);
