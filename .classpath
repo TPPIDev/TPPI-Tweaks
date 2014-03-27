@@ -134,7 +134,6 @@
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/buildcraft-A-1.6.2-4.1.2.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/CodeChickenCore-dev 0.9.0.7.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/CodeChickenLib-dev-1.6.4-1.0.0.36.jar"/>
-	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/CoFHCore-2.0.0.0.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/dimensional-anchor-57.1.9.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/EnderStorage-dev 1.4.3.5.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/ExU_1.0.3a_deobf.jar"/>
@@ -155,5 +154,9 @@
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/scala-library-2.10.2.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/StevesFactoryManagerA78.jar"/>
 	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/ThermalExpansion-3.0.0.0.jar"/>
+	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/CoFHCore-2.0.0.0_deobf.jar"/>
+	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/DartCraft Beta 0.2.15_deobf.jar"/>
+	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/gregtechmod.jar"/>
+	<classpathentry kind="lib" path="E:/Development/MC_1_6_gradle/TPPI-Tweaks/libs/industrialcraft-2-dev-deobf_2.0.397-experimental.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
