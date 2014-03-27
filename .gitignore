@@ -11,6 +11,7 @@
 *.classpath
 *.project
 /.settings
+/.gradle
 /config
 !/src/main/resources
 /crash-reports
