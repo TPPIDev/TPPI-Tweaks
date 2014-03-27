@@ -21,17 +21,17 @@ public class GregtechTweaks
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedPurifiedOsmium").get(0), ic2.core.Ic2Items.stoneDust });
 		}
 		
-		if (ConfigurationHandler.balanceOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("CrushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedPurifiedOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyGold").get(0) });
 		}
 		
-		if (ConfigurationHandler.balanceOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityThermalCentrifuge.addRecipe("CrushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyGold").get(0) });
 		}
 		
-		if (ConfigurationHandler.balanceOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityThermalCentrifuge.addRecipe("crushedPurifiedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), OreDictionary.getOres("dustTinyGold").get(0) });
 		}
