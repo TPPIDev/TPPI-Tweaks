@@ -95,6 +95,7 @@ public class GregtechTweaks
 		if(ConfigurationHandler.readdResinSmelting) {
 			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
 		}
+	public static void doPostLoadRecipeAdditions()
 		if(ConfigurationHandler.unnerfPlasticSheetRecipe) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item.plasticsheet, 1, 4),
 			    	"PP ", 
