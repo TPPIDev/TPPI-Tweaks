@@ -18,10 +18,10 @@ public class IC2Tweaks
 			TweakerBase.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1);
 		
 		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.iridiumDrill).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.mvTransformer).itemID, -1);
+		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.mvTransformer).itemID, 4);
 		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.weedEx).itemID, -1);
 		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.suBattery).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.personalSafe).itemID, -1);
+		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.personalSafe).itemID, 0);
 		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.nanoHelmet).itemID, -1);
 		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.electricJetpack).itemID, -1);
 	}
