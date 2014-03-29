@@ -65,9 +65,6 @@ public class RecipeTweaks
 		checkWhatWeCanTweak();
 		initRemovableRecipesMap();
 
-		if (okayToTweakGT)
-			GregtechTweaks.doStuff();
-
 		if (okayToTweakExU && ConfigurationHandler.fixExURecipes)
 			ExUTweaks.fixRecipes();
 
@@ -90,6 +87,7 @@ public class RecipeTweaks
 		if (okayToTweakGT)
 		{
 			GregtechTweaks.addRecipes();
+			GregtechTweaks.doStuff();
 		}
 		if (okayToTweakExU)
 		{
