@@ -86,26 +86,15 @@ public class GregtechTweaks
 		}
 	}
 	
-	public static void addRecipes() {
-		if(ConfigurationHandler.unnerfPaperRecipe) {
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
-			TETweaks.addRecipes();
-			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
-		}
-		if(ConfigurationHandler.readdResinSmelting) {
-			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
-		}
-	}
+	   public static void addRecipes() {
+	       if(ConfigurationHandler.unnerfPaperRecipe) {
+	       GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
+	       TETweaks.addRecipes();
+	       GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
+	       }
+	       if(ConfigurationHandler.readdResinSmelting) {
+	       FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
+	       }
+	       }
 
-	public static void {
-		if(ConfigurationHandler.unnerfPlasticSheetRecipe) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(item.plasticsheet, 1, 4),
-			    	"PP ", 
-			    	"PP ", 
-			    	"   ", 
-			    	
-			    	'P', item.rawplastic
-					));
-		}
-	}
-}
+	       }
