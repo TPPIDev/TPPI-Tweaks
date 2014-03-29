@@ -81,21 +81,19 @@ public class GregtechTweaks
 					dust.stackSize = 2;
 					gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallBauxite").get(0), OreDictionary.getOres("dustSmallBauxite").get(0),
 							ic2.core.Ic2Items.cell);
-				}
-			}
-		}
-	    if (Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("mekanism") && ConfigurationHandler.balanceMekanismOsmiumUnification)
-	    {
-	        for (ItemStack s : OreDictionary.getOres("oreOsmium")
-            if (okIds.contains(s.itemID))
+				}}}
+		if (Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("Mekanism") && ConfigurationHandler.balanceMekanismOsmiumUnification)
+        {
+            HashSet<Integer> okIds = new HashSet<Integer>();
+            for (ItemStack s : OreDictionary.getOres("oreOsmium"))
             {
-                ItemStack dust = OreDictionary.getOres("crushedPurifiedOsmium").get(0).copy();
-                dust.stackSize = 2;
-                gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallNickel").get(0), OreDictionary.getOres("dustSmallCopper").get(0),
-                        ic2.core.Ic2Items.cell);
-	        
-	    }
-	
+                if (okIds.contains(s.itemID))
+                {
+                    ItemStack dust = OreDictionary.getOres("crushedPurifiedOsmium").get(0).copy();
+                    dust.stackSize = 2;
+                    gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallCopper").get(0), OreDictionary.getOres("dustSmallNickel").get(0),
+                            ic2.core.Ic2Items.cell);
+	    }}}}
 	   public static void addRecipes() {
 	       if(ConfigurationHandler.unnerfPaperRecipe) {
 	       GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
