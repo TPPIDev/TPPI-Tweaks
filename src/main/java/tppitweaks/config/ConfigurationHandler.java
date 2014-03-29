@@ -74,8 +74,6 @@ public class ConfigurationHandler
 	public static boolean addOsmiumToOreWasher;
 	public static boolean balanceMekanismOsmiumUnification;
 	
-	public static boolean unnerfPlasticSheetRecipe;
-	
 	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
