@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // Load config.  It shall from now be referenced as simply config or project.config
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+// Finds and sets version data
+task buildInfo {
+    def cmd = "git rev-parse --short HEAD"
+    def proc = cmd.execute()
+    proc.waitFor()
+    if (proc.exitValue() == 0) {
+        ext.revision = proc.text.trim()
+    } else {
+        ext.revision = "GITBORK"
+    }
+
+    if (System.getenv().BUILD_NUMBER != null) {
+        ext.buildNum = "${System.getenv().BUILD_NUMBER}"
+    } else {
+        ext.buildNum = "DEV.${project.buildInfo.revision}"
+    }
+}
+ext.artifact_version = 'NFG'
+if (System.getenv().ARTIFACT_VERSION == null) {
+    artifact_version = "${config.mod_version}"
+}
+if (System.getenv().ARTIFACT_VERSION != null) {
+    artifact_version = "${system.getenv().ARTIFACT_VERSION}"
+}
+
+version = "MC${config.minecraft_version}-${artifact_version}-${System.getenv().BUILD_NUMBER}"
+
+minecraft {
+	version = "1.6.4-9.11.1.964"
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+}
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod/info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

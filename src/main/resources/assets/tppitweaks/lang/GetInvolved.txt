@@ -1,0 +1,20 @@
+To get involved in TPPI's development, feel free to stop by reddit.com/r/testpackpleaseignore for general pack discussion.~
+~
+To talk to the dev team directly via IRC, visit #TestPackPleaseIgnore on irc.esper.net.~
+~~~
+The reddit is the place to go to discuss pack features and provide feedback, etc, but NOT report bugs.~
+~
+All bug reports should instead be submitted as issues on the TestPackPleaseIgnore repository, located at github.com/TPPI-Dev.
+~~~
+If you want to help out with TPPI Tweaks and/or the in-game mod documentation project, 
+check out the TPPI-Tweaks github repository.~
+~
+The "SupportedMods.txt" file in our assets folder will let you add documentation.
+~~~
+Make sure you follow the formatting guidelines outlined at the top of the file when documenting mods, and good luck!~
+~
+~
+~
+~
+~
+        -Team
