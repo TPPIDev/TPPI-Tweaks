@@ -1,6 +1,5 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import ic2.core.AdvCraftingRecipeManager;
 import ic2.core.Ic2Items;
 import ic2.core.util.StackUtil;
 import net.minecraft.block.Block;
@@ -58,20 +57,16 @@ public class IC2Tweaks
 	public static void doPostLoadRecipeAdditions()
 	{
 		/* copypasta code, ignore horrible formatting */
-		
-		AdvCraftingRecipeManager localAdvCraftingRecipeManager = (AdvCraftingRecipeManager) (ic2.api.recipe.Recipes.advRecipes = new AdvCraftingRecipeManager());
-	       
-		if (Ic2Items.suBattery == null) throw new RuntimeException("null");
-		
-        localAdvCraftingRecipeManager.addRecipe(Ic2Items.iridiumDrill, new Object[] { " I ", "IdI", " C ", Character.valueOf('I'), Ic2Items.iridiumPlate, Character.valueOf('d'), StackUtil.copyWithWildCard(Ic2Items.diamondDrill), Character.valueOf('C'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal) });
-        GameRegistry.addRecipe(Ic2Items.mvTransformer, new Object[] { "C", "M", "C", Character.valueOf('M'), Ic2Items.machine, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem });
-        GameRegistry.addRecipe(Ic2Items.weedEx, new Object[] { "R", "G", "C", Character.valueOf('R'), Item.redstone, Character.valueOf('G'), Ic2Items.grinPowder, Character.valueOf('C'), Ic2Items.cell });
+			       		
+		GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.iridiumDrill, new Object[] { " I ", "IdI", " C ", Character.valueOf('I'), Ic2Items.iridiumPlate, Character.valueOf('d'), StackUtil.copyWithWildCard(Ic2Items.diamondDrill), Character.valueOf('C'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal) }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.mvTransformer, new Object[] { "C", "M", "C", Character.valueOf('M'), Ic2Items.machine, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.weedEx, new Object[] { "R", "G", "C", Character.valueOf('R'), Item.redstone, Character.valueOf('G'), Ic2Items.grinPowder, Character.valueOf('C'), Ic2Items.cell }));
         GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 5), new Object[] { "C", "R", "D", Character.valueOf('D'), "dustCoal", Character.valueOf('R'), Item.redstone, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem }));
         GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 5), new Object[] { "C", "D", "R", Character.valueOf('D'), "dustCoal", Character.valueOf('R'), Item.redstone, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem }));
         GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 8), new Object[] { "c", "C", "R", Character.valueOf('R'), Item.redstone, Character.valueOf('C'), "dustHydratedCoal", Character.valueOf('c'), Ic2Items.insulatedCopperCableItem }));
         GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 8), new Object[] { "c", "R", "C", Character.valueOf('R'), Item.redstone, Character.valueOf('C'), "dustHydratedCoal", Character.valueOf('c'), Ic2Items.insulatedCopperCableItem }));
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.personalSafe, new Object[] { "c", "M", "C", Character.valueOf('c'), Ic2Items.recipeObjectCircuit, Character.valueOf('C'), Block.chest, Character.valueOf('M'), Ic2Items.machine }));
-        localAdvCraftingRecipeManager.addRecipe(Ic2Items.nanoHelmet, new Object[] { "CcC", "CGC", Character.valueOf('C'), Ic2Items.carbonPlate, Character.valueOf('c'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal), Character.valueOf('G'), StackUtil.copyWithWildCard(Ic2Items.nightvisionGoggles) });
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.nanoHelmet, new Object[] { "CcC", "CGC", Character.valueOf('C'), Ic2Items.carbonPlate, Character.valueOf('c'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal), Character.valueOf('G'), StackUtil.copyWithWildCard(Ic2Items.nightvisionGoggles) }));
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.electricJetpack, new Object[] { "ICI", "IBI", "G G", Character.valueOf('I'), Ic2Items.casingiron, Character.valueOf('C'), Ic2Items.recipeObjectAdvCircuit, Character.valueOf('B'), Ic2Items.batBox, Character.valueOf('G'), Item.glowstone }));
 	}
 }
