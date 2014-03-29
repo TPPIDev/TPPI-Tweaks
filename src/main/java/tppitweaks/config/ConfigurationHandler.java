@@ -50,6 +50,7 @@ public class ConfigurationHandler
 	public static boolean nerfEnderGen;
 
 	public static boolean doPlatinumInCentrifuge;
+	public static boolean balanceMekanismOsmiumUnification;
 	public static boolean addLapisDustMortarRecipes;
 	public static boolean tinkersAluminumPlates;
 	public static boolean tinkersAluminumOreInGTMachines;
@@ -73,7 +74,6 @@ public class ConfigurationHandler
 	
 	public static boolean addOsmiumToOreWasher;
 	
-	public static boolean balanceMekanismOsmiumUnification;
 	public static boolean unnerfPlasticSheetRecipe;
 	
 	public static boolean registerMagicalCropsOre;
@@ -140,6 +140,7 @@ public class ConfigurationHandler
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
 		
 		doPlatinumInCentrifuge = config.get("Gregtech Tweaks", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
+		balanceMekanismOsmiumUnification = config.get("Gregtech Tweaks", "balanceMekanismOsmiumUnification", true, "Balances Osmium to give Gold in place of Iridium. NOT RECOMMENDED TO DISABLE UNLESS YOU LIKE DAY 1 FUSION REACTORS.").getBoolean(true);
 		addLapisDustMortarRecipes = config.get("Gregtech Tweaks", "addLapisDustMortarRecipes", true, "Lapis dust can be made from lapis using GregTech's mortars.").getBoolean(true);
 		tinkersAluminumPlates = config.get("Gregtech Tweaks", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
 		tinkersAluminumOreInGTMachines = config.get("Gregtech Tweaks", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
@@ -155,7 +156,7 @@ public class ConfigurationHandler
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
 		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
 		
-		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
+		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to purified osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
 		disableCardboardBox = config.get("Mekanism Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
 		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);

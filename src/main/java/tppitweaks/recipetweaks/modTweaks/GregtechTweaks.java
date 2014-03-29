@@ -17,24 +17,24 @@ public class GregtechTweaks
 	public static void doStuff()
 	{	
 		
-		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("crushedPurifiedOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedPurifiedOsmium").get(0), ic2.core.Ic2Items.stoneDust });
 		}
 		
-		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("crushedPurifiedOsmium").isEmpty() && !OreDictionary.getOres("dustTinyGold").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("CrushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedPurifiedOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyGold").get(0) });
 		}
 		
-		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty() && !OreDictionary.getOres("dustTinyGold").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityCentrifuge.addRecipe("CrushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyGold").get(0) });
 		}
 		
-		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("IC2") && !OreDictionary.getOres("CrushedOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
+		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("IC2") && !OreDictionary.getOres("crushedPurifiedOsmium").isEmpty() && !OreDictionary.getOres("centrifugedOsmium").isEmpty() && !OreDictionary.getOres("dustTinyGold").isEmpty())
 		{
-			ic2.core.block.machine.tileentity.TileEntityCentrifuge.addRecipe("crushedPurifiedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), OreDictionary.getOres("dustTinyGold").get(0) });
+			ic2.core.block.machine.tileentity.TileEntityCentrifuge.addRecipe("crushedPurifiedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("centrifugedOsmium").get(0), OreDictionary.getOres("dustTinyGold").get(0) });
 		}
 
 		if (Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge)
