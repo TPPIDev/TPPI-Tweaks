@@ -57,6 +57,7 @@ public class ConfigurationHandler
 	public static boolean unnerfPaperRecipe;
 	public static boolean readdResinSmelting;
 	public static boolean doCharcoalBlockCompression;
+	public static boolean unnerfPlasticSheetRecipe;
 	
 	public static boolean addEssenceSeedRecipe;
 	
@@ -144,6 +145,7 @@ public class ConfigurationHandler
 		unnerfPaperRecipe = config.get("Gregtech Tweaks", "unnerfPaperRecipe", true, "Revert GregTech's paper recipe output nerf.").getBoolean(true);
 		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
 		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
+		unnerfPlasticSheetRecipe = config.get("Gregtech Tweaks", "unnerfPlasticSheetRecipe", true, "Changes plastic sheets to not require the extruder. Requires GregTech configuration changes if doing in default TPPI.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", true, "Show the mariculture fix GUI on startup.").getBoolean(true);

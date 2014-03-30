@@ -19,6 +19,7 @@ import tppitweaks.recipetweaks.modTweaks.DATweaks;
 import tppitweaks.recipetweaks.modTweaks.DCTweaks;
 import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
 import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
+import tppitweaks.recipetweaks.modTweaks.GTandMFRTweaks;
 import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
 import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.MPSATweaks;
@@ -48,6 +49,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakSFM;
 	private static boolean okayToTweakOpenBlocks;
 	private static boolean okayToTweakAM2;
+	private static boolean okayToTweakMFR;
 	private static boolean okayToTweakMagicalCrops;
 	private static boolean okayToTweakDartCraft;
 	private static boolean okayToTweakExU;
@@ -89,6 +91,12 @@ public class RecipeTweaks
 			GregtechTweaks.addRecipes();
 			GregtechTweaks.doStuff();
 		}
+		
+		if ((okayToTweakGT) && (okayToTweakMFR))
+		{
+		    GTandMFRTweaks.addRecipes();
+		}
+		
 		if (okayToTweakExU)
 		{
 			ExUTweaks.reAddRecipeAfterLoad();
@@ -122,6 +130,7 @@ public class RecipeTweaks
 	{
 		okayToTweakIC2 = Loader.isModLoaded("IC2");
 		okayToTweakGT = Loader.isModLoaded("gregtech_addon");
+		okayToTweakMFR = Loader.isModLoaded("MineFactoryReloaded");
 		okayToTweakEnderStorage = Loader.isModLoaded("EnderStorage") && Loader.isModLoaded("ThermalExpansion");
 		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty()
 				&& (ConfigurationHandler.steelReactorCasings || ConfigurationHandler.glassFuelRods);

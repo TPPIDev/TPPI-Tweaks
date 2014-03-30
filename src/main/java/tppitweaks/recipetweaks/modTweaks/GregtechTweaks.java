@@ -82,7 +82,7 @@ public class GregtechTweaks
 					gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallBauxite").get(0), OreDictionary.getOres("dustSmallBauxite").get(0),
 							ic2.core.Ic2Items.cell);
 				}}}
-		if (Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("Mekanism") && ConfigurationHandler.balanceMekanismOsmiumUnification)
+		if (Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.balanceMekanismOsmiumUnification)
         {
             HashSet<Integer> okIds = new HashSet<Integer>();
             for (ItemStack s : OreDictionary.getOres("oreOsmium"))
@@ -94,6 +94,7 @@ public class GregtechTweaks
                     gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallCopper").get(0), OreDictionary.getOres("dustSmallNickel").get(0),
                             ic2.core.Ic2Items.cell);
 	    }}}}
+	
 	   public static void addRecipes() {
 	       if(ConfigurationHandler.unnerfPaperRecipe) {
 	       GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
