@@ -3,6 +3,7 @@ package tppitweaks.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -182,9 +183,26 @@ public class FileLoader
 		return bookText;
 	}
 
-	public static InputStream getChangelogText() throws FileNotFoundException
+	public static InputStream getChangelogText()
 	{
-		changelogText = new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+		try {
+			changelogText = new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+		} catch (FileNotFoundException e) {
+			File changelog = new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt");
+			FileWriter fw;
+			try {
+				changelog.createNewFile();
+				fw = new FileWriter(changelog);
+				fw.write("Default Changelog, please make sure the correct changelog exists in the TPPI directory before launching next time!");
+				fw.flush();
+				fw.close();
+			} catch (IOException e1) {
+				TPPITweaks.logger.severe("Could not create default changelog!");
+				e1.printStackTrace();
+			}
+
+			e.printStackTrace();
+		}
 		return changelogText;
 	}
 
