@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -317,6 +318,6 @@ public class CommandTPPI extends CommandBase
 	@Override
 	public int compareTo(Object arg0) 
 	{
-		return 0; // wat
+		return this.compareTo((ICommand) arg0);
 	}
 }
