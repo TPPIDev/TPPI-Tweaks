@@ -73,8 +73,9 @@ public class ConfigurationHandler
 	public static boolean disableForceShears;
 	
 	public static boolean addOsmiumToOreWasher;
+	/*
 	public static boolean balanceMekanismOsmiumUnification;
-	
+	*/
 	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
@@ -156,7 +157,9 @@ public class ConfigurationHandler
 		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
 		
 		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to purified osmium dust in the IC2 ore washer.").getBoolean(true);
+		/*
 		balanceMekanismOsmiumUnification = config.get("Mekanism Tweaks", "balanceMekanismOsmiumUnification", true, "Balances Osmium to give Gold in place of Iridium. NOT RECOMMENDED TO DISABLE UNLESS YOU LIKE DAY 1 FUSION REACTORS.").getBoolean(true);
+		*/
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
 		disableCardboardBox = config.get("Mekanism Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
 		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);

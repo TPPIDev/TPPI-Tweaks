@@ -17,11 +17,11 @@ public class GregtechTweaks
 	public static void doStuff()
 	{	
 		
-		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("crushedPurifiedOsmium").isEmpty() && !OreDictionary.getOres("dustTinyCopper").isEmpty())
+		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty() && !OreDictionary.getOres("dustTinyCopper").isEmpty())
 		{
-			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedPurifiedOsmium").get(0), OreDictionary.getOres("dustTinyCopper").get(0), ic2.core.Ic2Items.stoneDust });
+			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), OreDictionary.getOres("dustTinyCopper").get(0), ic2.core.Ic2Items.stoneDust });
 		}
-		
+		/* Removed until we can find a way to remove recipes from Gregtech machines. ~~~Generalcamo
 		if (ConfigurationHandler.balanceMekanismOsmiumUnification && Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("IC2") && !OreDictionary.getOres("crushedOsmium").isEmpty() && !OreDictionary.getOres("crushedPurifiedOsmium").isEmpty() && !OreDictionary.getOres("dustTinyCopper").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("crushedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedPurifiedOsmium").get(0), ic2.core.Ic2Items.stoneDust, OreDictionary.getOres("dustTinyCopper").get(0) });
@@ -36,7 +36,7 @@ public class GregtechTweaks
 		{
 			ic2.core.block.machine.tileentity.TileEntityCentrifuge.addRecipe("crushedPurifiedOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("crushedCentrifugedOsmium").get(0), OreDictionary.getOres("dustTinyCopper").get(0) });
 		}
-
+        */
 		if (Loader.isModLoaded("gregtech_addon") && ConfigurationHandler.doPlatinumInCentrifuge)
 		{
 			gregtechmod.api.GregTech_API.sRecipeAdder.addCentrifugeRecipe(OreDictionary.getOres("dustPlatinum").get(0), 0, OreDictionary.getOres("nuggetIridium").get(0),
