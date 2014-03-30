@@ -183,14 +183,15 @@ public class FileLoader
 		return bookText;
 	}
 
-	public static InputStream getChangelogText()
+	public static InputStream getChangelogText() throws FileNotFoundException
 	{
-		try {
-			changelogText = new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
-		} catch (FileNotFoundException e) {
-			File changelog = new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt");
+		File changelog = new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt");
+		
+		if (!changelog.exists())
+		{
 			FileWriter fw;
-			try {
+			try
+			{
 				changelog.createNewFile();
 				fw = new FileWriter(changelog);
 				fw.write("Default Changelog, please make sure the correct changelog exists in the TPPI directory before launching next time!");
@@ -200,9 +201,10 @@ public class FileLoader
 				TPPITweaks.logger.severe("Could not create default changelog!");
 				e1.printStackTrace();
 			}
-
-			e.printStackTrace();
 		}
+
+		changelogText = new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+
 		return changelogText;
 	}
 
