@@ -57,6 +57,7 @@ public class ConfigurationHandler
 	public static boolean unnerfPaperRecipe;
 	public static boolean readdResinSmelting;
 	public static boolean doCharcoalBlockCompression;
+	public static boolean unnerfPlasticSheetRecipe;
 	
 	public static boolean addEssenceSeedRecipe;
 	
@@ -72,7 +73,9 @@ public class ConfigurationHandler
 	public static boolean disableForceShears;
 	
 	public static boolean addOsmiumToOreWasher;
-	
+	/*
+	public static boolean balanceMekanismOsmiumUnification;
+	*/
 	public static boolean registerMagicalCropsOre;
 
 	public static boolean showDownloadGUI;
@@ -143,6 +146,7 @@ public class ConfigurationHandler
 		unnerfPaperRecipe = config.get("Gregtech Tweaks", "unnerfPaperRecipe", true, "Revert GregTech's paper recipe output nerf.").getBoolean(true);
 		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
 		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
+		unnerfPlasticSheetRecipe = config.get("Gregtech Tweaks", "unnerfPlasticSheetRecipe", true, "Changes plastic sheets to not require the extruder. Requires GregTech configuration changes if doing in default TPPI.").getBoolean(true);
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", true, "Show the Download GUI on startup.").getBoolean(true);
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", true, "Show the mariculture fix GUI on startup.").getBoolean(true);
@@ -152,7 +156,10 @@ public class ConfigurationHandler
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
 		addEssenceSeedRecipe = config.get("Other Mod Tweaks", "addEssenceSeedRecipe", true, "Add a recipe for the essence seeds in magical crops").getBoolean(true);
 		
-		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
+		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to purified osmium dust in the IC2 ore washer.").getBoolean(true);
+		/*
+		balanceMekanismOsmiumUnification = config.get("Mekanism Tweaks", "balanceMekanismOsmiumUnification", true, "Balances Osmium to give Gold in place of Iridium. NOT RECOMMENDED TO DISABLE UNLESS YOU LIKE DAY 1 FUSION REACTORS.").getBoolean(true);
+		*/
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
 		disableCardboardBox = config.get("Mekanism Tweaks", "disableCardboardBox", true, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(true);
 		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);
