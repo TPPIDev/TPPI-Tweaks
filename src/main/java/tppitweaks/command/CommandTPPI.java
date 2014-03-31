@@ -320,4 +320,10 @@ public class CommandTPPI extends CommandBase
 	{
 		return this.compareTo((ICommand) arg0);
 	}
+	
+	@Override
+	public boolean equals(Object obj) 
+	{
+		return this.compareTo(obj) == 0;
+	}
 }
