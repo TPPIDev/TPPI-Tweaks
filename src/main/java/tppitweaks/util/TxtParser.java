@@ -25,6 +25,8 @@ public class TxtParser
 	{
 		ArrayList<String> bookText = new ArrayList<String>();
 		useableLines.clear();
+		
+		if (file == null) return new ArrayList<String>();
 
 		Scanner scanner;
 		scanner = new Scanner(file);
