@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
@@ -17,7 +18,11 @@ public class BigReactorsTweaks {
 		if (ConfigurationHandler.glassFuelRods)
 		{
 			TweakerBase.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod).blockID, -1);
-		}		
+		}
+		if (ConfigurationHandler.twoReactorGlass)
+		{
+			TweakerBase.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 0);
+		}
 	}
 	
 	public static void addRecipes()
@@ -32,6 +37,20 @@ public class BigReactorsTweaks {
 		{
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, 1), new Object[] { "ICI", "GUG", "ICI", Character.valueOf('I'),
 				erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium", Character.valueOf('G'), "ingotGraphite" }));
+		}
+		if (ConfigurationHandler.twoReactorGlass)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, 2),
+			"gCg",
+			
+			'g', "glassHardened",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, 2),
+			"gCg",
+			
+			'g', "glassReinforced",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
 		}
 	}
 }
