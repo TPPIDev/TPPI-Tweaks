@@ -22,6 +22,7 @@ public class BigReactorsTweaks {
 		if (ConfigurationHandler.twoReactorGlass)
 		{
 			TweakerBase.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 0);
+			TweakerBase.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 1);
 		}
 	}
 	
@@ -51,6 +52,18 @@ public class BigReactorsTweaks {
 			
 			'g', "glassReinforced",
 			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, 2),
+			"gCg",
+			
+			'g', "glassHardened",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, 2),
+			"gCg",
+			
+			'g', "glassReinforced",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
 		}
 	}
 }
