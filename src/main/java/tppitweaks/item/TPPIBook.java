@@ -1,6 +1,5 @@
 package tppitweaks.item;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -109,12 +108,7 @@ public class TPPIBook extends ItemEditableBook
 			
 			if (ConfigurationHandler.changelog == null)
 			{
-				try {
-					ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
 			}
 			
 			for (int i = 0; i < ConfigurationHandler.changelog.size(); i++)

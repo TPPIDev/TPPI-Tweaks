@@ -40,7 +40,7 @@ public class TPPITweaks
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
-	
+
 	@SidedProxy(clientSide = "tppitweaks.proxy.ClientProxy", serverSide = "tppitweaks.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
@@ -50,33 +50,28 @@ public class TPPITweaks
 	public static final Logger logger = Logger.getLogger("TPPITweaks");
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
-	
+
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		
-	    logger.setParent(FMLCommonHandler.instance().getFMLLogger());
+	public void preInit(FMLPreInitializationEvent event)
+	{
 
-		ConfigurationHandler.init(new File(event.getModConfigurationDirectory()
-				.getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
+		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
 
-		try {
-			FileLoader.init(ConfigurationHandler.cfg, 0);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
+
 		try
 		{
-			ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
-			ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
-			CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
+			FileLoader.init(ConfigurationHandler.cfg, 0);
 		}
-		catch (FileNotFoundException e)
+		catch (IOException e)
 		{
-			logger.severe("IO error while loading TPPITweaks, make sure nothing in the config folder is actively open and Minecraft has permission to read those files!");
 			e.printStackTrace();
-			throw new RuntimeException("IO Error in TPPITweaks file loading!");
 		}
+
+		ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
+		ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
+
+		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 
 		ModItems.initItems();
 		ModBlocks.initBlocks();
@@ -89,13 +84,13 @@ public class TPPITweaks
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		//AM2SpawnControls.doAM2SpawnControls();
+		// AM2SpawnControls.doAM2SpawnControls();
 
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
 		ModBlocks.registerRecipes();
-		
+
 		if (event.getSide().isClient())
 			proxy.initTickHandler();
 	}
@@ -104,10 +99,17 @@ public class TPPITweaks
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		RecipeTweaks.doPostInitRecipeTweaks();
-		
+
 		if (FMLCommonHandler.instance().getSide().isClient())
 		{
-			GuiHelper.initMap();
+			try
+			{
+				GuiHelper.initMap();
+			}
+			catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 

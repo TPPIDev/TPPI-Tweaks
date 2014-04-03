@@ -177,25 +177,25 @@ public class FileLoader
 		return "";
 	}
 
-	public static InputStream getGuideText() throws FileNotFoundException
+	public static InputStream getGuideText() 
 	{
-		bookText = getFileSafe(new File(ConfigurationHandler.cfg.getParent() + "BookText.txt"));
+		bookText = loadFile(new File(ConfigurationHandler.cfg.getParent() + "BookText.txt"));
 		return bookText;
 	}
 
-	public static InputStream getChangelogText() throws FileNotFoundException
+	public static InputStream getChangelogText()
 	{
-		changelogText = getFileSafe(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+		changelogText = loadFile(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
 		return changelogText;
 	}
 
-	public static InputStream getSupportedModsFile() throws FileNotFoundException
+	public static InputStream getSupportedModsFile()
 	{
-		supportedMods = getFileSafe(new File(ConfigurationHandler.cfg.getParent() + "/" + ConfigurationHandler.supportedModsName + ".txt"));
+		supportedMods = loadFile(new File(ConfigurationHandler.cfg.getParent() + "/" + ConfigurationHandler.supportedModsName + ".txt"));
 		return supportedMods;
 	}
 	
-	private static InputStream getFileSafe(File file) throws FileNotFoundException
+	private static InputStream loadFile(File file)
 	{
 		if (!file.exists())
 		{
@@ -213,7 +213,22 @@ public class FileLoader
 			}
 		}
 
-		return new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+		try
+		{
+			return new FileInputStream(file);
+		}
+		catch (FileNotFoundException e)
+		{
+			IOErr(file.getName(), e);
+			return null;
+		}
+	}
+	
+	private static void IOErr(String filename, IOException e)
+	{
+		TPPITweaks.logger.severe("IO error while loading TPPITweaks, make sure nothing in the config folder is actively open and Minecraft has permission to read those files!");
+		e.printStackTrace();
+		throw new RuntimeException("IO Error in TPPITweaks file loading, file: " + filename);
 	}
 
 	/*

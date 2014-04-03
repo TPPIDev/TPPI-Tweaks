@@ -1,6 +1,5 @@
 package tppitweaks.command;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -285,15 +284,7 @@ public class CommandTPPI extends CommandBase
 
 		ArrayList<String> pages;
 		
-		try
-		{
-			pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
-		}
-		catch (FileNotFoundException e)
-		{
-			pages = new ArrayList<String>();
-			e.printStackTrace();
-		}
+		pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
 
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{

@@ -1,5 +1,7 @@
 package tppitweaks.client.gui;
 
+import java.io.FileNotFoundException;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +28,7 @@ public class GuiHelper {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiGuideBase());
 	}
 
-	public static void initMap()
+	public static void initMap() throws FileNotFoundException
 	{
 		GuiGuideBase.initMap();
 	}
