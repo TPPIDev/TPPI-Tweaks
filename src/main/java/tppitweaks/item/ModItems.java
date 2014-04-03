@@ -14,8 +14,17 @@ public class ModItems {
 	public static TPPIMaterial tppiMaterial;
 	
 	public static void initItems() {
-		tppiBook = new TPPIBook(ConfigurationHandler.bookID);
-		tppiMaterial = new TPPIMaterial(ConfigurationHandler.materialID);
+		if (ConfigurationHandler.bookID != 0)
+		{
+			tppiBook = new TPPIBook(ConfigurationHandler.bookID);
+			GameRegistry.registerItem(tppiBook, "tppiBook");
+		}
+		
+		if (ConfigurationHandler.materialID != 0)
+		{
+			tppiMaterial = new TPPIMaterial(ConfigurationHandler.materialID);
+			GameRegistry.registerItem(tppiMaterial, "tppiMaterial");
+		}
 	}
 	
 	public static void registerRecipes()
@@ -37,5 +46,4 @@ public class ModItems {
 			FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, new ItemStack(tppiMaterial), 0.1f);
 		}
 	}
-
 }

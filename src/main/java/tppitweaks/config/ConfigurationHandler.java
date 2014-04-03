@@ -77,6 +77,7 @@ public class ConfigurationHandler
 
 	public static boolean showDownloadGUI;
 	public static boolean showMaricultureGui;
+	public static boolean doSpawnBook;
 	
 	public static boolean autoEnableTT;
 	
@@ -112,7 +113,8 @@ public class ConfigurationHandler
 		changelogTitle = config.get("TPPI Guide Info", "changelogTitle", "TPPI Changelog", "The title of the changelog").getString();
 		supportedModsName = config.get("TPPI Guide Info", "supportedModsFilename", "SupportedMods", "The file name of the file to read the mod documentation from (used to support translation). Do not include the extension in the filename (it is .txt)").getString();
 		guideSkin = config.get("TPPI Guide Info", "TPPIGuideSkin", 0, "The skin of the guide GUI/item, 0=tech, 1=scroll").getInt();
-		
+		doSpawnBook = config.get("TPPI Guide Info", "doSpawnBook", true, "Whether or not to give the player a welcome book on first spawn").getBoolean(true);
+
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
 		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", true, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(true);
@@ -145,7 +147,7 @@ public class ConfigurationHandler
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", false, "Show the Download GUI on startup.").getBoolean(true);
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", false, "Show the mariculture fix GUI on startup.").getBoolean(false);
-		
+
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
