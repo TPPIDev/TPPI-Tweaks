@@ -38,7 +38,6 @@
 **industrial craft [Burn477?] (posted in r/TPPI)**
 **logistics pipes [Linked]**
 **magical crops [Linked]**
-**mariculture [Linked]**
 **mekanism [Linked]**
 **MFFS [Linked]**
 **MPS [Linked]**
@@ -493,9 +492,6 @@ wool into water or on the ground while it is raining.
 >Forestry-Trees, Forestry-Trees<
 <http://forestry.sengir.net/wiki.new/doku.php?id=trees:intro>
 
->GasCraft, GasCraft<
-<http://emashersmods.wikispaces.com/Gases>
-
 >Gendustry, Gendustry<
 Gendustry is a mod that acts as an add-on for Forestry's bee and tree (and butterfly) breeding systems. It adds a number 
 of blocks that will be discussed on the following page(s).~
@@ -647,9 +643,6 @@ enchant.
 Magic bees is an addon for the Forestry bee-breeding system that also utilizes Thaumcraft. As a result, all of the information 
 for this mod can be found under the Magic Bees tab in the Thaumonomicon. If you are confused about bees in general, please 
 consult the "Forestry-Bees" book.
-
->Mariculture, Mariculture<
-<http://mariculture.wikispaces.com/>
 
 >Mekanism, Mekanism<
 <http://mekanism.wikispaces.com/>
