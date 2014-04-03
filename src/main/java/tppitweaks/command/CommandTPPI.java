@@ -1,5 +1,6 @@
 package tppitweaks.command;
 
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -283,15 +284,16 @@ public class CommandTPPI extends CommandBase
 		NBTTagList bookPages = new NBTTagList("pages");
 
 		ArrayList<String> pages;
-		//try
-		//{
+		
+		try
+		{
 			pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
-		/*}
+		}
 		catch (FileNotFoundException e)
 		{
 			pages = new ArrayList<String>();
 			e.printStackTrace();
-		}*/
+		}
 
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{

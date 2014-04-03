@@ -3,7 +3,6 @@ package tppitweaks;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -66,17 +65,18 @@ public class TPPITweaks
 			e.printStackTrace();
 		}
 		
-		ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
 		try
 		{
+			ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
 			ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
+			CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 		}
 		catch (FileNotFoundException e)
 		{
-			logger.log(Level.WARNING, "TPPI Changelog not found, please check the TPPI config folder.");
+			logger.severe("IO error while loading TPPITweaks, make sure nothing in the config folder is actively open and Minecraft has permission to read those files!");
+			e.printStackTrace();
+			throw new RuntimeException("IO Error in TPPITweaks file loading!");
 		}
-		
-		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 
 		ModItems.initItems();
 		ModBlocks.initBlocks();

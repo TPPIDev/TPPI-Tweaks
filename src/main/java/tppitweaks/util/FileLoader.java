@@ -177,41 +177,43 @@ public class FileLoader
 		return "";
 	}
 
-	public static InputStream getGuideText()
+	public static InputStream getGuideText() throws FileNotFoundException
 	{
-		bookText = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/BookText.txt");
+		bookText = getFileSafe(new File(ConfigurationHandler.cfg.getParent() + "BookText.txt"));
 		return bookText;
 	}
 
 	public static InputStream getChangelogText() throws FileNotFoundException
 	{
-		File changelog = new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt");
-		
-		if (!changelog.exists())
+		changelogText = getFileSafe(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
+		return changelogText;
+	}
+
+	public static InputStream getSupportedModsFile() throws FileNotFoundException
+	{
+		supportedMods = getFileSafe(new File(ConfigurationHandler.cfg.getParent() + "/" + ConfigurationHandler.supportedModsName + ".txt"));
+		return supportedMods;
+	}
+	
+	private static InputStream getFileSafe(File file) throws FileNotFoundException
+	{
+		if (!file.exists())
 		{
 			FileWriter fw;
 			try
 			{
-				changelog.createNewFile();
-				fw = new FileWriter(changelog);
-				fw.write("Default Changelog, please make sure the correct changelog exists in the TPPI directory before launching next time!");
+				file.createNewFile();
+				fw = new FileWriter(file);
+				fw.write("Default file, please make sure the correct file, " + file.getName() + ", exists in the TPPI config directory before launching next time!");
 				fw.flush();
 				fw.close();
 			} catch (IOException e1) {
-				TPPITweaks.logger.severe("Could not create default changelog!");
+				TPPITweaks.logger.severe("Could not create default file" + file.getName() + "!");
 				e1.printStackTrace();
 			}
 		}
 
-		changelogText = new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
-
-		return changelogText;
-	}
-
-	public static InputStream getSupportedModsFile()
-	{
-		supportedMods = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/" + ConfigurationHandler.supportedModsName + ".txt");
-		return supportedMods;
+		return new FileInputStream(new File(ConfigurationHandler.cfg.getParent() + "/changelog.txt"));
 	}
 
 	/*
