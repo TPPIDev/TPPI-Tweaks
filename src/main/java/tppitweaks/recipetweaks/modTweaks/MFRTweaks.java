@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import powercrystals.minefactoryreloaded.MineFactoryReloadedCore;
 import powercrystals.minefactoryreloaded.setup.Machine;
@@ -15,6 +16,14 @@ public class MFRTweaks
 	
 	public static void addRecipes()
 	{
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineFactoryReloadedCore.machineBaseItem, 3), 
+				"RRR",
+				"SSS",
+				
+				'R', "sheetPlastic",
+				'S', "stone"
+		));
+		
 		GameRegistry.addRecipe(new ShapedOreRecipe(Machine.Unifier.getItemStack(), 
 				"RRR",
 				"rCr",
