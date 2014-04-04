@@ -54,7 +54,6 @@ public class TPPITweaks
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-
 		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));

@@ -21,6 +21,8 @@ import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
 import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
 import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
 import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
+import tppitweaks.recipetweaks.modTweaks.JABBATweaks;
+import tppitweaks.recipetweaks.modTweaks.MFRTweaks;
 import tppitweaks.recipetweaks.modTweaks.MPSATweaks;
 import tppitweaks.recipetweaks.modTweaks.MagicropsAndIC2Tweaks;
 import tppitweaks.recipetweaks.modTweaks.MagicropsAndTETweaks;
@@ -57,6 +59,8 @@ public class RecipeTweaks
 	private static boolean okayToTweakReliquary;
 	private static boolean okayToTweakAdvancedGenetics;
 	private static boolean okayToTweakRailcraft;
+	private static boolean okayToTweakJABBA;
+	private static boolean okayToTweakMFR;
 
 	public static void doPostInitRecipeTweaks()
 	{		
@@ -140,6 +144,8 @@ public class RecipeTweaks
 		okayToTweakReliquary = Loader.isModLoaded("xreliquary") && ConfigurationHandler.harderLillipadRecipe;
 		okayToTweakAdvancedGenetics = Loader.isModLoaded("advancedgenetics");
 		okayToTweakRailcraft = Loader.isModLoaded("Railcraft");
+		okayToTweakJABBA = ConfigurationHandler.tweakJABBA && Loader.isModLoaded("factorization") && Loader.isModLoaded("MineFactoryReloaded") && Loader.isModLoaded("JABBA");
+		okayToTweakMFR = ConfigurationHandler.buffUnifierRecipe && Loader.isModLoaded("MineFactoryReloaded");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -205,6 +211,14 @@ public class RecipeTweaks
 		{
 			ReliquaryTweaks.init();
 		}
+		if (okayToTweakJABBA)
+		{
+			JABBATweaks.init();
+		}
+		if (okayToTweakMFR)
+		{
+			MFRTweaks.init();
+		}
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
@@ -223,7 +237,6 @@ public class RecipeTweaks
 
 	private static void addRevisedRecipes()
 	{
-
 		if (okayToTweakEnderStorage)
 			EnderStorageTweaks.addRecipes();
 
@@ -265,6 +278,12 @@ public class RecipeTweaks
 		
 		if (okayToTweakExU)
 			ExUTweaks.addRecipes();
+		
+		if (okayToTweakJABBA)
+			JABBATweaks.addRecipes();
+		
+		if (okayToTweakMFR)
+			MFRTweaks.addRecipes();
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}

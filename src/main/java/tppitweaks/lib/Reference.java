@@ -39,7 +39,10 @@ public class Reference
 			+ "required-after:NotEnoughItems;"
 			+ "after:Railcraft;"
 			+ "after:advancedgenetics;"
-			+ "after:IC2";
+			+ "after:IC2;"
+			+ "after:factorization;"
+			+ "after:MineFactoryReloaded;"
+			+ "after:JABBA";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";

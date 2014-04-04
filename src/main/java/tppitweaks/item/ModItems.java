@@ -30,7 +30,7 @@ public class ModItems {
 	public static void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(tppiBook.getGuide(), Item.ingotIron, Item.paper, Item.paper, Item.paper);
-		
+	
 		if(Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM) {
 			GameRegistry.addRecipe(new ItemStack(tppiMaterial.itemID, 1, 1),
 		            new Object[] {
