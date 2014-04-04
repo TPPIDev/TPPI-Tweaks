@@ -2,6 +2,7 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import mcp.mobius.betterbarrels.BetterBarrels;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import powercrystals.minefactoryreloaded.setup.Machine;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,7 +24,7 @@ public class JABBATweaks
 				"www",
 
 				'w', "plankWood",
-				'B', new ItemStack(Core.registry.daybarrel, 1, 2720),
+				'B', new ItemStack(Core.registry.daybarrel, 1, OreDictionary.WILDCARD_VALUE),
 				'U', Machine.Unifier.getItemStack()
 		));
 	}
