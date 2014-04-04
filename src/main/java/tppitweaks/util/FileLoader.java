@@ -179,7 +179,7 @@ public class FileLoader
 
 	public static InputStream getGuideText() 
 	{
-		bookText = loadFile(new File(ConfigurationHandler.cfg.getParent() + "BookText.txt"));
+		bookText = loadFile(new File(ConfigurationHandler.cfg.getParent() + "/BookText.txt"));
 		return bookText;
 	}
 
