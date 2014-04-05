@@ -8,25 +8,31 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class IC2Tweaks
 {
+	@RecipeRemoval(requiredModids="IC2")
 	public static void init()
 	{
 		if (ConfigurationHandler.removeStupidEnergyCrystalRecipe)
-			TweakerBase.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1);
 		
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.iridiumDrill).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.mvTransformer).itemID, 4);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.weedEx).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.suBattery).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.personalSafe).itemID, 0);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.nanoHelmet).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.electricJetpack).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.iridiumDrill).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.mvTransformer).itemID, 4);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.weedEx).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.suBattery).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.personalSafe).itemID, 0);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.nanoHelmet).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.electricJetpack).itemID, -1);
 	}
 	
+	@RecipeAddition(requiredModids="IC2", time=EventTime.INIT)
 	public static void registerOres()
 	{
 		if (ConfigurationHandler.ic2TEGlassInterchangeability)
@@ -46,6 +52,7 @@ public class IC2Tweaks
 		}
 	}
 	
+	@RecipeAddition(requiredModids="IC2", time=EventTime.INIT)
 	public static void addRecipes() {
 		if(ConfigurationHandler.doCharcoalBlockCompression) {
 			if(!OreDictionary.getOres("blockCharcoal").isEmpty()) {
@@ -54,6 +61,7 @@ public class IC2Tweaks
 		}
 	}
 	
+	@RecipeAddition(requiredModids="IC2", time=EventTime.PLAYER_JOIN)
 	public static void doPostLoadRecipeAdditions()
 	{
 		/* copypasta code, ignore horrible formatting */

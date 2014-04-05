@@ -55,7 +55,7 @@ public class MaricultureGui extends GuiScreen
 			this.mc.displayGuiScreen(null);
 			break;
 		case 4:
-			ConfigurationHandler.manuallyChangeConfigValue("B:showMaricultureGUI", "true", "false");	
+			ConfigurationHandler.manuallyChangeConfigValue("B:showMaricultureGUI", "true", "false");
 			this.mc.displayGuiScreen(null);
 			break;
 		default:

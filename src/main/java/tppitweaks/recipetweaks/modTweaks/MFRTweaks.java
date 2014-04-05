@@ -5,34 +5,44 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import powercrystals.minefactoryreloaded.MineFactoryReloadedCore;
 import powercrystals.minefactoryreloaded.setup.Machine;
+import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.TweakingRegistry;
+import tppitweaks.recipetweaks.RecipeRemoval;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MFRTweaks
 {
+	@RecipeRemoval(requiredModids="MineFactoryReloaded")
 	public static void init()
 	{
-		TweakerBase.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8);
+		if (ConfigurationHandler.buffUnifierRecipe)
+			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8);
 	}
 	
+	@RecipeAddition(requiredModids="MineFactoryReloaded")
 	public static void addRecipes()
 	{
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineFactoryReloadedCore.machineBaseItem, 3), 
-				"RRR",
-				"SSS",
-				
-				'R', "sheetPlastic",
-				'S', "stone"
-		));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(Machine.Unifier.getItemStack(), 
-				"RRR",
-				"rCr",
-				" M ", 
-				
-				'R', "sheetPlastic",
-				'r', Item.redstone,
-				'C', Item.comparator,
-				'M', MineFactoryReloadedCore.machineBaseItem
-		));
+		if (ConfigurationHandler.buffUnifierRecipe)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineFactoryReloadedCore.machineBaseItem, 3), 
+					"RRR",
+					"SSS",
+
+					'R', "sheetPlastic",
+					'S', "stone"
+					));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(Machine.Unifier.getItemStack(), 
+					"RRR",
+					"rCr",
+					" M ", 
+
+					'R', "sheetPlastic",
+					'r', Item.redstone,
+					'C', Item.comparator,
+					'M', MineFactoryReloadedCore.machineBaseItem
+					));
+		}
 	}
 }

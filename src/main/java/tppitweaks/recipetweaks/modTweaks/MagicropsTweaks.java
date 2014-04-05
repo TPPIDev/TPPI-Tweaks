@@ -5,23 +5,29 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MagicropsTweaks
 {
+	@RecipeRemoval(requiredModids="magicalcrops")
 	public static void init()
 	{
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsEssence.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsDiamond.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsEmerald.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsXP.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsThaumcraftShard.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsCobalt.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsArdite.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsPlatinum.itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsUranium.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsEssence.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsDiamond.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsEmerald.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsXP.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsThaumcraftShard.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsCobalt.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsArdite.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsPlatinum.itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(magicalcrops.mod_mCrops.mSeedsUranium.itemID, -1);
 	}
 
+	@RecipeAddition(requiredModids="magicalcrops", time=EventTime.INIT)
 	public static void registerOres()
 	{
 		if (ConfigurationHandler.registerMagicalCropsOre)
@@ -31,6 +37,7 @@ public class MagicropsTweaks
 		}
 	}
 
+	@RecipeAddition(requiredModids="magicalcrops")
 	public static void addRecipes()
 	{
 		if (ConfigurationHandler.addEssenceSeedRecipe)
