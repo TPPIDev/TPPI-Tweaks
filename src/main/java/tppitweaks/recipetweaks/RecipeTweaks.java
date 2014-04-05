@@ -1,295 +1,41 @@
 package tppitweaks.recipetweaks;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.Set;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.TPPITweaks;
-import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.modTweaks.*;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
+
+import com.google.common.reflect.ClassPath;
+import com.google.common.reflect.ClassPath.ClassInfo;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeTweaks
 {
-
 	public static boolean recipesInitialized;
 
-	private static boolean okayToTweakIC2;
-	private static boolean okayToTweakGT;
-	private static boolean okayToTweakEnderStorage;
-	private static boolean okayToTweakBigReactors;
-	private static boolean okayToTweakDA;
-	private static boolean okayToTweakSFM;
-	private static boolean okayToTweakOpenBlocks;
-	private static boolean okayToTweakAM2;
-	private static boolean okayToTweakMagicalCrops;
-	private static boolean okayToTweakDartCraft;
-	private static boolean okayToTweakExU;
-	private static boolean okayToTweakMPSA;
-	private static boolean okayToTweakMekanism;
-	private static boolean okayToTweakTE;
-	private static boolean okayToTweakReliquary;
-	private static boolean okayToTweakAdvancedGenetics;
-	private static boolean okayToTweakRailcraft;
-	private static boolean okayToTweakJABBA;
-	private static boolean okayToTweakMFR;
-	private static boolean okayToTweakEnderIO;
-
-	public static void doPostInitRecipeTweaks()
-	{		
-		recipesInitialized = false;
-
-		checkWhatWeCanTweak();
-		initRemovableRecipesMap();
-
-		if (okayToTweakGT)
-			GregtechTweaks.doStuff();
-
-		if (okayToTweakExU && ConfigurationHandler.fixExURecipes)
-			ExUTweaks.fixRecipes();
-
-		doOreDictTweaks();
-
-		if (okayToTweakIC2) {
-			IC2Tweaks.registerOres();
-			IC2Tweaks.addRecipes();
-		}	
-
-		if (okayToTweakMagicalCrops)
-			MagicropsTweaks.registerOres();
-		
-		removeSomeRecipes();
-		addRevisedRecipes();
-	}
-
-	public static void doPlayerJoinRecipeTweaks()
-	{
-		if (okayToTweakGT)
-		{
-			GregtechTweaks.addRecipes();
-		}
-		if (okayToTweakExU)
-		{
-			ExUTweaks.reAddRecipeAfterLoad();
-		}
-		if (okayToTweakRailcraft)
-		{
-			RailcraftTweaks.registerOres();
-		}
-		if (okayToTweakIC2)
-		{
-			IC2Tweaks.doPostLoadRecipeAdditions();
-		}
-		recipesInitialized = true;
-	}
-
-	@SuppressWarnings({ "unchecked" })
-	private static void removeSomeRecipes()
-	{
-		ListIterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().listIterator();
-		while (iterator.hasNext())
-		{
-			IRecipe r = iterator.next();
-			if (canRemoveRecipe(r))
-			{
-				iterator.remove();
-			}
-		}
-	}
-
-	private static void checkWhatWeCanTweak()
-	{
-		okayToTweakIC2 = Loader.isModLoaded("IC2");
-		okayToTweakGT = Loader.isModLoaded("gregtech_addon");
-		okayToTweakEnderStorage = Loader.isModLoaded("EnderStorage") && Loader.isModLoaded("ThermalExpansion");
-		okayToTweakBigReactors = Loader.isModLoaded("BigReactors") && !OreDictionary.getOres("ingotSteel").isEmpty()
-				&& (ConfigurationHandler.steelReactorCasings || ConfigurationHandler.glassFuelRods);
-		okayToTweakDA = Loader.isModLoaded("DimensionalAnchors") && ConfigurationHandler.tweakDA;
-		okayToTweakSFM = Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM;
-		okayToTweakOpenBlocks = Loader.isModLoaded("OpenBlocks") && ConfigurationHandler.eloraamBreakersAndDeployers;
-		okayToTweakAM2 = Loader.isModLoaded("arsmagica2") && ConfigurationHandler.tweakAM2;
-		okayToTweakMagicalCrops = Loader.isModLoaded("magicalcrops");
-		okayToTweakDartCraft = Loader.isModLoaded("DartCraft") && ConfigurationHandler.removeStupidEnergyCrystalRecipe;
-		okayToTweakExU = Loader.isModLoaded("ExtraUtilities");
-		okayToTweakMPSA = Loader.isModLoaded("powersuitaddons") && ConfigurationHandler.changeMPSARecipes;
-		okayToTweakMekanism = Loader.isModLoaded("Mekanism");
-		okayToTweakTE = Loader.isModLoaded("ThermalExpansion");
-		okayToTweakReliquary = Loader.isModLoaded("xreliquary") && ConfigurationHandler.harderLillipadRecipe;
-		okayToTweakAdvancedGenetics = Loader.isModLoaded("advancedgenetics");
-		okayToTweakRailcraft = Loader.isModLoaded("Railcraft");
-		okayToTweakJABBA = ConfigurationHandler.tweakJABBA && Loader.isModLoaded("factorization") && Loader.isModLoaded("MineFactoryReloaded") && Loader.isModLoaded("JABBA");
-		okayToTweakMFR = ConfigurationHandler.buffUnifierRecipe && Loader.isModLoaded("MineFactoryReloaded");
-		okayToTweakEnderIO = Loader.isModLoaded("EnderIO");
-	}
-
-	private static void initRemovableRecipesMap()
-	{
-		/*
-		 * Value -1 for key means no metadata sensitivity. Value = metadata for
-		 * metadata sensitivity.
-		 */
-
-		if (okayToTweakEnderStorage)
-		{
-			EnderStorageTweaks.init();
-		}
-		if (okayToTweakBigReactors)
-		{
-			BigReactorsTweaks.init();
-		}
-		if (okayToTweakDA)
-		{
-			DATweaks.init();
-		}
-		if (okayToTweakSFM)
-		{
-			SFMTweaks.init();
-		}
-		if (okayToTweakOpenBlocks)
-		{
-			OpenBlocksTweaks.init();
-		}
-		if (Loader.isModLoaded("ExtraUtilities"))
-		{
-			ExUTweaks.init();
-		}
-		if (okayToTweakAdvancedGenetics)
-		{
-			AdvancedGeneticsTweaks.init();
-		}
-		if (okayToTweakDartCraft)
-		{
-			DCTweaks.init();
-		}
-		if (okayToTweakIC2)
-		{
-			IC2Tweaks.init();
-		}
-		if (okayToTweakMPSA)
-		{
-			MPSATweaks.init();
-		}
-		if (okayToTweakMekanism)
-		{
-			MekanismTweaks.init();
-		}
-		if (okayToTweakTE && ConfigurationHandler.harderActivatorRecipe)
-		{
-			TETweaks.init();
-		}
-		if (okayToTweakMagicalCrops)
-		{
-			MagicropsTweaks.init();
-		}
-		if (okayToTweakReliquary)
-		{
-			ReliquaryTweaks.init();
-		}
-		if (okayToTweakJABBA)
-		{
-			JABBATweaks.init();
-		}
-		if (okayToTweakMFR)
-		{
-			MFRTweaks.init();
-		}
-		if (okayToTweakEnderIO)
-		{
-			EnderIOTweaks.init();
-		}
-	}
-
-	private static boolean canRemoveRecipe(IRecipe r)
-	{
-		try
-		{
-			ItemStack output = r.getRecipeOutput();
-			HashSet<Integer> validMetas = TweakerBase.getDamageValuesToRemove(output.itemID);
-			return validMetas.contains(-1) || validMetas.contains(output.getItemDamage());
-		}
-		catch (Throwable e)
-		{
-			return false;
-		}
-	}
-
-	private static void addRevisedRecipes()
-	{
-		if (okayToTweakEnderStorage)
-			EnderStorageTweaks.addRecipes();
-
-		if (okayToTweakBigReactors)
-			BigReactorsTweaks.addRecipes();
-
-		if (okayToTweakDA)
-			DATweaks.addRecipes();
-
-		if (okayToTweakSFM)
-			SFMTweaks.addRecipes();
-
-		if (okayToTweakOpenBlocks)
-			OpenBlocksTweaks.addRecipes();
-
-		if (okayToTweakAM2)
-			AM2Tweaks.addRecipes();
-
-		if (okayToTweakMPSA)
-			MPSATweaks.addRecipes();
-
-		if (okayToTweakMekanism && ConfigurationHandler.harderDisassemblerRecipe)
-			MekanismTweaks.addRecipes();
-		
-		if (okayToTweakTE && ConfigurationHandler.harderActivatorRecipe)
-			TETweaks.addRecipes();
-		
-		if (okayToTweakMagicalCrops)
-			MagicropsTweaks.addRecipes();
-		
-		if (okayToTweakMagicalCrops && okayToTweakIC2)
-			MagicropsAndIC2Tweaks.addRecipes();
-		
-		if (okayToTweakMagicalCrops && okayToTweakTE)
-			MagicropsAndTETweaks.addRecipes();
-		
-		if (okayToTweakReliquary)
-			ReliquaryTweaks.addRecipes();
-		
-		if (okayToTweakExU)
-			ExUTweaks.addRecipes();
-		
-		if (okayToTweakJABBA)
-			JABBATweaks.addRecipes();
-		
-		if (okayToTweakMFR)
-			MFRTweaks.addRecipes();
-		
-		if (okayToTweakEnderIO)
-			EnderIOTweaks.addRecipes();
-		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
-	}
-
-	/**
-	 * Adds aluminIUM oreDict registries to aluminUM as well
-	 */
+	@SuppressWarnings("unchecked")
 	private static void doOreDictTweaks()
 	{
+		// cross registering alumin(um/ium)
 		for (ItemStack s : OreDictionary.getOres("dustAluminium"))
 		{
 			OreDictionary.registerOre("dustAluminum", s);
 		}
 		
+		// fixing zinc smelting
 		List<ItemStack> dirtyZincs = OreDictionary.getOres("dustImpureZinc");
 		for (ItemStack stack : dirtyZincs)
 		{
@@ -297,11 +43,8 @@ public class RecipeTweaks
 			for (ItemStack stack1 : OreDictionary.getOres("ingotZinc"))
 				FurnaceRecipes.smelting().addSmelting(newStack.itemID, newStack.getItemDamage(), stack1.copy(), 0.1F);
 		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	public static void fixFusedQuartz()
-	{
+		
+		// fixing fused quartz
 		try
 		{
 			int id = OreDictionary.getOreID("glassHardened");
@@ -321,5 +64,94 @@ public class RecipeTweaks
 			TPPITweaks.logger.severe("Fixing EnderIO via reflection failed!");
 			t.printStackTrace();
 		}
+	}
+	
+	private static void addMiscRecipes()
+	{
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
+	}
+	
+	public static void removeRecipes()
+	{
+		try
+		{
+			ClassPath classpath = ClassPath.from(RecipeTweaks.class.getClassLoader());
+			Set<ClassInfo> classes = classpath.getTopLevelClasses("tppitweaks.recipetweaks.modTweaks");
+			
+			for (ClassInfo c : classes)
+			{
+				Class<?> clazz = c.load();
+				for (Method m : clazz.getDeclaredMethods())
+				{
+					RecipeRemoval r = m.getAnnotation(RecipeRemoval.class);
+					System.out.println(c.getName() + " : " + m.getName() + " : " + Arrays.deepToString(m.getDeclaredAnnotations()));
+					if (r != null && allModsLoaded(r.requiredModids()))
+					{
+						m.invoke(null, new Object[]{});
+					}
+				}
+			}
+		}
+		catch (Throwable t)
+		{
+			TPPITweaks.logger.severe("Could not perform recipe removals. This is a serious error!");
+			t.printStackTrace();
+			throw new RuntimeException("Recipe tweaks failed.");
+		}
+		
+		TweakingRegistry.removeRecipes();
+	}
+	
+	public static void addRecipes(EventTime time)
+	{
+		try
+		{
+			ClassPath classpath = ClassPath.from(RecipeTweaks.class.getClassLoader());
+			Set<ClassInfo> classes = classpath.getTopLevelClasses("tppitweaks.recipetweaks.modTweaks");
+			
+			for (ClassInfo c : classes)
+			{
+				Class<?> clazz = c.load();
+				for (Method m : clazz.getDeclaredMethods())
+				{
+					RecipeAddition r = m.getAnnotation(RecipeAddition.class);
+					if (r != null && allModsLoaded(r.requiredModids()) && r.time() == time)
+					{
+						m.invoke(null, new Object[]{});
+					}
+				}
+			}
+		}
+		catch (Throwable t)
+		{
+			TPPITweaks.logger.severe("Could not perform recipe additions. This is a serious error!");
+			t.printStackTrace();
+			throw new RuntimeException("Recipe tweaks failed.");
+		}
+	}
+	
+	public static void doRemainingTweaks(EventTime time)
+	{
+		switch(time)
+		{
+		case INIT:
+			addMiscRecipes();
+			break;
+		case POST_INIT:
+			doOreDictTweaks();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private static boolean allModsLoaded(String[] modids)
+	{
+		for (String s : modids)
+		{
+			if (!Loader.isModLoaded(s))
+				return false;
+		}
+		return true;
 	}
 }

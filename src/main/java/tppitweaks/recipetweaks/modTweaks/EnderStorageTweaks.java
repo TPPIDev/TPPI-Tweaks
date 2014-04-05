@@ -4,17 +4,22 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class EnderStorageTweaks extends TweakerBase
+public class EnderStorageTweaks extends TweakingRegistry
 {
+	@RecipeRemoval(requiredModids={"EnderStorage", "ThermalExpansion"})
 	public static void init()
 	{
-		TweakerBase.markItemForRecipeRemoval(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
 		if (ConfigurationHandler.enderPouchNerf)
-			TweakerBase.markItemForRecipeRemoval(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);		
+			TweakingRegistry.markItemForRecipeRemoval(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);		
 	}
 	
+	@RecipeAddition(requiredModids={"EnderStorage", "ThermalExpansion"})
 	public static void addRecipes()
 	{
 		Object chestEnderElement = ConfigurationHandler.enderChestTesseract ? thermalexpansion.block.TEBlocks.blockTesseract : Item.enderPearl;

@@ -8,27 +8,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MekanismTweaks
 {
+	@RecipeRemoval(requiredModids="Mekanism")
 	public static void init()
 	{
 		if (ConfigurationHandler.harderDisassemblerRecipe)
 		{
-			TweakerBase.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1);
-			TweakerBase.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1);
 		}
 		if (ConfigurationHandler.disableCardboardBox)
 		{
-			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
 		}
 		if (ConfigurationHandler.disableMiner || ConfigurationHandler.nerfMiner)
 		{
-			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
+			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
 		}
 	}
 
+	@RecipeAddition(requiredModids="Mekanism")
 	public static void addRecipes()
 	{
 		if (ConfigurationHandler.harderDisassemblerRecipe)

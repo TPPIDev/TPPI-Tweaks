@@ -1,5 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import mods.railcraft.common.items.ItemPlate;
 import mods.railcraft.common.items.ItemPlate.EnumPlate;
 import net.minecraft.item.ItemStack;
@@ -8,6 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RailcraftTweaks
 {
+	@RecipeAddition(requiredModids={"Railcraft"}, time=EventTime.PLAYER_JOIN)
 	public static void registerOres()
 	{
 		// Please don't kill me CJ

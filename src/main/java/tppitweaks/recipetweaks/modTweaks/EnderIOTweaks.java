@@ -4,21 +4,27 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import crazypants.enderio.Config;
 import crazypants.enderio.EnderIO;
 
 public class EnderIOTweaks
 {
+	@RecipeRemoval(requiredModids="EnderIO")
 	public static void init()
 	{
 		if (ConfigurationHandler.makeEIOHardModeEasier && Config.useHardRecipes)
 		{
-			TweakerBase.markItemForRecipeRemoval(EnderIO.blockReservoir.blockID, -1);
-			TweakerBase.markItemForRecipeRemoval(EnderIO.itemBasicCapacitor.itemID, 0);
+			TweakingRegistry.markItemForRecipeRemoval(EnderIO.blockReservoir.blockID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(EnderIO.itemBasicCapacitor.itemID, 0);
 		}
+		
 	}
 
+	@RecipeAddition(requiredModids="EnderIO")
 	public static void addRecipes()
 	{
 		if (ConfigurationHandler.makeEIOHardModeEasier && Config.useHardRecipes)
