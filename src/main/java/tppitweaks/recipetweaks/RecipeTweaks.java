@@ -1,5 +1,8 @@
 package tppitweaks.recipetweaks;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
@@ -11,29 +14,9 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.modTweaks.AM2Tweaks;
-import tppitweaks.recipetweaks.modTweaks.AdvancedGeneticsTweaks;
-import tppitweaks.recipetweaks.modTweaks.BigReactorsTweaks;
-import tppitweaks.recipetweaks.modTweaks.DATweaks;
-import tppitweaks.recipetweaks.modTweaks.DCTweaks;
-import tppitweaks.recipetweaks.modTweaks.EnderStorageTweaks;
-import tppitweaks.recipetweaks.modTweaks.ExUTweaks;
-import tppitweaks.recipetweaks.modTweaks.GregtechTweaks;
-import tppitweaks.recipetweaks.modTweaks.IC2Tweaks;
-import tppitweaks.recipetweaks.modTweaks.JABBATweaks;
-import tppitweaks.recipetweaks.modTweaks.MFRTweaks;
-import tppitweaks.recipetweaks.modTweaks.MPSATweaks;
-import tppitweaks.recipetweaks.modTweaks.MagicropsAndIC2Tweaks;
-import tppitweaks.recipetweaks.modTweaks.MagicropsAndTETweaks;
-import tppitweaks.recipetweaks.modTweaks.MagicropsTweaks;
-import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
-import tppitweaks.recipetweaks.modTweaks.OpenBlocksTweaks;
-import tppitweaks.recipetweaks.modTweaks.RailcraftTweaks;
-import tppitweaks.recipetweaks.modTweaks.ReliquaryTweaks;
-import tppitweaks.recipetweaks.modTweaks.SFMTweaks;
-import tppitweaks.recipetweaks.modTweaks.TETweaks;
-import tppitweaks.recipetweaks.modTweaks.TweakerBase;
+import tppitweaks.recipetweaks.modTweaks.*;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -61,6 +44,7 @@ public class RecipeTweaks
 	private static boolean okayToTweakRailcraft;
 	private static boolean okayToTweakJABBA;
 	private static boolean okayToTweakMFR;
+	private static boolean okayToTweakEnderIO;
 
 	public static void doPostInitRecipeTweaks()
 	{		
@@ -146,6 +130,7 @@ public class RecipeTweaks
 		okayToTweakRailcraft = Loader.isModLoaded("Railcraft");
 		okayToTweakJABBA = ConfigurationHandler.tweakJABBA && Loader.isModLoaded("factorization") && Loader.isModLoaded("MineFactoryReloaded") && Loader.isModLoaded("JABBA");
 		okayToTweakMFR = ConfigurationHandler.buffUnifierRecipe && Loader.isModLoaded("MineFactoryReloaded");
+		okayToTweakEnderIO = Loader.isModLoaded("EnderIO");
 	}
 
 	private static void initRemovableRecipesMap()
@@ -219,6 +204,10 @@ public class RecipeTweaks
 		{
 			MFRTweaks.init();
 		}
+		if (okayToTweakEnderIO)
+		{
+			EnderIOTweaks.init();
+		}
 	}
 
 	private static boolean canRemoveRecipe(IRecipe r)
@@ -285,6 +274,9 @@ public class RecipeTweaks
 		if (okayToTweakMFR)
 			MFRTweaks.addRecipes();
 		
+		if (okayToTweakEnderIO)
+			EnderIOTweaks.addRecipes();
+		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
 	}
 
@@ -304,6 +296,30 @@ public class RecipeTweaks
 			ItemStack newStack = stack.copy();
 			for (ItemStack stack1 : OreDictionary.getOres("ingotZinc"))
 				FurnaceRecipes.smelting().addSmelting(newStack.itemID, newStack.getItemDamage(), stack1.copy(), 0.1F);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static void fixFusedQuartz()
+	{
+		try
+		{
+			int id = OreDictionary.getOreID("glassHardened");
+			Field f = OreDictionary.class.getDeclaredField("oreStacks");
+			f.setAccessible(true);
+			HashMap<Integer, ArrayList<ItemStack>> temp = (HashMap<Integer, ArrayList<ItemStack>>) f.get(null);
+			ArrayList<ItemStack> glasses = (ArrayList<ItemStack>) temp.get(id).clone();
+			for (int i = 0; i < glasses.size(); i++)
+				if (glasses.get(i).getUnlocalizedName().toLowerCase().contains("fused"))
+					glasses.remove(i);
+			temp.remove(id);
+			temp.put(id, glasses);
+			f.set(null, temp);
+		}
+		catch (Throwable t)
+		{
+			TPPITweaks.logger.severe("Fixing EnderIO via reflection failed!");
+			t.printStackTrace();
 		}
 	}
 }

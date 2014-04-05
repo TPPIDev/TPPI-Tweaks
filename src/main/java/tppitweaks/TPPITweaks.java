@@ -83,6 +83,9 @@ public class TPPITweaks
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		if (ConfigurationHandler.unregisterFusedQuartz)
+			RecipeTweaks.fixFusedQuartz();
+	
 		// AM2SpawnControls.doAM2SpawnControls();
 
 		eventHandler = new TPPIEventHandler();

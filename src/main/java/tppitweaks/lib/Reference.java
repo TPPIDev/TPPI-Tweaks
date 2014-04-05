@@ -42,7 +42,8 @@ public class Reference
 			+ "after:IC2;"
 			+ "after:factorization;"
 			+ "after:MineFactoryReloaded;"
-			+ "after:JABBA";
+			+ "after:JABBA;"
+			+ "after:EnderIO";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";
