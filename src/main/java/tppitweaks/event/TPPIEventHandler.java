@@ -20,6 +20,7 @@ import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
 import tppitweaks.recipetweaks.RecipeTweaks;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 
 import com.google.common.collect.ImmutableList;
@@ -186,6 +187,9 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onPlayerJoin(EntityJoinWorldEvent event) {
 		if (!RecipeTweaks.recipesInitialized)
-			RecipeTweaks.doPlayerJoinRecipeTweaks();
+		{
+			TPPITweaks.tweakAtEvent(EventTime.PLAYER_JOIN);
+			RecipeTweaks.recipesInitialized = true;
+		}
 	}
 }

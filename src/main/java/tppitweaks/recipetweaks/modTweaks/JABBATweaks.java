@@ -5,27 +5,36 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import powercrystals.minefactoryreloaded.setup.Machine;
+import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import factorization.shared.Core;
 
 public class JABBATweaks
 {
+	@RecipeRemoval(requiredModids={"JABBA", "factorization", "MineFactoryReloaded"})
 	public static void init()
 	{
-		TweakerBase.markItemForRecipeRemoval(BetterBarrels.barrelID, -1);
+		if (ConfigurationHandler.tweakJABBA)
+			TweakingRegistry.markItemForRecipeRemoval(BetterBarrels.barrelID, -1);
 	}
 
+	@RecipeAddition(requiredModids={"JABBA", "factorization", "MineFactoryReloaded"})
 	public static void addRecipes()
 	{
-		// This only works for oak barrels
-		GameRegistry.addRecipe(new ShapedOreRecipe(BetterBarrels.blockBarrel, 
-				"wBw",
-				"wUw",
-				"www",
+		if (ConfigurationHandler.tweakJABBA)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(BetterBarrels.blockBarrel, 
+					"wBw",
+					"wUw",
+					"www",
 
-				'w', "plankWood",
-				'B', new ItemStack(Core.registry.daybarrel, 1, OreDictionary.WILDCARD_VALUE),
-				'U', Machine.Unifier.getItemStack()
-		));
+					'w', "plankWood",
+					'B', new ItemStack(Core.registry.daybarrel, 1, OreDictionary.WILDCARD_VALUE),
+					'U', Machine.Unifier.getItemStack()
+					));
+		}
 	}
 }
