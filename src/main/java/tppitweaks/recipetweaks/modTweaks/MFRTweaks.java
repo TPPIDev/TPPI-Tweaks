@@ -17,7 +17,7 @@ public class MFRTweaks
 	public static void init()
 	{
 		if (ConfigurationHandler.buffUnifierRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8);
+			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8, "Recipe cheapened for use", "in JABBA barrels");
 	}
 	
 	@RecipeAddition(requiredModids="MineFactoryReloaded")
