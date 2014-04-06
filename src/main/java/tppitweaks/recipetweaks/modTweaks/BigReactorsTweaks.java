@@ -8,6 +8,10 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.RecipeAddition;
 import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.RecipeRemoval;
+<<<<<<< HEAD
+=======
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+>>>>>>> origin/TweakerOverhaul
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BigReactorsTweaks {
@@ -17,11 +21,19 @@ public class BigReactorsTweaks {
 	{
 		if (ConfigurationHandler.steelReactorCasings && !OreDictionary.getOres("ingotSteel").isEmpty())
 		{
+<<<<<<< HEAD
 			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).blockID, 0);
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
 			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod).blockID, -1);
+=======
+			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).blockID, 0, TweakingAction.CHANGED, "Recipe requires steel to", "make the mod later game");
+		}
+		if (ConfigurationHandler.glassFuelRods)
+		{
+			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod).blockID, -1, TweakingAction.CHANGED, "Recipe requires hardened glass", "to make the mod later game");
+>>>>>>> origin/TweakerOverhaul
 		}		
 	}
 	

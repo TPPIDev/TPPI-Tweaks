@@ -11,12 +11,63 @@ import net.minecraft.item.crafting.IRecipe;
 public class TweakingRegistry
 {
 	private static HashMap<Integer, HashSet<Integer>> recipesToRemove = new HashMap<Integer, HashSet<Integer>>();
+<<<<<<< HEAD
 	
 	public static void markItemForRecipeRemoval(int id, int meta) {	
 		if(!recipesToRemove.containsKey(id)) {
 			recipesToRemove.put(id, new HashSet<Integer>());
 		}
 		recipesToRemove.get(id).add(meta);
+=======
+	private static HashMap<Integer, HashMap<Integer, String[]>> removalReasons = new HashMap<Integer, HashMap<Integer,String[]>>();
+	
+	public enum TweakingAction
+	{
+		REMOVED("Removed:"),
+		CHANGED("Recipe Changed:"),
+		ADDED("Added:");
+
+		private String name;
+		
+		TweakingAction(String name)
+		{
+			this.name = name;
+		}
+		
+		@Override
+		public String toString()
+		{
+			return name;
+		}
+	}
+	
+	public static void markItemForRecipeRemoval(int id, int damage) {	
+		if(!recipesToRemove.containsKey(id)) {
+			recipesToRemove.put(id, new HashSet<Integer>());
+		}
+		recipesToRemove.get(id).add(damage);
+	}
+	
+	public static void markItemForRecipeRemoval(int id, int damage, TweakingAction action, String... reason) {	
+		markItemForRecipeRemoval(id, damage);
+		addToolTipOnly(id, damage, action, reason);
+	}
+	
+	public static void addToolTipOnly(int id, int damage, TweakingAction action, String... reason)
+	{
+		if (!removalReasons.containsKey(id))
+		{
+			removalReasons.put(id, new HashMap<Integer, String[]>());
+		}
+		
+		String[] lines = new String[reason.length + 1];
+		lines[0] = action.toString();
+		
+		for (int i = 1; i < lines.length; i++)
+			lines[i] = reason[i - 1];
+		
+		removalReasons.get(id).put(damage, lines);
+>>>>>>> origin/TweakerOverhaul
 	}
 	
 	public static HashSet<Integer> getDamageValuesToRemove(int itemID) {
@@ -50,4 +101,37 @@ public class TweakingRegistry
 			return false;
 		}
 	}
+<<<<<<< HEAD
+=======
+	
+	/**
+	 * Whether or not this ID (and damage value) has been removed
+	 * @param data <br>- [0] - ID
+	 * 			   <br>- [1] - damage (can be ommitted)<p>
+	 * 						No further data will be analyzed
+	 */
+	public static boolean contains(int id, int damage)
+	{
+		return removalReasons.get(id) != null && removalReasons.get(id).containsKey(damage);
+	}
+	
+	/**
+	 * The tooltip associated with this ID/damage
+	 * @param id
+	 * @param damage - no sensitivity = -1
+	 * @return null if no tooltip associated
+	 */
+	public static String[] getTooltip(int id, int damage)
+	{
+		if (contains(id, damage))
+		{
+			return removalReasons.get(id).get(damage);
+		}
+		else if (contains(id, -1))
+		{
+			return removalReasons.get(id).get(-1);
+		}
+		return null;
+	}
+>>>>>>> origin/TweakerOverhaul
 }
