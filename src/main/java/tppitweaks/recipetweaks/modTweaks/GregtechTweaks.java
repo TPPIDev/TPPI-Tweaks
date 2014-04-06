@@ -11,6 +11,7 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.RecipeAddition;
 import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 

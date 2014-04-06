@@ -1,8 +1,8 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import tppitweaks.recipetweaks.RecipeAddition;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import tppitweaks.recipetweaks.RecipeAddition;
 
 public class MagicropsAndTETweaks
 {	

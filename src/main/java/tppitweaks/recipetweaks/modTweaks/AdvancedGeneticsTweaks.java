@@ -1,8 +1,8 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 
 public class AdvancedGeneticsTweaks {

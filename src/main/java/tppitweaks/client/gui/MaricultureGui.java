@@ -1,9 +1,9 @@
 package tppitweaks.client.gui;
 
-import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.util.FileLoader;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.util.FileLoader;
 
 public class MaricultureGui extends GuiScreen
 {

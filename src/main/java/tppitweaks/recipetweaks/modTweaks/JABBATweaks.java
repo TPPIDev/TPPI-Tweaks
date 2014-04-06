@@ -9,6 +9,7 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.RecipeAddition;
 import tppitweaks.recipetweaks.RecipeRemoval;
 import tppitweaks.recipetweaks.TweakingRegistry;
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 import factorization.shared.Core;
 

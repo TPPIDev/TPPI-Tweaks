@@ -1,11 +1,11 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import mods.railcraft.common.items.ItemPlate;
 import mods.railcraft.common.items.ItemPlate.EnumPlate;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RailcraftTweaks
