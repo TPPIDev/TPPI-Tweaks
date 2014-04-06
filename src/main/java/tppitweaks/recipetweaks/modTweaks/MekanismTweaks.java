@@ -21,8 +21,8 @@ public class MekanismTweaks
 	{
 		if (ConfigurationHandler.harderDisassemblerRecipe)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1, TweakingAction.CHANGED, "Recipe changed to ensure", "balance with all other tools");
-			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1, TweakingAction.CHANGED, "Recipe changed to further", "balance all of Mekanism");
+			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1, TweakingAction.CHANGED, "Changed to ensure", "balance with all other tools");
+			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1, TweakingAction.CHANGED, "Changed to further", "balance all of Mekanism");
 		}
 		if (ConfigurationHandler.disableCardboardBox)
 		{
@@ -30,7 +30,7 @@ public class MekanismTweaks
 		}
 		if (ConfigurationHandler.disableMiner || ConfigurationHandler.nerfMiner)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
+			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
 		}
 	}
 
