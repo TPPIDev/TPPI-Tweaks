@@ -11,6 +11,7 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.RecipeAddition;
 import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -77,7 +78,8 @@ public class GregtechTweaks
 	@RecipeAddition(time=EventTime.PLAYER_JOIN, requiredModids={"IC2", "gregtech_addon"})
 	public static void doPostLoadRecipeAdditions() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed}, TweakingAction.ADDED, "Check recipe to ensure 3x output");
+			TweakingRegistry.addToolTipOnly(Item.paper.itemID, -1,  TweakingAction.ADDED, "Check recipe to ensure 3x output");
+			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
 			TETweaks.addRecipes();
 			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
 		}
