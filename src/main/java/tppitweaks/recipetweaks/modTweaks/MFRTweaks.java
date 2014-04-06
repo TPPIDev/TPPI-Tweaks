@@ -9,6 +9,7 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.RecipeAddition;
 import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MFRTweaks
@@ -17,7 +18,7 @@ public class MFRTweaks
 	public static void init()
 	{
 		if (ConfigurationHandler.buffUnifierRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8, "Recipe cheapened for use", "in JABBA barrels");
+			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8, TweakingAction.CHANGED, "Cheapened for use", "in JABBA barrels");
 	}
 	
 	@RecipeAddition(requiredModids="MineFactoryReloaded")

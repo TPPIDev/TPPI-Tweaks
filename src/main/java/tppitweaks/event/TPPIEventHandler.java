@@ -193,9 +193,8 @@ public class TPPIEventHandler
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 			{
-				event.toolTip.add(EnumChatFormatting.AQUA + "Reason: ");
-				for (String s : lines)
-					event.toolTip.add(EnumChatFormatting.YELLOW + s);
+				for (int i = 0; i < lines.length; i++)
+					event.toolTip.add((i == 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.YELLOW)+ lines[i]);
 			}
 			else
 				event.toolTip.add(EnumChatFormatting.YELLOW + "Tweaked Item! - " + EnumChatFormatting.RED + "Shift " + EnumChatFormatting.YELLOW + "for Info");

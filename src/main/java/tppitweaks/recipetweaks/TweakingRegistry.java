@@ -13,21 +13,52 @@ public class TweakingRegistry
 	private static HashMap<Integer, HashSet<Integer>> recipesToRemove = new HashMap<Integer, HashSet<Integer>>();
 	private static HashMap<Integer, HashMap<Integer, String[]>> removalReasons = new HashMap<Integer, HashMap<Integer,String[]>>();
 	
-	public static void markItemForRecipeRemoval(int id, int meta) {	
+	public enum TweakingAction
+	{
+		REMOVED("Removed:"),
+		CHANGED("Recipe Changed:"),
+		ADDED("Added:");
+
+		private String name;
+		
+		TweakingAction(String name)
+		{
+			this.name = name;
+		}
+		
+		@Override
+		public String toString()
+		{
+			return name;
+		}
+	}
+	
+	public static void markItemForRecipeRemoval(int id, int damage) {	
 		if(!recipesToRemove.containsKey(id)) {
 			recipesToRemove.put(id, new HashSet<Integer>());
 		}
-		recipesToRemove.get(id).add(meta);
+		recipesToRemove.get(id).add(damage);
 	}
 	
-	public static void markItemForRecipeRemoval(int id, int meta, String... reason) {	
-		markItemForRecipeRemoval(id, meta);
-		
+	public static void markItemForRecipeRemoval(int id, int damage, TweakingAction action, String... reason) {	
+		markItemForRecipeRemoval(id, damage);
+		addToolTipOnly(id, damage, action, reason);
+	}
+	
+	public static void addToolTipOnly(int id, int damage, TweakingAction action, String... reason)
+	{
 		if (!removalReasons.containsKey(id))
 		{
 			removalReasons.put(id, new HashMap<Integer, String[]>());
 		}
-		removalReasons.get(id).put(meta, reason);
+		
+		String[] lines = new String[reason.length + 1];
+		lines[0] = action.toString();
+		
+		for (int i = 1; i < lines.length; i++)
+			lines[i] = reason[i - 1];
+		
+		removalReasons.get(id).put(damage, lines);
 	}
 	
 	public static HashSet<Integer> getDamageValuesToRemove(int itemID) {
