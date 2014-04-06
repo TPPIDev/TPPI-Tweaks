@@ -24,14 +24,14 @@ public class ExUTweaks
 	@RecipeRemoval(requiredModids="ExtraUtilities")
 	public static void init() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.decorative1Id, 11);
+			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1, TweakingAction.CHANGED, "Recipe changed to better", "balance with BC quarry recipe");
+			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.decorative1Id, 11, TweakingAction.CHANGED, "Recipe changed for ender quarry");
 		}
 		if(ConfigurationHandler.nerfRedstoneGen) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4);
+			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4, TweakingAction.CHANGED, "Recipe requires 2xcompressed redstone", "because it produces tonnes of RF");
 		}
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 3);
+			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 3, TweakingAction.CHANGED, "Recipe requires enderium", "because it produces tonnes of RF");
 		}
 	}
 	

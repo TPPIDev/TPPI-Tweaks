@@ -18,7 +18,7 @@ public class TETweaks {
 	public static void init()
 	{
 		if (ConfigurationHandler.harderActivatorRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(thermalexpansion.block.TEBlocks.blockDevice.blockID, 2);
+			TweakingRegistry.markItemForRecipeRemoval(thermalexpansion.block.TEBlocks.blockDevice.blockID, 2, TweakingAction.CHANGED, "Recipe requires steel", "to make this a later game item");
 	}
 	
 	@RecipeAddition(requiredModids="ThermalExpansion")

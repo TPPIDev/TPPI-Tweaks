@@ -12,6 +12,6 @@ public class DCTweaks {
 	public static void init()
 	{
 		if (ConfigurationHandler.disableForceShears && DartItem.forceShears != null)
-			TweakingRegistry.markItemForRecipeRemoval(((Item) DartItem.forceShears).itemID, 0);
+			TweakingRegistry.markItemForRecipeRemoval(((Item) DartItem.forceShears).itemID, 0, TweakingAction.REMOVED, "Crashes servers");
 	}
 }

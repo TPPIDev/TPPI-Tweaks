@@ -18,14 +18,14 @@ public class SFMTweaks
 	{
 		if (ConfigurationHandler.tweakSFM)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableRelay).blockID, 8);
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableInput).blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableOutput).blockID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockManager).blockID, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCable).blockID, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableRelay).blockID, 8, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableInput).blockID, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableOutput).blockID, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
 
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableIntake).blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableBreaker).blockID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableIntake).blockID, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) vswe.stevesfactory.blocks.Blocks.blockCableBreaker).blockID, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
 		}
 	}
 

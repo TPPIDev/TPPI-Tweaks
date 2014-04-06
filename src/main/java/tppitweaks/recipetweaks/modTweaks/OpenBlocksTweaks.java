@@ -17,8 +17,8 @@ public class OpenBlocksTweaks
 	{
 		if (ConfigurationHandler.eloraamBreakersAndDeployers)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
 		}
 	}
 

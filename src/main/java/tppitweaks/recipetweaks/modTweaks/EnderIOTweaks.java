@@ -18,8 +18,8 @@ public class EnderIOTweaks
 	{
 		if (ConfigurationHandler.makeEIOHardModeEasier && Config.useHardRecipes)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(EnderIO.blockReservoir.blockID, -1);
-			TweakingRegistry.markItemForRecipeRemoval(EnderIO.itemBasicCapacitor.itemID, 0);
+			TweakingRegistry.markItemForRecipeRemoval(EnderIO.blockReservoir.blockID, -1, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
+			TweakingRegistry.markItemForRecipeRemoval(EnderIO.itemBasicCapacitor.itemID, 0, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
 		}
 		
 	}

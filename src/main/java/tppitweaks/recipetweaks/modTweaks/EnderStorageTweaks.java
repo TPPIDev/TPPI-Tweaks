@@ -14,9 +14,9 @@ public class EnderStorageTweaks extends TweakingRegistry
 	@RecipeRemoval(requiredModids={"EnderStorage", "ThermalExpansion"})
 	public static void init()
 	{
-		TweakingRegistry.markItemForRecipeRemoval(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((Block) codechicken.enderstorage.EnderStorage.blockEnderChest).blockID, -1, TweakingAction.CHANGED, "Recipe requires tesseract", "because it is better than one", "and requires midgame materials");
 		if (ConfigurationHandler.enderPouchNerf)
-			TweakingRegistry.markItemForRecipeRemoval(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1);		
+			TweakingRegistry.markItemForRecipeRemoval(((Item) codechicken.enderstorage.EnderStorage.itemEnderPouch).itemID, -1, TweakingAction.CHANGED, "Recipe requires pyrotheum+ender bucket", "so it requires midgame infrastructure");		
 	}
 	
 	@RecipeAddition(requiredModids={"EnderStorage", "ThermalExpansion"})
