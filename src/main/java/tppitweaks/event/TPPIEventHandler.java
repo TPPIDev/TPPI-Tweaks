@@ -25,11 +25,7 @@ import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.lib.Reference;
 import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import tppitweaks.recipetweaks.RecipeTweaks;
-<<<<<<< HEAD
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-=======
 import tppitweaks.recipetweaks.TweakingRegistry;
->>>>>>> origin/TweakerOverhaul
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
 
 import com.google.common.collect.ImmutableList;

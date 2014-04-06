@@ -11,14 +11,6 @@ import net.minecraft.item.crafting.IRecipe;
 public class TweakingRegistry
 {
 	private static HashMap<Integer, HashSet<Integer>> recipesToRemove = new HashMap<Integer, HashSet<Integer>>();
-<<<<<<< HEAD
-	
-	public static void markItemForRecipeRemoval(int id, int meta) {	
-		if(!recipesToRemove.containsKey(id)) {
-			recipesToRemove.put(id, new HashSet<Integer>());
-		}
-		recipesToRemove.get(id).add(meta);
-=======
 	private static HashMap<Integer, HashMap<Integer, String[]>> removalReasons = new HashMap<Integer, HashMap<Integer,String[]>>();
 	
 	public enum TweakingAction
@@ -67,7 +59,6 @@ public class TweakingRegistry
 			lines[i] = reason[i - 1];
 		
 		removalReasons.get(id).put(damage, lines);
->>>>>>> origin/TweakerOverhaul
 	}
 	
 	public static HashSet<Integer> getDamageValuesToRemove(int itemID) {
@@ -101,8 +92,6 @@ public class TweakingRegistry
 			return false;
 		}
 	}
-<<<<<<< HEAD
-=======
 	
 	/**
 	 * Whether or not this ID (and damage value) has been removed
@@ -133,5 +122,4 @@ public class TweakingRegistry
 		}
 		return null;
 	}
->>>>>>> origin/TweakerOverhaul
 }
