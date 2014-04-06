@@ -78,7 +78,7 @@ public class GregtechTweaks
 	@RecipeAddition(time=EventTime.PLAYER_JOIN, requiredModids={"IC2", "gregtech_addon"})
 	public static void doPostLoadRecipeAdditions() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
-			TweakingRegistry.addToolTipOnly(Item.paper.itemID, -1,  TweakingAction.ADDED, "Check recipe to ensure 3x output");
+			TweakingRegistry.addTweakedTooltip(Item.paper.itemID, -1,  TweakingAction.ADDED, "Check recipe to ensure 3x output");
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
 			TETweaks.addRecipes();
 			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});

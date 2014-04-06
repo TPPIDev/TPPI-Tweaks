@@ -40,23 +40,23 @@ public class TweakingRegistry
 		recipesToRemove.get(id).add(damage);
 	}
 	
-	public static void markItemForRecipeRemoval(int id, int damage, TweakingAction action, String... reason) {	
+	public static void markItemForRecipeRemoval(int id, int damage, TweakingAction action, String... details) {	
 		markItemForRecipeRemoval(id, damage);
-		addToolTipOnly(id, damage, action, reason);
+		addTweakedTooltip(id, damage, action, details);
 	}
 	
-	public static void addToolTipOnly(int id, int damage, TweakingAction action, String... reason)
+	public static void addTweakedTooltip(int id, int damage, TweakingAction action, String... details)
 	{
 		if (!removalReasons.containsKey(id))
 		{
 			removalReasons.put(id, new HashMap<Integer, String[]>());
 		}
 		
-		String[] lines = new String[reason.length + 1];
+		String[] lines = new String[details.length + 1];
 		lines[0] = action.toString();
 		
 		for (int i = 1; i < lines.length; i++)
-			lines[i] = reason[i - 1];
+			lines[i] = details[i - 1];
 		
 		removalReasons.get(id).put(damage, lines);
 	}

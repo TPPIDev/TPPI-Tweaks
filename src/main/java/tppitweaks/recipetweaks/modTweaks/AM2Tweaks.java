@@ -16,7 +16,7 @@ public class AM2Tweaks
 		
 		if (ConfigurationHandler.tweakAM2)
 		{
-			TweakingRegistry.addToolTipOnly(spawnEgg.itemID, spawnEgg.getItemDamage(), TweakingAction.ADDED, "To allow spawning", "of Nature Guardians", "Without killing dryads");
+			TweakingRegistry.addTweakedTooltip(spawnEgg.itemID, spawnEgg.getItemDamage(), TweakingAction.ADDED, "To allow spawning", "of Nature Guardians", "Without killing dryads");
 
 			GameRegistry.addShapedRecipe(spawnEgg, new Object[] { "CCC", "CPC", "CCC", 'C', new ItemStack(am2.items.ItemsCommonProxy.essence, 1, 5),
 					'P', new ItemStack(am2.blocks.BlocksCommonProxy.aum) });
