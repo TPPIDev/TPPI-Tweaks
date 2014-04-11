@@ -28,6 +28,13 @@ public class MekanismTweaks
 		{
 			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
 		}
+		if (ConfigurationHandler.disableUniversalCables)
+		{
+			for(int i = 0; i < 4; i++) {
+				TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.PartTransmitter.itemID, i, TweakingAction.REMOVED, "Crashes");
+			}
+		}
+		
 		if (ConfigurationHandler.disableMiner || ConfigurationHandler.nerfMiner)
 		{
 			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
