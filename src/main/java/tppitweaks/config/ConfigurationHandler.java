@@ -69,6 +69,7 @@ public class ConfigurationHandler
 	public static boolean disableCardboardBox;
 	public static boolean disableMiner;
 	public static boolean nerfMiner;
+	public static boolean disableUniversalCables;
 	
 	public static boolean harderLillipadRecipe;
 
@@ -166,6 +167,7 @@ public class ConfigurationHandler
 		disableCardboardBox = config.get("Mekanism Tweaks", "disableCardboardBox", false, "Remove the recipe for the cardboard box (it can move ANY tile entity including nodes and spanwers)").getBoolean(false);
 		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);
 		nerfMiner = config.get("Mekanism Tweaks", "nerfDigitalMiner", true, "Make the recipe for the digital miner a bit...ok a lot harder").getBoolean(true);
+		disableUniversalCables = config.get("Mekanism Tweaks", "disableUniversalCables", false, "Remove the recipe for universal cables.").getBoolean(false);
 		
 		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
 		
