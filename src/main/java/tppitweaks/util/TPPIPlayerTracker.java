@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import tppitweaks.TPPITweaks;
+import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -42,7 +43,7 @@ public class TPPIPlayerTracker implements IPlayerTracker
 	
 	private boolean addBook(EntityPlayer player)
 	{
-		if (player != null && !player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook") && FMLCommonHandler.instance().getEffectiveSide().isServer())
+		if (player != null && ConfigurationHandler.doSpawnBook && !player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook") && FMLCommonHandler.instance().getEffectiveSide().isServer())
 		{
 			TPPITweaks.logger.log(Level.INFO, "Adding book");
 

@@ -8,27 +8,40 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MekanismTweaks
 {
+	@RecipeRemoval(requiredModids="Mekanism")
 	public static void init()
 	{
 		if (ConfigurationHandler.harderDisassemblerRecipe)
 		{
-			TweakerBase.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1);
-			TweakerBase.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1, TweakingAction.CHANGED, "Changed to ensure", "balance with all other tools");
+			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1, TweakingAction.CHANGED, "Changed to further", "balance all of Mekanism");
 		}
 		if (ConfigurationHandler.disableCardboardBox)
 		{
-			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
 		}
+		if (ConfigurationHandler.disableUniversalCables)
+		{
+			for(int i = 0; i < 4; i++) {
+				TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.PartTransmitter.itemID, i, TweakingAction.REMOVED, "Crashes");
+			}
+		}
+		
 		if (ConfigurationHandler.disableMiner || ConfigurationHandler.nerfMiner)
 		{
-			TweakerBase.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4);
+			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
 		}
 	}
 
+	@RecipeAddition(requiredModids="Mekanism")
 	public static void addRecipes()
 	{
 		if (ConfigurationHandler.harderDisassemblerRecipe)

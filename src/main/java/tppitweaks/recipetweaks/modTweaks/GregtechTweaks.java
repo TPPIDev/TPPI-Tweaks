@@ -8,14 +8,19 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class GregtechTweaks
 {
+	@RecipeRemoval(requiredModids={"IC2", "gregtech_addon"})
 	public static void doStuff()
 	{	
-		
 		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust });
@@ -70,8 +75,10 @@ public class GregtechTweaks
 		}
 	}
 	
-	public static void addRecipes() {
+	@RecipeAddition(time=EventTime.PLAYER_JOIN, requiredModids={"IC2", "gregtech_addon"})
+	public static void doPostLoadRecipeAdditions() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
+			TweakingRegistry.addTweakedTooltip(Item.paper.itemID, -1,  TweakingAction.ADDED, "Check recipe to ensure 3x output");
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
 			TETweaks.addRecipes();
 			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});

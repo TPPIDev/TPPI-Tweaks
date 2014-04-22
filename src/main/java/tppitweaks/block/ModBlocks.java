@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -17,6 +18,9 @@ public class ModBlocks {
 	}
 	
 	public static void registerRecipes() {
+		
+		OreDictionary.registerOre("blockCompressedRedstone", tppiBlock);
+		
 		if(OreDictionary.getOres("blockRedstone").isEmpty()) {
 			
 			GameRegistry.addShapedRecipe(new ItemStack(tppiBlock),
@@ -40,6 +44,8 @@ public class ModBlocks {
 				}));
 			
 		}
+		
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Block.blockRedstone, 9), "blockCompressedRedstone"));
 	}
 	
 }

@@ -7,26 +7,35 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.recipetweaks.RecipeAddition;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
+import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tppitweaks.recipetweaks.RecipeRemoval;
+import tppitweaks.recipetweaks.TweakingRegistry;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class IC2Tweaks
 {
+	@RecipeRemoval(requiredModids="IC2")
 	public static void init()
 	{
 		if (ConfigurationHandler.removeStupidEnergyCrystalRecipe)
-			TweakerBase.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(((ItemStack)ic2.core.Ic2Items.energyCrystal).itemID, -1, TweakingAction.REMOVED, "Recipe from dartcraft because", "it is imbalanced with vanilla IC2");
 		
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.iridiumDrill).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.mvTransformer).itemID, 4);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.weedEx).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.suBattery).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.personalSafe).itemID, 0);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.nanoHelmet).itemID, -1);
-		TweakerBase.markItemForRecipeRemoval(((ItemStack)Ic2Items.electricJetpack).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.iridiumDrill).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.mvTransformer).itemID, 4);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.weedEx).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.suBattery).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.personalSafe).itemID, 0);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.nanoHelmet).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.electricJetpack).itemID, -1);
+		TweakingRegistry.markItemForRecipeRemoval(((ItemStack)Ic2Items.carbonFiber).itemID, -1);
 	}
 	
+	@RecipeAddition(requiredModids="IC2", time=EventTime.INIT)
 	public static void registerOres()
 	{
 		if (ConfigurationHandler.ic2TEGlassInterchangeability)
@@ -46,6 +55,7 @@ public class IC2Tweaks
 		}
 	}
 	
+	@RecipeAddition(requiredModids="IC2", time=EventTime.INIT)
 	public static void addRecipes() {
 		if(ConfigurationHandler.doCharcoalBlockCompression) {
 			if(!OreDictionary.getOres("blockCharcoal").isEmpty()) {
@@ -54,6 +64,7 @@ public class IC2Tweaks
 		}
 	}
 	
+	@RecipeAddition(requiredModids="IC2", time=EventTime.PLAYER_JOIN)
 	public static void doPostLoadRecipeAdditions()
 	{
 		/* copypasta code, ignore horrible formatting */
@@ -68,5 +79,6 @@ public class IC2Tweaks
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.personalSafe, new Object[] { "c", "M", "C", Character.valueOf('c'), Ic2Items.recipeObjectCircuit, Character.valueOf('C'), Block.chest, Character.valueOf('M'), Ic2Items.machine }));
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.nanoHelmet, new Object[] { "CcC", "CGC", Character.valueOf('C'), Ic2Items.carbonPlate, Character.valueOf('c'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal), Character.valueOf('G'), StackUtil.copyWithWildCard(Ic2Items.nightvisionGoggles) }));
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.electricJetpack, new Object[] { "ICI", "IBI", "G G", Character.valueOf('I'), Ic2Items.casingiron, Character.valueOf('C'), Ic2Items.recipeObjectAdvCircuit, Character.valueOf('B'), Ic2Items.batBox, Character.valueOf('G'), Item.glowstone }));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(Ic2Items.carbonFiber, "dustCoal", "dustCoal", "dustCoal", "dustCoal"));
 	}
 }

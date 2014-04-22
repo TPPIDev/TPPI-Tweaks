@@ -3,7 +3,6 @@ package tppitweaks;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,6 +17,7 @@ import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 import tppitweaks.proxy.CommonProxy;
 import tppitweaks.proxy.PacketHandler;
+import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 import tppitweaks.recipetweaks.RecipeTweaks;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TPPIPlayerTracker;
@@ -41,7 +41,7 @@ public class TPPITweaks
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
-	
+
 	@SidedProxy(clientSide = "tppitweaks.proxy.ClientProxy", serverSide = "tppitweaks.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
@@ -51,31 +51,26 @@ public class TPPITweaks
 	public static final Logger logger = Logger.getLogger("TPPITweaks");
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
-	
+
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		
-	    logger.setParent(FMLCommonHandler.instance().getFMLLogger());
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
 
-		ConfigurationHandler.init(new File(event.getModConfigurationDirectory()
-				.getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
+		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
 
-		try {
-			FileLoader.init(ConfigurationHandler.cfg, 0);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
 		try
 		{
-			ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
+			FileLoader.init(ConfigurationHandler.cfg, 0);
 		}
-		catch (FileNotFoundException e)
+		catch (IOException e)
 		{
-			logger.log(Level.WARNING, "TPPI Changelog not found, please check the TPPI config folder.");
+			e.printStackTrace();
 		}
-		
+
+		ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
+		ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
+
 		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
 
 		ModItems.initItems();
@@ -89,31 +84,50 @@ public class TPPITweaks
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		//AM2SpawnControls.doAM2SpawnControls();
+		// AM2SpawnControls.doAM2SpawnControls();
 
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();
 		ModBlocks.registerRecipes();
-		
+
 		if (event.getSide().isClient())
 			proxy.initTickHandler();
+		
+		tweakAtEvent(EventTime.INIT);
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		RecipeTweaks.doPostInitRecipeTweaks();
-		
 		if (FMLCommonHandler.instance().getSide().isClient())
 		{
-			GuiHelper.initMap();
+			try
+			{
+				GuiHelper.initMap();
+			}
+			catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
 		}
+		
+		tweakAtEvent(EventTime.POST_INIT);
 	}
 
 	@EventHandler
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandTPPI());
+	}
+	
+	public static void tweakAtEvent(EventTime event)
+	{
+		if (event == EventTime.POST_INIT)
+			RecipeTweaks.removeRecipes();
+		
+		RecipeTweaks.addRecipes(event);
+		
+		RecipeTweaks.doRemainingTweaks(event);
 	}
 }
