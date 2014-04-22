@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -23,7 +24,12 @@ public class BigReactorsTweaks {
 		if (ConfigurationHandler.glassFuelRods)
 		{
 			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod).blockID, -1, TweakingAction.CHANGED, "Recipe requires hardened glass", "to make the mod later game");
-		}		
+		}
+		if (ConfigurationHandler.twoReactorGlass)
+		{
+			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 0, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
+			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 1, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
+		}	
 	}
 	
 	@RecipeAddition(requiredModids="BigReactors")
@@ -39,6 +45,32 @@ public class BigReactorsTweaks {
 		{
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, 1), new Object[] { "ICI", "GUG", "ICI", Character.valueOf('I'),
 				erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium", Character.valueOf('G'), "ingotGraphite" }));
+		}
+		if (ConfigurationHandler.twoReactorGlass)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, 2),
+			"gCg",
+			
+			'g', "glassHardened",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, 2),
+			"gCg",
+			
+			'g', "glassReinforced",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, 2),
+			"gCg",
+			
+			'g', "glassHardened",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, 2),
+			"gCg",
+			
+			'g', "glassReinforced",
+			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
 		}
 	}
 }
