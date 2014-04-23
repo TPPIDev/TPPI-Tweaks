@@ -6,6 +6,7 @@ import java.util.HashMap;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.TPPITweaks;
@@ -173,6 +174,11 @@ public class ExUTweaks
 	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.PLAYER_JOIN)
 	public static void doPostLoadRecipeAdditions()
 	{
+		ItemStack stableIngot = new ItemStack(ExtraUtils.unstableIngot);
+		stableIngot.stackTagCompound = new NBTTagCompound();
+		stableIngot.stackTagCompound.setBoolean("stable", true);
+		
 	    GameRegistry.addRecipe(new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5), "iii", "iii", "iii", 'i', extrautils.ExtraUtils.unstableIngot);
+	    GameRegistry.addRecipe(stableIngot, "nnn", "nnn", "nnn", 'n', new ItemStack(ExtraUtils.unstableIngot, 1, 1));
 	}
 }
