@@ -17,6 +17,7 @@ import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.util.FileLoader;
+import tppitweaks.util.TxtParser;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 
@@ -85,7 +86,7 @@ public class TPPIBook extends ItemEditableBook
 
 		switch (damage)
 		{
-		case 0:
+		case 0:			
 			book.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
 
 			nbttagcompound = book.getTagCompound();
@@ -126,11 +127,13 @@ public class TPPIBook extends ItemEditableBook
 
 	public ItemStack getGuide()
 	{
+		ConfigurationHandler.bookText = TxtParser.parseFileMain(FileLoader.getGuideText());
 		return addTextToBook(new ItemStack(ModItems.tppiBook), 0);
 	}
 	
 	public ItemStack getChangelog()
 	{
+		ConfigurationHandler.changelog = TxtParser.parseFileMain(FileLoader.getChangelogText());
 		return addTextToBook(new ItemStack(ModItems.tppiBook, 1, 1), 1);
 	}
 
