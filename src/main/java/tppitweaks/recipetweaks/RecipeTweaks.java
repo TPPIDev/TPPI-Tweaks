@@ -80,8 +80,7 @@ public class RecipeTweaks
 			
 			for (ClassInfo c : classes)
 			{
-				Class<?> clazz = c.load();
-				for (Method m : clazz.getDeclaredMethods())
+				for (Method m : loadClassSafe(c))
 				{
 					RecipeRemoval r = m.getAnnotation(RecipeRemoval.class);
 					System.out.println(c.getName() + " : " + m.getName() + " : " + Arrays.deepToString(m.getDeclaredAnnotations()));
@@ -111,8 +110,7 @@ public class RecipeTweaks
 			
 			for (ClassInfo c : classes)
 			{
-				Class<?> clazz = c.load();
-				for (Method m : clazz.getDeclaredMethods())
+				for (Method m : loadClassSafe(c))
 				{
 					RecipeAddition r = m.getAnnotation(RecipeAddition.class);
 					if (r != null && allModsLoaded(r.requiredModids()) && r.time() == time)
@@ -127,6 +125,20 @@ public class RecipeTweaks
 			TPPITweaks.logger.severe("Could not perform recipe additions. This is a serious error!");
 			t.printStackTrace();
 			throw new RuntimeException("Recipe tweaks failed.");
+		}
+	}
+	
+	private static Method[] loadClassSafe(ClassInfo c)
+	{
+		try
+		{
+			Class<?> clazz = c.load();
+			return clazz.getDeclaredMethods();
+		}
+		catch (Throwable t)
+		{
+			TPPITweaks.logger.info(String.format("Class %s threw an error, skipping...", c.getName()));
+			return new Method[]{};
 		}
 	}
 	

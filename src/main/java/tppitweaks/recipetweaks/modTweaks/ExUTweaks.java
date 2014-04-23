@@ -19,6 +19,7 @@ import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import extrautils.ExtraUtils;
 
 public class ExUTweaks
 {
@@ -127,7 +128,20 @@ public class ExUTweaks
 			    	'F', Block.furnaceIdle
 			    ));
 		}
-		
+
+		try
+		{
+			Field f = OreDictionary.class.getDeclaredField("oreIDs");
+			f.setAccessible(true);
+			HashMap<String, Integer> temp = (HashMap<String, Integer>) f.get(null);
+			temp.remove("nuggetUnstable");
+			f.set(null, temp);
+		}
+		catch (Throwable t)
+		{
+			t.printStackTrace();
+		}
+
 		if (ConfigurationHandler.fixExURecipes)
 		{
 			try
@@ -136,11 +150,11 @@ public class ExUTweaks
 				TPPITweaks.logger.info("Fixing ExtraUtils OreDict registrations by hacky reflection");
 				Field f = OreDictionary.class.getDeclaredField("oreIDs");
 				f.setAccessible(true);
-				HashMap<String, Integer> temp = (HashMap<String, Integer>) f.get(null);
-				temp.remove("blockUnstable");
-				temp.remove("burntquartz");
-				temp.remove("icestone");
-				f.set(null, temp);
+				HashMap<String, Integer> temp1 = (HashMap<String, Integer>) f.get(null);
+				temp1.remove("blockUnstable");
+				temp1.remove("burntquartz");
+				temp1.remove("icestone");
+				f.set(null, temp1);
 			}
 			catch (Throwable t)
 			{
@@ -150,10 +164,10 @@ public class ExUTweaks
 			OreDictionary.registerOre("blockUnstable", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5));
 			OreDictionary.registerOre("burntquartz", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 2));
 			OreDictionary.registerOre("icestone", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 3));
-
-			if (Loader.isModLoaded("gregtech_addon"))
-				TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 		}	
+		
+		if (Loader.isModLoaded("gregtech_addon"))
+			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 	}
 	
 	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.PLAYER_JOIN)
