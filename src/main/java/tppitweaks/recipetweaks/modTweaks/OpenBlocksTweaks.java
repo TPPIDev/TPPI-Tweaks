@@ -18,8 +18,11 @@ public class OpenBlocksTweaks
 	{
 		if (ConfigurationHandler.eloraamBreakersAndDeployers)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
-			TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
+			if (openblocks.OpenBlocks.Blocks.blockBreaker != null)
+				TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockBreaker).blockID, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
+
+			if (openblocks.OpenBlocks.Blocks.blockPlacer != null)
+				TweakingRegistry.markItemForRecipeRemoval(((Block) openblocks.OpenBlocks.Blocks.blockPlacer).blockID, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
 		}
 	}
 
@@ -28,10 +31,13 @@ public class OpenBlocksTweaks
 	{
 		if (ConfigurationHandler.eloraamBreakersAndDeployers)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron,
-					'P', Block.pistonBase, 'R', Item.redstone }));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockPlacer), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Block.chest, 'P',
-					Block.pistonBase, 'R', Item.redstone }));
+			if (openblocks.OpenBlocks.Blocks.blockBreaker != null)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Item.pickaxeIron,
+						'P', Block.pistonBase, 'R', Item.redstone }));
+			
+			if (openblocks.OpenBlocks.Blocks.blockPlacer != null)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockPlacer), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Block.chest, 'P',
+						Block.pistonBase, 'R', Item.redstone }));
 		}
 	}
 }
