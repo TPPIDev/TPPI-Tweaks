@@ -48,25 +48,25 @@ public class BigReactorsTweaks {
 		}
 		if (ConfigurationHandler.twoReactorGlass)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, 2),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2),
 			"gCg",
 			
 			'g', "glassHardened",
 			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, 2),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2),
 			"gCg",
 			
 			'g', "glassReinforced",
 			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, 2),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2, 1),
 			"gCg",
 			
 			'g', "glassHardened",
 			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, 2),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2, 1),
 			"gCg",
 			
 			'g', "glassReinforced",
