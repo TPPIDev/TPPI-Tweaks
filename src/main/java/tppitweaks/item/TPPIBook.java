@@ -1,6 +1,5 @@
 package tppitweaks.item;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -18,6 +17,7 @@ import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.util.FileLoader;
+import tppitweaks.util.TxtParser;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 
@@ -86,7 +86,7 @@ public class TPPIBook extends ItemEditableBook
 
 		switch (damage)
 		{
-		case 0:
+		case 0:			
 			book.setTagInfo("title", new NBTTagString("title", ConfigurationHandler.bookTitle));
 
 			nbttagcompound = book.getTagCompound();
@@ -109,12 +109,7 @@ public class TPPIBook extends ItemEditableBook
 			
 			if (ConfigurationHandler.changelog == null)
 			{
-				try {
-					ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
 			}
 			
 			for (int i = 0; i < ConfigurationHandler.changelog.size(); i++)
@@ -132,11 +127,13 @@ public class TPPIBook extends ItemEditableBook
 
 	public ItemStack getGuide()
 	{
+		ConfigurationHandler.bookText = TxtParser.parseFileMain(FileLoader.getGuideText());
 		return addTextToBook(new ItemStack(ModItems.tppiBook), 0);
 	}
 	
 	public ItemStack getChangelog()
 	{
+		ConfigurationHandler.changelog = TxtParser.parseFileMain(FileLoader.getChangelogText());
 		return addTextToBook(new ItemStack(ModItems.tppiBook, 1, 1), 1);
 	}
 

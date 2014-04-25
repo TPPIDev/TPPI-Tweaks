@@ -32,7 +32,6 @@ task buildInfo {
     } else {
         ext.revision = "GITBORK"
     }
-
     if (System.getenv().BUILD_NUMBER != null) {
         ext.buildNum = "${System.getenv().BUILD_NUMBER}"
     } else {
@@ -47,7 +46,8 @@ if (System.getenv().ARTIFACT_VERSION != null) {
     artifact_version = "${system.getenv().ARTIFACT_VERSION}"
 }
 
-version = "MC${config.minecraft_version}-${artifact_version}-${System.getenv().BUILD_NUMBER}"
+version = "MC${config.minecraft_version}-${artifact_version}-${buildInfo.buildNum}"
+def actualVersion = "${artifact_version}-${buildInfo.buildNum}"
 
 minecraft {
 	version = "1.6.4-9.11.1.964"
@@ -64,7 +64,7 @@ processResources
         include 'mcmod.info'
                 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':actualVersion, 'mcversion':project.minecraft.version
     }
         
     // copy everything else, thats not the mcmod.info

@@ -283,15 +283,8 @@ public class CommandTPPI extends CommandBase
 		NBTTagList bookPages = new NBTTagList("pages");
 
 		ArrayList<String> pages;
-		//try
-		//{
-			pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
-		/*}
-		catch (FileNotFoundException e)
-		{
-			pages = new ArrayList<String>();
-			e.printStackTrace();
-		}*/
+		
+		pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
 
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
 		{
@@ -319,5 +312,11 @@ public class CommandTPPI extends CommandBase
 	public int compareTo(Object arg0) 
 	{
 		return this.compareTo((ICommand) arg0);
+	}
+	
+	@Override
+	public boolean equals(Object obj) 
+	{
+		return this.compareTo(obj) == 0;
 	}
 }

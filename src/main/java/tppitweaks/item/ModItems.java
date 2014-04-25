@@ -14,14 +14,23 @@ public class ModItems {
 	public static TPPIMaterial tppiMaterial;
 	
 	public static void initItems() {
-		tppiBook = new TPPIBook(ConfigurationHandler.bookID);
-		tppiMaterial = new TPPIMaterial(ConfigurationHandler.materialID);
+		if (ConfigurationHandler.bookID != 0)
+		{
+			tppiBook = new TPPIBook(ConfigurationHandler.bookID);
+			GameRegistry.registerItem(tppiBook, "tppiBook");
+		}
+		
+		if (ConfigurationHandler.materialID != 0)
+		{
+			tppiMaterial = new TPPIMaterial(ConfigurationHandler.materialID);
+			GameRegistry.registerItem(tppiMaterial, "tppiMaterial");
+		}
 	}
 	
 	public static void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(tppiBook.getGuide(), Item.ingotIron, Item.paper, Item.paper, Item.paper);
-		
+	
 		if(Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM) {
 			GameRegistry.addRecipe(new ItemStack(tppiMaterial.itemID, 1, 1),
 		            new Object[] {
@@ -37,5 +46,4 @@ public class ModItems {
 			FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, new ItemStack(tppiMaterial), 0.1f);
 		}
 	}
-
 }

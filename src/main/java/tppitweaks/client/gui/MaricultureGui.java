@@ -1,9 +1,9 @@
 package tppitweaks.client.gui;
 
-import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.util.FileLoader;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import tppitweaks.config.ConfigurationHandler;
+import tppitweaks.util.FileLoader;
 
 public class MaricultureGui extends GuiScreen
 {
@@ -55,7 +55,7 @@ public class MaricultureGui extends GuiScreen
 			this.mc.displayGuiScreen(null);
 			break;
 		case 4:
-			ConfigurationHandler.manuallyChangeConfigValue("B:showMaricultureGUI", "true", "false");	
+			ConfigurationHandler.manuallyChangeConfigValue("B:showMaricultureGUI", "true", "false");
 			this.mc.displayGuiScreen(null);
 			break;
 		default:
