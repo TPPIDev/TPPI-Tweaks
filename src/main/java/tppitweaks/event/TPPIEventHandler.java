@@ -193,6 +193,7 @@ public class TPPIEventHandler
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 			{
+				event.toolTip.add(EnumChatFormatting.RED + "Tweaked Item:");
 				for (int i = 0; i < lines.length; i++)
 					event.toolTip.add((i == 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.YELLOW)+ lines[i]);
 			}
