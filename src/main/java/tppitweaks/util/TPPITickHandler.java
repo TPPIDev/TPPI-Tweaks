@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TPPITickHandler implements ITickHandler
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	public private String CAPE_URL = "https://dl.dropboxusercontent.com/s/f89qsarfhni5l3x/TPPIcape.png";
+	private final String CAPE_URL = "https://dl.dropboxusercontent.com/s/f89qsarfhni5l3x/TPPIcape.png";
 	private Map<String, CapeBufferDownload> downloads = new HashMap<String, CapeBufferDownload>();
 	
 	private List<String> devs = Arrays.asList(new String[]{ "tterrag1098", "esKaayY", "wha_ha_ha", "JDGBOLT", "afflucky" });
