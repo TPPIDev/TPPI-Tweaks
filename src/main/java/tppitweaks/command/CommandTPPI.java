@@ -45,7 +45,7 @@ public class CommandTPPI extends CommandBase
 		validCommands.add("changelog");
 		validCommands.add("guide");
 		validCommands.add("removeBooks");
-		
+
 		supportedModsAndList.add("list");
 
 		supportedModsAndList.addAll(TxtParser.getSupportedMods(file));
@@ -72,7 +72,7 @@ public class CommandTPPI extends CommandBase
 	{
 		return "tppi <arg>";
 	}
-	
+
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender par1iCommandSender)
 	{
@@ -111,15 +111,25 @@ public class CommandTPPI extends CommandBase
 			else if (astring[0].equalsIgnoreCase("mods"))
 			{
 				processCommandMods(icommandsender, astring);
-			}else if(astring[0].equalsIgnoreCase("ores")) {
+			}
+			else if (astring[0].equalsIgnoreCase("ores"))
+			{
 				processVanillaBookCommand("TPPI Ore Generation Guide", "OreGen.txt", icommandsender, astring);
-			}else if(astring[0].equalsIgnoreCase("getInvolved")) {
+			}
+			else if (astring[0].equalsIgnoreCase("getInvolved"))
+			{
 				processVanillaBookCommand("Getting Involved In TPPI", "GetInvolved.txt", icommandsender, astring);
-			}else if(astring[0].equalsIgnoreCase("changelog")) {
+			}
+			else if (astring[0].equalsIgnoreCase("changelog"))
+			{
 				processCommandChangelog(icommandsender);
-			}else if(astring[0].equalsIgnoreCase("guide")) {
+			}
+			else if (astring[0].equalsIgnoreCase("guide"))
+			{
 				processCommandGuide(icommandsender);
-			}else if(astring[0].equalsIgnoreCase("removeBooks")) {
+			}
+			else if (astring[0].equalsIgnoreCase("removeBooks"))
+			{
 				removeGuideBooks(icommandsender);
 			}
 
@@ -141,34 +151,39 @@ public class CommandTPPI extends CommandBase
 
 	}
 
-	private void removeGuideBooks(ICommandSender command) {
+	private void removeGuideBooks(ICommandSender command)
+	{
 		EntityPlayer player = command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName());
 		ItemStack[] inv = player.inventory.mainInventory;
 		for (int i = 0; i < inv.length; i++)
 		{
 			if (inv[i] != null && // no null itemstack
-				inv[i].stackTagCompound != null && // no null stack tag
-				inv[i].stackTagCompound.toString().contains(ConfigurationHandler.bookAuthor) && // has the author 
-				inv[i].itemID == Item.writtenBook.itemID) // is a vanilla book
-				
-					inv[i] = null;
+					inv[i].stackTagCompound != null && // no null stack tag
+					inv[i].stackTagCompound.toString().contains(ConfigurationHandler.bookAuthor) && // has
+																									// the
+																									// author
+					inv[i].itemID == Item.writtenBook.itemID) // is a vanilla
+																// book
+
+				inv[i] = null;
 		}
 	}
 
 	private void processCommandGuide(ICommandSender command)
 	{
 		ItemStack stack = new ItemStack(ModItems.tppiBook, 1, 2);
-		
+
 		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack))
 			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(stack, 0);
 	}
 
-	private void processVanillaBookCommand(String title, String textFileName, ICommandSender command, String[] astring) {
-		
-		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/"+textFileName);
+	private void processVanillaBookCommand(String title, String textFileName, ICommandSender command, String[] astring)
+	{
+
+		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/" + textFileName);
 		List<String> vanillaBookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 		ItemStack book = new ItemStack(Item.writtenBook);
-		
+
 		book.setTagInfo("author", new NBTTagString("author", ConfigurationHandler.bookAuthor));
 		book.setTagInfo("title", new NBTTagString("title", title));
 
@@ -182,10 +197,10 @@ public class CommandTPPI extends CommandBase
 
 		nbttagcompound.setTag("pages", bookPages);
 		nbttagcompound.setString("version", TPPITweaks.VERSION);
-		
+
 		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(book))
 			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(book, 0);
-		
+
 	}
 
 	private boolean processCommandMods(ICommandSender command, String[] args)
@@ -233,20 +248,21 @@ public class CommandTPPI extends CommandBase
 			PacketDispatcher.sendPacketToPlayer(packet, (Player) command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()));
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	private boolean processCommandChangelog(ICommandSender command)
 	{
 		ItemStack changelog = ModItems.tppiBook.getChangelog();
-		
+
 		if (changelog == null)
 			return false;
-		
-		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(changelog));
-			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(changelog, 0);
-			
+
+		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(changelog))
+			;
+		command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(changelog, 0);
+
 		return true;
 	}
 
@@ -283,7 +299,7 @@ public class CommandTPPI extends CommandBase
 		NBTTagList bookPages = new NBTTagList("pages");
 
 		ArrayList<String> pages;
-		
+
 		pages = TxtParser.parseFileMods(FileLoader.getSupportedModsFile(), modName + ", " + properName);
 
 		if (pages.get(0).startsWith("<") && pages.get(0).endsWith("> "))
@@ -302,21 +318,22 @@ public class CommandTPPI extends CommandBase
 		if (!command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).inventory.addItemStackToInventory(stack))
 			command.getEntityWorld().getPlayerEntityByName(command.getCommandSenderName()).entityDropItem(stack, 0);
 	}
-	
+
 	public static String getProperName(String modid)
 	{
 		return modProperNames.get(modid);
 	}
 
 	@Override
-	public int compareTo(Object arg0) 
+	public int compareTo(Object o)
 	{
-		return this.compareTo((ICommand) arg0);
-	}
-	
-	@Override
-	public boolean equals(Object obj) 
-	{
-		return this.compareTo(obj) == 0;
+		if (o instanceof ICommand)
+		{
+			return this.compareTo((ICommand) o);
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }
