@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import thermalexpansion.util.crafting.FurnaceManager;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.RecipeAddition;
@@ -31,6 +32,9 @@ public class TETweaks {
 			t.printStackTrace();
 		}
 		
+		if (!OreDictionary.getOres("itemRubber").isEmpty())
+			FurnaceManager.addOreDictRecipe("resinIC2", OreDictionary.getOres("itemRubber").get(0).copy());
+				
 		if (ConfigurationHandler.harderActivatorRecipe)
 		{
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(thermalexpansion.block.TEBlocks.blockDevice.blockID, 1, 2), new Object[]{

@@ -48,6 +48,7 @@ if (System.getenv().ARTIFACT_VERSION != null) {
 
 version = "MC${config.minecraft_version}-${artifact_version}-${buildInfo.buildNum}"
 def actualVersion = "${artifact_version}-${buildInfo.buildNum}"
+archivesBaseName = "TPPI-Tweaks"
 
 minecraft {
 	version = "1.6.4-9.11.1.964"
