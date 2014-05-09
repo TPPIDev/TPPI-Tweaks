@@ -30,22 +30,22 @@ public class TPPITickHandler implements ITickHandler
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
 	public final String CAPE_URL = "https://dl.dropboxusercontent.com/s/f89qsarfhni5l3x/TPPIcape.png";
 	private Map<String, CapeBufferDownload> downloads = new HashMap<String, CapeBufferDownload>();
-	
+
 	private URL usernames;
 	private boolean noInternet = false;
-	
+
 	private ImmutableList<String> devs;
-	
-	public static String[] AbstractClientPlayer_downloadImageCape = new String[] {"downloadImageCape", "field_110315_c", "c"};
-	public static String[] AbstractClientPlayer_locationCape = new String[] {"locationCape", "field_110313_e", "e"};
-	public static String[] AbstractClientPlayer_getDownloadImage = new String[] {"getDownloadImage", "func_110301_a", "a"};
-	
-	//private int ticksElapsed = 0;
-	
+
+	public static String[] AbstractClientPlayer_downloadImageCape = new String[] { "downloadImageCape", "field_110315_c", "c" };
+	public static String[] AbstractClientPlayer_locationCape = new String[] { "locationCape", "field_110313_e", "e" };
+	public static String[] AbstractClientPlayer_getDownloadImage = new String[] { "getDownloadImage", "func_110301_a", "a" };
+
+	// private int ticksElapsed = 0;
+
 	public TPPITickHandler()
 	{
 		Scanner scan = null;
-		
+
 		try
 		{
 			usernames = new URL("http://tterrag.com/assets/capes.txt");
@@ -55,24 +55,28 @@ public class TPPITickHandler implements ITickHandler
 		{
 			pokemon.printStackTrace();
 		}
-		
+
 		if (usernames == null || scan == null)
 		{
 			TPPITweaks.logger.warning("No internet connection, skipping cape download...");
+			noInternet = true;
 		}
-		
-		List<String> lines = new ArrayList<String>();
-		while (scan.hasNextLine())
+
+		if (!noInternet)
 		{
-			lines.add(scan.nextLine());
+			List<String> lines = new ArrayList<String>();
+			while (scan.hasNextLine())
+			{
+				lines.add(scan.nextLine());
+			}
+
+			scan.close();
+
+			ImmutableList.Builder<String> builder = new ImmutableList.Builder<String>();
+			builder.addAll(lines);
+
+			devs = builder.build();
 		}
-		
-		scan.close();
-		
-		ImmutableList.Builder<String> builder = new ImmutableList.Builder<String>();
-		builder.addAll(lines);
-		
-		devs = builder.build();
 	}
 
 	@SuppressWarnings("unchecked")
