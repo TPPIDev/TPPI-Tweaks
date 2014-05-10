@@ -3,15 +3,18 @@ package tppitweaks.config;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property.Type;
+import tppitweaks.TPPITweaks;
 import tppitweaks.lib.Reference;
 import tppitweaks.util.TxtParser;
 
@@ -83,6 +86,7 @@ public class ConfigurationHandler
 
 	public static boolean showDownloadGUI;
 	public static boolean showMaricultureGui;
+	public static boolean showIRCGui;
 	public static boolean doSpawnBook;
 	
 	public static boolean autoEnableTT;
@@ -158,7 +162,8 @@ public class ConfigurationHandler
 		
 		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", false, "Show the Download GUI on startup.").getBoolean(true);
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", false, "Show the mariculture fix GUI on startup.").getBoolean(false);
-
+		showIRCGui = config.get("Mod Loading Tweaks", "showIRCGui", true, "Show the IRC integration startup GUI").getBoolean(true);
+		
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
@@ -207,11 +212,19 @@ public class ConfigurationHandler
 	 * @param from - The setting to change it from 
 	 * @param to - The setting to change it to
 	 */
-	public static void manuallyChangeConfigValue(String prefix, String from, String to)
+	public static boolean manuallyChangeConfigValue(String prefix, String from, String to)
 	{
+		return manuallyChangeConfigValue(null, prefix, from, to);
+	}
+	
+	public static boolean manuallyChangeConfigValue(String filePathFromConfigFolder, String prefix, String from, String to)
+	{
+		File config = filePathFromConfigFolder == null ? cfg : new File(cfg.getParentFile().getParent() + "/" + filePathFromConfigFolder);
+		boolean found = false;
+
 		try
 		{
-			FileReader fr1 = new FileReader(cfg);
+			FileReader fr1 = new FileReader(config);
 			BufferedReader read = new BufferedReader(fr1);
 			
 			ArrayList<String> strings = new ArrayList<String>();
@@ -224,13 +237,17 @@ public class ConfigurationHandler
 			fr1.close();
 			read.close();
 			
-			FileWriter fw = new FileWriter(cfg);
+			FileWriter fw = new FileWriter(config);
 			BufferedWriter bw = new BufferedWriter(fw);
 			
 			for (String s : strings)
 			{
-				if (s.equals("    " + prefix + "=" + from))
-					s = "    " + prefix + "=" + to;
+				if (!found && s.contains(prefix + "=" + from) && !s.contains("=" + to))
+				{
+					s = s.replace(prefix + "=" + from, prefix + "=" + to);
+					TPPITweaks.logger.info("Successfully changed config value " + prefix + " from " + from + " to " + to); 
+					found = true;
+				}
 				
 				fw.write(s + "\n");
 			}	
@@ -242,5 +259,34 @@ public class ConfigurationHandler
 		{
 			t.printStackTrace();
 		}
+		
+		return found;
+	}
+	
+	public static String manuallyGetConfigValue(String filePathFromConfigFolder, String string) {
+		File config = new File(ConfigurationHandler.cfg.getParentFile().getParent() + "/" + filePathFromConfigFolder);
+		boolean noConfig = false;
+		Scanner scan = null;
+
+		try {
+			scan = new Scanner(config);
+		} catch (FileNotFoundException e) {
+			noConfig = true;
+		}	
+
+		if (noConfig)
+			return "";
+
+		while (scan.hasNext())
+		{
+			String s = scan.next();
+
+			if (s.contains(string))
+			{
+				scan.close();
+				return s.substring(s.indexOf("=") + 1, s.length());
+			}
+		}
+		return "";
 	}
 }

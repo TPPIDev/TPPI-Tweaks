@@ -3,7 +3,6 @@ package tppitweaks.recipetweaks;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -83,9 +82,9 @@ public class RecipeTweaks
 				for (Method m : loadClassSafe(c))
 				{
 					RecipeRemoval r = m.getAnnotation(RecipeRemoval.class);
-					System.out.println(c.getName() + " : " + m.getName() + " : " + Arrays.deepToString(m.getDeclaredAnnotations()));
 					if (r != null && allModsLoaded(r.requiredModids()))
 					{
+						TPPITweaks.logger.info("Removing recipes in method " + m.getName() + " in class " + c.getName());
 						m.invoke(null, new Object[]{});
 					}
 				}
@@ -115,6 +114,7 @@ public class RecipeTweaks
 					RecipeAddition r = m.getAnnotation(RecipeAddition.class);
 					if (r != null && allModsLoaded(r.requiredModids()) && r.time() == time)
 					{
+						TPPITweaks.logger.info("Adding recipes in method " + m.getName() + " in class " + c.getName());
 						m.invoke(null, new Object[]{});
 					}
 				}

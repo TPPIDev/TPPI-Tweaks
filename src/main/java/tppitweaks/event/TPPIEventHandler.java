@@ -19,6 +19,7 @@ import org.lwjgl.input.Keyboard;
 
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
+import tppitweaks.client.gui.IRCGui;
 import tppitweaks.client.gui.MaricultureGui;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
@@ -59,6 +60,11 @@ public class TPPIEventHandler
 			else if (shouldLoadGUI && ConfigurationHandler.showMaricultureGui)
 			{
 				event.gui = new MaricultureGui();
+				shouldLoadGUI = false;
+			}
+			else if (shouldLoadGUI && ConfigurationHandler.showIRCGui)
+			{
+				event.gui = new IRCGui();
 				shouldLoadGUI = false;
 			}
 			else
