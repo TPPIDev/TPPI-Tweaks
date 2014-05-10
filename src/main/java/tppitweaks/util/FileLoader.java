@@ -91,7 +91,7 @@ public class FileLoader
 	public static boolean disableMod(String partOfName, String extension)
 	{
 		boolean hasChanged = false;
-		for (File f : getMod(partOfName))
+		for (File f : getMods(partOfName))
 		{
 			TPPITweaks.logger.info("Disabling: " + f.getName());
 			if (!f.getName().contains(extension))
@@ -111,7 +111,7 @@ public class FileLoader
 	public static boolean enableMod(String partOfName, String extensionToRemove)
 	{
 		boolean hasChanged = false;
-		for (File f : getMod(partOfName))
+		for (File f : getMods(partOfName))
 		{
 			TPPITweaks.logger.info("Enabling: " + f.getName());
 			if (f.getName().contains(extensionToRemove))
@@ -127,7 +127,11 @@ public class FileLoader
 		return hasChanged;
 	}
 
-	public static ArrayList<File> getMod(String partOfName)
+	/**
+	 * Finds all mods that contain the passed string in their filename that exist in the /mods folder
+	 * @return A list of Files that are mod jars (or zips)
+	 */
+	public static ArrayList<File> getMods(String partOfName)
 	{
 		ArrayList<File> files = new ArrayList<File>();
 		File mods;

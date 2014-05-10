@@ -208,15 +208,24 @@ public class ConfigurationHandler
 
 	/**
 	 * Sets a config value manually by editing the text file
-	 * @param prefix - The prefix of the config option (anythin before the '=')
+	 * @param prefix - The prefix of the config option (anything before '='), must match exactly.
 	 * @param from - The setting to change it from 
 	 * @param to - The setting to change it to
+	 * @return whether anything changed
 	 */
 	public static boolean manuallyChangeConfigValue(String prefix, String from, String to)
 	{
 		return manuallyChangeConfigValue(null, prefix, from, to);
 	}
 	
+	/**
+	 * Same as <code>manuallyChangeConfigValue(String, String, String)</code>, but with an additional parameter for <i>what</i> config file to edit
+	 * @param filePathFromConfigFolder - the full path to the files, including extensions, from inside config/
+	 * @param prefix - The prefix of the config option (anything before '='), must match exactly.
+	 * @param from - The setting to change it from
+	 * @param to - The setting to change it to
+	 * @return whether anything changed
+	 */
 	public static boolean manuallyChangeConfigValue(String filePathFromConfigFolder, String prefix, String from, String to)
 	{
 		File config = filePathFromConfigFolder == null ? cfg : new File(cfg.getParentFile().getParent() + "/" + filePathFromConfigFolder);
@@ -263,7 +272,13 @@ public class ConfigurationHandler
 		return found;
 	}
 	
-	public static String manuallyGetConfigValue(String filePathFromConfigFolder, String string) {
+	/**
+	 * Finds the config value in the file specified (path starting after config/), and for the key specified
+	 * @param filePathFromConfigFolder - The path to the file, everything up to config/ is calculated for you
+	 * @param key - A key to find the value by, does not need to match exactly
+	 * @return A parseable string that can be transformed into any of the types of config values, for instance using <code>Boolean.parseBoolean(String)</code>
+	 */
+	public static String manuallyGetConfigValue(String filePathFromConfigFolder, String key) {
 		File config = new File(ConfigurationHandler.cfg.getParentFile().getParent() + "/" + filePathFromConfigFolder);
 		boolean noConfig = false;
 		Scanner scan = null;
@@ -281,7 +296,7 @@ public class ConfigurationHandler
 		{
 			String s = scan.next();
 
-			if (s.contains(string))
+			if (s.contains(key))
 			{
 				scan.close();
 				return s.substring(s.indexOf("=") + 1, s.length());
