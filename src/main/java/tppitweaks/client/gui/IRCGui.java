@@ -5,12 +5,17 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 
 public class IRCGui extends GuiScreen
 {
 	private boolean configState;
+	private static final ResourceLocation bg = new ResourceLocation("tppitweaks", "textures/gui/TPPI.png");
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -31,8 +36,8 @@ public class IRCGui extends GuiScreen
 	@Override
 	public void drawScreen(int par1, int par2, float par3)
 	{
-		this.drawDefaultBackground();
-
+		drawCustomBackground(0);
+		
 		this.drawCenteredString(this.mc.fontRenderer, "This version of TPPI adds a new IRC feature!", this.width / 2, this.height / 2 - 105, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "Anyone playing the pack is able to live chat", this.width / 2, this.height / 2 - 90, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "with anyone else simultaneously.", this.width / 2, this.height / 2 - 80, 0xFFFFFF);
@@ -90,10 +95,25 @@ public class IRCGui extends GuiScreen
 			return;
 		}
 	}
+	
+	@Override
+	protected void keyTyped(char par1, int par2)
+	{
+		; // do nothing
+	}
 
 	private void dontShowAgain()
 	{
 		TPPITweaks.logger.info("Disabling IRC GUI...");
 		ConfigurationHandler.manuallyChangeConfigValue("B:showIRCGui", "true", "false");
+	}
+
+	private void drawCustomBackground(int par1)
+	{
+		GL11.glDisable(GL11.GL_LIGHTING);
+		GL11.glDisable(GL11.GL_FOG);
+		this.mc.getTextureManager().bindTexture(bg);
+		GL11.glColor4f(0.18f, 0.18f, 0.18f, 1.0F);
+		this.drawTexturedModalRect(0, 0, 240, 240, this.width, this.height);
 	}
 }
