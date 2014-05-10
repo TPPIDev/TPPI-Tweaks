@@ -7,7 +7,7 @@ import tppitweaks.recipetweaks.RecipeAddition.EventTime;
 
 public class PRTweaks
 {
-	@RecipeAddition(requiredModids="ProjRed|Core", time=EventTime.INIT)
+	@RecipeAddition(requiredModids="ProjRed|Core")
 	public static void registerMarble()
 	{
 		OreDictionary.registerOre("blockMarble", BlockSpecialStone.EnumSpecialStone.MARBLE.getItemStack());

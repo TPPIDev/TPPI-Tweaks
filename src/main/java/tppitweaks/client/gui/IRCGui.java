@@ -16,7 +16,7 @@ public class IRCGui extends GuiScreen
 	@Override
 	public void initGui()
 	{
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 144, this.height / 2 + 40, 140, 20, "Leave this Enabled"));
+		this.buttonList.add(new GuiButton(0, this.width / 2 - 144, this.height / 2 + 40, 140, 20, "Enable this Feature"));
 		this.buttonList.add(new GuiButton(1, this.width / 2 + 4, this.height / 2 + 40, 140, 20, "Disable this Feature"));
 		this.buttonList.add(new GuiButton(2, this.width / 2 - 144, this.height / 2 + 68, 140, 20, "Exit the Game"));
 		this.buttonList.add(new GuiButton(3, this.width / 2 + 4, this.height / 2 + 68, 140, 20, "Continue to the Game"));
