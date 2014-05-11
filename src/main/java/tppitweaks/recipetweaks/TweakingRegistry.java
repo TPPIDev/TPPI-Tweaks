@@ -17,7 +17,8 @@ public class TweakingRegistry
 	{
 		REMOVED("Removed:"),
 		CHANGED("Recipe Changed:"),
-		ADDED("Added:");
+		ADDED("Added:"), 
+		NOTE("Note: ");
 
 		private String name;
 		
