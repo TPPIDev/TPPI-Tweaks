@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TPPITickHandler implements ITickHandler
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	public final String CAPE_URL = "https://dl.dropboxusercontent.com/s/f89qsarfhni5l3x/TPPIcape.png";
+	private static final String CAPE_URL = "http://tterrag.com/assets/TPPIcape.png";
 	private Map<String, CapeBufferDownload> downloads = new HashMap<String, CapeBufferDownload>();
 
 	private URL usernames;
@@ -39,8 +39,6 @@ public class TPPITickHandler implements ITickHandler
 	public static String[] AbstractClientPlayer_downloadImageCape = new String[] { "downloadImageCape", "field_110315_c", "c" };
 	public static String[] AbstractClientPlayer_locationCape = new String[] { "locationCape", "field_110313_e", "e" };
 	public static String[] AbstractClientPlayer_getDownloadImage = new String[] { "getDownloadImage", "func_110301_a", "a" };
-
-	// private int ticksElapsed = 0;
 
 	public TPPITickHandler()
 	{
