@@ -1,8 +1,10 @@
 package tppitweaks.recipetweaks;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -93,8 +95,7 @@ public class RecipeTweaks
 		catch (Throwable t)
 		{
 			TPPITweaks.logger.severe("Could not perform recipe removals. This is a serious error!");
-			t.printStackTrace();
-			throw new RuntimeException("Recipe tweaks failed.");
+			throw new RuntimeException(t);
 		}
 		
 		TweakingRegistry.removeRecipes();
@@ -123,8 +124,7 @@ public class RecipeTweaks
 		catch (Throwable t)
 		{
 			TPPITweaks.logger.severe("Could not perform recipe additions. This is a serious error!");
-			t.printStackTrace();
-			throw new RuntimeException("Recipe tweaks failed.");
+			throw new RuntimeException(t);
 		}
 	}
 	
