@@ -9,7 +9,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AM2Tweaks
 {
-	@RecipeAddition(requiredModids="AM2")
+	@RecipeAddition(requiredModids="arsmagica2")
 	public static void addRecipes()
 	{
 		ItemStack spawnEgg = new ItemStack(am2.items.ItemsCommonProxy.spawnEgg, 1, 12);

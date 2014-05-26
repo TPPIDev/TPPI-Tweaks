@@ -53,6 +53,8 @@ public class IC2Tweaks
 				OreDictionary.registerOre("glassReinforced", stack);
 			}
 		}
+		
+		OreDictionary.registerOre("resinIC2", Ic2Items.resin);
 	}
 	
 	@RecipeAddition(requiredModids="IC2", time=EventTime.INIT)

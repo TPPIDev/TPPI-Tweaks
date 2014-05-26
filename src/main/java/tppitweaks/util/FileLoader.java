@@ -7,8 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
 
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
@@ -90,27 +88,50 @@ public class FileLoader
 		 */
 	}
 
-	public static void disableMod(String partOfName, String extension)
+	public static boolean disableMod(String partOfName, String extension)
 	{
-		for(File f : getMod(partOfName)) {
-			System.out.println("Disabling: " + f.getName());
-			if(!f.getName().contains(extension)) {
+		boolean hasChanged = false;
+		for (File f : getMods(partOfName))
+		{
+			TPPITweaks.logger.info("Disabling: " + f.getName());
+			if (!f.getName().contains(extension))
+			{
 				f.renameTo(new File(f.getAbsolutePath() + extension));
+				System.out.println(f.getAbsolutePath() + "   " + extension);
+				hasChanged = true;
+			}
+			else
+			{
+				TPPITweaks.logger.info(partOfName + " was already disabled!");
 			}
 		}
+		return hasChanged;
 	}
 
-	public static void enableMod(String partOfName, String extensionToRemove)
+	public static boolean enableMod(String partOfName, String extensionToRemove)
 	{
-		for(File f : getMod(partOfName)) {
-			System.out.println("Enabling: " + f.getName());
-			if(f.getName().contains(extensionToRemove)) {
+		boolean hasChanged = false;
+		for (File f : getMods(partOfName))
+		{
+			TPPITweaks.logger.info("Enabling: " + f.getName());
+			if (f.getName().contains(extensionToRemove))
+			{
 				f.renameTo(new File(f.getAbsolutePath().replace(extensionToRemove, "")));
+				hasChanged = true;
+			}
+			else
+			{
+				TPPITweaks.logger.info(partOfName + " was already enabled!");
 			}
 		}
+		return hasChanged;
 	}
 
-	private static ArrayList<File> getMod(String partOfName)
+	/**
+	 * Finds all mods that contain the passed string in their filename that exist in the /mods folder
+	 * @return A list of Files that are mod jars (or zips)
+	 */
+	public static ArrayList<File> getMods(String partOfName)
 	{
 		ArrayList<File> files = new ArrayList<File>();
 		File mods;
@@ -122,7 +143,7 @@ public class FileLoader
 		
 		for (String s : fileNames)
 		{
-			if (s.contains(partOfName))
+			if (s.toLowerCase().contains(partOfName.toLowerCase()))
 				foundNames.add(s);
 		}
 		
@@ -149,33 +170,6 @@ public class FileLoader
 
 	}
 	*/
-
-	public static String manuallyGetConfigValue(Map<String, Object> m, String string) {
-		File config = new File(((File) m.get("mcLocation")).getAbsolutePath() + "/config/TPPI/TPPITweaks.cfg");
-		boolean noConfig = false;
-		Scanner scan = null;
-
-		try {
-			scan = new Scanner(config);
-		} catch (FileNotFoundException e) {
-			noConfig = true;
-		}	
-
-		if (noConfig)
-			return "";
-
-		while (scan.hasNext())
-		{
-			String s = scan.next();
-
-			if (s.contains(string))
-			{
-				scan.close();
-				return s.substring(s.indexOf("=") + 1, s.length());
-			}
-		}
-		return "";
-	}
 
 	public static InputStream getGuideText() 
 	{

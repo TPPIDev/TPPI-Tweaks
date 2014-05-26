@@ -43,7 +43,8 @@ public class Reference
 			+ "after:factorization;"
 			+ "after:MineFactoryReloaded;"
 			+ "after:JABBA;"
-			+ "after:EnderIO";
+			+ "after:EnderIO;"
+			+ "after:ProjRed|Core";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";

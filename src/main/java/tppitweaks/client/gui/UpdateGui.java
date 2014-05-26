@@ -61,13 +61,9 @@ public class UpdateGui extends GuiScreen
 	{
 		if (noShow)
 		{
-			System.out.println("not opening GUI");
+			TPPITweaks.logger.info("not opening GUI");
 			this.mc.displayGuiScreen(this.parentScreen);
 			return;
-		}
-		else
-		{
-			
 		}
 
 		// Unsure exactly what this does but...it seems necessary

@@ -1,17 +1,23 @@
 package tppitweaks.util;
 
-import java.util.Arrays;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.StringUtils;
+import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
+
+import com.google.common.collect.ImmutableList;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -22,22 +28,60 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TPPITickHandler implements ITickHandler
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	public final String CAPE_URL = "https://dl.dropboxusercontent.com/s/f89qsarfhni5l3x/TPPIcape.png";
+	private static final String CAPE_URL = "http://tterrag.com/assets/TPPIcape.png";
 	private Map<String, CapeBufferDownload> downloads = new HashMap<String, CapeBufferDownload>();
-	
-	private List<String> devs = Arrays.asList(new String[]{ "tterrag1098", "esKaayY", "wha_ha_ha", "JDGBOLT" });
-	
-	public static String[] AbstractClientPlayer_downloadImageCape = new String[] {"downloadImageCape", "field_110315_c", "c"};
-	public static String[] AbstractClientPlayer_locationCape = new String[] {"locationCape", "field_110313_e", "e"};
-	public static String[] AbstractClientPlayer_getDownloadImage = new String[] {"getDownloadImage", "func_110301_a", "a"};
-	
-	//private int ticksElapsed = 0;
+
+	private URL usernames;
+	private boolean noInternet = false;
+
+	private ImmutableList<String> devs;
+
+	public static String[] AbstractClientPlayer_downloadImageCape = new String[] { "downloadImageCape", "field_110315_c", "c" };
+	public static String[] AbstractClientPlayer_locationCape = new String[] { "locationCape", "field_110313_e", "e" };
+	public static String[] AbstractClientPlayer_getDownloadImage = new String[] { "getDownloadImage", "func_110301_a", "a" };
+
+	public TPPITickHandler()
+	{
+		Scanner scan = null;
+
+		try
+		{
+			usernames = new URL("http://tterrag.com/assets/capes.txt");
+			scan = new Scanner(usernames.openStream());
+		}
+		catch (Throwable pokemon)
+		{
+			pokemon.printStackTrace();
+		}
+
+		if (usernames == null || scan == null)
+		{
+			TPPITweaks.logger.warning("No internet connection, skipping cape download...");
+			noInternet = true;
+		}
+
+		if (!noInternet)
+		{
+			List<String> lines = new ArrayList<String>();
+			while (scan.hasNextLine())
+			{
+				lines.add(scan.nextLine());
+			}
+
+			scan.close();
+
+			ImmutableList.Builder<String> builder = new ImmutableList.Builder<String>();
+			builder.addAll(lines);
+
+			devs = builder.build();
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
-		if (ConfigurationHandler.allowCapes && mc.theWorld != null && mc.theWorld.getWorldTime() % 20 == 0 && !isPaused())
+		if (!noInternet && ConfigurationHandler.allowCapes && mc.theWorld != null && mc.theWorld.getWorldTime() % 20 == 0 && !isPaused())
 		{
 			for (EntityPlayer entityPlayer : (List<EntityPlayer>) mc.theWorld.playerEntities)
 			{
@@ -72,7 +116,6 @@ public class TPPITickHandler implements ITickHandler
 					}
 				}
 			}
-		//ticksElapsed++;
 		}
 	}
 

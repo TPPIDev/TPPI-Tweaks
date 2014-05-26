@@ -19,6 +19,7 @@ import org.lwjgl.input.Keyboard;
 
 import tppitweaks.TPPITweaks;
 import tppitweaks.client.gui.GuiHelper;
+import tppitweaks.client.gui.IRCGui;
 import tppitweaks.client.gui.MaricultureGui;
 import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
@@ -59,6 +60,11 @@ public class TPPIEventHandler
 			else if (shouldLoadGUI && ConfigurationHandler.showMaricultureGui)
 			{
 				event.gui = new MaricultureGui();
+				shouldLoadGUI = false;
+			}
+			else if (shouldLoadGUI && ConfigurationHandler.showIRCGui)
+			{
+				event.gui = new IRCGui();
 				shouldLoadGUI = false;
 			}
 			else
@@ -193,6 +199,7 @@ public class TPPIEventHandler
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 			{
+				event.toolTip.add(EnumChatFormatting.RED + "Tweaked Item:");
 				for (int i = 0; i < lines.length; i++)
 					event.toolTip.add((i == 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.YELLOW)+ lines[i]);
 			}
