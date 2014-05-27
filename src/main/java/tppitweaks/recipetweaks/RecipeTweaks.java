@@ -67,7 +67,8 @@ public class RecipeTweaks
 	
 	private static void addMiscRecipes()
 	{
-		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, new Object[]{"nuggetSteel", Item.flint}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, "nuggetSteel", Item.flint));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, "ingotIron", Item.flint));
 	}
 	
 	public static void removeRecipes()
