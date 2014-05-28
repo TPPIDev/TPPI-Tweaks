@@ -35,6 +35,7 @@ public class ConfigurationHandler
 	public static boolean enderChestTesseract;
 	public static boolean enderPouchNerf;
 	public static boolean enderTankTesseract;
+	public static boolean disableEnderTank;
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
 	public static boolean twoReactorGlass;
@@ -128,6 +129,7 @@ public class ConfigurationHandler
 		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
 		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", true, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(true);
+		disableEnderTank = config.get("Ender Storage Tweaks", "disableEnderTank", true, "Disables the ender tank. Setting this to false opens your game/server to dupes, be warned!").getBoolean(true);
 		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", false, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("Other Mod Tweaks", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(false);
