@@ -32,10 +32,14 @@ public class ConfigurationHandler
 	public static String supportedModsName;
 	public static int guideSkin;
 	
-	public static boolean enderChestTesseract;
+	public static boolean enderChestResonant;
 	public static boolean enderPouchNerf;
+<<<<<<< HEAD
 	public static boolean enderTankTesseract;
 	public static boolean disableEnderTank;
+=======
+	public static boolean enderTankResonant;
+>>>>>>> origin/newEnderItems
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
 	public static boolean twoReactorGlass;
@@ -126,10 +130,14 @@ public class ConfigurationHandler
 		guideSkin = config.get("TPPI Guide Info", "TPPIGuideSkin", 0, "The skin of the guide GUI/item, 0=tech, 1=scroll").getInt();
 		doSpawnBook = config.get("TPPI Guide Info", "doSpawnBook", true, "Whether or not to give the player a welcome book on first spawn").getBoolean(true);
 
-		enderChestTesseract = config.get("Ender Storage Tweaks", "enderChestTesseract", true, "EnderStorage Ender Chests require tesseracts instead of ender pearls.").getBoolean(true);
+		enderChestResonant = config.get("Ender Storage Tweaks", "enderChestResonant", true, "EnderStorage Ender Chests require resonant strongboxes instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
+<<<<<<< HEAD
 		enderTankTesseract = config.get("Ender Storage Tweaks", "enderTankTesseract", true, "EnderStorage Ender Tanks require tesseracts instead of ender pearls.").getBoolean(true);
 		disableEnderTank = config.get("Ender Storage Tweaks", "disableEnderTank", true, "Disables the ender tank. Setting this to false opens your game/server to dupes, be warned!").getBoolean(true);
+=======
+		enderTankResonant = config.get("Ender Storage Tweaks", "enderTankResonant", true, "EnderStorage Ender Tanks require resonant portable tanks instead of ender pearls.").getBoolean(true);
+>>>>>>> origin/newEnderItems
 		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", false, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("Other Mod Tweaks", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(false);
