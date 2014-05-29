@@ -31,7 +31,7 @@ public class EnderStorageTweaks extends TweakingRegistry
 		{
 			if (!ConfigurationHandler.disableEnderTank)
 			{
-                TweakingRegistry.markItemForRecipeRemoval(((Block) EnderStorage.blockEnderChest).blockID, 1 << 12 | codechicken.enderstorage.api.EnderStorageManager.getFreqFromColours(i, j, k), TweakingAction.CHANGED, "Recipe requires resonant tank", "because it is better than one", "and requires midgame materials");
+                TweakingRegistry.markItemForRecipeRemoval(((Block) EnderStorage.blockEnderChest).blockID, 1 << 12 | codechicken.enderstorage.api.EnderStorageManager.getFreqFromColours(i, i, i), TweakingAction.CHANGED, "Recipe requires resonant tank", "because it is better than one", "and requires midgame materials");
 
                 GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 1, 1 << 12 | codechicken.enderstorage.api.EnderStorageManager.getFreqFromColours(i, i, i)),
 				"bWb",
