@@ -1,6 +1,3 @@
-[submodule "library"]
-	path = library
-	url = git://github.com/ShadedDimension/library.git
-[submodule "master"]
-	path = master
+[submodule "RecipeTweakingCore"]
+	path = RecipeTweakingCore
 	url = git://github.com/TPPI-Dev/RecipeTweakingCore.git
