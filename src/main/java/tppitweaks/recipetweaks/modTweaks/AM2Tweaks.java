@@ -2,9 +2,9 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.item.ItemStack;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AM2Tweaks

@@ -1,9 +1,9 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.item.ItemStack;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 
 public class MagicropsAndIC2Tweaks
 {

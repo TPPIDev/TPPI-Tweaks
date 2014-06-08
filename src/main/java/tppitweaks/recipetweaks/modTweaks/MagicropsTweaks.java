@@ -5,10 +5,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeAddition.EventTime;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MagicropsTweaks

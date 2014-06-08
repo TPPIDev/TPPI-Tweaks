@@ -8,10 +8,10 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import thermalexpansion.util.crafting.FurnaceManager;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TETweaks {

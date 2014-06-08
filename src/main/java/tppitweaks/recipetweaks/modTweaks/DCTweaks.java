@@ -2,9 +2,9 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.item.Item;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import bluedart.item.DartItem;
 
 public class DCTweaks {

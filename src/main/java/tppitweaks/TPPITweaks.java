@@ -17,10 +17,10 @@ import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 import tppitweaks.proxy.CommonProxy;
 import tppitweaks.proxy.PacketHandler;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-import tppitweaks.recipetweaks.RecipeTweaks;
+import tppitweaks.recipetweaks.AdditionalTweaks;
 import tppitweaks.util.FileLoader;
 import tppitweaks.util.TPPIPlayerTracker;
+import tterrag.rtc.RecipeTweakingCore;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -56,6 +56,8 @@ public class TPPITweaks
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
+		
+		RecipeTweakingCore.registerPackageName("tppitweaks.recipetweaks.modTweaks");
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
 
@@ -93,8 +95,6 @@ public class TPPITweaks
 
 		if (event.getSide().isClient())
 			proxy.initTickHandler();
-		
-		tweakAtEvent(EventTime.INIT);
 	}
 
 	@EventHandler
@@ -112,22 +112,13 @@ public class TPPITweaks
 			}
 		}
 		
-		tweakAtEvent(EventTime.POST_INIT);
+		AdditionalTweaks.doOreDictTweaks();
+		AdditionalTweaks.addMiscRecipes();
 	}
 
 	@EventHandler
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
 		event.registerServerCommand(new CommandTPPI());
-	}
-	
-	public static void tweakAtEvent(EventTime event)
-	{
-		if (event == EventTime.POST_INIT)
-			RecipeTweaks.removeRecipes();
-		
-		RecipeTweaks.addRecipes(event);
-		
-		RecipeTweaks.doRemainingTweaks(event);
 	}
 }

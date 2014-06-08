@@ -44,7 +44,8 @@ public class Reference
 			+ "after:MineFactoryReloaded;"
 			+ "after:JABBA;"
 			+ "after:EnderIO;"
-			+ "after:ProjRed|Core";
+			+ "after:ProjRed|Core;"
+			+ "required-after:recipeTweakingCore";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";

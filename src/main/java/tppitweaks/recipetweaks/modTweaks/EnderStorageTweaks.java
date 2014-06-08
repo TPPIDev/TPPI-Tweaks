@@ -1,13 +1,13 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import codechicken.enderstorage.EnderStorage;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import codechicken.enderstorage.EnderStorage;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class EnderStorageTweaks extends TweakingRegistry

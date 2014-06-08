@@ -4,10 +4,10 @@ import mods.railcraft.common.items.ItemPlate;
 import mods.railcraft.common.items.ItemPlate.EnumPlate;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
-import tppitweaks.recipetweaks.TweakingRegistry;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeAddition.EventTime;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RailcraftTweaks
