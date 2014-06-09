@@ -160,14 +160,17 @@ public class TPPIEventHandler
 	@ForgeSubscribe
 	public void onLivingDeath(LivingDeathEvent event)
 	{
-		EntityPlayer entityPlayer;
 		if (event.entityLiving instanceof EntityPlayer)
 		{
-			TPPITweaks.logger.log(Level.INFO, "getting NBT");
-			entityPlayer = (EntityPlayer) event.entityLiving;
-
-			NBTValOnDeath = entityPlayer.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook");
+			savePlayerNBT((EntityPlayer) event.entityLiving);
 		}
+	}
+
+	private void savePlayerNBT(EntityPlayer player)
+	{
+		TPPITweaks.logger.log(Level.INFO, "getting NBT");
+
+		NBTValOnDeath = player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook");
 	}
 
 	public NBTTagCompound getTag(EntityPlayer entity, boolean useClassVal)

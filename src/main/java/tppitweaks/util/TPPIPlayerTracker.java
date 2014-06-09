@@ -8,7 +8,6 @@ import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 
 public class TPPIPlayerTracker implements IPlayerTracker
@@ -29,7 +28,7 @@ public class TPPIPlayerTracker implements IPlayerTracker
 	@Override
 	public void onPlayerChangedDimension(EntityPlayer player)
 	{
-		// Do Nothing
+		TPPIEventHandler.NBTValOnDeath = player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook");
 	}
 
 	@Override
@@ -43,7 +42,7 @@ public class TPPIPlayerTracker implements IPlayerTracker
 	
 	private boolean addBook(EntityPlayer player)
 	{
-		if (player != null && ConfigurationHandler.doSpawnBook && !player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook") && FMLCommonHandler.instance().getEffectiveSide().isServer())
+		if (player != null && ConfigurationHandler.doSpawnBook && !player.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook") && !player.worldObj.isRemote)
 		{
 			TPPITweaks.logger.log(Level.INFO, "Adding book");
 
