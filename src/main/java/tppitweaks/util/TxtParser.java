@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 
 import tppitweaks.TPPITweaks;
-import tppitweaks.command.CommandTPPI;
 
 /**
  * Beware all ye who enter here, for the sake of your sanity, turn back
@@ -60,7 +59,7 @@ public class TxtParser
 						}
 					}
 					else
-						TPPITweaks.logger.log(Level.WARNING, "TPPI - Invalid line-skip in changelog. This may not work as intended");
+						TPPITweaks.logger.log(Level.WARNING, "ModpackTweaks - Invalid line-skip in changelog. This may not work as intended");
 				}
 				// Finally, do not add this to the page
 				continue;
@@ -188,7 +187,7 @@ public class TxtParser
 						}
 					}
 					else
-						TPPITweaks.logger.log(Level.WARNING, "TPPI - Invalid line-skip in changelog. This may not work as intended");
+						TPPITweaks.logger.log(Level.WARNING, "ModpackTweaks - Invalid line-skip in changelog. This may not work as intended");
 				}
 
 				// Finally, do not add this to the page
@@ -238,33 +237,5 @@ public class TxtParser
 		scanner.close();
 
 		return bookText;
-	}
-
-	/**
-	 * Gets mod names from the file
-	 * @param file
-	 * @return an array of Strings, the names of mods that are described in the file, evidenced by the >< identifier
-	 */
-	public static ArrayList<String> getSupportedMods(InputStream file)
-	{
-		ArrayList<String> mods = new ArrayList<String>();
-
-		Scanner scanner;
-		scanner = new Scanner(file);
-
-		parseFileMain(file);
-
-		for (String s : useableLines)
-		{
-			if (s.startsWith(">") && s.contains("<"))
-			{
-				String[] nameThatHasBeenSplit = s.substring(1, s.indexOf('<')).split(", ");
-				CommandTPPI.addProperNameMapping(nameThatHasBeenSplit[0], nameThatHasBeenSplit[1]);
-				mods.add(nameThatHasBeenSplit[0]);
-			}
-		}
-		scanner.close();
-
-		return mods;
 	}
 }

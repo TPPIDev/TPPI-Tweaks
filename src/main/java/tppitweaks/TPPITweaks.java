@@ -1,14 +1,11 @@
 package tppitweaks;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.block.ModBlocks;
-import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.command.CommandTPPI;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.creativeTab.CreativeTabTPPI;
@@ -16,10 +13,7 @@ import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 import tppitweaks.proxy.CommonProxy;
-import tppitweaks.proxy.PacketHandler;
 import tppitweaks.recipetweaks.AdditionalTweaks;
-import tppitweaks.util.FileLoader;
-import tppitweaks.util.TPPIPlayerTracker;
 import tterrag.rtc.RecipeTweakingCore;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -30,11 +24,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = Reference.DEPENDENCIES)
-@NetworkMod(serverSideRequired = true, clientSideRequired = true, channels = { Reference.CHANNEL }, packetHandler = PacketHandler.class)
 public class TPPITweaks
 {
 	public static final String VERSION = "1.1.0";
@@ -46,7 +37,6 @@ public class TPPITweaks
 	public static CommonProxy proxy;
 
 	public static TPPIEventHandler eventHandler;
-	public static TPPIPlayerTracker playerTracker;
 
 	public static final Logger logger = Logger.getLogger("TPPITweaks");
 
@@ -60,27 +50,11 @@ public class TPPITweaks
 		RecipeTweakingCore.registerPackageName("tppitweaks.recipetweaks.modTweaks");
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
-
-		try
-		{
-			FileLoader.init(ConfigurationHandler.cfg, 0);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		ConfigurationHandler.loadGuideText(FileLoader.getGuideText());
-		ConfigurationHandler.loadChangelogText(FileLoader.getChangelogText());
-
-		CommandTPPI.initValidCommandArguments(FileLoader.getSupportedModsFile());
+		
+		CommandTPPI.initValidCommandArguments();
 
 		ModItems.initItems();
 		ModBlocks.initBlocks();
-
-		playerTracker = new TPPIPlayerTracker();
-		GameRegistry.registerPlayerTracker(playerTracker);
-		MinecraftForge.EVENT_BUS.register(playerTracker);
 	}
 
 	@EventHandler
@@ -100,18 +74,6 @@ public class TPPITweaks
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		if (FMLCommonHandler.instance().getSide().isClient())
-		{
-			try
-			{
-				GuiHelper.initMap();
-			}
-			catch (FileNotFoundException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		
 		AdditionalTweaks.doOreDictTweaks();
 		AdditionalTweaks.addMiscRecipes();
 	}

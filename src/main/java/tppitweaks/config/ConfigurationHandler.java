@@ -6,31 +6,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.Property.Type;
 import tppitweaks.TPPITweaks;
-import tppitweaks.lib.Reference;
-import tppitweaks.util.TxtParser;
 
 public class ConfigurationHandler
 {
-
 	public static HashMap<String, Boolean> am2SpawnControls = new HashMap<String, Boolean>();
-	public static int bookID;
+	
 	public static int materialID;
 	public static int blockID;
-	
-	public static String bookTitle;
-	public static String bookAuthor;
-	public static String changelogTitle;
-	public static String supportedModsName;
-	public static int guideSkin;
 	
 	public static boolean enderChestResonant;
 	public static boolean enderPouchNerf;
@@ -86,19 +74,11 @@ public class ConfigurationHandler
 	
 	public static boolean registerMagicalCropsOre;
 
-	public static boolean showDownloadGUI;
 	public static boolean showMaricultureGui;
 	public static boolean showIRCGui;
-	public static boolean doSpawnBook;
-	
-	public static boolean autoEnableTT;
-	
+		
 	public static File cfg;
 	
-	/** ArrayList of Strings, the strings are each one whole page **/
-	public static List<String> bookText;
-	public static List<String> changelog;
-
 	public static String[] am2MobKeys = { "EntityHecate", "EntityDarkMage", "EntityLightMage", "EntityEarthElemental", "EntityFireElemental", "EntityWisp", "EntityWaterElemental", "EntityManaElemental", "EntityDryad", "EntityManaCreeper", "EntityDarkling" };
 	
 	public static boolean allowCapes = true;
@@ -116,16 +96,7 @@ public class ConfigurationHandler
 		}
 		
 		blockID = config.getBlock("tppiBlockId", 3115).getInt();
-		
-		bookID = config.getItem("tppiBookId", 21650).getInt() - 256;
 		materialID = config.getItem("tppiMaterialId", 21651).getInt() - 256;
-		
-		bookTitle = config.get("TPPI Guide Info", "bookTitle", "TPPI Welcome Packet", "The title of the custom spawn book", Type.STRING).getString();
-		bookAuthor = config.get("TPPI Guide Info", "bookAuthor", "The TPPI Team", "The author of the custom spawn book", Type.STRING).getString();
-		changelogTitle = config.get("TPPI Guide Info", "changelogTitle", "TPPI Changelog", "The title of the changelog").getString();
-		supportedModsName = config.get("TPPI Guide Info", "supportedModsFilename", "SupportedMods", "The file name of the file to read the mod documentation from (used to support translation). Do not include the extension in the filename (it is .txt)").getString();
-		guideSkin = config.get("TPPI Guide Info", "TPPIGuideSkin", 0, "The skin of the guide GUI/item, 0=tech, 1=scroll").getInt();
-		doSpawnBook = config.get("TPPI Guide Info", "doSpawnBook", true, "Whether or not to give the player a welcome book on first spawn").getBoolean(true);
 
 		enderChestResonant = config.get("Ender Storage Tweaks", "enderChestResonant", true, "EnderStorage Ender Chests require resonant strongboxes instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
@@ -163,7 +134,6 @@ public class ConfigurationHandler
 		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
 		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
 		
-		showDownloadGUI = config.get("Mod Downloads", "showDownloadGUI", false, "Show the Download GUI on startup.").getBoolean(true);
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", false, "Show the mariculture fix GUI on startup.").getBoolean(false);
 		showIRCGui = config.get("Mod Loading Tweaks", "showIRCGui", true, "Show the IRC integration startup GUI").getBoolean(true);
 		
@@ -179,34 +149,9 @@ public class ConfigurationHandler
 		nerfMiner = config.get("Mekanism Tweaks", "nerfDigitalMiner", true, "Make the recipe for the digital miner a bit...ok a lot harder").getBoolean(true);
 		disableUniversalCables = config.get("Mekanism Tweaks", "disableUniversalCables", false, "Remove the recipe for universal cables.").getBoolean(false);
 		
-		autoEnableTT = config.get("Mod Loading Tweaks", "autoEnableTT", true, "Allow this mod to disable and enable Thaumic Tinkerer automatically").getBoolean(true);
-		
-		Reference.thaumcraftFilename = config.get("Mod Loading Tweaks", "Thaumcraft_filename", Reference.DEFAULT_THAUMCRAFT_FILENAME, "The filename for Thaumcraft4 to use to check for its presence").getString();
-		Reference.TTFilename = config.get("Mod Loading Tweaks", "ThaumicTinkerer_filename", Reference.DEFAULT_TT_FILENAME, "The filename for Thaumic Tinkerer to use to check for its presence and disable/enable it automatically").getString();
-		Reference.KAMIFilename = config.get("Mod Loading Tweaks", "KAMI_filename", Reference.DEFAULT_KAMI_FILENAME, "The filename for KAMI to use to check for its presence and disable/enable it automatically").getString();
-		
-		Reference.packName = config.get("Pack Info", "packName", "Test Pack Please Ignore", "The full name of the pack").getString();
-		Reference.packVersion = config.get("Pack Info", "packVerison", "1.0.0", "The version of the pack").getString();
-		Reference.packAcronym = config.get("Pack Info", "packAcronym", "TPPI", "The acronym of the pack (required, can be the same as name)").getString();
 		allowCapes = config.get("Pack Info", "allowDevCapes", true, "Enables/Disables the visibility of dev capes. This only affects the user and does NOT have to be the same between client and server.").getBoolean(true);
 		
 		config.save();
-	}
-
-	/**
-	 * Method that gathers the info for the book given to players on spawn
-	 * 
-	 * @param file
-	 *            - The input stream to gather the text from
-	 */
-	public static void loadGuideText(InputStream file)
-	{
-		bookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
-	}
-	
-	public static void loadChangelogText(InputStream file)
-	{
-		changelog = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
 	}
 
 	/**
