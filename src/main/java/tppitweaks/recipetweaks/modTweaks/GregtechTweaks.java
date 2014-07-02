@@ -82,7 +82,7 @@ public class GregtechTweaks
 	}
 
 	@SuppressWarnings("unchecked")
-	@RecipeRemoval(requiredModids={"IC2", "gregtech_addon"}, time=EventTime.PLAYER_JOIN)
+	@RecipeRemoval(requiredModids={"IC2", "gregtech_addon"}, time=EventTime.WORLD_LOAD)
 	public static void removeLater() {
 		String[] blacklist = ConfigurationHandler.removeExtruderInput;
 		Map<Long, GT_Recipe> extruderRecipies;
