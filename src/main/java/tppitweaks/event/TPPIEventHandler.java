@@ -52,6 +52,8 @@ public class TPPIEventHandler
 		}
 	}
 	
+	public void doSomething() {}
+	
 	/**
 	 * Automatically figures out the number of splash text lines in the lang file, returns a random one.
 	 */

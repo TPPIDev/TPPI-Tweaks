@@ -120,7 +120,7 @@ public class GregtechTweaks
 		}
 	}
 	
-	@RecipeAddition(time=EventTime.PLAYER_JOIN, requiredModids={"IC2", "gregtech_addon"})
+	@RecipeAddition(time=EventTime.WORLD_LOAD, requiredModids={"IC2", "gregtech_addon"})
 	public static void doPostLoadRecipeAdditions() {
 		if(ConfigurationHandler.unnerfPaperRecipe) {
 			TweakingRegistry.addTweakedTooltip(Item.paper.itemID, -1,  TweakingAction.ADDED, "Check recipe to ensure 3x output");

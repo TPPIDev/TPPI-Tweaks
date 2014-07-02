@@ -12,7 +12,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RailcraftTweaks
 {
-	@RecipeAddition(requiredModids={"Railcraft"}, time=EventTime.PLAYER_JOIN)
+	@RecipeAddition(requiredModids={"Railcraft"}, time=EventTime.WORLD_LOAD)
 	public static void registerOres()
 	{
 		// Please don't kill me CJ

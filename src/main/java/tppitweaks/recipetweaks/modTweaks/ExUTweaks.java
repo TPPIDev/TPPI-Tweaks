@@ -171,7 +171,7 @@ public class ExUTweaks
 			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 	}
 	
-	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.PLAYER_JOIN)
+	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.WORLD_LOAD)
 	public static void doPostLoadRecipeAdditions()
 	{
 		ItemStack stableIngot = new ItemStack(ExtraUtils.unstableIngot);

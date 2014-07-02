@@ -38,6 +38,8 @@ public class Reference
 			+ "after:JABBA;"
 			+ "after:EnderIO;"
 			+ "after:ProjRed|Core;"
+			+ "after:ComputerCraft;"
+			+ "after:CCTurtle;"
 			+ "required-after:recipeTweakingCore";
 	
 	public static String packName = "Test Pack Please Ignore";

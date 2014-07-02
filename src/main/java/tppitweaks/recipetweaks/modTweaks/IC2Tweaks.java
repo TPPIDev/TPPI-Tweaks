@@ -66,7 +66,7 @@ public class IC2Tweaks
 		}
 	}
 	
-	@RecipeAddition(requiredModids="IC2", time=EventTime.PLAYER_JOIN)
+	@RecipeAddition(requiredModids="IC2", time=EventTime.WORLD_LOAD)
 	public static void doPostLoadRecipeAdditions()
 	{
 		/* copypasta code, ignore horrible formatting */
