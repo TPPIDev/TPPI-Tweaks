@@ -134,7 +134,7 @@ public class ConfigurationHandler
 		unnerfPaperRecipe = config.get("Gregtech Tweaks", "unnerfPaperRecipe", true, "Revert GregTech's paper recipe output nerf.").getBoolean(true);
 		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
 		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
-		removeExtruderInput = config.get("Gregtech Tweaks", "removeExtruderInput", new String[] {"crystalIron", "crystalGold", "crystalOsmium", "crystalCopper", "crystalTin", "crystalSilver", "crystalObsidian", "crystalLead"}, "Disable this Ore Dict items as valid items for the Extruder").getStringList();
+		removeExtruderInput = config.get("Gregtech Tweaks", "removeExtruderInput", new String[] {"crystalIron", "crystalGold", "crystalOsmium", "crystalCopper", "crystalTin", "crystalSilver", "crystalObsidian", "crystalLead", "shardIron", "shardGold", "shardOsmium", "shardCopper", "shardTin", "shardSilver", "shardObsidian", "shardLead"}, "Disable these Ore Dict items as valid inputs for the Extruder").getStringList();
 		
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", false, "Show the mariculture fix GUI on startup.").getBoolean(false);
 		showIRCGui = config.get("Mod Loading Tweaks", "showIRCGui", true, "Show the IRC integration startup GUI").getBoolean(true);
