@@ -1,6 +1,12 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import gregtechmod.api.util.GT_Recipe;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -72,6 +78,45 @@ public class GregtechTweaks
 							ic2.core.Ic2Items.cell);
 				}
 			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@RecipeRemoval(requiredModids={"IC2", "gregtech_addon"}, time=EventTime.PLAYER_JOIN)
+	public static void removeLater() {
+		String[] blacklist = ConfigurationHandler.removeExtruderInput;
+		Map<Long, GT_Recipe> extruderRecipies;
+		ArrayList<Long> recipesToRemove = new java.util.ArrayList<Long>();
+		try
+		{
+			extruderRecipies = (java.util.Map<Long, GT_Recipe>) GT_Recipe.class.getField("pExtruderRecipes").get(null);
+			for (java.util.Map.Entry<Long, GT_Recipe> entry : extruderRecipies.entrySet())
+			{
+				GT_Recipe rec = entry.getValue();
+				int oreDictId = OreDictionary.getOreID(rec.getRepresentativeInput1());
+				if (oreDictId != -1)
+				{
+					String oreDictName = OreDictionary.getOreName(oreDictId);
+					if (oreDictName != null && ArrayUtils.contains(blacklist, oreDictName))
+					{
+						recipesToRemove.add(entry.getKey());
+					}
+				}
+
+			}
+			for (Long id : recipesToRemove) {
+				extruderRecipies.remove(id);
+			}
+			System.out.println("Removed " + recipesToRemove.size() + " recipies from the GT Extruder");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			if (e instanceof RuntimeException)
+			{
+				throw (RuntimeException) e;
+			}
+			throw new RuntimeException("Exception while removing GT Extruder Recipies", e);
 		}
 	}
 	
