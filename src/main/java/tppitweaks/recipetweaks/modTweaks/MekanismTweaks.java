@@ -1,8 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -42,41 +40,6 @@ public class MekanismTweaks
 		{
 			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
 		}
-		
-		//remove all the mekanism 3x/4x materials
-		try
-		{
-			Field f = OreDictionary.class.getDeclaredField("oreIDs");
-			f.setAccessible(true);
-			HashMap<String, Integer> temp = (HashMap<String, Integer>) f.get(null);
-
-			//remove crystals
-			temp.remove("crystalIron");
-			temp.remove("crystalGold");
-			temp.remove("crystalOsmium");
-			temp.remove("crystalCopper");
-			temp.remove("crystalTin");
-			temp.remove("crystalSilver");
-			temp.remove("crystalObsidian");
-			temp.remove("crystalLead");
-
-			//remove shards
-			temp.remove("shardIron");
-			temp.remove("shardGold");
-			temp.remove("shardOsmium");
-			temp.remove("shardCopper");
-			temp.remove("shardTin");
-			temp.remove("shardSilver");
-			temp.remove("shardObsidian");
-			temp.remove("shardLead");
-
-			f.set(null, temp);
-		}
-		catch (Throwable t)
-		{
-			t.printStackTrace();
-		}
-
 	}
 
 	@RecipeAddition(requiredModids="Mekanism")
