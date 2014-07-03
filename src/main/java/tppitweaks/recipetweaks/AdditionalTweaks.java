@@ -15,8 +15,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AdditionalTweaks
 {
-	public static boolean recipesInitialized;
-
 	@SuppressWarnings("unchecked")
 	public static void doOreDictTweaks()
 	{

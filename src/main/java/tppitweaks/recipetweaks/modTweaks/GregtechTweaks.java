@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeAddition.EventTime;
@@ -24,9 +25,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class GregtechTweaks
 {
-	@RecipeRemoval(requiredModids={"IC2", "gregtech_addon"})
+	@RecipeRemoval(requiredModids = { "IC2", "gregtech_addon" })
 	public static void doStuff()
-	{	
+	{
 		if (ConfigurationHandler.addOsmiumToOreWasher && Loader.isModLoaded("IC2") && !OreDictionary.getOres("dustImpureOsmium").isEmpty() && !OreDictionary.getOres("dustOsmium").isEmpty())
 		{
 			ic2.core.block.machine.tileentity.TileEntityOreWashing.addRecipe("dustImpureOsmium", 1, 1000, new ItemStack[] { OreDictionary.getOres("dustOsmium").get(0), ic2.core.Ic2Items.stoneDust });
@@ -46,7 +47,7 @@ public class GregtechTweaks
 			}
 			for (ItemStack s : OreDictionary.getOres("dustZinc"))
 				for (ItemStack s1 : OreDictionary.getOres("ingotZinc"))
-					GameRegistry.addRecipe(new ShapelessOreRecipe(s, new Object[] { gregtechmod.api.enums.GT_Items.Tool_Mortar_Iron.getWildcard(1L, new Object[0]), s1}));
+					GameRegistry.addRecipe(new ShapelessOreRecipe(s, new Object[] { gregtechmod.api.enums.GT_Items.Tool_Mortar_Iron.getWildcard(1L, new Object[0]), s1 }));
 		}
 
 		if (Loader.isModLoaded("gregtech_addon") && Loader.isModLoaded("TConstruct") && ConfigurationHandler.tinkersAluminumPlates)
@@ -74,16 +75,17 @@ public class GregtechTweaks
 				{
 					ItemStack dust = OreDictionary.getOres("dustAluminium").get(0).copy();
 					dust.stackSize = 2;
-					gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallBauxite").get(0), OreDictionary.getOres("dustSmallBauxite").get(0),
-							ic2.core.Ic2Items.cell);
+					gregtechmod.api.GregTech_API.sRecipeAdder.addGrinderRecipe(s, ic2.core.Ic2Items.waterCell, dust, OreDictionary.getOres("dustSmallBauxite").get(0),
+							OreDictionary.getOres("dustSmallBauxite").get(0), ic2.core.Ic2Items.cell);
 				}
 			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	@RecipeRemoval(requiredModids={"IC2", "gregtech_addon"}, time=EventTime.WORLD_LOAD)
-	public static void removeLater() {
+	@RecipeRemoval(requiredModids = { "IC2", "gregtech_addon" }, time = EventTime.WORLD_LOAD)
+	public static void removeLater()
+	{
 		String[] blacklist = ConfigurationHandler.removeExtruderInput;
 		Map<Long, GT_Recipe> extruderRecipies;
 		ArrayList<Long> recipesToRemove = new java.util.ArrayList<Long>();
@@ -102,12 +104,12 @@ public class GregtechTweaks
 						recipesToRemove.add(entry.getKey());
 					}
 				}
-
 			}
-			for (Long id : recipesToRemove) {
+			for (Long id : recipesToRemove)
+			{
 				extruderRecipies.remove(id);
 			}
-			System.out.println("Removed " + recipesToRemove.size() + " recipies from the GT Extruder");
+			TPPITweaks.logger.info("Removed " + recipesToRemove.size() + " recipies from the GT Extruder");
 		}
 		catch (Exception e)
 		{
@@ -119,16 +121,19 @@ public class GregtechTweaks
 			throw new RuntimeException("Exception while removing GT Extruder Recipies", e);
 		}
 	}
-	
-	@RecipeAddition(time=EventTime.WORLD_LOAD, requiredModids={"IC2", "gregtech_addon"})
-	public static void doPostLoadRecipeAdditions() {
-		if(ConfigurationHandler.unnerfPaperRecipe) {
-			TweakingRegistry.addTweakedTooltip(Item.paper.itemID, -1,  TweakingAction.ADDED, "Check recipe to ensure 3x output");
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {Item.reed, Item.reed, Item.reed});
+
+	@RecipeAddition(time = EventTime.WORLD_LOAD, requiredModids = { "IC2", "gregtech_addon" })
+	public static void doPostLoadRecipeAdditions()
+	{
+		if (ConfigurationHandler.unnerfPaperRecipe)
+		{
+			TweakingRegistry.addTweakedTooltip(Item.paper.itemID, -1, TweakingAction.ADDED, "Check recipe to ensure 3x output");
+			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] { Item.reed, Item.reed, Item.reed });
 			TETweaks.addRecipes();
-			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] {"#", "#", "#", '#', Item.reed});
+			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] { "#", "#", "#", '#', Item.reed });
 		}
-		if(ConfigurationHandler.readdResinSmelting) {
+		if (ConfigurationHandler.readdResinSmelting)
+		{
 			FurnaceRecipes.smelting().addSmelting(ic2.core.Ic2Items.resin.itemID, ic2.core.Ic2Items.resin.getItemDamage(), ic2.core.Ic2Items.rubber, 0F);
 		}
 	}

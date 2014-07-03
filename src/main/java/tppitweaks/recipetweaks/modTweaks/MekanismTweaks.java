@@ -16,7 +16,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MekanismTweaks
 {
-	@SuppressWarnings("unchecked")
 	@RecipeRemoval(requiredModids="Mekanism")
 	public static void init()
 	{
