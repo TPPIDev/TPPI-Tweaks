@@ -20,10 +20,9 @@ public class ConfigurationHandler
 	public static int materialID;
 	public static int blockID;
 	
-	public static boolean enderChestResonant;
+	public static boolean enderChestNerf;
 	public static boolean enderPouchNerf;
-	public static boolean disableEnderTank;
-	public static boolean enderTankResonant;
+	public static boolean enderTankNerf;
 
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
@@ -100,10 +99,9 @@ public class ConfigurationHandler
 		blockID = config.getBlock("tppiBlockId", 3115).getInt();
 		materialID = config.getItem("tppiMaterialId", 21651).getInt() - 256;
 
-		enderChestResonant = config.get("Ender Storage Tweaks", "enderChestResonant", true, "EnderStorage Ender Chests require resonant strongboxes instead of ender pearls.").getBoolean(true);
+		enderChestNerf = config.get("Ender Storage Tweaks", "enderChestNerf", true, "EnderStorage Ender Chests require tesseract frames instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
-		disableEnderTank = config.get("Ender Storage Tweaks", "disableEnderTank", true, "Disables the ender tank. Setting this to false opens your game/server to dupes, be warned!").getBoolean(true);
-		enderTankResonant = config.get("Ender Storage Tweaks", "enderTankResonant", true, "EnderStorage Ender Tanks require resonant portable tanks instead of ender pearls.").getBoolean(true);
+		enderTankNerf = config.get("Ender Storage Tweaks", "enderTankNerf", true, "EnderStorage Ender Tanks require resonant portable tanks instead of ender pearls.").getBoolean(true);
 		
 		steelReactorCasings = config.get("Other Mod Tweaks", "steelReactorCasings", false, "Big Reactors reactor casings require steel. Affects ONLY the casings.").getBoolean(true);
 		ic2TEGlassInterchangeability = config.get("Other Mod Tweaks", "ic2TEGlassInterchangeability", true, "IC2 reinforced glass (glassReinforced) and Thermal Expansion hardened glass (glassHardened)\nwill be cross-registered as each other in the ore dictionary.").getBoolean(false);
