@@ -17,6 +17,11 @@ public class AdvancedGeneticsTweaks {
 		{
 			TweakingRegistry.markItemForRecipeRemoval(com.advGenetics.AdvGenetics.autoOutputUpgrade.itemID, -1, TweakingAction.REMOVED, "Crashes the game");
 		}
+		
+		if (ConfigurationHandler.disableAGHealCrystal)
+		{
+			TweakingRegistry.markItemForRecipeRemoval(AdvGenetics.healCrystal.itemID, -1, TweakingAction.REMOVED, "It's a crashaholic");
+		}
 	
 		TweakingRegistry.addTweakedTooltip(((Block) AdvGenetics.dnaAnalyser).blockID, -1, TweakingAction.NOTE, "Removed genes:", " - Flight", " - Extra Health");
 		TweakingRegistry.addTweakedTooltip(((Block) AdvGenetics.dnaEncoder).blockID, -1, TweakingAction.NOTE, "Removed genes:", " - Flight", " - Extra Health");

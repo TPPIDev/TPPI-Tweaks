@@ -37,7 +37,8 @@ public class ConfigurationHandler
 	public static boolean buffUnifierRecipe;
 
 	public static boolean disableAGAutoOutputter;
-	
+	public static boolean disableAGHealCrystal;
+
 	public static boolean fixExURecipes;
 	public static boolean changeMPSARecipes;
 	public static boolean nerfEnderQuarry;
@@ -115,6 +116,7 @@ public class ConfigurationHandler
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
 		disableAGAutoOutputter = config.get("Other Mod Tweaks", "disableAGAutoOutputter", true, "Remove the recipe for the Advanced Genetics auto output upgrade, because crashes.").getBoolean(true);
+		disableAGHealCrystal = config.get("Other Mod Tweaks", "disableAGHealCrystal", true, "Remove the recipe for the Advanced Genetics Heal Crystal, disabling this could expose your world to crashes.").getBoolean(true);
 		tweakJABBA = config.get("Other Mod Tweaks", "tweakJABBA", true, "Alter the JABBA barrel recipe to be a little more complicated, leaving FZ barrels as a \"low-tech\" option").getBoolean(true);
 		buffUnifierRecipe = config.get("Other Mod Tweaks", "buffUnifierRecipe", true, "Make the unifier cheaper.").getBoolean(true);
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
