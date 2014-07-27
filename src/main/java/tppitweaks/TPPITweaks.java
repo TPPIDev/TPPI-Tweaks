@@ -52,9 +52,6 @@ public class TPPITweaks
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
 		
 		CommandTPPI.initValidCommandArguments();
-
-		ModItems.initItems();
-		ModBlocks.initBlocks();
 	}
 
 	@EventHandler
@@ -62,6 +59,9 @@ public class TPPITweaks
 	{
 		// AM2SpawnControls.doAM2SpawnControls();
 
+		ModItems.initItems();
+		ModBlocks.initBlocks();
+		
 		eventHandler = new TPPIEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		ModItems.registerRecipes();

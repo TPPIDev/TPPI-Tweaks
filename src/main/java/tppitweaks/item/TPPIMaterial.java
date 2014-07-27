@@ -8,6 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import tppitweaks.TPPITweaks;
+import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
+import cpw.mods.fml.common.Loader;
 
 public class TPPIMaterial extends Item {
 
@@ -21,16 +23,17 @@ public class TPPIMaterial extends Item {
 	
 	private Icon[] icons;
 	
-	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked", "disassemblerCore", "miningCore"};
+	private String[] unlocNames = {"multicoreProcessor", "multicoreProcessorUncooked", "disassemblerCore", "miningCore", "dmCore"};
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		icons = new Icon[4];
+		icons = new Icon[5];
 		icons[0] = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
 		icons[1] = par1IconRegister.registerIcon("tppitweaks:tppiProcessorUncooked");
 		icons[2] = par1IconRegister.registerIcon("tppitweaks:disassemblerCore");
 		icons[3] = par1IconRegister.registerIcon("tppitweaks:miningCore");
+		icons[4] = Loader.isModLoaded("Mekanism") ? MekanismTweaks.getCircuitIcon() : par1IconRegister.registerIcon("not:applicable");
 	}
 	
 	@Override
@@ -41,18 +44,18 @@ public class TPPIMaterial extends Item {
 	
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return stack.getItemDamage() == 3;
+		return stack.getItemDamage() >= 3;
 	}
 	
 	@Override
 	public Icon getIconFromDamage(int dmg) {
-		return icons[dmg];
+		return dmg < icons.length ? icons[dmg] : null;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 			list.add(new ItemStack(this.itemID, 1, i));
 	}
 }
