@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import thermalexpansion.util.crafting.FurnaceManager;
+import thermalexpansion.util.crafting.PulverizerManager;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
@@ -52,6 +53,12 @@ public class TETweaks {
 		
 		if (OreDictionary.getOres("dustRuby").size() != 0)
 			thermalexpansion.util.crafting.PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
+		if (OreDictionary.getOres("dustTinyWood").size() != 0)
+		{
+			ItemStack res = OreDictionary.getOres("dustTinyWood").get(0).copy();
+			res.stackSize = 2;
+			PulverizerManager.addIngotNameToDustRecipe(1000, "stickWood", res);
+		}
 	}
 	
 	public static ItemStack getEnderium()
