@@ -6,7 +6,8 @@ import java.util.logging.Logger;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import tppitweaks.block.ModBlocks;
-import tppitweaks.command.CommandTPPI;
+import tppitweaks.command.CommandGetInvolved;
+import tppitweaks.command.CommandOres;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.creativeTab.CreativeTabTPPI;
 import tppitweaks.event.TPPIEventHandler;
@@ -50,8 +51,6 @@ public class TPPITweaks
 		RecipeTweakingCore.registerPackageName("tppitweaks.recipetweaks.modTweaks");
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
-		
-		CommandTPPI.initValidCommandArguments();
 	}
 
 	@EventHandler
@@ -81,6 +80,7 @@ public class TPPITweaks
 	@EventHandler
 	public void onFMLServerStart(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommandTPPI());
+		event.registerServerCommand(new CommandOres());
+		event.registerServerCommand(new CommandGetInvolved());
 	}
 }
