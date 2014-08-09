@@ -2,16 +2,19 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import java.util.ArrayList;
 
+import mekanism.common.Mekanism;
+import mekanism.common.recipe.MekanismRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MekanismTweaks
@@ -212,17 +215,46 @@ public class MekanismTweaks
 
 	private static void doMinerNerf()
 	{
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 4), new Object[]{
+		ItemStack clump = new ItemStack(Mekanism.Clump);
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 4), 
+			"012",
+			"3c4",
+			"567",
+			
+			'c', Mekanism.ControlCircuit,
+			'0', setDamage(clump, 0),
+			'1', setDamage(clump, 1),
+			'2', setDamage(clump, 2),
+			'3', setDamage(clump, 3),
+			'4', setDamage(clump, 4),
+			'5', setDamage(clump, 5),
+			'6', setDamage(clump, 6),
+			'7', setDamage(clump, 7)
+		));
+		
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 4), new Object[]{
 			"AcA",
 			"LRL",
 			"MCM",
 
 			'A', mekanism.common.Mekanism.AtomicCore,
-			'c', mekanism.common.Mekanism.ControlCircuit,
+			'c', new ItemStack(ModItems.tppiMaterial, 1, 4),
 			'L', new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 15),
 			'R', mekanism.common.Mekanism.Robit,
 			'M', new ItemStack(mekanism.common.Mekanism.BasicBlock, 1, 8),
 			'C', mekanism.common.Mekanism.AtomicDisassembler
 		}));
+	}
+	
+	private static ItemStack setDamage(ItemStack stack, int dmg)
+	{
+		ItemStack newStack = stack.copy();
+		newStack.setItemDamage(dmg);
+		return newStack;
+	}
+
+	public static Icon getCircuitIcon()
+	{
+		return Mekanism.ControlCircuit.getIconFromDamage(0);
 	}
 }

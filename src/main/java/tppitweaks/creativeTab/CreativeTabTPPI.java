@@ -1,6 +1,7 @@
 package tppitweaks.creativeTab;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 
@@ -12,8 +13,9 @@ public class CreativeTabTPPI extends CreativeTabs
 	}
 	
 	@Override
-	public int getTabIconItemIndex() {
-		return ModItems.tppiBook.itemID;
+	public ItemStack getIconItemStack()
+	{
+		return new ItemStack(ModItems.tppiMaterial, 1, 1);
 	}
 	
 	@Override

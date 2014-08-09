@@ -2,7 +2,7 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import mrtjp.projectred.exploration.BlockSpecialStone;
 import net.minecraftforge.oredict.OreDictionary;
-import tppitweaks.recipetweaks.RecipeAddition;
+import tterrag.rtc.RecipeAddition;
 
 public class PRTweaks
 {

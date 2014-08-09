@@ -3,7 +3,7 @@ package tppitweaks.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.util.FileLoader;
+import tppitweaks.util.TPPITweaksUtils;
 
 public class MaricultureGui extends GuiScreen
 {
@@ -43,10 +43,10 @@ public class MaricultureGui extends GuiScreen
 		switch (button.id)
 		{
 		case 0:
-			FileLoader.enableMod("Mariculture", ".disabled");
+			TPPITweaksUtils.enableMod("Mariculture", ".disabled");
 			break;
 		case 1:
-			FileLoader.disableMod("Mariculture", ".disabled");
+			TPPITweaksUtils.disableMod("Mariculture", ".disabled");
 			break;
 		case 2:
 			System.exit(0);

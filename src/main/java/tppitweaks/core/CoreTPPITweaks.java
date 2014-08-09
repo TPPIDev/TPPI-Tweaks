@@ -12,7 +12,7 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 	@Override
 	public String[] getASMTransformerClass()
 	{
-		return null;
+		return new String[]{"tppitweaks.core.CoreTransformer"};
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 	@Override
 	public void injectData(Map<String, Object> data)
 	{
-		System.out.println("TPPITweaks coremod, we knew ye well, you have served your purpose. We need you no more.");
+		System.out.println("TPPITweaks coremod, rise from your grave, we require you once more.");
 
 		File mcDir = (File) data.get("mcLocation");
 		File modsDir = null;

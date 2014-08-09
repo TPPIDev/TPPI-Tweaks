@@ -9,11 +9,11 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeAddition.EventTime;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -66,7 +66,7 @@ public class IC2Tweaks
 		}
 	}
 	
-	@RecipeAddition(requiredModids="IC2", time=EventTime.PLAYER_JOIN)
+	@RecipeAddition(requiredModids="IC2", time=EventTime.WORLD_LOAD)
 	public static void doPostLoadRecipeAdditions()
 	{
 		/* copypasta code, ignore horrible formatting */

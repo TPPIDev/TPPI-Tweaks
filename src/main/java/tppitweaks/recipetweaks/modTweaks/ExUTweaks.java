@@ -13,11 +13,11 @@ import tppitweaks.TPPITweaks;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeAddition.EventTime;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import extrautils.ExtraUtils;
@@ -171,7 +171,7 @@ public class ExUTweaks
 			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 	}
 	
-	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.PLAYER_JOIN)
+	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.WORLD_LOAD)
 	public static void doPostLoadRecipeAdditions()
 	{
 		ItemStack stableIngot = new ItemStack(ExtraUtils.unstableIngot);

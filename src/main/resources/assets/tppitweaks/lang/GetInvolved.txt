@@ -2,19 +2,20 @@ To get involved in TPPI's development, feel free to stop by reddit.com/r/testpac
 ~
 To talk to the dev team directly via IRC, visit #TestPackPleaseIgnore on irc.esper.net.~
 ~~~
-The reddit is the place to go to discuss pack features and provide feedback, etc, but NOT report bugs.~
-~
-All bug reports should instead be submitted as issues on the TestPackPleaseIgnore repository, located at github.com/TPPI-Dev.
+The subreddit is the place to go to discuss pack features and provide feedback, etc, but NOT report bugs.~
 ~~~
-If you want to help out with TPPI Tweaks and/or the in-game mod documentation project, 
-check out the TPPI-Tweaks github repository.~
+All bug reports should instead be submitted as issues on the TestPackPleaseIgnore repository, located at github.com/TPPI-Dev/TestPackPleaseIgnore/issues.~
 ~
-The "SupportedMods.txt" file in our assets folder will let you add documentation.
+The in-game mod documentation project can be found under config/modpackTweaks/SupportedMods.txt in the aforementioned repository.~
 ~~~
-Make sure you follow the formatting guidelines outlined at the top of the file when documenting mods, and good luck!~
+We have included a guide to contributing at github.com/TPPI-Dev/TestPackPleaseIgnore#contributing. It includes an extensive guide on how to use git to contribute to the project.
+~~~
+To contribute to TPPI-Tweaks, Modpack Tweaks, or RecipeTweakingCore, please visit their respective repositories under github.com/TPPI-Dev.
+~~~
+Thank you for any and all help in this project.
 ~
 ~
 ~
 ~
 ~
-        -Team
+  - §o"The Developers"

@@ -6,10 +6,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import powercrystals.minefactoryreloaded.setup.Machine;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 import factorization.shared.Core;
 

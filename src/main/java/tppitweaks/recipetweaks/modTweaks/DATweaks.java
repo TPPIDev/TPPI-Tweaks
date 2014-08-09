@@ -5,9 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeAddition;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
+import tterrag.rtc.RecipeAddition;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class DATweaks

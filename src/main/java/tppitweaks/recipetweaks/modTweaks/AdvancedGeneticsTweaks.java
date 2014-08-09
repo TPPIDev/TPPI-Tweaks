@@ -2,9 +2,9 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.block.Block;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.RecipeRemoval;
-import tppitweaks.recipetweaks.TweakingRegistry;
-import tppitweaks.recipetweaks.TweakingRegistry.TweakingAction;
+import tterrag.rtc.RecipeRemoval;
+import tterrag.rtc.TweakingRegistry;
+import tterrag.rtc.TweakingRegistry.TweakingAction;
 
 import com.advGenetics.AdvGenetics;
 
@@ -16,6 +16,11 @@ public class AdvancedGeneticsTweaks {
 		if(ConfigurationHandler.disableAGAutoOutputter) 
 		{
 			TweakingRegistry.markItemForRecipeRemoval(com.advGenetics.AdvGenetics.autoOutputUpgrade.itemID, -1, TweakingAction.REMOVED, "Crashes the game");
+		}
+		
+		if (ConfigurationHandler.disableAGHealCrystal)
+		{
+			TweakingRegistry.markItemForRecipeRemoval(AdvGenetics.healCrystal.itemID, -1, TweakingAction.REMOVED, "It's a crashaholic");
 		}
 	
 		TweakingRegistry.addTweakedTooltip(((Block) AdvGenetics.dnaAnalyser).blockID, -1, TweakingAction.NOTE, "Removed genes:", " - Flight", " - Extra Health");

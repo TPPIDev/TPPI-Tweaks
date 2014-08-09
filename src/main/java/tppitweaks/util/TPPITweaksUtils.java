@@ -1,5 +1,6 @@
 package tppitweaks.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -10,6 +11,8 @@ import java.util.List;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeDirection;
+import tppitweaks.TPPITweaks;
+import tppitweaks.lib.Reference;
 
 /**
  * @author AidanBrady, butchered by tterrag
@@ -153,4 +156,69 @@ public final class TPPITweaksUtils
     		return prefix + "/";
     	}
     }
+    
+    public static boolean disableMod(String partOfName, String extension)
+	{
+		boolean hasChanged = false;
+		for (File f : getMods(partOfName))
+		{
+			TPPITweaks.logger.info("Disabling: " + f.getName());
+			if (!f.getName().contains(extension))
+			{
+				f.renameTo(new File(f.getAbsolutePath() + extension));
+				System.out.println(f.getAbsolutePath() + "   " + extension);
+				hasChanged = true;
+			}
+			else
+			{
+				TPPITweaks.logger.info(partOfName + " was already disabled!");
+			}
+		}
+		return hasChanged;
+	}
+
+	public static boolean enableMod(String partOfName, String extensionToRemove)
+	{
+		boolean hasChanged = false;
+		for (File f : getMods(partOfName))
+		{
+			TPPITweaks.logger.info("Enabling: " + f.getName());
+			if (f.getName().contains(extensionToRemove))
+			{
+				f.renameTo(new File(f.getAbsolutePath().replace(extensionToRemove, "")));
+				hasChanged = true;
+			}
+			else
+			{
+				TPPITweaks.logger.info(partOfName + " was already enabled!");
+			}
+		}
+		return hasChanged;
+	}
+
+	/**
+	 * Finds all mods that contain the passed string in their filename that exist in the /mods folder
+	 * @return A list of Files that are mod jars (or zips)
+	 */
+	public static ArrayList<File> getMods(String partOfName)
+	{
+		ArrayList<File> files = new ArrayList<File>();
+		File mods;
+
+		mods = Reference.modsFolder;
+
+		String[] fileNames = mods.list();
+		ArrayList<String> foundNames = new ArrayList<String>();
+
+		for (String s : fileNames)
+		{
+			if (s.toLowerCase().contains(partOfName.toLowerCase()))
+				foundNames.add(s);
+		}
+
+		for (String s : foundNames)
+			files.add(new File(mods, s));
+
+		return files;
+	}
 }

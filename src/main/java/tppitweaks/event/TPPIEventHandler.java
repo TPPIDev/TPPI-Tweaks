@@ -1,38 +1,18 @@
 package tppitweaks.event;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
+import java.util.Random;
 
 import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-
-import org.lwjgl.input.Keyboard;
-
-import tppitweaks.TPPITweaks;
-import tppitweaks.client.gui.GuiHelper;
 import tppitweaks.client.gui.IRCGui;
 import tppitweaks.client.gui.MaricultureGui;
-import tppitweaks.client.gui.UpdateGui;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.lib.Reference;
-import tppitweaks.recipetweaks.RecipeAddition.EventTime;
-import tppitweaks.recipetweaks.RecipeTweaks;
-import tppitweaks.recipetweaks.TweakingRegistry;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
-
-import com.google.common.collect.ImmutableList;
-
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -40,24 +20,13 @@ public class TPPIEventHandler
 {
 	private boolean shouldLoadGUI = true;
 
-	public static boolean NBTValOnDeath;
-	private String name, version, acronym;
-
 	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
 	public void onGui(GuiOpenEvent event)
 	{
 		if (event.gui instanceof GuiMainMenu)
 		{
-			if (shouldLoadGUI && ConfigurationHandler.showDownloadGUI)
-			{
-				event.gui = new UpdateGui(event.gui, true);
-				GuiHelper.updateGui = (UpdateGui) event.gui;
-				shouldLoadGUI = false;
-
-				ConfigurationHandler.manuallyChangeConfigValue("B:showDownloadGUI", "true", "false");
-			}
-			else if (shouldLoadGUI && ConfigurationHandler.showMaricultureGui)
+			if (shouldLoadGUI && ConfigurationHandler.showMaricultureGui)
 			{
 				event.gui = new MaricultureGui();
 				shouldLoadGUI = false;
@@ -69,123 +38,11 @@ public class TPPIEventHandler
 			}
 			else
 			{
-				name = Reference.packName;
-				version = Reference.packVersion;
-				acronym = Reference.packAcronym;
-				
-				Field f = null;
-				try
-				{
-					f = FMLCommonHandler.class.getDeclaredField("brandings");
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-					TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
-					return;
-				}
-
-				f.setAccessible(true);
-				try
-				{
-					if (f.get(FMLCommonHandler.instance()) == null)
-					{
-						FMLCommonHandler.instance().computeBranding();
-						doThisAgain();
-					}
-					else
-					{
-						addStuff(f);
-					}
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-					TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
-				}
+				ObfuscationReflectionHelper.setPrivateValue(GuiMainMenu.class, (GuiMainMenu) event.gui, getRandTPPISplash(), "splashText", "field_73975_c");
 			}
 		}
 	}
-
-	private void doThisAgain()
-	{
-		Field f = null;
-		try
-		{
-			f = FMLCommonHandler.class.getDeclaredField("brandings");
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
-		}
-
-		addStuff(f);
-	}
-
-	@SuppressWarnings("unchecked")
-	private void addStuff(Field f)
-	{
-		f.setAccessible(true);
-		try
-		{
-			ImmutableList<String> list = (ImmutableList<String>) f.get(FMLCommonHandler.instance());
-			List<String> newList = new ArrayList<String>();
-
-			for (String s : list)
-			{
-				if (s.contains("Feed"))
-				{
-					// Do nothing
-				}
-				else if (s.equals(name + " " + version))
-				{
-					// Do nothing
-				}
-				else if (s.contains("Forge") && !s.contains(":"))
-				{
-					String[] sa = s.split(" ");
-					String firstLine = sa[0] + " " + sa[1];
-					String secondLine = sa[2];
-					newList.add(firstLine + ":");
-					newList.add("    " + secondLine);
-				}
-				else
-					newList.add(s);
-			}
-
-			newList.add(name + " " + version);
-
-			f.set(FMLCommonHandler.instance(), ImmutableList.copyOf(newList));
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			TPPITweaks.logger.log(Level.WARNING, "Reflection error, " + acronym + " watermark will not be shown");
-		}
-	}
-
-	@ForgeSubscribe
-	public void onLivingDeath(LivingDeathEvent event)
-	{
-		EntityPlayer entityPlayer;
-		if (event.entityLiving instanceof EntityPlayer)
-		{
-			TPPITweaks.logger.log(Level.INFO, "getting NBT");
-			entityPlayer = (EntityPlayer) event.entityLiving;
-
-			NBTValOnDeath = entityPlayer.getEntityData().getCompoundTag("TPPI").getBoolean("hasBook");
-		}
-	}
-
-	public NBTTagCompound getTag(EntityPlayer entity, boolean useClassVal)
-	{
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setBoolean("hasBook", useClassVal ? NBTValOnDeath : true);
-
-		return tag;
-	}
-
+	
 	@ForgeSubscribe
 	public void onItemTooltip(ItemTooltipEvent event)
 	{
@@ -193,27 +50,25 @@ public class TPPIEventHandler
 		{
 			DATweaks.addTooltip(event);
 		}
-		
-		String[] lines = TweakingRegistry.getTooltip(event.itemStack.itemID, event.itemStack.getItemDamage());
-		if (lines != null)
-		{
-			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
-			{
-				event.toolTip.add(EnumChatFormatting.RED + "Tweaked Item:");
-				for (int i = 0; i < lines.length; i++)
-					event.toolTip.add((i == 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.YELLOW)+ lines[i]);
-			}
-			else
-				event.toolTip.add(EnumChatFormatting.YELLOW + "Tweaked Item! - " + EnumChatFormatting.RED + "Shift " + EnumChatFormatting.YELLOW + "for Info");
-		}
 	}
 	
-	@ForgeSubscribe
-	public void onPlayerJoin(EntityJoinWorldEvent event) {
-		if (!RecipeTweaks.recipesInitialized)
+	public void doSomething() {}
+	
+	/**
+	 * Automatically figures out the number of splash text lines in the lang file, returns a random one.
+	 */
+	private String getRandTPPISplash()
+	{
+		int max = 1;
+		String base = "tppi.splash.text.";
+		while (!StatCollector.translateToLocal(base + max).equals(base + max))
 		{
-			TPPITweaks.tweakAtEvent(EventTime.PLAYER_JOIN);
-			RecipeTweaks.recipesInitialized = true;
+			max++;
 		}
+		max--;
+		
+		int rand = new Random().nextInt(max) + 1;
+		
+		return StatCollector.translateToLocal("tppi.splash.text." + rand);
 	}
 }
