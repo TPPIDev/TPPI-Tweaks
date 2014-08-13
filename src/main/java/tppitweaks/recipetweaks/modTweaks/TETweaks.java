@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import thermalexpansion.item.TEItems;
 import thermalexpansion.util.crafting.FurnaceManager;
 import thermalexpansion.util.crafting.PulverizerManager;
 import tppitweaks.TPPITweaks;
@@ -22,6 +23,8 @@ public class TETweaks {
 	{
 		if (ConfigurationHandler.harderActivatorRecipe)
 			TweakingRegistry.markItemForRecipeRemoval(thermalexpansion.block.TEBlocks.blockDevice.blockID, 2, TweakingAction.CHANGED, "Recipe requires steel", "to make this a later game item");
+		
+		TweakingRegistry.markItemForRecipeRemoval(TEItems.sawdustCompressed.itemID, TEItems.sawdustCompressed.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary.");
 	}
 	
 	@RecipeAddition(requiredModids="ThermalExpansion")
@@ -59,6 +62,14 @@ public class TETweaks {
 			res.stackSize = 2;
 			PulverizerManager.addIngotNameToDustRecipe(1000, "stickWood", res);
 		}
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(TEItems.sawdustCompressed,
+			"sss",
+			"s s",
+			"sss",
+				
+			's', "dustWood"
+		));
 	}
 	
 	public static ItemStack getEnderium()
