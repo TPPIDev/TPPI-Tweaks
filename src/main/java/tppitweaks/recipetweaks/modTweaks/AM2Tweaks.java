@@ -12,7 +12,7 @@ public class AM2Tweaks
 	@RecipeAddition(requiredModids="arsmagica2")
 	public static void addRecipes()
 	{
-		ItemStack spawnEgg = new ItemStack(am2.items.ItemsCommonProxy.spawnEgg, 1, 12);
+		ItemStack spawnEgg = new ItemStack(am2.items.ItemsCommonProxy.spawnEgg, 1, 13);
 		
 		if (ConfigurationHandler.tweakAM2)
 		{
