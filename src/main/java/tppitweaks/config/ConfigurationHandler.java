@@ -35,6 +35,7 @@ public class ConfigurationHandler
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
 	public static boolean tweakAM2;
+	public static boolean disableDeconstructor;
 	public static boolean tweakJABBA;
 	public static boolean buffUnifierRecipe;
 
@@ -111,6 +112,7 @@ public class ConfigurationHandler
 		tweakDA = config.get("Other Mod Tweaks", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
 		tweakSFM = config.get("Other Mod Tweaks", "stevesFactoryManagerAERecipes", true, "Recipes from Steve's Factory Manager take items from Applied Energistics.").getBoolean(true);
 		tweakAM2 = config.get("Other Mod Tweaks", "addAM2NatureGuardianRecipe", true, "Add recipe for Ars Magica 2 Nature Guardian spawn egg. Useful when dryads are disabled.").getBoolean(true);
+		disableDeconstructor = config.get("Other Mod Tweaks", "disableArcaneDeconstructor", true, "Disable the arcane deconstructor. It has serious dupes with witchery and other mods. RE-ENABLING THIS WILL OPEN YOUR SERVER TO MAJOR DUPES.").getBoolean(true);
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", false, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(false);
 		twoReactorGlass = config.get("Other Mod Tweaks", "twoReactorGlass", true, "Big Reactors\' reactor glass recipe gives two reactor glass in exchange for the harder recipe.").getBoolean(true);
 		
