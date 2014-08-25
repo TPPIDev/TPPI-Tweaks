@@ -27,13 +27,6 @@ public class CommandGetInvolved extends CommandBase
 	@Override
 	public int compareTo(Object o)
 	{
-		if (o instanceof ICommand)
-		{
-			return this.compareTo((ICommand) o);
-		}
-		else
-		{
-			return 0;
-		}
+		return this.getCommandName().compareTo(((ICommand)o).getCommandName());
 	}
 }
