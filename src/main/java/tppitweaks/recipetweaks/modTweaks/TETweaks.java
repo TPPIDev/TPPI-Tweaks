@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+import thermalexpansion.fluid.TEFluids;
 import thermalexpansion.item.TEItems;
 import thermalexpansion.util.crafting.FurnaceManager;
 import thermalexpansion.util.crafting.PulverizerManager;
@@ -16,28 +18,38 @@ import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TETweaks {
+public class TETweaks
+{
 
-	@RecipeRemoval(requiredModids="ThermalExpansion")
+	@RecipeRemoval(requiredModids = "ThermalExpansion")
 	public static void init()
 	{
 		if (ConfigurationHandler.harderActivatorRecipe)
 			TweakingRegistry.markItemForRecipeRemoval(thermalexpansion.block.TEBlocks.blockDevice.blockID, 2, TweakingAction.CHANGED, "Recipe requires steel", "to make this a later game item");
-		
+
 		TweakingRegistry.markItemForRecipeRemoval(TEItems.sawdustCompressed.itemID, TEItems.sawdustCompressed.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary.");
+		TweakingRegistry.markItemForRecipeRemoval(TEFluids.florb.itemID, TEFluids.florb.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary");
+		TweakingRegistry.markItemForRecipeRemoval(TEFluids.florbMagmatic.itemID, TEFluids.florbMagmatic.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary");
 	}
-	
+
+	/* @formatter:off */
 	@RecipeAddition(requiredModids="ThermalExpansion")
-	public static void addRecipes() {
-		try {
+	public static void addRecipes() 
+	{
+		try 
+		{
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] {thermalexpansion.item.TEItems.woodchips, thermalexpansion.item.TEItems.woodchips, thermalexpansion.item.TEItems.woodchips});
-		}catch(Throwable t){
+		}
+		catch(Throwable t)
+		{
 			TPPITweaks.logger.severe("Could not add paper recipe to pulverizer!");
 			t.printStackTrace();
 		}
 		
 		if (!OreDictionary.getOres("itemRubber").isEmpty())
+		{
 			FurnaceManager.addOreDictRecipe("resinIC2", OreDictionary.getOres("itemRubber").get(0).copy());
+		}
 				
 		if (ConfigurationHandler.harderActivatorRecipe)
 		{
@@ -63,6 +75,9 @@ public class TETweaks {
 			PulverizerManager.addIngotNameToDustRecipe(1000, "stickWood", res);
 		}
 		
+		OreDictionary.registerOre("dustWood", TEItems.sawdust);
+		OreDictionary.registerOre("itemSlag", TEItems.slag);
+		OreDictionary.registerOre("magmaCream", Item.magmaCream);
 		GameRegistry.addRecipe(new ShapedOreRecipe(TEItems.sawdustCompressed,
 			"sss",
 			"s s",
@@ -70,8 +85,13 @@ public class TETweaks {
 				
 			's', "dustWood"
 		));
+		
+		GameRegistry.addRecipe(new ShapelessOreRecipe(TEFluids.florb, "dustWood", "itemSlag", "slimeball"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(TEFluids.florbMagmatic, "dustWood", "itemSlag", "slimeball", "dustBlaze"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(TEFluids.florbMagmatic, "dustWood", "itemSlag", "magmaCream"));
 	}
-	
+	/* @formatter:on */
+
 	public static ItemStack getEnderium()
 	{
 		return thermalexpansion.item.TEItems.ingotEnderium.copy();
