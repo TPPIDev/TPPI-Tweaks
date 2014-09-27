@@ -38,6 +38,7 @@ public class ConfigurationHandler
 	public static boolean disableDeconstructor;
 	public static boolean tweakJABBA;
 	public static boolean buffUnifierRecipe;
+	public static boolean disablePlasticCups;
 
 	public static boolean disableAGAutoOutputter;
 	public static boolean disableAGHealCrystal;
@@ -125,6 +126,7 @@ public class ConfigurationHandler
 		disableAGHealCrystal = config.get("Other Mod Tweaks", "disableAGHealCrystal", true, "Remove the recipe for the Advanced Genetics Heal Crystal, disabling this could expose your world to crashes.").getBoolean(true);
 		tweakJABBA = config.get("Other Mod Tweaks", "tweakJABBA", true, "Alter the JABBA barrel recipe to be a little more complicated, leaving FZ barrels as a \"low-tech\" option").getBoolean(true);
 		buffUnifierRecipe = config.get("Other Mod Tweaks", "buffUnifierRecipe", true, "Make the unifier cheaper.").getBoolean(true);
+		disablePlasticCups = config.get("Other Mod Tweaks", "disablePlasticCups", true, "Disable the plastic cups from MFR as they dupe liquids.").getBoolean(true);
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
 		unregisterFusedQuartz = config.get("Other Mod Tweaks", "unregisterFusedQuartz", true, "Having fused quartz be registered under hardened glass doesn't make much sense. This fixes that.").getBoolean(true);
 		

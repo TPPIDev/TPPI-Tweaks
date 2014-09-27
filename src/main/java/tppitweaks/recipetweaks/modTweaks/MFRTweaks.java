@@ -19,6 +19,8 @@ public class MFRTweaks
 	{
 		if (ConfigurationHandler.buffUnifierRecipe)
 			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8, TweakingAction.CHANGED, "Cheapened for use", "in JABBA barrels");
+		if (ConfigurationHandler.disablePlasticCups)
+			TweakingRegistry.markItemForRecipeRemoval(((Item)MineFactoryReloadedCore.plasticCupItem).itemID, -1, TweakingAction.REMOVED, "Has liquid dupes.");
 	}
 	
 	@RecipeAddition(requiredModids="MineFactoryReloaded")
