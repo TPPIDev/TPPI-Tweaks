@@ -27,13 +27,18 @@ public class ConfigurationHandler
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
 	public static boolean twoReactorGlass;
+
 	public static boolean eloraamBreakersAndDeployers;
+	public static boolean disablePigmenTrophyDrop;
+
 	public static boolean ic2TEGlassInterchangeability;
 	public static boolean tweakDA;
 	public static boolean tweakSFM;
 	public static boolean tweakAM2;
+	public static boolean disableDeconstructor;
 	public static boolean tweakJABBA;
 	public static boolean buffUnifierRecipe;
+	public static boolean disablePlasticCups;
 
 	public static boolean disableAGAutoOutputter;
 	public static boolean disableAGHealCrystal;
@@ -108,15 +113,20 @@ public class ConfigurationHandler
 		tweakDA = config.get("Other Mod Tweaks", "tweakDARecipe", true, "Make Dimensional Anchors' recipe closer to that of a chicken chunks chunk loader.").getBoolean(true);
 		tweakSFM = config.get("Other Mod Tweaks", "stevesFactoryManagerAERecipes", true, "Recipes from Steve's Factory Manager take items from Applied Energistics.").getBoolean(true);
 		tweakAM2 = config.get("Other Mod Tweaks", "addAM2NatureGuardianRecipe", true, "Add recipe for Ars Magica 2 Nature Guardian spawn egg. Useful when dryads are disabled.").getBoolean(true);
+		disableDeconstructor = config.get("Other Mod Tweaks", "disableArcaneDeconstructor", true, "Disable the arcane deconstructor. It has serious dupes with witchery and other mods. RE-ENABLING THIS WILL OPEN YOUR SERVER TO MAJOR DUPES.").getBoolean(true);
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", false, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(false);
 		twoReactorGlass = config.get("Other Mod Tweaks", "twoReactorGlass", true, "Big Reactors\' reactor glass recipe gives two reactor glass in exchange for the harder recipe.").getBoolean(true);
+		
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
+		disablePigmenTrophyDrop = config.get("Other Mod Tweaks", "disablePigmenTrophyDrop", true, "Disables pigmen trophies from dropping.").getBoolean(true);
+		
 		removeStupidEnergyCrystalRecipe = config.get("Other Mod Tweaks", "removeDartCraftEnergyCrystalRecipe", true, "Remove DartCraft's IC2 energy crystal recipe.").getBoolean(true);
 		disableForceShears = config.get("Other Mod Tweaks", "disableForceShears", true, "Remove the force shears recipe because they were crashing servers rarely, but in a serious way. Disable this at your own risk.").getBoolean(true);
 		disableAGAutoOutputter = config.get("Other Mod Tweaks", "disableAGAutoOutputter", true, "Remove the recipe for the Advanced Genetics auto output upgrade, because crashes.").getBoolean(true);
 		disableAGHealCrystal = config.get("Other Mod Tweaks", "disableAGHealCrystal", true, "Remove the recipe for the Advanced Genetics Heal Crystal, disabling this could expose your world to crashes.").getBoolean(true);
 		tweakJABBA = config.get("Other Mod Tweaks", "tweakJABBA", true, "Alter the JABBA barrel recipe to be a little more complicated, leaving FZ barrels as a \"low-tech\" option").getBoolean(true);
 		buffUnifierRecipe = config.get("Other Mod Tweaks", "buffUnifierRecipe", true, "Make the unifier cheaper.").getBoolean(true);
+		disablePlasticCups = config.get("Other Mod Tweaks", "disablePlasticCups", true, "Disable the plastic cups from MFR as they dupe liquids.").getBoolean(true);
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
 		unregisterFusedQuartz = config.get("Other Mod Tweaks", "unregisterFusedQuartz", true, "Having fused quartz be registered under hardened glass doesn't make much sense. This fixes that.").getBoolean(true);
 		

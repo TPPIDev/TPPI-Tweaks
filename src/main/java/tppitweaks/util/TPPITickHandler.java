@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TPPITickHandler implements ITickHandler
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	private static final String CAPE_URL = "http://tterrag.com/assets/TPPIcape.png";
+	private static final String CAPE_URL = "http://assets.tterrag.com/TPPI/TPPIcape.png";
 	private Map<String, CapeBufferDownload> downloads = new HashMap<String, CapeBufferDownload>();
 
 	private URL usernames;
@@ -46,7 +46,7 @@ public class TPPITickHandler implements ITickHandler
 
 		try
 		{
-			usernames = new URL("http://tterrag.com/assets/capes.txt");
+			usernames = new URL("http://assets.tterrag.com/TPPI/capes.txt");
 			scan = new Scanner(usernames.openStream());
 		}
 		catch (Throwable pokemon)

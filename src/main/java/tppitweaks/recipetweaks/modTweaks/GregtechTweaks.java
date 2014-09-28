@@ -129,7 +129,6 @@ public class GregtechTweaks
 		{
 			TweakingRegistry.addTweakedTooltip(Item.paper.itemID, -1, TweakingAction.ADDED, "Check recipe to ensure 3x output");
 			GameRegistry.addShapelessRecipe(new ItemStack(Item.paper, 3), new Object[] { Item.reed, Item.reed, Item.reed });
-			TETweaks.addRecipes();
 			GameRegistry.addRecipe(new ItemStack(Item.paper, 3), new Object[] { "#", "#", "#", '#', Item.reed });
 		}
 		if (ConfigurationHandler.readdResinSmelting)

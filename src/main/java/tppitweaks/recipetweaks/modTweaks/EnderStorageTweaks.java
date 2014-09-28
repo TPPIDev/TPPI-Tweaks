@@ -50,7 +50,7 @@ public class EnderStorageTweaks extends TweakingRegistry
 			// @formatter:off
 			if (ConfigurationHandler.enderChestNerf)
 			{
-				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 1, EnderStorageManager.getFreqFromColours(i, i, i)), 
+				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 2, EnderStorageManager.getFreqFromColours(i, i, i)), 
 						"bWb",
 						"OCO",
 						"bOb",
@@ -64,7 +64,7 @@ public class EnderStorageTweaks extends TweakingRegistry
 
 			if (ConfigurationHandler.enderTankNerf)
 			{
-				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 1, EnderStorageManager.getFreqFromColours(i, i, i) + 4096), 
+				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 2, EnderStorageManager.getFreqFromColours(i, i, i) + 4096), 
 						"OWO",
 						"bCb", 
 						"bOb",

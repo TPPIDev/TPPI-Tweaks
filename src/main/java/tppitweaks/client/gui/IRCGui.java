@@ -38,14 +38,14 @@ public class IRCGui extends GuiScreen
 	{
 		drawCustomBackground(0);
 		
-		this.drawCenteredString(this.mc.fontRenderer, "This version of TPPI adds a new IRC feature!", this.width / 2, this.height / 2 - 105, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, "TPPI has included an IRC chat mod!", this.width / 2, this.height / 2 - 105, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "Anyone playing the pack is able to live chat", this.width / 2, this.height / 2 - 90, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "with anyone else simultaneously.", this.width / 2, this.height / 2 - 80, 0xFFFFFF);
-		this.drawCenteredString(this.mc.fontRenderer, "If you do not desire this feature,", this.width / 2, this.height / 2 - 65, 0xFFFFFF);
-		this.drawCenteredString(this.mc.fontRenderer, "this is your chance to opt-out.", this.width / 2, this.height / 2 - 55, 0xFFFFFF);
-		this.drawCenteredString(this.mc.fontRenderer, "To do this, hit \"Disable this Feature\",", this.width / 2, this.height / 2 - 40, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, "If you desire to use this feature,", this.width / 2, this.height / 2 - 65, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, "this is your chance to opt-in.", this.width / 2, this.height / 2 - 55, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, "To do this, hit \"Enable this Feature\",", this.width / 2, this.height / 2 - 40, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "and then restart the game.", this.width / 2, this.height / 2 - 30, 0xFFFFFF);
-		this.drawCenteredString(this.mc.fontRenderer, "If you wish to leave this feature enabled,", this.width / 2, this.height / 2 - 15, 0xFFFFFF);
+		this.drawCenteredString(this.mc.fontRenderer, "If you wish to leave this feature disabled,", this.width / 2, this.height / 2 - 15, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "simply hit \"Continue to the Game\"", this.width / 2, this.height / 2 - 5, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "\"Don't show this again\" will prevent this GUI", this.width / 2, this.height / 2 + 10, 0xFFFFFF);
 		this.drawCenteredString(this.mc.fontRenderer, "from showing in the future.", this.width / 2, this.height / 2 + 20, 0xFFFFFF);
