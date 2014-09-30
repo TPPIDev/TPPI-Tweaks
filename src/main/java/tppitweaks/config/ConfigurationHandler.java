@@ -10,16 +10,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 import tppitweaks.TPPITweaks;
 
 public class ConfigurationHandler
 {
 	public static HashMap<String, Boolean> am2SpawnControls = new HashMap<String, Boolean>();
-	
-	public static int materialID;
-	public static int blockID;
-	
+
 	public static boolean enderChestNerf;
 	public static boolean enderPouchNerf;
 	public static boolean enderTankNerf;
@@ -100,9 +97,6 @@ public class ConfigurationHandler
 		{
 			am2SpawnControls.put(s, config.get("GLOBAL ARS MAGICA 2 MOB SPAWN CONTROLS", "globallyDisable" + s, true).getBoolean(true));
 		}
-		
-		blockID = config.getBlock("tppiBlockId", 3115).getInt();
-		materialID = config.getItem("tppiMaterialId", 21651).getInt() - 256;
 
 		enderChestNerf = config.get("Ender Storage Tweaks", "enderChestNerf", true, "EnderStorage Ender Chests require tesseract frames instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);

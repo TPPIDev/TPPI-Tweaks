@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tppitweaks.TPPITweaks;
@@ -30,7 +29,7 @@ public class AdditionalTweaks
 		{
 			ItemStack newStack = stack.copy();
 			for (ItemStack stack1 : OreDictionary.getOres("ingotZinc"))
-				FurnaceRecipes.smelting().addSmelting(newStack.itemID, newStack.getItemDamage(), stack1.copy(), 0.1F);
+				GameRegistry.addSmelting(newStack, stack1.copy(), 0.1F);
 		}
 		
 		// fixing fused quartz
@@ -50,14 +49,14 @@ public class AdditionalTweaks
 		}
 		catch (Throwable t)
 		{
-			TPPITweaks.logger.severe("Fixing EnderIO via reflection failed!");
+			TPPITweaks.logger.error("Fixing EnderIO via reflection failed!");
 			t.printStackTrace();
 		}
 	}
 	
 	public static void addMiscRecipes()
 	{
-		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, "nuggetSteel", Item.flint));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(Item.flintAndSteel, "ingotIron", Item.flint));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Items.flint_and_steel, "nuggetSteel", Items.flint));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(Items.flint_and_steel, "ingotIron", Items.flint));
 	}
 }

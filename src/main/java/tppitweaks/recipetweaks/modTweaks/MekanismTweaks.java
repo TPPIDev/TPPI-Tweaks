@@ -7,6 +7,7 @@ import mekanism.common.recipe.MekanismRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.Icon;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
@@ -253,7 +254,7 @@ public class MekanismTweaks
 		return newStack;
 	}
 
-	public static Icon getCircuitIcon()
+	public static IIcon getCircuitIcon()
 	{
 		return Mekanism.ControlCircuit.getIconFromDamage(0);
 	}

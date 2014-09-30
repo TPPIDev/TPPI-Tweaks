@@ -1,10 +1,13 @@
 package tppitweaks;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import tppitweaks.block.ModBlocks;
 import tppitweaks.command.CommandGetInvolved;
 import tppitweaks.command.CommandOres;
@@ -16,7 +19,6 @@ import tppitweaks.lib.Reference;
 import tppitweaks.proxy.CommonProxy;
 import tppitweaks.recipetweaks.AdditionalTweaks;
 import tterrag.rtc.RecipeTweakingCore;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -39,15 +41,13 @@ public class TPPITweaks
 
 	public static TPPIEventHandler eventHandler;
 
-	public static final Logger logger = Logger.getLogger("TPPITweaks");
+	public static final Logger logger = LogManager.getLogger("TPPITweaks");
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
-	{
-		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
-		
+	{		
 		RecipeTweakingCore.registerPackageName("tppitweaks.recipetweaks.modTweaks");
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
