@@ -1,17 +1,12 @@
 package tppitweaks.config;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import net.minecraftforge.common.config.Configuration;
+import tppitweaks.TPPITweaks;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
-import net.minecraftforge.common.config.Configuration;
-import tppitweaks.TPPITweaks;
 
 public class ConfigurationHandler
 {
@@ -46,6 +41,7 @@ public class ConfigurationHandler
 	
 	public static boolean nerfRedstoneGen;
 	public static boolean nerfEnderGen;
+	public static boolean nerfAngelRings;
 
 	public static boolean doPlatinumInCentrifuge;
 	public static boolean addLapisDustMortarRecipes;
@@ -74,6 +70,8 @@ public class ConfigurationHandler
 	public static boolean disableForceShears;
 	
 	public static boolean addOsmiumToOreWasher;
+
+	public static boolean addGreenHeartRecipe;
 	
 	public static boolean registerMagicalCropsOre;
 
@@ -128,7 +126,8 @@ public class ConfigurationHandler
 		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
 		nerfRedstoneGen = config.get("ExtraUtils Tweaks", "nerfRedstoneGen", true, "Make the Extra Utilities heated redstone generator expensive.").getBoolean(true);
 		nerfEnderGen = config.get("ExtraUtils Tweaks", "nerfEnderGen", true, "Make the Extra Utilities ender generator expensive.").getBoolean(true);
-		
+		nerfAngelRings = config.get("ExtraUtils Tweaks", "nerfAngelRings", true, "Make the Extra Utilities Angel Rings expensive.").getBoolean(true);
+
 		changeMPSARecipes = config.get("MPS Extra Recipes", "change_MPSA_recipes", true, "Changes MPSA recipes to match the MPS recipes that are in TPPI").getBoolean(true);
 		
 		doPlatinumInCentrifuge = config.get("Gregtech Tweaks", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
@@ -142,7 +141,9 @@ public class ConfigurationHandler
 		
 		showMaricultureGui = config.get("Mod Loading Tweaks", "showMaricultureGUI", false, "Show the mariculture fix GUI on startup.").getBoolean(false);
 		showIRCGui = config.get("Mod Loading Tweaks", "showIRCGui", true, "Show the IRC integration startup GUI").getBoolean(true);
-		
+
+		addGreenHeartRecipe = config.get("Tinker's Construct Tweaks", "addGreenHeartRecipe", true, "Adds a recipe for the green heart and canister.").getBoolean(true);
+
 		registerMagicalCropsOre = config.get("Other Mod Tweaks", "registerMagicalCropsOre", true, "Register essence ores from Magical Crops in the ore dictionary under \"oreMCropsEssence\" and \"oreMCropsNetherEssence\".").getBoolean(true);
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		harderLillipadRecipe = config.get("Other Mod Tweaks", "harderLillipadOfFertility", true, "Make the lillipad of fertility much harder to craft").getBoolean(true);
