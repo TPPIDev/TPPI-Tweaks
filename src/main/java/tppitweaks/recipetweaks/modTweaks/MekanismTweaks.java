@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import mekanism.common.Mekanism;
 import mekanism.common.recipe.MekanismRecipe;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import mekanism.common.recipe.RecipeHandler;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.Icon;
 import net.minecraftforge.oredict.OreDictionary;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
@@ -25,23 +25,23 @@ public class MekanismTweaks
 	{
 		if (ConfigurationHandler.harderDisassemblerRecipe)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicDisassembler).itemID, -1, TweakingAction.CHANGED, "Changed to ensure", "balance with all other tools");
-			TweakingRegistry.markItemForRecipeRemoval(((Item) mekanism.common.Mekanism.AtomicCore).itemID, -1, TweakingAction.CHANGED, "Changed to further", "balance all of Mekanism");
+			TweakingRegistry.markItemForRecipeRemoval(Mekanism.AtomicDisassembler, -1, TweakingAction.CHANGED, "Changed to ensure", "balance with all other tools");
+			TweakingRegistry.markItemForRecipeRemoval(Mekanism.AtomicAlloy, -1, TweakingAction.CHANGED, "Changed to further", "balance all of Mekanism");
 		}
 		if (ConfigurationHandler.disableCardboardBox)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.cardboardBoxID, -1);
+			TweakingRegistry.markItemForRecipeRemoval(Mekanism.CardboardBox, -1);
 		}
 		if (ConfigurationHandler.disableUniversalCables)
 		{
 			for(int i = 0; i < 4; i++) {
-				TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.PartTransmitter.itemID, i, TweakingAction.REMOVED, "Crashes");
+				TweakingRegistry.markItemForRecipeRemoval(Mekanism.PartTransmitter, i, TweakingAction.REMOVED, "Crashes");
 			}
 		}
 		
 		if (ConfigurationHandler.disableMiner || ConfigurationHandler.nerfMiner)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(mekanism.common.Mekanism.machineBlockID, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
+			TweakingRegistry.markItemForRecipeRemoval(Mekanism.MachineBlock, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
 		}
 	}
 
@@ -61,7 +61,7 @@ public class MekanismTweaks
 			ItemStack out = dustOut.get(0).copy();
 			out.stackSize++;
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
+				RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("oreVinteum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustVinteum")).isEmpty())
@@ -69,7 +69,7 @@ public class MekanismTweaks
 			ItemStack out = dustOut.get(0).copy();
 			out.stackSize++;
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
+				RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("oreYellorite")).isEmpty() && !(dustOut = OreDictionary.getOres("dustYellorium")).isEmpty())
@@ -77,7 +77,7 @@ public class MekanismTweaks
 			ItemStack out = dustOut.get(0).copy();
 			out.stackSize++;
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
+				RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("oreRuby")).isEmpty() && !(dustOut = OreDictionary.getOres("dustRuby")).isEmpty())
@@ -85,7 +85,7 @@ public class MekanismTweaks
 			ItemStack out = dustOut.get(0).copy();
 			out.stackSize++;
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
+				RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("oreSapphire")).isEmpty() && !(dustOut = OreDictionary.getOres("dustSapphire")).isEmpty())
@@ -93,7 +93,7 @@ public class MekanismTweaks
 			ItemStack out = dustOut.get(0).copy();
 			out.stackSize++;
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
+				RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("oreOlivine")).isEmpty() && !(dustOut = OreDictionary.getOres("dustOlivine")).isEmpty())
@@ -101,116 +101,116 @@ public class MekanismTweaks
 			ItemStack out = dustOut.get(0).copy();
 			out.stackSize++;
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
+				RecipeHandler.addEnrichmentChamberRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("ingotAluminum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustAluminum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("ingotYellorium")).isEmpty() && !(dustOut = OreDictionary.getOres("dustYellorium")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("gemRuby")).isEmpty() && !(dustOut = OreDictionary.getOres("dustRuby")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("gemSapphire")).isEmpty() && !(dustOut = OreDictionary.getOres("dustSapphire")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("gemGreenSapphire")).isEmpty() && !(dustOut = OreDictionary.getOres("dustGreenSapphire")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("gemOlivine")).isEmpty() && !(dustOut = OreDictionary.getOres("dustOlivine")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("ingotAluminum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustAluminum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("ingotPlatinum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustPlatinum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("ingotElectrum")).isEmpty() && !(dustOut = OreDictionary.getOres("dustElectrum")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
 		if (!(oreIn = OreDictionary.getOres("ingotInvar")).isEmpty() && !(dustOut = OreDictionary.getOres("dustInvar")).isEmpty())
 		{
 			ItemStack out = dustOut.get(0).copy();
 			for (ItemStack i : oreIn)
-				mekanism.common.recipe.RecipeHandler.addCrusherRecipe(i.copy(), out);
+				RecipeHandler.addCrusherRecipe(i.copy(), out);
 		}
 
-		mekanism.common.recipe.RecipeHandler.addCrusherRecipe(new ItemStack(Item.bone), new ItemStack(Item.dyePowder, 5, 15));
-		mekanism.common.recipe.RecipeHandler.addCrusherRecipe(new ItemStack(Block.plantRed), new ItemStack(Item.dyePowder, 2, 1));
-		mekanism.common.recipe.RecipeHandler.addCrusherRecipe(new ItemStack(Block.plantYellow), new ItemStack(Item.dyePowder, 2, 11));
+		RecipeHandler.addCrusherRecipe(new ItemStack(Items.bone), new ItemStack(Items.dye, 5, 15));
+		RecipeHandler.addCrusherRecipe(new ItemStack(Blocks.red_flower), new ItemStack(Items.dye, 2, 1));
+		RecipeHandler.addCrusherRecipe(new ItemStack(Blocks.yellow_flower), new ItemStack(Items.dye, 2, 11));
 	}
 
 	private static void doMaterialNerfs()
 	{
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.AtomicDisassembler), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicDisassembler), new Object[]{
 			"AtA",
 			"ADA",
 			" o ",
 
 			'D', new ItemStack(ModItems.tppiMaterial, 1, 2),
-			't', new ItemStack(mekanism.common.Mekanism.EnergyTablet, 1, 1),
+			't', new ItemStack(Mekanism.EnergyTablet, 1, 1),
 			'o', "ingotRefinedObsidian",
-			'A', mekanism.common.Mekanism.AtomicCore
+			'A', Mekanism.AtomicAlloy
 		}));
 
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(mekanism.common.Mekanism.AtomicCore), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicAlloy), new Object[]{
 			"aea",
 			"ede",
 			"aea",
 
-			'a', mekanism.common.Mekanism.EnrichedAlloy,
-			'e', mekanism.common.Mekanism.ElectrolyticCore,
-			'd', Item.diamond
+			'a', Mekanism.EnrichedAlloy,
+			'e', Mekanism.ElectrolyticCore,
+			'd', Items.diamond
 		}));
 
-		GameRegistry.addRecipe(new mekanism.common.recipe.MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), new Object[]{
 			"tst",
 			"eae",
 			"tst",
 
-			't', mekanism.common.Mekanism.TeleportationCore,
-			's', mekanism.common.Mekanism.SpeedUpgrade,
-			'e', mekanism.common.Mekanism.EnergyUpgrade,
-			'a', mekanism.common.Mekanism.AtomicCore
+			't', Mekanism.TeleportationCore,
+			's', Mekanism.SpeedUpgrade,
+			'e', Mekanism.EnergyUpgrade,
+			'a', Mekanism.AtomicAlloy
 		}));
 	}
 
@@ -233,17 +233,17 @@ public class MekanismTweaks
 			'7', setDamage(clump, 7)
 		));
 		
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 4), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.MachineBlock, 1, 4), new Object[]{
 			"AcA",
 			"LRL",
 			"MCM",
 
-			'A', mekanism.common.Mekanism.AtomicCore,
+			'A', Mekanism.AtomicAlloy,
 			'c', new ItemStack(ModItems.tppiMaterial, 1, 4),
-			'L', new ItemStack(mekanism.common.Mekanism.MachineBlock, 1, 15),
-			'R', mekanism.common.Mekanism.Robit,
-			'M', new ItemStack(mekanism.common.Mekanism.BasicBlock, 1, 8),
-			'C', mekanism.common.Mekanism.AtomicDisassembler
+			'L', new ItemStack(Mekanism.MachineBlock, 1, 15),
+			'R', Mekanism.Robit,
+			'M', new ItemStack(Mekanism.BasicBlock, 1, 8),
+			'C', Mekanism.AtomicDisassembler
 		}));
 	}
 	

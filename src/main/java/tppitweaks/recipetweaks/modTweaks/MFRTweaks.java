@@ -1,6 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import powercrystals.minefactoryreloaded.MineFactoryReloadedCore;
@@ -18,9 +18,9 @@ public class MFRTweaks
 	public static void init()
 	{
 		if (ConfigurationHandler.buffUnifierRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlockId(), 8, TweakingAction.CHANGED, "Cheapened for use", "in JABBA barrels");
+			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlock(), 8, TweakingAction.CHANGED, "Cheapened for use", "in JABBA barrels");
 		if (ConfigurationHandler.disablePlasticCups)
-			TweakingRegistry.markItemForRecipeRemoval(((Item)MineFactoryReloadedCore.plasticCupItem).itemID, -1, TweakingAction.REMOVED, "Has liquid dupes.");
+			TweakingRegistry.markItemForRecipeRemoval(MineFactoryReloadedCore.plasticCupItem, -1, TweakingAction.REMOVED, "Has liquid dupes.");
 	}
 	
 	@RecipeAddition(requiredModids="MineFactoryReloaded")
@@ -42,8 +42,8 @@ public class MFRTweaks
 					" M ", 
 
 					'R', "sheetPlastic",
-					'r', Item.redstone,
-					'C', Item.comparator,
+					'r', Items.redstone,
+					'C', Items.comparator,
 					'M', MineFactoryReloadedCore.machineBaseItem
 					));
 		}
