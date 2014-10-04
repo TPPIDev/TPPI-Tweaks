@@ -104,4 +104,9 @@ public class TETweaks
 	{
 		return BlockCell.cellResonant.copy();
 	}
+
+    public static void addPulverizerRecipe(int power, ItemStack in, ItemStack out, ItemStack secondary, int chance)
+    {
+        PulverizerManager.addRecipe(power, in, out, secondary, chance);        
+    }
 }

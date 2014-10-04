@@ -19,7 +19,7 @@ public class JABBATweaks
 	public static void init()
 	{
 		if (ConfigurationHandler.tweakJABBA)
-			TweakingRegistry.markItemForRecipeRemoval(BetterBarrels.barrelID, -1, TweakingAction.CHANGED, "Recipe changed to reflect", "the title of 'better barrel'");
+			TweakingRegistry.markItemForRecipeRemoval(BetterBarrels.blockBarrel, -1, TweakingAction.CHANGED, "Recipe changed to reflect", "the title of 'better barrel'");
 	}
 
 	@RecipeAddition(requiredModids={"JABBA", "factorization", "MineFactoryReloaded"})

@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import ic2.core.Ic2Items;
+import ic2.core.block.machine.tileentity.TileEntityMacerator;
 import ic2.core.util.StackUtil;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -82,5 +83,10 @@ public class IC2Tweaks
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.nanoHelmet, new Object[] { "CcC", "CGC", Character.valueOf('C'), Ic2Items.carbonPlate, Character.valueOf('c'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal), Character.valueOf('G'), StackUtil.copyWithWildCard(Ic2Items.nightvisionGoggles) }));
         GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.electricJetpack, new Object[] { "ICI", "IBI", "G G", Character.valueOf('I'), Ic2Items.casingiron, Character.valueOf('C'), Ic2Items.advancedCircuit.copy(), Character.valueOf('B'), Ic2Items.batBox, Character.valueOf('G'), Items.glowstone_dust }));
         GameRegistry.addRecipe(new ShapelessOreRecipe(Ic2Items.carbonFiber, "dustCoal", "dustCoal", "dustCoal", "dustCoal"));
+	}
+	
+	public static void addMaceratorRecipe(String ore, int amnt, ItemStack output)
+	{
+	    TileEntityMacerator.addRecipe(ore, amnt, output);
 	}
 }
