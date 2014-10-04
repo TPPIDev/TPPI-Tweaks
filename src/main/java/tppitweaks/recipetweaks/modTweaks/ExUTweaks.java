@@ -3,8 +3,8 @@ package tppitweaks.recipetweaks.modTweaks;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
@@ -18,23 +18,25 @@ import tterrag.rtc.RecipeAddition.EventTime;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
+
+import com.rwtema.extrautils.ExtraUtils;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import extrautils.ExtraUtils;
 
 public class ExUTweaks
 {
 	@RecipeRemoval(requiredModids="ExtraUtilities")
 	public static void init() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1, TweakingAction.CHANGED, "Recipe changed to better", "balance with BC quarry recipe");
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.decorative1Id, 11, TweakingAction.CHANGED, "Recipe changed for ender quarry");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.enderQuarry, -1, TweakingAction.CHANGED, "Recipe changed to better", "balance with BC quarry recipe");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.decorative1, 11, TweakingAction.CHANGED, "Recipe changed for ender quarry");
 		}
 		if(ConfigurationHandler.nerfRedstoneGen) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4, TweakingAction.CHANGED, "Recipe requires 2xcompressed redstone", "because it produces tonnes of RF");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.generator, 4, TweakingAction.CHANGED, "Recipe requires 2xcompressed redstone", "because it produces tonnes of RF");
 		}
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 3, TweakingAction.CHANGED, "Recipe requires enderium", "because it produces tonnes of RF");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.generator, 3, TweakingAction.CHANGED, "Recipe requires enderium", "because it produces tonnes of RF");
 		}
 	}
 	
@@ -43,12 +45,12 @@ public class ExUTweaks
 	public static void addRecipes() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
 				
-			ItemStack portal = new ItemStack(extrautils.ExtraUtils.portal);
-			ItemStack quadDirt = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 11);
-			ItemStack enderObs = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 1);
-			ItemStack magicalWood = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 8);
-			ItemStack enderCore = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 11);
-			ItemStack DECM = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12);
+			ItemStack portal = new ItemStack(ExtraUtils.portal);
+			ItemStack quadDirt = new ItemStack(ExtraUtils.cobblestoneCompr, 1, 11);
+			ItemStack enderObs = new ItemStack(ExtraUtils.decorative1, 1, 1);
+			ItemStack magicalWood = new ItemStack(ExtraUtils.decorative1, 1, 8);
+			ItemStack enderCore = new ItemStack(ExtraUtils.decorative1, 1, 11);
+			ItemStack DECM = new ItemStack(ExtraUtils.decorative1, 1, 12);
 
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
@@ -56,13 +58,13 @@ public class ExUTweaks
 		    	"PBP", 
 		    	"GEG",
 		    	
-		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
-		    	'W', extrautils.ExtraUtils.buildersWand, 
-		    	'S', extrautils.ExtraUtils.erosionShovel, 
-		    	'P', portal, 
-		    	'B', Block.fenceIron,
+		    	'A', ExtraUtils.destructionPickaxe, 
+		    	'W', ExtraUtils.buildersWand, 
+		    	'S', ExtraUtils.erosionShovel, 
+		    	'P', portal,
+		    	'B', Blocks.iron_bars,
 		    	'G', enderCore,
-		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Item.enderPearl
+		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Items.ender_pearl
 		    ));
 		    
 		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
@@ -70,16 +72,16 @@ public class ExUTweaks
 		    	"PBP", 
 		    	"GEG",
 		    	
-		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
-		    	'W', extrautils.ExtraUtils.buildersWand, 
-		    	'S', extrautils.ExtraUtils.erosionShovel, 
+		    	'A', ExtraUtils.destructionPickaxe, 
+		    	'W', ExtraUtils.buildersWand, 
+		    	'S', ExtraUtils.erosionShovel, 
 		    	'P', portal, 
-		    	'B', Block.fenceIron,
+		    	'B', Blocks.iron_bars,
 		    	'G', enderCore,
-		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Item.enderPearl
+		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Items.ender_pearl
 		    ));
 		    
-		    GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
+		    GameRegistry.addRecipe(new ShapedOreRecipe(ExtraUtils.enderQuarry,
 		    	"EQE", 
 		    	"CDC", 
 		    	"pPp", 
@@ -90,7 +92,7 @@ public class ExUTweaks
 		    	'C', enderCore, 
 		    	'D', DECM, 
 		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 3), 
-		    	'p', extrautils.ExtraUtils.enderThermicPump == null ? new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12) : extrautils.ExtraUtils.enderThermicPump 
+		    	'p', ExtraUtils.enderThermicPump == null ? new ItemStack(ExtraUtils.decorative1, 1, 12) : ExtraUtils.enderThermicPump 
 		    ));
 		    
 		    GameRegistry.addRecipe(enderCore, 
@@ -100,33 +102,33 @@ public class ExUTweaks
 		    	
 		    	'A', magicalWood,
 		    	'B', DECM,
-		    	'E', Item.eyeOfEnder
+		    	'E', Items.ender_eye
 		    );
 		}
 		
 		if(ConfigurationHandler.nerfRedstoneGen) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(extrautils.ExtraUtils.gen, 1, 4),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.generator, 1, 4),
 			    	"RRR", 
 			    	"RGR", 
 			    	"DFD", 
 			    	
 			    	'R', ModBlocks.tppiBlock, 
-			    	'G', new ItemStack(extrautils.ExtraUtils.gen, 1, 2), 
-			    	'D', Item.redstone, 
-			    	'F', Block.furnaceIdle
+			    	'G', new ItemStack(ExtraUtils.generator, 1, 2), 
+			    	'D', Items.redstone, 
+			    	'F', Blocks.furnace
 			    ));
 		}
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(extrautils.ExtraUtils.gen, 1, 3),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.generator, 1, 3),
 			    	"PPP", 
 			    	"EBE", 
 			    	"DFD", 
 			    	
-			    	'P', Item.enderPearl,
-			    	'E', Item.eyeOfEnder, 
+			    	'P', Items.ender_pearl,
+			    	'E', Items.ender_eye, 
 			    	'B', "blockEnderium", 
-			    	'D', Item.redstone, 
-			    	'F', Block.furnaceIdle
+			    	'D', Items.redstone, 
+			    	'F', Blocks.furnace
 			    ));
 		}
 
@@ -162,9 +164,9 @@ public class ExUTweaks
 				t.printStackTrace();
 			}
 
-			OreDictionary.registerOre("blockUnstable", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5));
-			OreDictionary.registerOre("burntquartz", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 2));
-			OreDictionary.registerOre("icestone", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 3));
+			OreDictionary.registerOre("blockUnstable", new ItemStack(ExtraUtils.decorative1, 1, 5));
+			OreDictionary.registerOre("burntquartz", new ItemStack(ExtraUtils.decorative1, 1, 2));
+			OreDictionary.registerOre("icestone", new ItemStack(ExtraUtils.decorative1, 1, 3));
 		}	
 		
 		if (Loader.isModLoaded("gregtech_addon"))
@@ -178,7 +180,7 @@ public class ExUTweaks
 		stableIngot.stackTagCompound = new NBTTagCompound();
 		stableIngot.stackTagCompound.setBoolean("stable", true);
 		
-	    GameRegistry.addRecipe(new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5), "iii", "iii", "iii", 'i', extrautils.ExtraUtils.unstableIngot);
+	    GameRegistry.addRecipe(new ItemStack(ExtraUtils.decorative1, 1, 5), "iii", "iii", "iii", 'i', ExtraUtils.unstableIngot);
 	    GameRegistry.addRecipe(stableIngot, "nnn", "nnn", "nnn", 'n', new ItemStack(ExtraUtils.unstableIngot, 1, 1));
 	}
 }

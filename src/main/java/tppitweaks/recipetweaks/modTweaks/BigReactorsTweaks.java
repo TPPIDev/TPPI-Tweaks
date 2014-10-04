@@ -70,7 +70,7 @@ public class BigReactorsTweaks {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2),
 			        "gCg",
 			
-			        'g', "glassHardened",
+			        'g', "blockGlassHardened",
 			        'C', new ItemStack(BigReactors.blockReactorPart, 1, 0)
 			));
 			
@@ -84,7 +84,7 @@ public class BigReactorsTweaks {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2, 1),
 			        "gCg",
 			
-			        'g', "glassHardened",
+			        'g', "blockGlassHardened",
 			        'C', new ItemStack(BigReactors.blockTurbinePart, 1, 0)
 			));
 			
