@@ -1,6 +1,7 @@
 package tppitweaks.item;
 
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import appeng.core.Api;
 import cpw.mods.fml.common.Loader;
@@ -18,21 +19,19 @@ public class ModItems
 
     public static void registerRecipes()
     {
-        if (Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM)
+        if (Loader.isModLoaded("appliedenergistics2") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM)
         {
             /* @formatter:off */
-			GameRegistry.addRecipe(new ItemStack(tppiMaterial, 1, 1),
-			        "CSC",
-					"SPS",
-					"CSC",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(tppiMaterial, 1, 0),
+			        "CdC",
+					"dsd",
+					"CdC",
 		                                                    
 					'C', Api.instance.materials().materialCalcProcessor.stack(1),
-					'P', Api.instance.materials().materialSilicon.stack(1),
-					'S', Api.instance.materials().materialFluixDust.stack(1)
-			);
+					's', "itemSilicon",
+					'd', Api.instance.materials().materialFluixDust.stack(1)
+			));
 			/* @formatter:on */
-			
-            GameRegistry.addSmelting(new ItemStack(tppiMaterial, 1, 1), new ItemStack(tppiMaterial), 0.1f);
         }
     }
 }

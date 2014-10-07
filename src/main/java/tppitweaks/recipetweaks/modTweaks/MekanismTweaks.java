@@ -186,7 +186,7 @@ public class MekanismTweaks
 			"ADA",
 			" o ",
 
-			'D', new ItemStack(ModItems.tppiMaterial, 1, 2),
+			'D', new ItemStack(ModItems.tppiMaterial, 1, 1),
 			't', new ItemStack(Mekanism.EnergyTablet, 1, 1),
 			'o', "ingotRefinedObsidian",
 			'A', Mekanism.AtomicAlloy
@@ -202,7 +202,7 @@ public class MekanismTweaks
 			'd', Items.diamond
 		}));
 
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 1), new Object[]{
 			"tst",
 			"eae",
 			"tst",
@@ -217,7 +217,7 @@ public class MekanismTweaks
 	private static void doMinerNerf()
 	{
 		ItemStack clump = new ItemStack(Mekanism.Clump);
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 4), 
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
 			"012",
 			"3c4",
 			"567",
@@ -239,7 +239,7 @@ public class MekanismTweaks
 			"MCM",
 
 			'A', Mekanism.AtomicAlloy,
-			'c', new ItemStack(ModItems.tppiMaterial, 1, 4),
+			'c', new ItemStack(ModItems.tppiMaterial, 1, 3),
 			'L', new ItemStack(Mekanism.MachineBlock, 1, 15),
 			'R', Mekanism.Robit,
 			'M', new ItemStack(Mekanism.BasicBlock, 1, 8),

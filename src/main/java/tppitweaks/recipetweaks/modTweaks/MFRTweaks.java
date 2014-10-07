@@ -34,7 +34,7 @@ public class MFRTweaks
 
 					'R', "sheetPlastic",
 					'S', "stone"
-					));
+			));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(Machine.Unifier.getItemStack(), 
 					"RRR",

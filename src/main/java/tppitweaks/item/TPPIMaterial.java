@@ -24,17 +24,16 @@ public class TPPIMaterial extends Item
 
     private IIcon[] icons;
 
-    private String[] unlocNames = { "multicoreProcessor", "multicoreProcessorUncooked", "disassemblerCore", "miningCore", "dmCore" };
+    private String[] unlocNames = { "multicoreProcessor", "disassemblerCore", "miningCore", "dmCore" };
 
     @Override
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        icons = new IIcon[5];
+        icons = new IIcon[4];
         icons[0] = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
-        icons[1] = par1IconRegister.registerIcon("tppitweaks:tppiProcessorUncooked");
-        icons[2] = par1IconRegister.registerIcon("tppitweaks:disassemblerCore");
-        icons[3] = par1IconRegister.registerIcon("tppitweaks:miningCore");
-        icons[4] = Loader.isModLoaded("Mekanism") ? MekanismTweaks.getCircuitIcon() : par1IconRegister.registerIcon("not:applicable");
+        icons[1] = par1IconRegister.registerIcon("tppitweaks:disassemblerCore");
+        icons[2] = par1IconRegister.registerIcon("tppitweaks:miningCore");
+        icons[3] = Loader.isModLoaded("Mekanism") ? MekanismTweaks.getCircuitIcon() : par1IconRegister.registerIcon("not:applicable");
     }
 
     @Override
@@ -46,7 +45,7 @@ public class TPPIMaterial extends Item
     @Override
     public boolean hasEffect(ItemStack stack)
     {
-        return stack.getItemDamage() >= 3;
+        return stack.getItemDamage() >= 2;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class TPPIMaterial extends Item
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             list.add(new ItemStack(this, 1, i));
         }

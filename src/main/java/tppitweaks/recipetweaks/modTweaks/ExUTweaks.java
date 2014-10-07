@@ -58,7 +58,7 @@ public class ExUTweaks
 			ItemStack DECM = new ItemStack(ExtraUtils.decorative1, 1, 12);
 
 		    
-		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
+		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), 
 		    	"AWS", 
 		    	"PBP", 
 		    	"GEG",
@@ -72,7 +72,7 @@ public class ExUTweaks
 		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Items.ender_pearl
 		    ));
 		    
-		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
+		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), 
 		    	"SWA", 
 		    	"PBP", 
 		    	"GEG",
@@ -96,7 +96,7 @@ public class ExUTweaks
 		    	'M', magicalWood,
 		    	'C', enderCore, 
 		    	'D', DECM, 
-		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 3), 
+		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 2), 
 		    	'p', ExtraUtils.enderThermicPump == null ? new ItemStack(ExtraUtils.decorative1, 1, 12) : ExtraUtils.enderThermicPump 
 		    ));
 		    
