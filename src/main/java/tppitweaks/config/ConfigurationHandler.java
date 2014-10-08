@@ -54,6 +54,7 @@ public class ConfigurationHandler
 	public static boolean makeEIOHardModeEasier;
 	public static boolean unregisterFusedQuartz;
 	public static String[] removeExtruderInput;
+	public static boolean addDarkMenagerieMobDrops;
 
 	public static boolean addEssenceSeedRecipe;
 	
@@ -121,6 +122,7 @@ public class ConfigurationHandler
 		disablePlasticCups = config.get("Other Mod Tweaks", "disablePlasticCups", true, "Disable the plastic cups from MFR as they dupe liquids.").getBoolean(true);
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
 		unregisterFusedQuartz = config.get("Other Mod Tweaks", "unregisterFusedQuartz", true, "Having fused quartz be registered under hardened glass doesn't make much sense. This fixes that.").getBoolean(true);
+		addDarkMenagerieMobDrops = config.get("Other Mod Tweaks", "addDarkMenagerieMobDrops", true, "The mobs are interesting but some don't drop anything. This fixes that.").getBoolean(true);
 		
 		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
