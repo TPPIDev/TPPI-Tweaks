@@ -1,28 +1,20 @@
 package tppitweaks.event;
 
-import com.rwtema.menagerie.entities.Ents.EntityAnt;
-import com.rwtema.menagerie.entities.Ents.EntityGhost;
-import com.rwtema.menagerie.entities.Ents.EntityInfestedVillager;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
 import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tppitweaks.client.gui.IRCGui;
 import tppitweaks.client.gui.MaricultureGui;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.recipetweaks.modTweaks.DATweaks;
-import tterrag.rtc.RecipeAddition;
-
-import java.util.Random;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TPPIEventHandler
 {
@@ -77,29 +69,4 @@ public class TPPIEventHandler
 
         return StatCollector.translateToLocal("tppi.splash.text." + rand);
     }
-
-	@RecipeAddition(requiredModids="menagerie")
-	@SubscribeEvent
-	public void onEntityLivingDrops(LivingDropsEvent event)
-	{
-		Random rand = new Random();
-
-		if (event.entityLiving instanceof EntityInfestedVillager && event.source.getEntity() instanceof EntityPlayer && rand.nextInt(100) <= 10 && ConfigurationHandler.addDarkMenagerieMobDrops)
-			event.entityLiving.entityDropItem(new ItemStack(Items.emerald), 1);
-
-		if (event.entityLiving instanceof EntityAnt && ConfigurationHandler.addDarkMenagerieMobDrops)
-		{
-			event.entityLiving.entityDropItem(new ItemStack(Items.string, rand.nextInt(3), 0), 1);
-			if (rand.nextInt(100) <= 10 && event.source.getEntity() instanceof EntityPlayer)
-				event.entityLiving.entityDropItem(new ItemStack(Items.blaze_powder), 1);
-		}
-
-		if (event.entityLiving instanceof EntityGhost && event.source.getEntity() instanceof EntityPlayer && ConfigurationHandler.addDarkMenagerieMobDrops)
-		{
-			if (rand.nextInt(100) <= 10)
-				event.entityLiving.entityDropItem(new ItemStack(Items.diamond), 1);
-			if (rand.nextInt(1000) <= 1)
-				event.entityLiving.entityDropItem(new ItemStack(Items.diamond_sword, 1, rand.nextInt(Items.diamond_sword.getMaxDamage())), 1);
-		}
-	}
 }
