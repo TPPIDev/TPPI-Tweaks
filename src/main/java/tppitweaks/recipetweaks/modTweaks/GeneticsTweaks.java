@@ -14,8 +14,9 @@ public class GeneticsTweaks
 {
     private static NBTTagCompound energyType = new NBTTagCompound();
     private static final String key = "power-system";
-    
-    static {
+
+    static
+    {
         energyType.setInteger(key, 0);
     }
 
@@ -24,53 +25,65 @@ public class GeneticsTweaks
     {
         GameRegistry.addRecipe(new IRecipe()
         {
-            private ItemStack out = null;
-            
+            private ItemStack output;
+
             @Override
-            public boolean matches(InventoryCrafting inv, World w)
+            public boolean matches(InventoryCrafting inv, World world)
             {
-                out = null;
-                
+                int count = 0;
+                ItemStack input = null;
+
                 for (int i = 0; i < inv.getSizeInventory(); i++)
                 {
-                    ItemStack s = inv.getStackInSlot(i);
-                    
-                    if (out != null && s != null)
+                    ItemStack checkStack = inv.getStackInSlot(i);
+                    if (checkStack != null && checkStack.getItem() instanceof ItemMachine)
                     {
-                        out = null;
-                        break;
+                        count++;
                     }
-                    
-                    if (s != null && s.getItem() instanceof ItemMachine)
-                    {
-                        out = s.copy();
-                        out = setEnergyType(out, (out.getTagCompound().getInteger(key) + 1) % 3);
-                    }
+                    input = count == 1 && checkStack != null ? checkStack : input;
                 }
-                
-                return out != null;
+
+                if (count == 1)
+                {
+                    ItemStack out = input.copy();
+                    out.stackSize = 1;
+
+                    if (out.getTagCompound() == null)
+                    {
+                        out.setTagCompound(new NBTTagCompound());
+                    }
+
+                    out = setEnergyType(out, (out.getTagCompound().getInteger(key) + 1) % 3);
+                    this.output = out;
+                }
+                else
+                {
+                    this.output = null;
+                }
+
+                return count == 1 && output != null;
             }
-            
+
+            @Override
+            public ItemStack getCraftingResult(InventoryCrafting inv)
+            {
+                return output.copy();
+            }
+
             @Override
             public int getRecipeSize()
             {
                 return 1;
             }
-            
+
             @Override
             public ItemStack getRecipeOutput()
             {
-                return out.copy();
-            }
-            
-            @Override
-            public ItemStack getCraftingResult(InventoryCrafting p_77572_1_)
-            {
-                return out.copy();
+                return output;
             }
         });
     }
-    
+
     private static ItemStack setEnergyType(ItemStack stack, int type)
     {
         ItemStack ret = stack.copy();

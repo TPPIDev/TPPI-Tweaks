@@ -52,6 +52,13 @@ processResources {
     }
 }
 
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': 'tppitweaks.core.CoreTPPITweaks'
+		attributes 'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
+
 task sourceJar(type: Jar) {
     from sourceSets.main.allSource
     classifier = 'sources'
