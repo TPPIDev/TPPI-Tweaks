@@ -8,10 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.event.EntityAnt;
-import tppitweaks.event.EntityGhost;
-import tppitweaks.event.EntityInfestedVillager;
 import tterrag.rtc.RecipeAddition;
+
+import com.rwtema.menagerie.entities.Ents.EntityAnt;
+import com.rwtema.menagerie.entities.Ents.EntityGhost;
+import com.rwtema.menagerie.entities.Ents.EntityInfestedVillager;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class MenagerieTweaks
