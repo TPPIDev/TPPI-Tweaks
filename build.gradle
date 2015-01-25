@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    compile "tterrag.rtc:RecipeTweakingCore:MC1.7.10-1.1.0-7"
+    compile "tterrag.rtc:RecipeTweakingCore:MC1.7.10-1.1.0-8"
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 
