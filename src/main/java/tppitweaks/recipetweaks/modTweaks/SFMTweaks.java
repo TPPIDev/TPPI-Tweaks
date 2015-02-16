@@ -44,8 +44,8 @@ public class SFMTweaks
 			        "SSS", 
 			        
 			        'R', new ItemStack(ModItems.tppiMaterial),
-			        'a', Api.instance.materials().materialAnnihilationCore.stack(1),
-			        'f', Api.instance.materials().materialFormationCore.stack(1),
+			        'a', Api.INSTANCE.materials().materialAnnihilationCore.stack(1),
+			        'f', Api.INSTANCE.materials().materialFormationCore.stack(1),
 			        'I', "ingotIron", 
 			        'S', "stone"
 			));
@@ -55,7 +55,7 @@ public class SFMTweaks
 					 "IRI", 
 					 "GPG", 
 					 
-					 'R', Api.instance.materials().materialFluixDust.stack(1), 
+					 'R', Api.INSTANCE.materials().materialFluixDust.stack(1), 
 					 'G', "blockGlass", 
 					 'I', "ingotIron",
 					 'P', Blocks.heavy_weighted_pressure_plate 
@@ -68,7 +68,7 @@ public class SFMTweaks
 
 						'B', "blockLapis",
 						'I', ModBlocks.blockCableRelay,
-						'f', Api.instance.materials().materialFluixDust.stack(1)
+						'f', Api.INSTANCE.materials().materialFluixDust.stack(1)
 			));
 
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCableInput),
@@ -86,15 +86,15 @@ public class SFMTweaks
 						"rrr",
 
 						'r', "dustRedstone",
-						't', Api.instance.parts().partLevelEmitter.stack(1),
+						't', Api.INSTANCE.parts().partLevelEmitter.stack(1),
 						'I', ModBlocks.blockCable
 			));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableIntake, 1, 0), ModBlocks.blockCable, Blocks.hopper, Blocks.dropper, Api.instance.parts().partInterface.stack(1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableIntake, 1, 0), ModBlocks.blockCable, Blocks.hopper, Blocks.dropper, Api.INSTANCE.parts().partInterface.stack(1)));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableIntake, 1, 8), new ItemStack(ModBlocks.blockCableIntake, 1, 0), Api.instance.materials().materialCalcProcessor.stack(1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableIntake, 1, 8), new ItemStack(ModBlocks.blockCableIntake, 1, 0), Api.INSTANCE.materials().materialCalcProcessor.stack(1)));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableBreaker), ModBlocks.blockCable, Items.iron_pickaxe, Blocks.dispenser, Api.instance.parts().partInterface.stack(1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableBreaker), ModBlocks.blockCable, Items.iron_pickaxe, Blocks.dispenser, Api.INSTANCE.parts().partInterface.stack(1)));
 		}
 	}
 }
