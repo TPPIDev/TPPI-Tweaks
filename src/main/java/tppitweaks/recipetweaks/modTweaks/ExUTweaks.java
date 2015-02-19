@@ -43,6 +43,7 @@ public class ExUTweaks
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 3, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 4, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
 		}
+		TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.curtain, 0, TweakingAction.CHANGED, "Recipe changed to force black wool", "for compat with Malisis' Doors");
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -229,6 +230,8 @@ public class ExUTweaks
 		
 		if (Loader.isModLoaded("gregtech_addon"))
 			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(ExtraUtils.curtain, "xx", "xx", "xx", 'x', "blockWoolBlack"));
 	}
 	
 	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.WORLD_LOAD)
