@@ -27,9 +27,9 @@ public class ModItems
 					"dsd",
 					"CdC",
 		                                                    
-					'C', Api.instance.materials().materialCalcProcessor.stack(1),
+					'C', Api.INSTANCE.materials().materialCalcProcessor.stack(1),
 					's', "itemSilicon",
-					'd', Api.instance.materials().materialFluixDust.stack(1)
+					'd', Api.INSTANCE.materials().materialFluixDust.stack(1)
 			));
 			/* @formatter:on */
         }
