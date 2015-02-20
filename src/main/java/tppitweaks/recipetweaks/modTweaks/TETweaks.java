@@ -7,13 +7,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import thermalexpansion.block.TEBlocks;
-import thermalexpansion.block.cell.BlockCell;
-import thermalexpansion.item.TEFlorbs;
-import thermalexpansion.item.TEItems;
-import thermalexpansion.util.crafting.FurnaceManager;
-import thermalexpansion.util.crafting.PulverizerManager;
-import thermalfoundation.item.TFItems;
+import cofh.thermalexpansion.block.TEBlocks;
+import cofh.thermalexpansion.block.cell.BlockCell;
+import cofh.thermalexpansion.item.TEFlorbs;
+import cofh.thermalexpansion.item.TEItems;
+import cofh.thermalexpansion.util.crafting.FurnaceManager;
+import cofh.thermalexpansion.util.crafting.PulverizerManager;
+import cofh.thermalfoundation.item.TFItems;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
@@ -73,12 +73,12 @@ public class TETweaks
 				'p', Blocks.piston,
 				't', "ingotTin",
 				'c', Blocks.chest,
-				'n', thermalexpansion.item.TEItems.pneumaticServo.copy()
+				'n', cofh.thermalexpansion.item.TEItems.pneumaticServo.copy()
 			}));
 		}
 		
 		if (OreDictionary.getOres("dustRuby").size() != 0)
-			thermalexpansion.util.crafting.PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
+			cofh.thermalexpansion.util.crafting.PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
 		if (OreDictionary.getOres("dustTinyWood").size() != 0)
 		{
 			ItemStack res = OreDictionary.getOres("dustTinyWood").get(0).copy();
