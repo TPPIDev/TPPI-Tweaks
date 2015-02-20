@@ -26,12 +26,7 @@ public class TPPIEventHandler
     {
         if (event.gui instanceof GuiMainMenu)
         {
-            if (shouldLoadGUI && ConfigurationHandler.showMaricultureGui)
-            {
-                event.gui = new MaricultureGui();
-                shouldLoadGUI = false;
-            }
-            else if (shouldLoadGUI && ConfigurationHandler.showIRCGui)
+        	if (shouldLoadGUI && ConfigurationHandler.showIRCGui)
             {
                 event.gui = new IRCGui();
                 shouldLoadGUI = false;

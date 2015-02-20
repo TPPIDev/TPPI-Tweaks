@@ -23,9 +23,6 @@ public class IC2Tweaks
 	@RecipeRemoval(requiredModids="IC2")
 	public static void init()
 	{
-		if (ConfigurationHandler.removeStupidEnergyCrystalRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(Ic2Items.energyCrystal.getItem(), -1, TweakingAction.REMOVED, "Recipe from dartcraft because", "it is imbalanced with vanilla IC2");
-		
 		TweakingRegistry.markItemForRecipeRemoval(Ic2Items.iridiumDrill.getItem(), -1);
 		TweakingRegistry.markItemForRecipeRemoval(Ic2Items.mvTransformer.getItem(), 4);
 		TweakingRegistry.markItemForRecipeRemoval(Ic2Items.weedEx.getItem(), -1);

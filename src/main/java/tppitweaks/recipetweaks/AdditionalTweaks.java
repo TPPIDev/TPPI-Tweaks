@@ -31,27 +31,7 @@ public class AdditionalTweaks
 			for (ItemStack stack1 : OreDictionary.getOres("ingotZinc"))
 				GameRegistry.addSmelting(newStack, stack1.copy(), 0.1F);
 		}
-		
-		// fixing fused quartz
-		try
-		{
-			int id = OreDictionary.getOreID("glassHardened");
-			Field f = OreDictionary.class.getDeclaredField("oreStacks");
-			f.setAccessible(true);
-			HashMap<Integer, ArrayList<ItemStack>> temp = (HashMap<Integer, ArrayList<ItemStack>>) f.get(null);
-			ArrayList<ItemStack> glasses = (ArrayList<ItemStack>) temp.get(id).clone();
-			for (int i = 0; i < glasses.size(); i++)
-				if (glasses.get(i).getUnlocalizedName().toLowerCase().contains("fused"))
-					glasses.remove(i);
-			temp.remove(id);
-			temp.put(id, glasses);
-			f.set(null, temp);
-		}
-		catch (Throwable t)
-		{
-			TPPITweaks.logger.error("Fixing EnderIO via reflection failed!");
-			t.printStackTrace();
-		}
+
 	}
 	
 	public static void addMiscRecipes()

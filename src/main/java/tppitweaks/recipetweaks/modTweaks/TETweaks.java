@@ -1,5 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import mekanism.common.Mekanism;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,7 @@ import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TETweaks
@@ -28,8 +30,14 @@ public class TETweaks
 	public static void init()
 	{
 		if (ConfigurationHandler.harderActivatorRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(thermalexpansion.block.TEBlocks.blockDevice, 2, TweakingAction.CHANGED, "Recipe requires steel", "to make this a later game item");
+			TweakingRegistry.markItemForRecipeRemoval(TEBlocks.blockDevice, 2, TweakingAction.CHANGED, "Recipe requires steel", "to make this a later game item");
 
+		if (ConfigurationHandler.nerfTECaches)
+		{
+			TweakingRegistry.markItemForRecipeRemoval(TEBlocks.blockCache, 1, TweakingAction.CHANGED, "Added Bin to basic recipes.");
+			TweakingRegistry.markItemForRecipeRemoval(TEBlocks.blockCache, 2, TweakingAction.CHANGED, "Added Bin to basic recipes.");
+		}
+		
 		TweakingRegistry.markItemForRecipeRemoval(TEItems.sawdustCompressed.getItem(), TEItems.sawdustCompressed.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary.");
 		TweakingRegistry.markItemForRecipeRemoval(TEFlorbs.florb.getItem(), TEFlorbs.florb.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary");
 		TweakingRegistry.markItemForRecipeRemoval(TEFlorbs.florbMagmatic.getItem(), TEFlorbs.florbMagmatic.getItemDamage(), TweakingAction.NOTE, "Recipe edited to be", "ore dictionary");
@@ -76,6 +84,35 @@ public class TETweaks
 			ItemStack res = OreDictionary.getOres("dustTinyWood").get(0).copy();
 			res.stackSize = 2;
 			PulverizerManager.addIngotNameToDustRecipe(1000, "stickWood", res);
+		}
+		
+		if (ConfigurationHandler.nerfTECaches)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 1), new Object[]{
+				" t ",
+				"tbt",
+				" t ",
+				't', "ingotTin",
+				'b', Loader.isModLoaded("Mekanism") ? new ItemStack(Mekanism.BasicBlock, 1, 6) : "logWood"
+			}));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 2), new Object[]{
+				" i ",
+				"ici",
+				" i ",
+				'i', "ingotInvar",
+				'c', new ItemStack(TEBlocks.blockCache, 1, 1)
+			}));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 2), new Object[]{
+				"iti",
+				"tbt",
+				"iti",
+				'i', "ingotInvar",
+				't', "ingotTin",
+				'b', Loader.isModLoaded("Mekanism") ? new ItemStack(Mekanism.BasicBlock, 1, 6) : "logWood"
+			}));
+			
 		}
 		
 		OreDictionary.registerOre("dustWood", TEItems.sawdust.copy());
