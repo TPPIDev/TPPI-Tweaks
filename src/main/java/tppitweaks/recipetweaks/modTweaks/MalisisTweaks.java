@@ -16,7 +16,7 @@ public class MalisisTweaks
         TweakingRegistry.markItemForRecipeRemoval(MalisisDoors.Items.curtainsItem, 0, TweakingAction.CHANGED, "Recipe changed to force red wool", "for compat with Extra Utils");
     }
 
-    @RecipeAddition(requiredModids = "malisisdoords")
+    @RecipeAddition(requiredModids = "malisisdoors")
     public static void addRecipes()
     {
         GameRegistry.addRecipe(new ShapedOreRecipe(MalisisDoors.Items.curtainsItem, "xx", "xx", "xx", 'x', "blockWoolRed"));
