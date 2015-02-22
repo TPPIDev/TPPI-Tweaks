@@ -14,8 +14,8 @@ public class BotaniaTweaks {
 	@RecipeAddition(requiredModids = {"Botania","ThaumicTinkerer"})
 	public static void addSmokeyQuartzConversion()
 	{
-		TweakingRegistry.addTweakedTooltip(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class), 0, TweakingAction.NOTE, "Added recipe to convert","between the two types.");
-		TweakingRegistry.addTweakedTooltip(ModItems.quartz, 0, TweakingAction.NOTE, "Added recipe to convert","between the two types.");
+		TweakingRegistry.addTweakedTooltip(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class), 0, TweakingAction.NOTE, "Added recipe to convert to","the Botania version.");
+		TweakingRegistry.addTweakedTooltip(ModItems.quartz, 0, TweakingAction.NOTE, "Added recipe to convert to","the ThaumicTinkerer version.");
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.quartz, ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class), ModItems.quartz));

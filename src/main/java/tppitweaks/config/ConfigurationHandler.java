@@ -59,6 +59,8 @@ public class ConfigurationHandler
 
 	public static boolean addGreenHeartRecipe;
 	
+	public static boolean harderAdvancedItemCollectorRecipe;
+	
 	public static boolean nerfTECaches;
 
 	public static boolean showIRCGui;
@@ -122,6 +124,8 @@ public class ConfigurationHandler
 		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);
 		nerfMiner = config.get("Mekanism Tweaks", "nerfDigitalMiner", true, "Make the recipe for the digital miner a bit...ok a lot harder").getBoolean(true);
 		disableUniversalCables = config.get("Mekanism Tweaks", "disableUniversalCables", false, "Remove the recipe for universal cables.").getBoolean(false);
+		
+		harderAdvancedItemCollectorRecipe = config.get("Random Things Tweaks", "harderAdvancedItemCollectorRecipe", true, "Increase the cost of the advanced item collector.").getBoolean(true);
 		
 		nerfTECaches = config.get("Thermal Expansion Tweaks", "nerfTECaches", true, "Add Mekanism Bins to basic cache recipe.").getBoolean(true);
 		

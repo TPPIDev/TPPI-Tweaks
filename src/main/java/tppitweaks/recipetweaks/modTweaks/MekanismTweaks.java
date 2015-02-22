@@ -193,19 +193,19 @@ public class MekanismTweaks
 		}));
 
 		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicAlloy), new Object[]{
+			"oao",
 			"aea",
-			"ede",
-			"aea",
+			"oao",
 
-			'a', Mekanism.EnrichedAlloy,
+			'o', "ingotRefinedObsidian",
 			'e', Mekanism.ElectrolyticCore,
-			'd', Items.diamond
+			'a', Mekanism.ReinforcedAlloy
 		}));
 
 		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 1), new Object[]{
-			"tst",
-			"eae",
-			"tst",
+			"asa",
+			"ete",
+			"asa",
 
 			't', Mekanism.TeleportationCore,
 			's', Mekanism.SpeedUpgrade,
