@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import com.rwtema.extrautils.ExtraUtils;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -9,6 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import tconstruct.plugins.te4.TinkerTE4;
+import tconstruct.smeltery.TinkerSmeltery;
+import tconstruct.tools.TinkerTools;
+import tconstruct.world.TinkerWorldProxyCommon;
+import thaumic.tinkerer.common.compat.TinkersConstructCompat;
 import tppitweaks.TPPITweaks;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
@@ -18,6 +24,7 @@ import tterrag.rtc.RecipeAddition.EventTime;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
+import xreliquary.init.XRRecipes;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -137,57 +144,67 @@ public class ExUTweaks
 			    	'F', Blocks.furnace
 			    ));
 		}
-		if(ConfigurationHandler.nerfAngelRings && !OreDictionary.getOres("blockNetherStar").isEmpty()) {
+		if(ConfigurationHandler.nerfAngelRings) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 0),
-					"MAM",
-					"ANA",
-					"SAS",
+					"GUG",
+					"NSN",
+					"WBW",
 
-					'M', new ItemStack(Blocks.glass),
-					'A', new ItemStack(Items.golden_apple, 1, 1),
-					'N', "blockNetherStar",
-					'S', new ItemStack(ExtraUtils.soul)
+					'G', new ItemStack(Blocks.glass),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
 				));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 1),
-					"MAM",
-					"ANA",
-					"SAS",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 1),
+					"FUF",
+					"NSN",
+					"WBW",
 
-					'M', new ItemStack(Items.feather),
-					'A', new ItemStack(Items.golden_apple, 1, 1),
-					'N', "blockNetherStar",
-					'S', new ItemStack(ExtraUtils.soul)
-				));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 2),
-					"DAP",
-					"ANA",
-					"SAS",
+					'F', new ItemStack(Items.feather),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+				));			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 2),
+					"DUP",
+					"NSN",
+					"WBW",
 
 					'D', new ItemStack(Items.dye, 1, 5),
 					'P', new ItemStack(Items.dye, 1, 9),
-					'A', new ItemStack(Items.golden_apple, 1, 1),
-					'N', "blockNetherStar",
-					'S', new ItemStack(ExtraUtils.soul)
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
 				));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 3),
-					"MAM",
-					"ANA",
-					"SAS",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 3),
+					"LUL",
+					"NSN",
+					"WBW",
 
-					'M', new ItemStack(Items.leather),
-					'A', new ItemStack(Items.golden_apple, 1, 1),
-					'N', "blockNetherStar",
-					'S', new ItemStack(ExtraUtils.soul)
+					'L', new ItemStack(Items.leather),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
 				));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 4),
-					"MAM",
-					"ANA",
-					"SAS",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 4),
+					"GUG",
+					"NSN",
+					"WBW",
 
-					'M', new ItemStack(Items.gold_nugget),
-					'A', new ItemStack(Items.golden_apple, 1, 1),
-					'N', "blockNetherStar",
-					'S', new ItemStack(ExtraUtils.soul)
+					'G', new ItemStack(Items.gold_nugget),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
 				));
 		}
 
