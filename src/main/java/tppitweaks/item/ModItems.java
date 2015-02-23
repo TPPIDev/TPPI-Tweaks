@@ -1,6 +1,9 @@
 package tppitweaks.item;
 
+import cofh.api.modhelpers.ThermalExpansionHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import appeng.core.Api;
@@ -32,6 +35,11 @@ public class ModItems
 					'd', Api.INSTANCE.materials().materialFluixDust.stack(1)
 			));
 			/* @formatter:on */
+        }
+        
+        if (Loader.isModLoaded("ThermalExpansion") && ConfigurationHandler.harderDraconiumBlendRecipe)
+        {
+        	ThermalExpansionHelper.addTransposerFill(12000, new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 76), new ItemStack(ModItems.tppiMaterial, 1, 4), new FluidStack(FluidRegistry.getFluid("pyrotheum"), 1000), false);
         }
     }
 }

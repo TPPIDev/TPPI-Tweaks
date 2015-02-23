@@ -43,7 +43,7 @@ public class ExUTweaks
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.generator, 3, TweakingAction.CHANGED, "Recipe requires enderium", "because it produces tonnes of RF");
 		}
-		if(ConfigurationHandler.nerfAngelRings && !OreDictionary.getOres("blockNetherStar").isEmpty()) {
+		if(ConfigurationHandler.nerfAngelRings) {
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 0, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 1, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 2, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
@@ -51,6 +51,10 @@ public class ExUTweaks
 			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 4, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
 		}
 		TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.curtain, 0, TweakingAction.CHANGED, "Recipe changed to force black wool", "for compat with Malisis' Doors");
+		
+		if(ConfigurationHandler.harderDiamondSpikeRecipe) {
+			TweakingRegistry.markItemForRecipeRemoval(GameRegistry.findItem("ExtraUtilities","spike_base_diamond"), 0, TweakingAction.CHANGED, "Recipe balanced to account", "for more valuable drops.");
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -249,6 +253,18 @@ public class ExUTweaks
 			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(ExtraUtils.curtain, "xx", "xx", "xx", 'x', "blockWoolBlack"));
+		
+		if (ConfigurationHandler.harderDiamondSpikeRecipe)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(GameRegistry.findItem("ExtraUtilities", "spike_base_diamond"), 3, 0),
+					" D ",
+					"DSD",
+					"SBS",
+					'D', new ItemStack(Items.diamond_sword),
+					'S', new ItemStack(GameRegistry.findItem("ExtraUtilities", "spike_base_gold")),
+					'B', Loader.isModLoaded("RandomThings") ? new ItemStack(GameRegistry.findItem("RandomThings", "spiritBinder")) : new ItemStack(Items.nether_star)
+			));
+		}
 	}
 	
 	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.WORLD_LOAD)

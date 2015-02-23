@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class ConfigurationHandler
 {
+	public static boolean harderDraconiumBlendRecipe;
+	public static boolean disableDraconicChest;
+	
 	public static boolean enderChestNerf;
 	public static boolean enderPouchNerf;
 	public static boolean enderTankNerf;
@@ -30,6 +33,7 @@ public class ConfigurationHandler
 	public static boolean disablePlasticCups;
 
 	public static boolean fixExURecipes;
+	public static boolean harderDiamondSpikeRecipe;
 	public static boolean nerfEnderQuarry;
 	
 	public static boolean nerfRedstoneGen;
@@ -62,7 +66,7 @@ public class ConfigurationHandler
 	public static boolean harderAdvancedItemCollectorRecipe;
 	
 	public static boolean nerfTECaches;
-
+	
 	public static boolean showIRCGui;
 		
 	public static File cfg;
@@ -76,6 +80,9 @@ public class ConfigurationHandler
 		Configuration config = new Configuration(file);
 		config.load();
 
+		harderDraconiumBlendRecipe = config.get("Draconic Evolution Tweaks", "harderDraconiumBlendRecipe", true, "Increase base cost of Draconium Blend for Draconic Evolution.").getBoolean(true);
+		disableDraconicChest = config.get("Draconic Evolution Tweaks", "disableDraconicChest", true, "Disable chest due to performance concerns.").getBoolean(true);
+		
 		enderChestNerf = config.get("Ender Storage Tweaks", "enderChestNerf", true, "EnderStorage Ender Chests require tesseract frames instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
 		enderTankNerf = config.get("Ender Storage Tweaks", "enderTankNerf", true, "EnderStorage Ender Tanks require resonant portable tanks instead of ender pearls.").getBoolean(true);
@@ -98,6 +105,7 @@ public class ConfigurationHandler
 		addDarkMenagerieMobDrops = config.get("Other Mod Tweaks", "addDarkMenagerieMobDrops", true, "The mobs are interesting but some don't drop anything. This fixes that.").getBoolean(true);
 		
 		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
+		harderDiamondSpikeRecipe = config.get("ExtraUtils Tweaks", "harderDiamondSpikeRecipe", true, "Increase cost of diamond spikes to account for more expensive drops in pack.").getBoolean(true);
 		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
 		nerfRedstoneGen = config.get("ExtraUtils Tweaks", "nerfRedstoneGen", true, "Make the Extra Utilities heated redstone generator expensive.").getBoolean(true);
 		nerfEnderGen = config.get("ExtraUtils Tweaks", "nerfEnderGen", true, "Make the Extra Utilities ender generator expensive.").getBoolean(true);
@@ -124,7 +132,7 @@ public class ConfigurationHandler
 		disableMiner = config.get("Mekanism Tweaks", "disableDigitalMiner", false, "Remove the recipe for the digital miner (not really any reason to do this now but I'm not deleting code)").getBoolean(false);
 		nerfMiner = config.get("Mekanism Tweaks", "nerfDigitalMiner", true, "Make the recipe for the digital miner a bit...ok a lot harder").getBoolean(true);
 		disableUniversalCables = config.get("Mekanism Tweaks", "disableUniversalCables", false, "Remove the recipe for universal cables.").getBoolean(false);
-		
+				
 		harderAdvancedItemCollectorRecipe = config.get("Random Things Tweaks", "harderAdvancedItemCollectorRecipe", true, "Increase the cost of the advanced item collector.").getBoolean(true);
 		
 		nerfTECaches = config.get("Thermal Expansion Tweaks", "nerfTECaches", true, "Add Mekanism Bins to basic cache recipe.").getBoolean(true);
