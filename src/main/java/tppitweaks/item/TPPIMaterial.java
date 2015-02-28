@@ -34,7 +34,7 @@ public class TPPIMaterial extends Item
         icons[1] = par1IconRegister.registerIcon("tppitweaks:disassemblerCore");
         icons[2] = par1IconRegister.registerIcon("tppitweaks:miningCore");
         icons[3] = Loader.isModLoaded("Mekanism") ? MekanismTweaks.getCircuitIcon() : par1IconRegister.registerIcon("not:applicable");
-        icons[4] = par1IconRegister.registerIcon("tppitweaks:enderium420");
+        icons[4] = par1IconRegister.registerIcon("tppitweaks:blazeEnderStill");
     }
 
     @Override

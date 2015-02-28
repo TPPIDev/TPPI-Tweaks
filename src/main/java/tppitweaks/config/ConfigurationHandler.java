@@ -17,6 +17,7 @@ public class ConfigurationHandler
 	public static boolean enderPouchNerf;
 	public static boolean enderTankNerf;
 
+	public static boolean disableUncraftingRRChests;
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
 	public static boolean twoReactorGlass;
@@ -32,6 +33,7 @@ public class ConfigurationHandler
 	public static boolean buffUnifierRecipe;
 	public static boolean disablePlasticCups;
 
+	public static boolean enableSoulFragmentRecipes;
 	public static boolean fixExURecipes;
 	public static boolean harderDiamondSpikeRecipe;
 	public static boolean nerfEnderQuarry;
@@ -98,12 +100,13 @@ public class ConfigurationHandler
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		disablePigmenTrophyDrop = config.get("Other Mod Tweaks", "disablePigmenTrophyDrop", true, "Disables pigmen trophies from dropping.").getBoolean(true);
 		
-		tweakJABBA = config.get("Other Mod Tweaks", "tweakJABBA", true, "Alter the JABBA barrel recipe to be a little more complicated, leaving FZ barrels as a \"low-tech\" option").getBoolean(true);
+		tweakJABBA = config.get("Other Mod Tweaks", "tweakJABBA", true, "Increase cost of diamond dolly to put it in line with other ways to move mob spawners.").getBoolean(true);
 		buffUnifierRecipe = config.get("Other Mod Tweaks", "buffUnifierRecipe", true, "Make the unifier cheaper.").getBoolean(true);
 		disablePlasticCups = config.get("Other Mod Tweaks", "disablePlasticCups", true, "Disable the plastic cups from MFR as they dupe liquids.").getBoolean(true);
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
 		addDarkMenagerieMobDrops = config.get("Other Mod Tweaks", "addDarkMenagerieMobDrops", true, "The mobs are interesting but some don't drop anything. This fixes that.").getBoolean(true);
 		
+		enableSoulFragmentRecipes = config.get("ExtraUtils Tweaks", "enableSoulFragmentRecipes", true, "Add in recipes to craft soul fragments to either offset health loss or avoid it.").getBoolean(true);
 		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		harderDiamondSpikeRecipe = config.get("ExtraUtils Tweaks", "harderDiamondSpikeRecipe", true, "Increase cost of diamond spikes to account for more expensive drops in pack.").getBoolean(true);
 		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
@@ -125,6 +128,7 @@ public class ConfigurationHandler
 		addGreenHeartRecipe = config.get("Tinker's Construct Tweaks", "addGreenHeartRecipe", true, "Adds a recipe for the green heart and canister.").getBoolean(true);
 
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
+		disableUncraftingRRChests = config.get("Other Mod Tweaks", "disableUncraftingRRChestsNBarrels", true, "Remove the ability to craft sorting chests into their basic versions to avoid a Thaumcraft essentia exploit.").getBoolean(true);
 		
 		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);

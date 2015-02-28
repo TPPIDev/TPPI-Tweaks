@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import tconstruct.armor.TinkerArmor;
 import tconstruct.plugins.te4.TinkerTE4;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
@@ -264,6 +265,31 @@ public class ExUTweaks
 					'S', new ItemStack(GameRegistry.findItem("ExtraUtilities", "spike_base_gold")),
 					'B', Loader.isModLoaded("RandomThings") ? new ItemStack(GameRegistry.findItem("RandomThings", "spiritBinder")) : new ItemStack(Items.nether_star)
 			));
+		}
+		
+		if (ConfigurationHandler.enableSoulFragmentRecipes)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.soul), 
+					"GSG",
+					"SDS",
+					"GSG",
+					'G', Loader.isModLoaded("TConstruct") ? new ItemStack(TinkerArmor.heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
+					'S', new ItemStack(Items.nether_star),
+					'D', new ItemStack(Blocks.dragon_egg)
+					));
+			if (Loader.isModLoaded("StevesCarts"))
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.soul), 
+						"GSG",
+						"SBS",
+						"GSG",
+						'G', Loader.isModLoaded("TConstruct") ? new ItemStack(TinkerArmor.heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
+						'S', new ItemStack(Items.nether_star),
+						'B', new ItemStack(GameRegistry.findItem("StevesCarts", "BlockMetalStorage"), 1, 2)
+						));
+			}
+		}
+			
 		}
 	}
 	
