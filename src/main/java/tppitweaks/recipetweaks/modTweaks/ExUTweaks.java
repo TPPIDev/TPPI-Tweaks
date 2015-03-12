@@ -289,8 +289,6 @@ public class ExUTweaks
 						));
 			}
 		}
-			
-		}
 	}
 	
 	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.WORLD_LOAD)
