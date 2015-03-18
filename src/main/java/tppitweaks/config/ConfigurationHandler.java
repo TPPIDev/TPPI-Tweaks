@@ -10,14 +10,10 @@ import java.util.Scanner;
 
 public class ConfigurationHandler
 {
-	public static boolean harderDraconiumBlendRecipe;
-	public static boolean disableDraconicChest;
-	
 	public static boolean enderChestNerf;
 	public static boolean enderPouchNerf;
 	public static boolean enderTankNerf;
 
-	public static boolean disableUncraftingRRChests;
 	public static boolean steelReactorCasings;
 	public static boolean glassFuelRods;
 	public static boolean twoReactorGlass;
@@ -81,9 +77,6 @@ public class ConfigurationHandler
 		
 		Configuration config = new Configuration(file);
 		config.load();
-
-		harderDraconiumBlendRecipe = config.get("Draconic Evolution Tweaks", "harderDraconiumBlendRecipe", true, "Increase base cost of Draconium Blend for Draconic Evolution.").getBoolean(true);
-		disableDraconicChest = config.get("Draconic Evolution Tweaks", "disableDraconicChest", true, "Disable chest due to performance concerns.").getBoolean(true);
 		
 		enderChestNerf = config.get("Ender Storage Tweaks", "enderChestNerf", true, "EnderStorage Ender Chests require tesseract frames instead of ender pearls.").getBoolean(true);
 		enderPouchNerf = config.get("Ender Storage Tweaks", "enderPouchNerf", true, "EnderStorage Ender Pouches require pyrotheum dust and liquid ender instead of blaze rods and ender pearls.").getBoolean(true);
@@ -106,7 +99,7 @@ public class ConfigurationHandler
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
 		addDarkMenagerieMobDrops = config.get("Other Mod Tweaks", "addDarkMenagerieMobDrops", true, "The mobs are interesting but some don't drop anything. This fixes that.").getBoolean(true);
 		
-		enableSoulFragmentRecipes = config.get("ExtraUtils Tweaks", "enableSoulFragmentRecipes", true, "Add in recipes to craft soul fragments to either offset health loss or avoid it.").getBoolean(true);
+		enableSoulFragmentRecipes = config.get("ExtraUtils Tweaks", "enableSoulFragmentRecipes", true, "Add in expensive recipes to allow auto-crafting of soul fragments to either offset health loss or avoid it.").getBoolean(true);
 		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
 		harderDiamondSpikeRecipe = config.get("ExtraUtils Tweaks", "harderDiamondSpikeRecipe", true, "Increase cost of diamond spikes to account for more expensive drops in pack.").getBoolean(true);
 		nerfEnderQuarry = config.get("ExtraUtils Tweaks", "nerfEnderQuarry", true, "Make the Extra Utilities ender quarry expensive.").getBoolean(true);
@@ -128,7 +121,6 @@ public class ConfigurationHandler
 		addGreenHeartRecipe = config.get("Tinker's Construct Tweaks", "addGreenHeartRecipe", true, "Adds a recipe for the green heart and canister.").getBoolean(true);
 
 		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
-		disableUncraftingRRChests = config.get("Other Mod Tweaks", "disableUncraftingRRChestsNBarrels", true, "Remove the ability to craft sorting chests into their basic versions to avoid a Thaumcraft essentia exploit.").getBoolean(true);
 		
 		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
