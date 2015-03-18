@@ -6,6 +6,8 @@ import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.world.WorldEvent;
+import tppitweaks.aspecttweaks.AspectTweaks;
 import tppitweaks.client.gui.IRCGui;
 import tppitweaks.client.gui.MaricultureGui;
 import tppitweaks.config.ConfigurationHandler;
@@ -36,6 +38,12 @@ public class TPPIEventHandler
                 ObfuscationReflectionHelper.setPrivateValue(GuiMainMenu.class, (GuiMainMenu) event.gui, getRandTPPISplash(), "splashText", "field_73975_c");
             }
         }
+    }
+    
+    @SubscribeEvent
+    public void worldLoaded(WorldEvent.Load event){
+    	if (Loader.isModLoaded("Thaumcraft"))
+    		AspectTweaks.onWorldLoad();
     }
 
     @SubscribeEvent

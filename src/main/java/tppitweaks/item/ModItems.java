@@ -37,9 +37,11 @@ public class ModItems
 			/* @formatter:on */
         }
         
-        if (Loader.isModLoaded("ThermalExpansion") && ConfigurationHandler.harderDraconiumBlendRecipe)
+        /*  --Commented out in case item is needed for future tweak
+        if (Loader.isModLoaded("ThermalExpansion")
         {
         	ThermalExpansionHelper.addTransposerFill(12000, new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 76), new ItemStack(ModItems.tppiMaterial, 1, 4), new FluidStack(FluidRegistry.getFluid("pyrotheum"), 1000), false);
         }
+        */
     }
 }

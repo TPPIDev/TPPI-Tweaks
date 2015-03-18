@@ -56,6 +56,10 @@ public class ExUTweaks
 		if(ConfigurationHandler.harderDiamondSpikeRecipe) {
 			TweakingRegistry.markItemForRecipeRemoval(GameRegistry.findItem("ExtraUtilities","spike_base_diamond"), 0, TweakingAction.CHANGED, "Recipe balanced to account", "for more valuable drops.");
 		}
+		
+		if(ConfigurationHandler.enableSoulFragmentRecipes){
+			TweakingRegistry.addTweakedTooltip(ExtraUtils.soul, 0, TweakingAction.NOTE, "Added secondary recipes for souls, which can","be auto-crafted to not lose health.");
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

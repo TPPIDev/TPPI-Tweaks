@@ -1,5 +1,6 @@
 package tppitweaks;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -10,8 +11,11 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import tppitweaks.aspecttweaks.AspectTweaks;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.command.CommandGetInvolved;
 import tppitweaks.command.CommandOres;
@@ -66,6 +70,9 @@ public class TPPITweaks
 
 		if (event.getSide().isClient())
 			proxy.initTickHandler();
+		
+		if (Loader.isModLoaded("Thaumcraft"))
+			AspectTweaks.init();
 	}
 
 	@EventHandler
