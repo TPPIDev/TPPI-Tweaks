@@ -57,6 +57,8 @@ public class ConfigurationHandler
 	public static boolean nerfMiner;
 	public static boolean disableUniversalCables;
 	
+	public static boolean addIridiumPanelRecipe;
+	
 	public static boolean addOsmiumToOreWasher;
 
 	public static boolean addGreenHeartRecipe;
@@ -89,6 +91,7 @@ public class ConfigurationHandler
 		disableDeconstructor = config.get("Other Mod Tweaks", "disableArcaneDeconstructor", true, "Disable the arcane deconstructor. It has serious dupes with witchery and other mods. RE-ENABLING THIS WILL OPEN YOUR SERVER TO MAJOR DUPES.").getBoolean(true);
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", false, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(false);
 		twoReactorGlass = config.get("Other Mod Tweaks", "twoReactorGlass", true, "Big Reactors\' reactor glass recipe gives two reactor glass in exchange for the harder recipe.").getBoolean(true);
+		addIridiumPanelRecipe = config.get("Other Mod Tweaks", "addIridiumPanelRecipe", true, "Add additional recipe for the Iridium Reinforced Plate, because AOBD removes all ways to process the ore into the appropriate type.").getBoolean(true);
 		
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		disablePigmenTrophyDrop = config.get("Other Mod Tweaks", "disablePigmenTrophyDrop", true, "Disables pigmen trophies from dropping.").getBoolean(true);

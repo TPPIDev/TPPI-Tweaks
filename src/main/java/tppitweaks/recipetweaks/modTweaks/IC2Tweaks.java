@@ -62,6 +62,17 @@ public class IC2Tweaks
 				ic2.core.block.machine.tileentity.TileEntityCompressor.addRecipe("blockCharcoal", 1, new ItemStack(Items.coal, 1, 0));
 			}
 		}
+		
+		if(ConfigurationHandler.addIridiumPanelRecipe){
+			GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.iridiumPlate,
+					"IPI",
+					"PDP",
+					"IPI",
+					'I', "ingotIridium",
+					'P', Ic2Items.advancedAlloy,
+					'D', "gemDiamond"
+			));
+		}
 	}
 	
 	@RecipeAddition(requiredModids="IC2", time=EventTime.WORLD_LOAD)
