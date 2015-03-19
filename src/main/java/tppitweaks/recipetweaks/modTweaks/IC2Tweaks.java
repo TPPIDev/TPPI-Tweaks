@@ -31,6 +31,10 @@ public class IC2Tweaks
 		TweakingRegistry.markItemForRecipeRemoval(Ic2Items.nanoHelmet.getItem(), -1);
 		TweakingRegistry.markItemForRecipeRemoval(Ic2Items.electricJetpack.getItem(), -1);
 		TweakingRegistry.markItemForRecipeRemoval(Ic2Items.carbonFiber.getItem(), -1);
+		
+		if (ConfigurationHandler.addIridiumPanelRecipe){
+			TweakingRegistry.addTweakedTooltip(Ic2Items.iridiumPlate.getItem(), 0, TweakingAction.ADDED, "Added secondary recipe for","AOBD compatibility.");
+		}
 	}
 	
 	@RecipeAddition(requiredModids="IC2", time=EventTime.INIT)

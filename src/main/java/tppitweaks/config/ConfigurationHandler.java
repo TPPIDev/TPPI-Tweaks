@@ -49,6 +49,7 @@ public class ConfigurationHandler
 	public static boolean makeEIOHardModeEasier;
 	public static String[] removeExtruderInput;
 	public static boolean addDarkMenagerieMobDrops;
+	public static boolean harderQuarryRecipe;
 	
 	public static boolean harderActivatorRecipe;
 	public static boolean harderDisassemblerRecipe;
@@ -92,6 +93,7 @@ public class ConfigurationHandler
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", false, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(false);
 		twoReactorGlass = config.get("Other Mod Tweaks", "twoReactorGlass", true, "Big Reactors\' reactor glass recipe gives two reactor glass in exchange for the harder recipe.").getBoolean(true);
 		addIridiumPanelRecipe = config.get("Other Mod Tweaks", "addIridiumPanelRecipe", true, "Add additional recipe for the Iridium Reinforced Plate, because AOBD removes all ways to process the ore into the appropriate type.").getBoolean(true);
+		harderQuarryRecipe = config.get("Other Mod Tweaks", "harderQuarryRecipe", true, "Replace the Diamond Pickaxe in the Quarry with a Diamond Drill to increase initial investment while Greg's away.").getBoolean(true);
 		
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		disablePigmenTrophyDrop = config.get("Other Mod Tweaks", "disablePigmenTrophyDrop", true, "Disables pigmen trophies from dropping.").getBoolean(true);
