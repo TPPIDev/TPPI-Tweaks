@@ -1,11 +1,18 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.quartz.ItemDarkQuartz;
+import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
+import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.recipe.RecipeRuneAltar;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.item.ModItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -19,5 +26,12 @@ public class BotaniaTweaks {
 		
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.quartz, ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class), ModItems.quartz));
+		
+		if(ConfigurationHandler.enableOcelotAndWolfEggRecipes){
+			TweakingRegistry.addTweakedTooltip(Items.spawn_egg, 98, TweakingAction.ADDED, "Added Runic Altar recipe to craft.");
+			TweakingRegistry.addTweakedTooltip(Items.spawn_egg, 95, TweakingAction.ADDED, "Added Runic Altar recipe to craft.");
+			BotaniaAPI.runeAltarRecipes.add(new RecipeRuneAltar(new ItemStack(Items.spawn_egg, 1, 98), 75000, new ItemStack(Items.egg), new ItemStack(Items.fish, 1, 0), new ItemStack(Items.fish, 1, 1), new ItemStack(Blocks.sapling, 1, 3), new ItemStack(GameRegistry.findItem("Botania", "rune"), 1, 8)));
+			BotaniaAPI.runeAltarRecipes.add(new RecipeRuneAltar(new ItemStack(Items.spawn_egg, 1, 95), 75000, new ItemStack(Items.egg), new ItemStack(Items.bone, 1, 0), new ItemStack(Items.bone, 1, 0), new ItemStack(Items.stick, 1, 0), new ItemStack(GameRegistry.findItem("Botania", "rune"), 1, 8)));
+		}
 	}
 }

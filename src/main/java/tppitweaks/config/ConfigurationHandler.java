@@ -20,6 +20,7 @@ public class ConfigurationHandler
 
 	public static boolean eloraamBreakersAndDeployers;
 	public static boolean disablePigmenTrophyDrop;
+	public static boolean enableOcelotAndWolfEggRecipes;
 
 	public static boolean ic2TEGlassInterchangeability;
 	public static boolean tweakDA;
@@ -97,6 +98,7 @@ public class ConfigurationHandler
 		
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		disablePigmenTrophyDrop = config.get("Other Mod Tweaks", "disablePigmenTrophyDrop", true, "Disables pigmen trophies from dropping.").getBoolean(true);
+		enableOcelotAndWolfEggRecipes = config.get("Other Mod Tweaks", "enableOcelotAndWolfEggRecipes", true, "Add runic altar recipes to create spawn eggs for ocelots and wolves, to make Witchery less painful with the larger default biome size.").getBoolean(true);
 		
 		tweakJABBA = config.get("Other Mod Tweaks", "tweakJABBA", true, "Increase cost of diamond dolly to put it in line with other ways to move mob spawners.").getBoolean(true);
 		buffUnifierRecipe = config.get("Other Mod Tweaks", "buffUnifierRecipe", true, "Make the unifier cheaper.").getBoolean(true);
