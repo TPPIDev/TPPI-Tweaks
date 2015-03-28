@@ -2,13 +2,14 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import ic2.core.Ic2Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import cpw.mods.fml.common.registry.GameRegistry;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BuildcraftTweaks {
 	@RecipeRemoval(requiredModids={"IC2","BuildCraft|Factory"})
@@ -29,7 +30,7 @@ public class BuildcraftTweaks {
 					'R', "dustRedstone",
 					'G', "gearGold",
 					'D', "gearDiamond",
-					'A', Ic2Items.diamondDrill
+					'A', new ItemStack(Ic2Items.diamondDrill.getItem(), 1, OreDictionary.WILDCARD_VALUE)
 					));
 		}
 	}
