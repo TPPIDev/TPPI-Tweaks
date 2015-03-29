@@ -32,13 +32,13 @@ public class ConfigGui extends GuiScreen
 	{
 		this.drawDefaultBackground();
 
-		this.drawCenteredString(this.fontRenderer, "Config Options", this.width / 2, 10, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "Use hard mode configs?", this.width / 2, 40, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, "Config Options", this.width / 2, 10, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, "Use hard mode configs?", this.width / 2, 40, 0xFFFFFF);
 
-		this.drawCenteredString(this.fontRenderer, "The hard mode config enables all GT nerfs, as well as all", this.width / 2, 114, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "expsnsive versions of recpies", this.width / 2, 124, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "NOTE: You will have to restart Minecraft in order for the", this.width / 2, 134, 0xFFFFFF);
-		this.drawCenteredString(this.fontRenderer, "config change to take effect", this.width / 2, 144, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, "The hard mode config enables all GT nerfs, as well as all", this.width / 2, 114, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, "expsnsive versions of recpies", this.width / 2, 124, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, "NOTE: You will have to restart Minecraft in order for the", this.width / 2, 134, 0xFFFFFF);
+		this.drawCenteredString(this.fontRendererObj, "config change to take effect", this.width / 2, 144, 0xFFFFFF);
 
 		super.drawScreen(par1, par2, par3);
 	}

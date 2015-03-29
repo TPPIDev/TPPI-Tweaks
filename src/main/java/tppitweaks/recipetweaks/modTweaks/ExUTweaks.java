@@ -1,14 +1,21 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import com.rwtema.extrautils.ExtraUtils;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import tconstruct.armor.TinkerArmor;
+import tconstruct.plugins.te4.TinkerTE4;
+import tconstruct.smeltery.TinkerSmeltery;
+import tconstruct.tools.TinkerTools;
+import tconstruct.world.TinkerWorldProxyCommon;
+import thaumic.tinkerer.common.compat.TinkersConstructCompat;
 import tppitweaks.TPPITweaks;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
@@ -18,23 +25,40 @@ import tterrag.rtc.RecipeAddition.EventTime;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-import extrautils.ExtraUtils;
+import xreliquary.init.XRRecipes;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 public class ExUTweaks
 {
 	@RecipeRemoval(requiredModids="ExtraUtilities")
 	public static void init() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.enderQuarry.blockID, -1, TweakingAction.CHANGED, "Recipe changed to better", "balance with BC quarry recipe");
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.decorative1Id, 11, TweakingAction.CHANGED, "Recipe changed for ender quarry");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.enderQuarry, -1, TweakingAction.CHANGED, "Recipe changed to better", "balance with BC quarry recipe");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.decorative1, 11, TweakingAction.CHANGED, "Recipe changed for ender quarry");
 		}
 		if(ConfigurationHandler.nerfRedstoneGen) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 4, TweakingAction.CHANGED, "Recipe requires 2xcompressed redstone", "because it produces tonnes of RF");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.generator, 4, TweakingAction.CHANGED, "Recipe requires 2xcompressed redstone", "because it produces tonnes of RF");
 		}
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
-			TweakingRegistry.markItemForRecipeRemoval(extrautils.ExtraUtils.generatorId, 3, TweakingAction.CHANGED, "Recipe requires enderium", "because it produces tonnes of RF");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.generator, 3, TweakingAction.CHANGED, "Recipe requires enderium", "because it produces tonnes of RF");
+		}
+		if(ConfigurationHandler.nerfAngelRings) {
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 0, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 1, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 2, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 3, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
+			TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.angelRing, 4, TweakingAction.CHANGED, "Recipe balanced around other", "mod's creative flight abilities");
+		}
+		TweakingRegistry.markItemForRecipeRemoval(ExtraUtils.curtain, 0, TweakingAction.CHANGED, "Recipe changed to force black wool", "for compat with Malisis' Doors");
+		
+		if(ConfigurationHandler.harderDiamondSpikeRecipe) {
+			TweakingRegistry.markItemForRecipeRemoval(GameRegistry.findItem("ExtraUtilities","spike_base_diamond"), 0, TweakingAction.CHANGED, "Recipe balanced to account", "for more valuable drops.");
+		}
+		
+		if(ConfigurationHandler.enableSoulFragmentRecipes){
+			TweakingRegistry.addTweakedTooltip(ExtraUtils.soul, 0, TweakingAction.NOTE, "Added secondary recipes for souls, which can","be auto-crafted to not lose health.");
 		}
 	}
 	
@@ -43,43 +67,43 @@ public class ExUTweaks
 	public static void addRecipes() {
 		if(ConfigurationHandler.nerfEnderQuarry) {
 				
-			ItemStack portal = new ItemStack(extrautils.ExtraUtils.portal);
-			ItemStack quadDirt = new ItemStack(extrautils.ExtraUtils.cobblestoneCompr, 1, 11);
-			ItemStack enderObs = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 1);
-			ItemStack magicalWood = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 8);
-			ItemStack enderCore = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 11);
-			ItemStack DECM = new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12);
+			ItemStack portal = new ItemStack(ExtraUtils.portal);
+			ItemStack quadDirt = new ItemStack(ExtraUtils.cobblestoneCompr, 1, 11);
+			ItemStack enderObs = new ItemStack(ExtraUtils.decorative1, 1, 1);
+			ItemStack magicalWood = new ItemStack(ExtraUtils.decorative1, 1, 8);
+			ItemStack enderCore = new ItemStack(ExtraUtils.decorative1, 1, 11);
+			ItemStack DECM = new ItemStack(ExtraUtils.decorative1, 1, 12);
 
 		    
-		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
+		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), 
 		    	"AWS", 
 		    	"PBP", 
 		    	"GEG",
 		    	
-		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
-		    	'W', extrautils.ExtraUtils.buildersWand, 
-		    	'S', extrautils.ExtraUtils.erosionShovel, 
-		    	'P', portal, 
-		    	'B', Block.fenceIron,
+		    	'A', ExtraUtils.destructionPickaxe, 
+		    	'W', ExtraUtils.buildersWand, 
+		    	'S', ExtraUtils.erosionShovel, 
+		    	'P', portal,
+		    	'B', Blocks.iron_bars,
 		    	'G', enderCore,
-		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Item.enderPearl
+		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Items.ender_pearl
 		    ));
 		    
-		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3), 
+		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), 
 		    	"SWA", 
 		    	"PBP", 
 		    	"GEG",
 		    	
-		    	'A', extrautils.ExtraUtils.destructionPickaxe, 
-		    	'W', extrautils.ExtraUtils.buildersWand, 
-		    	'S', extrautils.ExtraUtils.erosionShovel, 
+		    	'A', ExtraUtils.destructionPickaxe, 
+		    	'W', ExtraUtils.buildersWand, 
+		    	'S', ExtraUtils.erosionShovel, 
 		    	'P', portal, 
-		    	'B', Block.fenceIron,
+		    	'B', Blocks.iron_bars,
 		    	'G', enderCore,
-		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Item.enderPearl
+		    	'E', Loader.isModLoaded("ThermalExpansion") ? TETweaks.getResonantCell() : Items.ender_pearl
 		    ));
 		    
-		    GameRegistry.addRecipe(new ShapedOreRecipe(extrautils.ExtraUtils.enderQuarry,
+		    GameRegistry.addRecipe(new ShapedOreRecipe(ExtraUtils.enderQuarry,
 		    	"EQE", 
 		    	"CDC", 
 		    	"pPp", 
@@ -89,8 +113,8 @@ public class ExUTweaks
 		    	'M', magicalWood,
 		    	'C', enderCore, 
 		    	'D', DECM, 
-		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 3), 
-		    	'p', extrautils.ExtraUtils.enderThermicPump == null ? new ItemStack(extrautils.ExtraUtils.decorative1, 1, 12) : extrautils.ExtraUtils.enderThermicPump 
+		    	'P', new ItemStack(ModItems.tppiMaterial, 1, 2), 
+		    	'p', ExtraUtils.enderThermicPump == null ? new ItemStack(ExtraUtils.decorative1, 1, 12) : ExtraUtils.enderThermicPump 
 		    ));
 		    
 		    GameRegistry.addRecipe(enderCore, 
@@ -100,34 +124,97 @@ public class ExUTweaks
 		    	
 		    	'A', magicalWood,
 		    	'B', DECM,
-		    	'E', Item.eyeOfEnder
+		    	'E', Items.ender_eye
 		    );
 		}
 		
 		if(ConfigurationHandler.nerfRedstoneGen) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(extrautils.ExtraUtils.gen, 1, 4),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.generator, 1, 4),
 			    	"RRR", 
 			    	"RGR", 
 			    	"DFD", 
 			    	
 			    	'R', ModBlocks.tppiBlock, 
-			    	'G', new ItemStack(extrautils.ExtraUtils.gen, 1, 2), 
-			    	'D', Item.redstone, 
-			    	'F', Block.furnaceIdle
+			    	'G', new ItemStack(ExtraUtils.generator, 1, 2), 
+			    	'D', Items.redstone, 
+			    	'F', Blocks.furnace
 			    ));
 		}
 		if(ConfigurationHandler.nerfEnderGen && !OreDictionary.getOres("blockEnderium").isEmpty()) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(extrautils.ExtraUtils.gen, 1, 3),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.generator, 1, 3),
 			    	"PPP", 
 			    	"EBE", 
 			    	"DFD", 
 			    	
-			    	'P', Item.enderPearl,
-			    	'E', Item.eyeOfEnder, 
+			    	'P', Items.ender_pearl,
+			    	'E', Items.ender_eye, 
 			    	'B', "blockEnderium", 
-			    	'D', Item.redstone, 
-			    	'F', Block.furnaceIdle
+			    	'D', Items.redstone, 
+			    	'F', Blocks.furnace
 			    ));
+		}
+		if(ConfigurationHandler.nerfAngelRings) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 0),
+					"GUG",
+					"NSN",
+					"WBW",
+
+					'G', new ItemStack(Blocks.glass),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+				));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 1),
+					"FUF",
+					"NSN",
+					"WBW",
+
+					'F', new ItemStack(Items.feather),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+				));			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 2),
+					"DUP",
+					"NSN",
+					"WBW",
+
+					'D', new ItemStack(Items.dye, 1, 5),
+					'P', new ItemStack(Items.dye, 1, 9),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+				));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 3),
+					"LUL",
+					"NSN",
+					"WBW",
+
+					'L', new ItemStack(Items.leather),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+				));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 4),
+					"GUG",
+					"NSN",
+					"WBW",
+
+					'G', new ItemStack(Items.gold_nugget),
+					'U', new ItemStack(ExtraUtils.unstableIngot),
+					'N', new ItemStack(Items.nether_star),
+					'S', new ItemStack(ExtraUtils.soul),
+					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+				));
 		}
 
 		try
@@ -162,13 +249,50 @@ public class ExUTweaks
 				t.printStackTrace();
 			}
 
-			OreDictionary.registerOre("blockUnstable", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5));
-			OreDictionary.registerOre("burntquartz", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 2));
-			OreDictionary.registerOre("icestone", new ItemStack(extrautils.ExtraUtils.decorative1, 1, 3));
+			OreDictionary.registerOre("blockUnstable", new ItemStack(ExtraUtils.decorative1, 1, 5));
+			OreDictionary.registerOre("burntquartz", new ItemStack(ExtraUtils.decorative1, 1, 2));
+			OreDictionary.registerOre("icestone", new ItemStack(ExtraUtils.decorative1, 1, 3));
 		}	
 		
 		if (Loader.isModLoaded("gregtech_addon"))
 			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(ExtraUtils.curtain, "xx", "xx", "xx", 'x', "blockWoolBlack"));
+		
+		if (ConfigurationHandler.harderDiamondSpikeRecipe)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(GameRegistry.findItem("ExtraUtilities", "spike_base_diamond"), 3, 0),
+					" D ",
+					"DSD",
+					"SBS",
+					'D', new ItemStack(Items.diamond_sword),
+					'S', new ItemStack(GameRegistry.findItem("ExtraUtilities", "spike_base_gold")),
+					'B', Loader.isModLoaded("RandomThings") ? new ItemStack(GameRegistry.findItem("RandomThings", "spiritBinder")) : new ItemStack(Items.nether_star)
+			));
+		}
+		
+		if (ConfigurationHandler.enableSoulFragmentRecipes)
+		{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.soul), 
+					"GSG",
+					"SDS",
+					"GSG",
+					'G', Loader.isModLoaded("TConstruct") ? new ItemStack(TinkerArmor.heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
+					'S', new ItemStack(Items.nether_star),
+					'D', new ItemStack(Blocks.dragon_egg)
+					));
+			if (Loader.isModLoaded("StevesCarts"))
+			{
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.soul), 
+						"GSG",
+						"SBS",
+						"GSG",
+						'G', Loader.isModLoaded("TConstruct") ? new ItemStack(TinkerArmor.heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
+						'S', new ItemStack(Items.nether_star),
+						'B', new ItemStack(GameRegistry.findItem("StevesCarts", "BlockMetalStorage"), 1, 2)
+						));
+			}
+		}
 	}
 	
 	@RecipeAddition(requiredModids="ExtraUtilities", time=EventTime.WORLD_LOAD)
@@ -178,7 +302,7 @@ public class ExUTweaks
 		stableIngot.stackTagCompound = new NBTTagCompound();
 		stableIngot.stackTagCompound.setBoolean("stable", true);
 		
-	    GameRegistry.addRecipe(new ItemStack(extrautils.ExtraUtils.decorative1, 1, 5), "iii", "iii", "iii", 'i', extrautils.ExtraUtils.unstableIngot);
+	    GameRegistry.addRecipe(new ItemStack(ExtraUtils.decorative1, 1, 5), "iii", "iii", "iii", 'i', ExtraUtils.unstableIngot);
 	    GameRegistry.addRecipe(stableIngot, "nnn", "nnn", "nnn", 'n', new ItemStack(ExtraUtils.unstableIngot, 1, 1));
 	}
 }

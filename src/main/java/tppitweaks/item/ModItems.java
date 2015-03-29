@@ -1,40 +1,47 @@
 package tppitweaks.item;
 
+import cofh.api.modhelpers.ThermalExpansionHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
-import appeng.api.Materials;
+import appeng.core.Api;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ModItems {
-	
-	public static TPPIMaterial tppiMaterial;
-	
-	public static void initItems()
-	{
-		if (ConfigurationHandler.materialID != 0)
-		{
-			tppiMaterial = new TPPIMaterial(ConfigurationHandler.materialID);
-			GameRegistry.registerItem(tppiMaterial, "tppiMaterial");
-		}
-	}
+public class ModItems
+{
+    public static TPPIMaterial tppiMaterial;
 
-	public static void registerRecipes()
-	{	
-		if(Loader.isModLoaded("AppliedEnergistics") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM) {
-			GameRegistry.addRecipe(new ItemStack(tppiMaterial.itemID, 1, 1),
-		            new Object[] {
-									"CSC",
-									"SPS",
-									"CSC",
+    public static void initItems()
+    {
+        tppiMaterial = new TPPIMaterial();
+        GameRegistry.registerItem(tppiMaterial, "tppiMaterial");
+    }
+
+    public static void registerRecipes()
+    {
+        if (Loader.isModLoaded("appliedenergistics2") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM)
+        {
+            /* @formatter:off */
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(tppiMaterial, 1, 0),
+			        "CdC",
+					"dsd",
+					"CdC",
 		                                                    
-									'C', Materials.matProcessorAdvanced.copy(),
-									'P', Materials.matSilicon.copy(),
-									'S', Materials.matFluxDust.copy(),
-					});
-				
-			FurnaceRecipes.smelting().addSmelting(tppiMaterial.itemID, 1, new ItemStack(tppiMaterial), 0.1f);
-		}
-	}
+					'C', Api.INSTANCE.materials().materialCalcProcessor.stack(1),
+					's', "itemSilicon",
+					'd', Api.INSTANCE.materials().materialFluixDust.stack(1)
+			));
+			/* @formatter:on */
+        }
+        
+        /*  --Commented out in case item is needed for future tweak
+        if (Loader.isModLoaded("ThermalExpansion")
+        {
+        	ThermalExpansionHelper.addTransposerFill(12000, new ItemStack(GameRegistry.findItem("ThermalFoundation", "material"), 1, 76), new ItemStack(ModItems.tppiMaterial, 1, 4), new FluidStack(FluidRegistry.getFluid("pyrotheum"), 1000), false);
+        }
+        */
+    }
 }

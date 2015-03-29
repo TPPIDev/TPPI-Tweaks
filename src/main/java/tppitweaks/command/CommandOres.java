@@ -7,7 +7,7 @@ import java.util.List;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -52,17 +52,17 @@ public class CommandOres extends CommandBase
 	{
 		InputStream file = TPPITweaks.class.getResourceAsStream("/assets/tppitweaks/lang/" + textFileName);
 		List<String> vanillaBookText = file == null ? new ArrayList<String>() : TxtParser.parseFileMain(file);
-		ItemStack book = new ItemStack(Item.writtenBook);
+		ItemStack book = new ItemStack(Items.written_book);
 
-		book.setTagInfo("author", new NBTTagString("author", "The TPPI Team"));
-		book.setTagInfo("title", new NBTTagString("title", title));
+		book.setTagInfo("author", new NBTTagString("The TPPI Team"));
+		book.setTagInfo("title", new NBTTagString(title));
 
 		NBTTagCompound nbttagcompound = book.getTagCompound();
-		NBTTagList bookPages = new NBTTagList("pages");
+		NBTTagList bookPages = new NBTTagList();
 
 		for (int i = 0; i < vanillaBookText.size(); i++)
 		{
-			bookPages.appendTag(new NBTTagString("" + i, vanillaBookText.get(i)));
+			bookPages.appendTag(new NBTTagString(vanillaBookText.get(i)));
 		}
 
 		nbttagcompound.setTag("pages", bookPages);

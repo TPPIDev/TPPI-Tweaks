@@ -1,10 +1,21 @@
 package tppitweaks;
 
-import java.io.File;
-import java.util.logging.Logger;
-
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import tppitweaks.aspecttweaks.AspectTweaks;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.command.CommandGetInvolved;
 import tppitweaks.command.CommandOres;
@@ -16,15 +27,8 @@ import tppitweaks.lib.Reference;
 import tppitweaks.proxy.CommonProxy;
 import tppitweaks.recipetweaks.AdditionalTweaks;
 import tterrag.rtc.RecipeTweakingCore;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
+
+import java.io.File;
 
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = Reference.DEPENDENCIES)
 public class TPPITweaks
@@ -39,15 +43,13 @@ public class TPPITweaks
 
 	public static TPPIEventHandler eventHandler;
 
-	public static final Logger logger = Logger.getLogger("TPPITweaks");
+	public static final Logger logger = LogManager.getLogger("TPPITweaks");
 
 	public static CreativeTabTPPI creativeTab = new CreativeTabTPPI(CreativeTabs.getNextID());
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
-	{
-		logger.setParent(FMLCommonHandler.instance().getFMLLogger());
-		
+	{		
 		RecipeTweakingCore.registerPackageName("tppitweaks.recipetweaks.modTweaks");
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
@@ -68,6 +70,9 @@ public class TPPITweaks
 
 		if (event.getSide().isClient())
 			proxy.initTickHandler();
+		
+		if (Loader.isModLoaded("Thaumcraft"))
+			AspectTweaks.init();
 	}
 
 	@EventHandler

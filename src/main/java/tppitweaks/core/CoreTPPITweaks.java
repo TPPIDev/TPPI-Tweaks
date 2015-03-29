@@ -12,7 +12,7 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 	@Override
 	public String[] getASMTransformerClass()
 	{
-		return new String[]{"tppitweaks.core.CoreTransformer"};
+		return null; // FIXME ASM return new String[]{"tppitweaks.core.CoreTransformer"};
 	}
 
 	@Override
@@ -84,4 +84,10 @@ public class CoreTPPITweaks implements IFMLLoadingPlugin
 		}
 		*/
 	}
+
+    @Override
+    public String getAccessTransformerClass()
+    {
+        return null;
+    }
 }

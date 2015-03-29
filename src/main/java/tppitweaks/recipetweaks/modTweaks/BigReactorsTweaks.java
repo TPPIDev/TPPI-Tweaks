@@ -10,6 +10,8 @@ import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
+import erogenousbeef.bigreactors.common.BigReactors;
+import erogenousbeef.bigreactors.common.multiblock.block.BlockReactorPart;
 
 public class BigReactorsTweaks {
 		
@@ -18,16 +20,16 @@ public class BigReactorsTweaks {
 	{
 		if (ConfigurationHandler.steelReactorCasings && !OreDictionary.getOres("ingotSteel").isEmpty())
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).blockID, 0, TweakingAction.CHANGED, "Recipe requires steel to", "make the mod later game");
+			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 0, TweakingAction.CHANGED, "Recipe requires steel to", "make the mod later game");
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod).blockID, -1, TweakingAction.CHANGED, "Recipe requires hardened glass", "to make the mod later game");
+			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, -1, TweakingAction.CHANGED, "Recipe requires hardened glass", "to make the mod later game");
 		}
 		if (ConfigurationHandler.twoReactorGlass)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 0, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
-			TweakingRegistry.markItemForRecipeRemoval(((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass).blockID, 1, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
+			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
+			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
 		}	
 	}
 	
@@ -36,40 +38,63 @@ public class BigReactorsTweaks {
 	{
 		if (ConfigurationHandler.steelReactorCasings && !OreDictionary.getOres("ingotSteel").isEmpty())
 		{
-			ItemStack reactorPartStack = ((erogenousbeef.bigreactors.common.multiblock.block.BlockReactorPart) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart).getReactorCasingItemStack();
+	        /* @formatter:off */
+			ItemStack reactorPartStack = ((BlockReactorPart) BigReactors.blockReactorPart).getReactorCasingItemStack();
 			reactorPartStack.stackSize = 4;
-			GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, new Object[] { "ICI", "CUC", "ICI", 'I', "ingotSteel", 'C', "ingotGraphite", 'U', "ingotYellorium" }));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, 
+			        "ICI", 
+			        "CUC", 
+			        "ICI", 
+			        
+			        'I', "ingotSteel", 
+			        'C', "ingotGraphite", 
+			        'U', "ingotYellorium" 
+			));
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, 1), new Object[] { "ICI", "GUG", "ICI", Character.valueOf('I'),
-				erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, Character.valueOf('C'), "ingotIron", Character.valueOf('U'), "ingotYellorium", Character.valueOf('G'), "ingotGraphite" }));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockYelloriumFuelRod, 1), 
+			        "ICI", 
+			        "GUG", 
+			        "ICI", 
+			        
+			        'I', BigReactors.blockMultiblockGlass, 
+			        'C', "ingotIron", 
+			        'U', "ingotYellorium", 
+			        'G', "ingotGraphite" 
+			));
 		}
 		if (ConfigurationHandler.twoReactorGlass)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2),
-			"gCg",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2),
+			        "gCg",
 			
-			'g', "glassHardened",
-			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
+			        'g', "blockGlassHardened",
+			        'C', new ItemStack(BigReactors.blockReactorPart, 1, 0)
+			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2),
-			"gCg",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2),
+			        "gCg",
 			
-			'g', "glassReinforced",
-			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 1, 0)));
+			        'g', "glassReinforced",
+			        'C', new ItemStack(BigReactors.blockReactorPart, 1, 0)
+			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2, 1),
-			"gCg",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2, 1),
+			        "gCg",
 			
-			'g', "glassHardened",
-			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
+			        'g', "blockGlassHardened",
+			        'C', new ItemStack(BigReactors.blockTurbinePart, 1, 0)
+			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 2, 1),
-			"gCg",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2, 1),
+			        "gCg",
 			
-			'g', "glassReinforced",
-			'C', new ItemStack(erogenousbeef.bigreactors.common.BigReactors.blockTurbinePart, 1, 0)));
+			        'g', "glassReinforced",
+			        'C', new ItemStack(BigReactors.blockTurbinePart, 1, 0)
+			));
+			/* @formatter:on */
 		}
 	}
 }

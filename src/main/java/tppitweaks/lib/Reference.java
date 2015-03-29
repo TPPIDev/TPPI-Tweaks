@@ -40,7 +40,7 @@ public class Reference
 			+ "after:ProjRed|Core;"
 			+ "after:ComputerCraft;"
 			+ "after:CCTurtle;"
-			+ "required-after:recipeTweakingCore";
+			+ "after:recipeTweakingCore";
 	
 	public static String packName = "Test Pack Please Ignore";
 	public static String packVersion = "0.2.2";

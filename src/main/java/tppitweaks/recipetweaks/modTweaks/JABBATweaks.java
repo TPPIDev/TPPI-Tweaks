@@ -1,40 +1,38 @@
 package tppitweaks.recipetweaks.modTweaks;
 
 import mcp.mobius.betterbarrels.BetterBarrels;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import powercrystals.minefactoryreloaded.setup.Machine;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
-import factorization.shared.Core;
-
 public class JABBATweaks
 {
-	@RecipeRemoval(requiredModids={"JABBA", "factorization", "MineFactoryReloaded"})
+	@RecipeRemoval(requiredModids="JABBA")
 	public static void init()
 	{
 		if (ConfigurationHandler.tweakJABBA)
-			TweakingRegistry.markItemForRecipeRemoval(BetterBarrels.barrelID, -1, TweakingAction.CHANGED, "Recipe changed to reflect", "the title of 'better barrel'");
+			TweakingRegistry.markItemForRecipeRemoval(GameRegistry.findItem("JABBA", "moverDiamond"), 0, TweakingAction.CHANGED, "Recipe changed to balance", "against other ways to","move spawners.");
 	}
 
-	@RecipeAddition(requiredModids={"JABBA", "factorization", "MineFactoryReloaded"})
+	@RecipeAddition(requiredModids="JABBA")
 	public static void addRecipes()
 	{
 		if (ConfigurationHandler.tweakJABBA)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(BetterBarrels.blockBarrel, 
-					"wBw",
-					"wUw",
-					"www",
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(GameRegistry.findItem("JABBA", "moverDiamond")), 
+					" N ",
+					"dWd",
+					" d ",
 
-					'w', "plankWood",
-					'B', new ItemStack(Core.registry.daybarrel, 1, OreDictionary.WILDCARD_VALUE),
-					'U', Machine.Unifier.getItemStack()
+					'W', new ItemStack(GameRegistry.findItem("JABBA", "mover")),
+					'd', new ItemStack(Items.diamond),
+					'N', new ItemStack(Items.nether_star)
 					));
 		}
 	}

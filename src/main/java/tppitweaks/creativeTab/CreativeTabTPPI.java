@@ -1,6 +1,7 @@
 package tppitweaks.creativeTab;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
@@ -22,4 +23,10 @@ public class CreativeTabTPPI extends CreativeTabs
 	public String getTabLabel() {
 		return Reference.TAB_NAME;
 	}
+
+    @Override
+    public Item getTabIconItem()
+    {
+        return null;
+    }
 }

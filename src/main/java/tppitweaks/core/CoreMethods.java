@@ -1,6 +1,6 @@
 package tppitweaks.core;
 
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 
@@ -22,7 +22,7 @@ public class CoreMethods
 		{
 			return 0;
 		}
-		if (item.itemID == Item.bucketLava.itemID)
+		if (item.getItem() == Items.lava_bucket)
 		{
 			return 0;
 		}

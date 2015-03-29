@@ -1,9 +1,13 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import thermalexpansion.item.TEItems;
+import cofh.thermalexpansion.block.TEBlocks;
+import cofh.thermalexpansion.block.simple.BlockFrame;
+import cofh.thermalexpansion.item.TEItems;
+import cofh.thermalfoundation.item.TFItems;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
@@ -14,83 +18,84 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class EnderStorageTweaks extends TweakingRegistry
 {
-	@RecipeRemoval(requiredModids = { "EnderStorage", "ThermalExpansion" })
-	public static void init()
-	{
-		if (ConfigurationHandler.enderPouchNerf)
-		{
-			TweakingRegistry.markItemForRecipeRemoval(((Item) EnderStorage.itemEnderPouch).itemID, -1, TweakingAction.CHANGED, "Recipe requires pyrotheum+ender bucket",
-					"so it requires midgame infrastructure");
-		}
+    @RecipeRemoval(requiredModids = { "EnderStorage", "ThermalExpansion" })
+    public static void init()
+    {
+        if (ConfigurationHandler.enderPouchNerf)
+        {
+            TweakingRegistry.markItemForRecipeRemoval((Item) EnderStorage.itemEnderPouch, -1, TweakingAction.CHANGED, "Recipe requires resonant satchel",
+                    "to match chest & tank recipes.");
+        }
 
-		for (int i = 0; i < 16; i++)
-		{
+        for (int i = 0; i < 16; i++)
+        {
+            if (ConfigurationHandler.enderChestNerf)
+            {
+                TweakingRegistry.markItemForRecipeRemoval(EnderStorage.blockEnderChest, EnderStorageManager.getFreqFromColours(i, i, i), TweakingAction.CHANGED,
+                        "Recipe requires resonant strongbox", "because it is able to teleport things.");
+            }
+
+            if (ConfigurationHandler.enderTankNerf)
+            {
+                TweakingRegistry.markItemForRecipeRemoval(EnderStorage.blockEnderChest, EnderStorageManager.getFreqFromColours(i, i, i) + 4096, TweakingAction.CHANGED,
+                        "Recipe requires resonant tank", "because it is able to teleport things.");
+            }
+        }
+    }
+
+    @RecipeAddition(requiredModids = { "EnderStorage", "ThermalExpansion" })
+    public static void addRecipes()
+    {
+        ItemStack reinforcedTank = new ItemStack(TEBlocks.blockTank, 1, 4);
+        ItemStack resonantChest = new ItemStack(TEBlocks.blockStrongbox, 1, 4);
+        ItemStack resonantSatchel = TEItems.satchelResonant;
+
+        for (int i = 0; i < 16; i++)
+        {
+            /* @formatter:off */
 			if (ConfigurationHandler.enderChestNerf)
 			{
-				TweakingRegistry.markItemForRecipeRemoval(((Block) EnderStorage.blockEnderChest).blockID, EnderStorageManager.getFreqFromColours(i, i, i), TweakingAction.CHANGED,
-						"Recipe requires tesseract frame", "because it is able to teleport things.");
-			}
-
-			if (ConfigurationHandler.enderTankNerf)
-			{
-				TweakingRegistry.markItemForRecipeRemoval(((Block) EnderStorage.blockEnderChest).blockID, EnderStorageManager.getFreqFromColours(i, i, i) + 4096, TweakingAction.CHANGED,
-						"Recipe requires resonant tank", "because it is able to teleport things.");
-			}
-		}
-	}
-
-	@RecipeAddition(requiredModids = { "EnderStorage", "ThermalExpansion" })
-	public static void addRecipes()
-	{
-		ItemStack tesseractFrameEmpty = new ItemStack(TEItems.itemComponent, 1, 129);
-		ItemStack reinforcedTank = new ItemStack(thermalexpansion.block.TEBlocks.blockTank, 1, 4);
-
-		for (int i = 0; i < 16; i++)
-		{
-			// @formatter:off
-			if (ConfigurationHandler.enderChestNerf)
-			{
-				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 2, EnderStorageManager.getFreqFromColours(i, i, i)), 
+				GameRegistry.addRecipe(new ItemStack(EnderStorage.blockEnderChest, 2, EnderStorageManager.getFreqFromColours(i, i, i)), 
 						"bWb",
 						"OCO",
 						"bOb",
 
-						'b', Item.blazeRod, 
-						'C', tesseractFrameEmpty, 
-						'O', Block.obsidian, 
-						'W', new ItemStack(Block.cloth, 1, i)
+						'b', Items.blaze_rod, 
+						'C', resonantChest, 
+						'O', Blocks.obsidian, 
+						'W', new ItemStack(Blocks.wool, 1, i)
 				);
 			}
 
 			if (ConfigurationHandler.enderTankNerf)
 			{
-				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.blockEnderChest, 2, EnderStorageManager.getFreqFromColours(i, i, i) + 4096), 
-						"OWO",
-						"bCb", 
+				GameRegistry.addRecipe(new ItemStack(EnderStorage.blockEnderChest, 2, EnderStorageManager.getFreqFromColours(i, i, i) + 4096), 
+						"bWb",
+						"OCO", 
 						"bOb",
 
-						'b', Item.blazeRod, 
+						'b', Items.blaze_rod, 
 						'C', reinforcedTank, 
-						'O', Block.obsidian, 
-						'p', Item.enderPearl, 
-						'W', new ItemStack(Block.cloth, 1, i)
+						'O', Blocks.obsidian, 
+						'p', Items.ender_pearl, 
+						'W', new ItemStack(Blocks.wool, 1, i)
 				);
 			}
 
 			if (ConfigurationHandler.enderPouchNerf)
 			{
-				GameRegistry.addRecipe(new ItemStack(codechicken.enderstorage.EnderStorage.itemEnderPouch, 1, codechicken.enderstorage.api.EnderStorageManager.getFreqFromColours(i, i, i)), 
-						"pep",
-						"lWl", 
+				GameRegistry.addRecipe(new ItemStack(EnderStorage.itemEnderPouch, 1, EnderStorageManager.getFreqFromColours(i, i, i)), 
+						"pWp",
+						"lSl", 
 						"plp",
 
-						'p', thermalexpansion.item.TEItems.dustPyrotheum, 
-						'l', Item.leather, 
-						'e', Item.enderPearl, 
-						'W', new ItemStack(Block.cloth, 1, i)
+						'p', Items.blaze_powder, 
+						'l', Items.leather,
+						'W', new ItemStack(Blocks.wool, 1, i),
+						'S', resonantSatchel
 				);
 			}
-			// @formatter:on
-		}
-	}
+			/* @formatter:on */
+        }
+    }
 }

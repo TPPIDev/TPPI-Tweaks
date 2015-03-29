@@ -1,6 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
@@ -9,8 +9,8 @@ import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
-import crazypants.enderio.Config;
 import crazypants.enderio.EnderIO;
+import crazypants.enderio.config.Config;
 
 public class EnderIOTweaks
 {
@@ -19,8 +19,8 @@ public class EnderIOTweaks
 	{
 		if (ConfigurationHandler.makeEIOHardModeEasier && Config.useHardRecipes)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(EnderIO.blockReservoir.blockID, -1, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
-			TweakingRegistry.markItemForRecipeRemoval(EnderIO.itemBasicCapacitor.itemID, 0, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
+			TweakingRegistry.markItemForRecipeRemoval(EnderIO.blockReservoir, -1, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
+			TweakingRegistry.markItemForRecipeRemoval(EnderIO.itemBasicCapacitor, 0, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
 		}
 		
 	}
@@ -37,7 +37,7 @@ public class EnderIOTweaks
 					
 					'G', new ItemStack(EnderIO.blockFusedQuartz, 1, 1),
 					'Q', new ItemStack(EnderIO.blockFusedQuartz),
-					'c', Item.cauldron
+					'c', Items.cauldron
 			);
 			
 			GameRegistry.addRecipe(new ShapedOreRecipe(EnderIO.itemBasicCapacitor,

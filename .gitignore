@@ -10,6 +10,9 @@
 *.mtl
 *.classpath
 *.project
+*.iml
+*.ipr
+*.iws
 /.settings
 /.gradle
 /config
@@ -22,3 +25,6 @@
 /screenshots
 /options.txt
 /libs
+/lib
+/run
+/out

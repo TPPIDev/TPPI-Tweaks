@@ -7,7 +7,8 @@ tppiGuide.name=TPPI Mod Guide
 disassemblerCore.name=Disassembly Core
 miningCore.name=Enderman Mining Assistant
 tile.redstoneCompressed.name=Compressed Redstone Block
-dmCore.name=Embued Control Circuit
+dmCore.name=Imbued Control Circuit
+enderium420.name=Blazing Enderium
 
 tppi.splash.text.1=Why didn't you ignore?
 tppi.splash.text.2=test splash please ignore
