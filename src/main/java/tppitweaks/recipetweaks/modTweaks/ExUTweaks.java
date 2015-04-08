@@ -257,7 +257,7 @@ public class ExUTweaks
 		if (Loader.isModLoaded("gregtech_addon"))
 			TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(ExtraUtils.curtain, "xx", "xx", "xx", 'x', "blockWoolBlack"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.curtain, 12), "xx", "xx", "xx", 'x', "blockWoolBlack"));
 		
 		if (ConfigurationHandler.harderDiamondSpikeRecipe)
 		{
