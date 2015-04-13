@@ -73,6 +73,12 @@ public class CommandOres extends CommandBase
 
 	}
 
+    @Override
+    public int getRequiredPermissionLevel()
+    {
+        return 0;
+    }
+
 	@Override
 	public int compareTo(Object o)
 	{

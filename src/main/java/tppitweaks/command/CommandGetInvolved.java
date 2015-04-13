@@ -24,6 +24,12 @@ public class CommandGetInvolved extends CommandBase
 		CommandOres.processVanillaBookCommand("Getting Involved In TPPI", "GetInvolved.txt", icommandsender, astring);
 	}
 
+    @Override
+    public int getRequiredPermissionLevel()
+    {
+        return 0;
+    }
+
 	@Override
 	public int compareTo(Object o)
 	{
