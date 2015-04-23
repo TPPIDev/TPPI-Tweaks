@@ -1,9 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import mcp.mobius.betterbarrels.BetterBarrels;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
@@ -11,6 +9,7 @@ import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
+
 public class JABBATweaks
 {
 	@RecipeRemoval(requiredModids="JABBA")

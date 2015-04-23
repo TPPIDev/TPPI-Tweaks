@@ -10,39 +10,46 @@ import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import cpw.mods.fml.common.registry.GameRegistry;
-import erogenousbeef.bigreactors.common.BigReactors;
-import erogenousbeef.bigreactors.common.multiblock.block.BlockReactorPart;
 
 public class BigReactorsTweaks {
 		
 	@RecipeRemoval(requiredModids="BigReactors")
 	public static void init()
 	{
+
+        Block reactorPart = GameRegistry.findBlock("BigReactors", "BRReactorPart");
+        Block reactorGlass = GameRegistry.findBlock("BigReactors", "BRMultiblockGlass");
+        Block reactorFuelRod = GameRegistry.findBlock("BigReactors", "YelloriumFuelRod");
+
 		if (ConfigurationHandler.steelReactorCasings && !OreDictionary.getOres("ingotSteel").isEmpty())
 		{
-			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockReactorPart, 0, TweakingAction.CHANGED, "Recipe requires steel to", "make the mod later game");
+			TweakingRegistry.markItemForRecipeRemoval(reactorPart, 0, TweakingAction.CHANGED, "Recipe requires steel to", "make the mod later game");
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
-			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockYelloriumFuelRod, -1, TweakingAction.CHANGED, "Recipe requires hardened glass", "to make the mod later game");
+			TweakingRegistry.markItemForRecipeRemoval(reactorFuelRod, -1, TweakingAction.CHANGED, "Recipe requires hardened glass", "to make the mod later game");
 		}
 		if (ConfigurationHandler.twoReactorGlass)
 		{
-			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 0, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
-			TweakingRegistry.markItemForRecipeRemoval((Block) erogenousbeef.bigreactors.common.BigReactors.blockMultiblockGlass, 1, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
+			TweakingRegistry.markItemForRecipeRemoval(reactorGlass, 0, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
+			TweakingRegistry.markItemForRecipeRemoval(reactorGlass, 1, TweakingAction.CHANGED, "Recipe output doubled", "to offset the expensive glass");
 		}	
 	}
 	
 	@RecipeAddition(requiredModids="BigReactors")
 	public static void addRecipes()
 	{
+
+        Block reactorPart = GameRegistry.findBlock("BigReactors", "BRReactorPart");
+        Block turbinePart = GameRegistry.findBlock("BigReactors", "BRTurbinePart");
+        Block reactorGlass = GameRegistry.findBlock("BigReactors", "BRMultiblockGlass");
+        Block reactorFuelRod = GameRegistry.findBlock("BigReactors", "YelloriumFuelRod");
+
 		if (ConfigurationHandler.steelReactorCasings && !OreDictionary.getOres("ingotSteel").isEmpty())
 		{
 	        /* @formatter:off */
-			ItemStack reactorPartStack = ((BlockReactorPart) BigReactors.blockReactorPart).getReactorCasingItemStack();
-			reactorPartStack.stackSize = 4;
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(reactorPartStack, 
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(reactorPart, 4, 0), 
 			        "ICI", 
 			        "CUC", 
 			        "ICI", 
@@ -54,12 +61,12 @@ public class BigReactorsTweaks {
 		}
 		if (ConfigurationHandler.glassFuelRods)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockYelloriumFuelRod, 1), 
+			GameRegistry.addRecipe(new ShapedOreRecipe(reactorFuelRod, 
 			        "ICI", 
 			        "GUG", 
 			        "ICI", 
 			        
-			        'I', BigReactors.blockMultiblockGlass, 
+			        'I', reactorGlass, 
 			        'C', "ingotIron", 
 			        'U', "ingotYellorium", 
 			        'G', "ingotGraphite" 
@@ -67,32 +74,32 @@ public class BigReactorsTweaks {
 		}
 		if (ConfigurationHandler.twoReactorGlass)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(reactorGlass, 2),
 			        "gCg",
 			
 			        'g', "blockGlassHardened",
-			        'C', new ItemStack(BigReactors.blockReactorPart, 1, 0)
+			        'C', reactorPart
 			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(reactorGlass, 2),
 			        "gCg",
 			
 			        'g', "glassReinforced",
-			        'C', new ItemStack(BigReactors.blockReactorPart, 1, 0)
+			        'C', reactorPart
 			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2, 1),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(reactorGlass, 2, 1),
 			        "gCg",
 			
 			        'g', "blockGlassHardened",
-			        'C', new ItemStack(BigReactors.blockTurbinePart, 1, 0)
+			        'C', turbinePart
 			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BigReactors.blockMultiblockGlass, 2, 1),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(reactorGlass, 2, 1),
 			        "gCg",
 			
 			        'g', "glassReinforced",
-			        'C', new ItemStack(BigReactors.blockTurbinePart, 1, 0)
+			        'C', turbinePart
 			));
 			/* @formatter:on */
 		}

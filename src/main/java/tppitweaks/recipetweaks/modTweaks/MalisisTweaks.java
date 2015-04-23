@@ -1,6 +1,7 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import net.malisis.doors.MalisisDoors;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tterrag.rtc.RecipeAddition;
@@ -14,20 +15,21 @@ public class MalisisTweaks
     @RecipeRemoval(requiredModids = "malisisdoors")
     public static void removeRecipes()
     {
-        TweakingRegistry.markItemForRecipeRemoval(MalisisDoors.Items.curtainsItem, 0, TweakingAction.CHANGED, "Recipe changed to force red wool", "for compat with Extra Utils");
+        Item curtains = GameRegistry.findItem("malisisdoors", "item.curtain");
+        Block rustyLadder = GameRegistry.findBlock("malisisdoors", "rustyLadder");
+
+        TweakingRegistry.markItemForRecipeRemoval(curtains, 0, TweakingAction.CHANGED, "Recipe changed to force red wool", "for compat with Extra Utils");
         
-        TweakingRegistry.markItemForRecipeRemoval(MalisisDoors.Blocks.rustyLadder, 0, TweakingAction.CHANGED, "Recipe change to remove conflict", "with Electrical Age wire.");
+        TweakingRegistry.markItemForRecipeRemoval(rustyLadder, 0, TweakingAction.CHANGED, "Recipe change to remove conflict", "with Electrical Age wire.");
     }
 
     @RecipeAddition(requiredModids = "malisisdoors")
     public static void addRecipes()
     {
-        GameRegistry.addRecipe(new ShapedOreRecipe(MalisisDoors.Items.curtainsItem, "xx", "xx", "xx", 'x', "blockWoolRed"));
-        
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MalisisDoors.Blocks.rustyLadder, 2), 
-        		"xxx", 
-        		"   ",
-        		"xxx",
-        		'x', "ingotIron"));
+        Item curtains = GameRegistry.findItem("malisisdoors", "item.curtain");
+        Block rustyLadder = GameRegistry.findBlock("malisisdoors", "rustyLadder");
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(curtains, "xx", "xx", "xx", 'x', "blockWoolRed"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(rustyLadder, 2), "xxx", "   ", "xxx", 'x', "ingotIron"));
     }
 }

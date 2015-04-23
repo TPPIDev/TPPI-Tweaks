@@ -135,7 +135,7 @@ public class TxtParser
     }
 
     /**
-     * Parses a file, identically to ParseFileMain, but takes into account mod names, searching for the >< identifier.
+     * Parses a file, identically to ParseFileMain, but takes into account mod names, searching for the &gt;&lt; identifier.
      * 
      * @param file
      * @param modName

@@ -46,12 +46,16 @@ public class OpenBlocksTweaks
 		if (ConfigurationHandler.eloraamBreakersAndDeployers)
 		{
 			if (openblocks.OpenBlocks.Blocks.blockBreaker != null)
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockBreaker), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A',
-						Items.iron_pickaxe, 'P', Blocks.piston, 'R', Items.redstone }));
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockBreaker), 1),
+                        "CAC", "CPC", "CRC", 'C', "cobblestone",
+                        'A', Items.iron_pickaxe, 'P', Blocks.piston, 'R', Items.redstone
+                ));
 
 			if (openblocks.OpenBlocks.Blocks.blockPlacer != null)
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockPlacer), 1), new Object[] { "CAC", "CPC", "CRC", 'C', "cobblestone", 'A', Blocks.chest, 'P',
-						Blocks.piston, 'R', Items.redstone }));
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockPlacer), 1),
+                        "CAC", "CPC", "CRC", 'C', "cobblestone",
+                        'A', Blocks.chest, 'P', Blocks.piston, 'R', Items.redstone
+                ));
 		}
 	}
 

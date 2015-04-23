@@ -1,6 +1,6 @@
 package tppitweaks.recipetweaks.modTweaks;
 
-import mods.immibis.chunkloader.DimensionalAnchors;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,15 +18,19 @@ public class DATweaks
 	@RecipeRemoval(requiredModids="DimensionalAnchors")
 	public static void init()
 	{
+        Block anchor = GameRegistry.findBlock("DimensionalAnchors", "chunkloader");
+
 		if (ConfigurationHandler.tweakDA)
-			TweakingRegistry.markItemForRecipeRemoval(DimensionalAnchors.instance.block, -1);
+			TweakingRegistry.markItemForRecipeRemoval(anchor, -1);
 	}
 	
 	@RecipeAddition(requiredModids="DimensionalAnchors")
 	public static void addRecipes()
 	{
+        Block anchor = GameRegistry.findBlock("DimensionalAnchors", "chunkloader");
+
 		if(ConfigurationHandler.tweakDA)
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(DimensionalAnchors.instance.block, 1, 0), 
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(anchor, 1, 0),
 			        "ded", 
 			        "oIo", 
 			        "gog", 
@@ -41,7 +45,9 @@ public class DATweaks
 	
 	public static void addTooltip(ItemTooltipEvent event)
 	{
-		if (event.itemStack.getItem() == Item.getItemFromBlock(DimensionalAnchors.instance.block))
+        Block anchor = GameRegistry.findBlock("DimensionalAnchors", "chunkloader");
+
+		if (event.itemStack.getItem() == Item.getItemFromBlock(anchor))
 		{
 			event.toolTip.add("\u00A7oA chunk loader");
 		}

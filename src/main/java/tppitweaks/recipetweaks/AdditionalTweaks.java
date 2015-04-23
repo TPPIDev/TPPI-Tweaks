@@ -1,18 +1,11 @@
 package tppitweaks.recipetweaks;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import tppitweaks.TPPITweaks;
-import tterrag.rtc.RecipeAddition;
-import tterrag.rtc.TweakingRegistry;
-import tterrag.rtc.TweakingRegistry.TweakingAction;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 

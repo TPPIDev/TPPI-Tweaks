@@ -2,17 +2,15 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.item.quartz.ItemDarkQuartz;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipeRuneAltar;
-import vazkii.botania.common.Botania;
 import vazkii.botania.common.item.ModItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -21,11 +19,12 @@ public class BotaniaTweaks {
 	@RecipeAddition(requiredModids = {"Botania","ThaumicTinkerer"})
 	public static void addSmokeyQuartzConversion()
 	{
-		TweakingRegistry.addTweakedTooltip(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class), 0, TweakingAction.NOTE, "Added recipe to convert to","the Botania version.");
+        Item ttQuartz = GameRegistry.findItem("ThaumicTinkerer", "darkQuartzItem");
+		TweakingRegistry.addTweakedTooltip(ttQuartz, 0, TweakingAction.NOTE, "Added recipe to convert to","the Botania version.");
 		TweakingRegistry.addTweakedTooltip(ModItems.quartz, 0, TweakingAction.NOTE, "Added recipe to convert to","the ThaumicTinkerer version.");
 		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.quartz, ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class), ModItems.quartz));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ModItems.quartz, ttQuartz));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ttQuartz, ModItems.quartz));
 		
 		if(ConfigurationHandler.enableOcelotAndWolfEggRecipes){
 			TweakingRegistry.addTweakedTooltip(Items.spawn_egg, 98, TweakingAction.ADDED, "Added Runic Altar recipe to craft.");

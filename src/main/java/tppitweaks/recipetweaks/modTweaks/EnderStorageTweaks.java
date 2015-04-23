@@ -2,12 +2,9 @@ package tppitweaks.recipetweaks.modTweaks;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import cofh.thermalexpansion.block.TEBlocks;
-import cofh.thermalexpansion.block.simple.BlockFrame;
-import cofh.thermalexpansion.item.TEItems;
-import cofh.thermalfoundation.item.TFItems;
+import thermalexpansion.block.TEBlocks;
+import thermalexpansion.item.TEItems;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
@@ -23,7 +20,7 @@ public class EnderStorageTweaks extends TweakingRegistry
     {
         if (ConfigurationHandler.enderPouchNerf)
         {
-            TweakingRegistry.markItemForRecipeRemoval((Item) EnderStorage.itemEnderPouch, -1, TweakingAction.CHANGED, "Recipe requires resonant satchel",
+            TweakingRegistry.markItemForRecipeRemoval(EnderStorage.itemEnderPouch, -1, TweakingAction.CHANGED, "Recipe requires resonant satchel",
                     "to match chest & tank recipes.");
         }
 

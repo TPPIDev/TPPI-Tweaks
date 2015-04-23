@@ -1,10 +1,10 @@
 package tppitweaks.recipetweaks.modTweaks;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import powercrystals.minefactoryreloaded.MineFactoryReloadedCore;
-import powercrystals.minefactoryreloaded.setup.Machine;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
@@ -17,18 +17,24 @@ public class MFRTweaks
 	@RecipeRemoval(requiredModids="MineFactoryReloaded")
 	public static void init()
 	{
+        Block unifier = GameRegistry.findBlock("MineFactoryReloaded", "machine.1");
+        Item plasticCup = GameRegistry.findItem("MineFactoryReloaded", "plastic.cup");
+
 		if (ConfigurationHandler.buffUnifierRecipe)
-			TweakingRegistry.markItemForRecipeRemoval(Machine.Unifier.getBlock(), 8, TweakingAction.CHANGED, "Cheapened for use", "in JABBA barrels");
+			TweakingRegistry.markItemForRecipeRemoval(unifier, 8, TweakingAction.CHANGED, "Cheapened for use", "in JABBA barrels");
 		if (ConfigurationHandler.disablePlasticCups)
-			TweakingRegistry.markItemForRecipeRemoval(MineFactoryReloadedCore.plasticCupItem, -1, TweakingAction.REMOVED, "Has liquid dupes.");
+			TweakingRegistry.markItemForRecipeRemoval(plasticCup, -1, TweakingAction.REMOVED, "Has liquid dupes.");
 	}
 	
 	@RecipeAddition(requiredModids="MineFactoryReloaded")
 	public static void addRecipes()
 	{
+        Block unifier = GameRegistry.findBlock("MineFactoryReloaded", "machine.1");
+        Item machineBase = GameRegistry.findItem("MineFactoryReloaded", "machineblock");
+
 		if (ConfigurationHandler.buffUnifierRecipe)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineFactoryReloadedCore.machineBaseItem, 3), 
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(machineBase, 3),
 					"RRR",
 					"SSS",
 
@@ -36,7 +42,7 @@ public class MFRTweaks
 					'S', "stone"
 			));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(Machine.Unifier.getItemStack(), 
+			GameRegistry.addRecipe(new ShapedOreRecipe(unifier,
 					"RRR",
 					"rCr",
 					" M ", 
@@ -44,7 +50,7 @@ public class MFRTweaks
 					'R', "sheetPlastic",
 					'r', Items.redstone,
 					'C', Items.comparator,
-					'M', MineFactoryReloadedCore.machineBaseItem
+					'M', machineBase
 					));
 		}
 	}

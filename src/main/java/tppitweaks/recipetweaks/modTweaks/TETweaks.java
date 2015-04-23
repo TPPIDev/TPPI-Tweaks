@@ -7,13 +7,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import cofh.thermalexpansion.block.TEBlocks;
-import cofh.thermalexpansion.block.cell.BlockCell;
-import cofh.thermalexpansion.item.TEFlorbs;
-import cofh.thermalexpansion.item.TEItems;
-import cofh.thermalexpansion.util.crafting.FurnaceManager;
-import cofh.thermalexpansion.util.crafting.PulverizerManager;
-import cofh.thermalfoundation.item.TFItems;
+import thermalexpansion.block.TEBlocks;
+import thermalexpansion.block.cell.BlockCell;
+import thermalexpansion.item.TEFlorbs;
+import thermalexpansion.item.TEItems;
+import thermalexpansion.util.crafting.FurnaceManager;
+import thermalexpansion.util.crafting.PulverizerManager;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
@@ -49,7 +48,7 @@ public class TETweaks
 	{
 		try 
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.paper, 3), new Object[] {TEItems.sawdust.copy(), TEItems.sawdust.copy(), TEItems.sawdust.copy()});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.paper, 3), TEItems.sawdust.copy(), TEItems.sawdust.copy(), TEItems.sawdust.copy());
 		}
 		catch(Throwable t)
 		{
@@ -64,7 +63,7 @@ public class TETweaks
 				
 		if (ConfigurationHandler.harderActivatorRecipe)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockDevice, 1, 2), new Object[]{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockDevice, 1, 2),
 				"scs",
 				"tpt",
 				"sns",
@@ -73,12 +72,12 @@ public class TETweaks
 				'p', Blocks.piston,
 				't', "ingotTin",
 				'c', Blocks.chest,
-				'n', cofh.thermalexpansion.item.TEItems.pneumaticServo.copy()
-			}));
+				'n', TEItems.pneumaticServo.copy()
+			));
 		}
 		
 		if (OreDictionary.getOres("dustRuby").size() != 0)
-			cofh.thermalexpansion.util.crafting.PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
+			PulverizerManager.addIngotNameToDustRecipe(2400, "gemRuby", OreDictionary.getOres("dustRuby").get(0));
 		if (OreDictionary.getOres("dustTinyWood").size() != 0)
 		{
 			ItemStack res = OreDictionary.getOres("dustTinyWood").get(0).copy();
@@ -88,30 +87,30 @@ public class TETweaks
 		
 		if (ConfigurationHandler.nerfTECaches)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 1), new Object[]{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 1),
 				" t ",
 				"tbt",
 				" t ",
 				't', "ingotTin",
 				'b', Loader.isModLoaded("Mekanism") ? new ItemStack(Mekanism.BasicBlock, 1, 6) : "logWood"
-			}));
+			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 2), new Object[]{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 2),
 				" i ",
 				"ici",
 				" i ",
 				'i', "ingotInvar",
 				'c', new ItemStack(TEBlocks.blockCache, 1, 1)
-			}));
+			));
 			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 2), new Object[]{
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TEBlocks.blockCache, 1, 2),
 				"iti",
 				"tbt",
 				"iti",
 				'i', "ingotInvar",
 				't', "ingotTin",
 				'b', Loader.isModLoaded("Mekanism") ? new ItemStack(Mekanism.BasicBlock, 1, 6) : "logWood"
-			}));
+			));
 			
 		}
 		
@@ -131,11 +130,6 @@ public class TETweaks
 		GameRegistry.addRecipe(new ShapelessOreRecipe(TEFlorbs.florbMagmatic.copy(), "dustWood", "itemSlag", "magmaCream"));
 	}
 	/* @formatter:on */
-
-	public static ItemStack getEnderium()
-	{
-		return TFItems.ingotEnderium.copy();
-	}
 
 	public static ItemStack getResonantCell()
 	{

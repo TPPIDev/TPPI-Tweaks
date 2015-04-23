@@ -6,16 +6,11 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import tconstruct.armor.TinkerArmor;
-import tconstruct.plugins.te4.TinkerTE4;
-import tconstruct.smeltery.TinkerSmeltery;
-import tconstruct.tools.TinkerTools;
-import tconstruct.world.TinkerWorldProxyCommon;
-import thaumic.tinkerer.common.compat.TinkersConstructCompat;
 import tppitweaks.TPPITweaks;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
@@ -25,7 +20,6 @@ import tterrag.rtc.RecipeAddition.EventTime;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
-import xreliquary.init.XRRecipes;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -73,8 +67,7 @@ public class ExUTweaks
 			ItemStack magicalWood = new ItemStack(ExtraUtils.decorative1, 1, 8);
 			ItemStack enderCore = new ItemStack(ExtraUtils.decorative1, 1, 11);
 			ItemStack DECM = new ItemStack(ExtraUtils.decorative1, 1, 12);
-
-		    
+            
 		    GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 2), 
 		    	"AWS", 
 		    	"PBP", 
@@ -154,6 +147,10 @@ public class ExUTweaks
 			    ));
 		}
 		if(ConfigurationHandler.nerfAngelRings) {
+
+            ItemStack batWing = new ItemStack(GameRegistry.findItem("Reliquary", "mob_ingredient"), 0, 5);
+            ItemStack bucketGold = new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1);
+
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 0),
 					"GUG",
 					"NSN",
@@ -163,8 +160,8 @@ public class ExUTweaks
 					'U', new ItemStack(ExtraUtils.unstableIngot),
 					'N', new ItemStack(Items.nether_star),
 					'S', new ItemStack(ExtraUtils.soul),
-					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
-					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+					'W', Loader.isModLoaded("xreliquary") ? batWing : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? bucketGold : new ItemStack(Blocks.gold_block)
 				));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 1),
 					"FUF",
@@ -175,9 +172,9 @@ public class ExUTweaks
 					'U', new ItemStack(ExtraUtils.unstableIngot),
 					'N', new ItemStack(Items.nether_star),
 					'S', new ItemStack(ExtraUtils.soul),
-					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
-					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
-				));			
+					'W', Loader.isModLoaded("xreliquary") ? batWing : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? bucketGold : new ItemStack(Blocks.gold_block)
+				));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 2),
 					"DUP",
 					"NSN",
@@ -188,8 +185,8 @@ public class ExUTweaks
 					'U', new ItemStack(ExtraUtils.unstableIngot),
 					'N', new ItemStack(Items.nether_star),
 					'S', new ItemStack(ExtraUtils.soul),
-					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
-					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+					'W', Loader.isModLoaded("xreliquary") ? batWing : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? bucketGold : new ItemStack(Blocks.gold_block)
 				));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 3),
 					"LUL",
@@ -200,8 +197,8 @@ public class ExUTweaks
 					'U', new ItemStack(ExtraUtils.unstableIngot),
 					'N', new ItemStack(Items.nether_star),
 					'S', new ItemStack(ExtraUtils.soul),
-					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
-					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+					'W', Loader.isModLoaded("xreliquary") ? batWing : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? bucketGold : new ItemStack(Blocks.gold_block)
 				));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 4),
 					"GUG",
@@ -212,8 +209,8 @@ public class ExUTweaks
 					'U', new ItemStack(ExtraUtils.unstableIngot),
 					'N', new ItemStack(Items.nether_star),
 					'S', new ItemStack(ExtraUtils.soul),
-					'W', Loader.isModLoaded("xreliquary") ? XRRecipes.batWing() : new ItemStack(Items.feather),
-					'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
+					'W', Loader.isModLoaded("xreliquary") ? batWing : new ItemStack(Items.feather),
+					'B', Loader.isModLoaded("TConstruct") ? bucketGold : new ItemStack(Blocks.gold_block)
 				));
 		}
 
@@ -273,24 +270,28 @@ public class ExUTweaks
 		
 		if (ConfigurationHandler.enableSoulFragmentRecipes)
 		{
+
+            Item heartCanister = GameRegistry.findItem("TConstruct", "heartCanister");
+            Item galgadorianMetal = GameRegistry.findItem("StevesCarts", "BlockMetalStorage");
+
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.soul), 
 					"GSG",
 					"SDS",
 					"GSG",
-					'G', Loader.isModLoaded("TConstruct") ? new ItemStack(TinkerArmor.heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
+					'G', Loader.isModLoaded("TConstruct") ? new ItemStack(heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
 					'S', new ItemStack(Items.nether_star),
 					'D', new ItemStack(Blocks.dragon_egg)
 					));
 			if (Loader.isModLoaded("StevesCarts"))
 			{
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.soul), 
-						"GSG",
-						"SBS",
-						"GSG",
-						'G', Loader.isModLoaded("TConstruct") ? new ItemStack(TinkerArmor.heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
-						'S', new ItemStack(Items.nether_star),
-						'B', new ItemStack(GameRegistry.findItem("StevesCarts", "BlockMetalStorage"), 1, 2)
-						));
+                    "GSG",
+                    "SBS",
+                    "GSG",
+                    'G', Loader.isModLoaded("TConstruct") ? new ItemStack(heartCanister, 1, 5) : new ItemStack(Blocks.emerald_block),
+                    'S', new ItemStack(Items.nether_star),
+                    'B', new ItemStack(galgadorianMetal, 1, 2)
+                ));
 			}
 		}
 	}
