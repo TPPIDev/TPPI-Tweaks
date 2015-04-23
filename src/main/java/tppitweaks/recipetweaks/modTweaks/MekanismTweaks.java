@@ -7,6 +7,7 @@ import mekanism.common.recipe.MekanismRecipe;
 import mekanism.common.recipe.RecipeHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.oredict.OreDictionary;
@@ -181,7 +182,7 @@ public class MekanismTweaks
 
 	private static void doMaterialNerfs()
 	{
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicDisassembler), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicDisassembler),
 			"AtA",
 			"ADA",
 			" o ",
@@ -190,9 +191,9 @@ public class MekanismTweaks
 			't', new ItemStack(Mekanism.EnergyTablet, 1, 1),
 			'o', "ingotRefinedObsidian",
 			'A', Mekanism.AtomicAlloy
-		}));
+		));
 
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicAlloy), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.AtomicAlloy),
 			"oao",
 			"aea",
 			"oao",
@@ -200,9 +201,9 @@ public class MekanismTweaks
 			'o', "ingotRefinedObsidian",
 			'e', Mekanism.ElectrolyticCore,
 			'a', Mekanism.ReinforcedAlloy
-		}));
+		));
 
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 1), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(ModItems.tppiMaterial, 1, 1),
 			"asa",
 			"ete",
 			"asa",
@@ -211,7 +212,7 @@ public class MekanismTweaks
 			's', Mekanism.SpeedUpgrade,
 			'e', Mekanism.EnergyUpgrade,
 			'a', Mekanism.AtomicAlloy
-		}));
+		));
 	}
 
 	private static void doMinerNerf()
@@ -233,7 +234,7 @@ public class MekanismTweaks
 			'7', setDamage(clump, 7)
 		));
 		
-		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.MachineBlock, 1, 4), new Object[]{
+		GameRegistry.addRecipe(new MekanismRecipe(new ItemStack(Mekanism.MachineBlock, 1, 4),
 			"AcA",
 			"LRL",
 			"MCM",
@@ -244,7 +245,7 @@ public class MekanismTweaks
 			'R', Mekanism.Robit,
 			'M', new ItemStack(Mekanism.BasicBlock, 1, 8),
 			'C', Mekanism.AtomicDisassembler
-		}));
+		));
 	}
 	
 	private static ItemStack setDamage(ItemStack stack, int dmg)
@@ -256,6 +257,7 @@ public class MekanismTweaks
 
 	public static IIcon getCircuitIcon()
 	{
-		return Mekanism.ControlCircuit.getIconFromDamage(0);
+        Item circuit = GameRegistry.findItem("Mekanism", "ControlCircuit");
+		return circuit.getIconFromDamage(0);
 	}
 }
