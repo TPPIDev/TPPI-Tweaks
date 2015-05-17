@@ -160,7 +160,7 @@ public class ExUTweaks
 					'U', new ItemStack(ExtraUtils.unstableIngot),
 					'N', new ItemStack(Items.nether_star),
 					'S', new ItemStack(ExtraUtils.soul),
-					'W', Loader.isModLoaded("xreliquary") ? batWing : new ItemStack(Items.feather),
+					'W', Loader.isModLoaded("Reliquary") ? batWing : new ItemStack(Items.feather),
 					'B', Loader.isModLoaded("TConstruct") ? bucketGold : new ItemStack(Blocks.gold_block)
 				));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ExtraUtils.angelRing, 1, 1),
