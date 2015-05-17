@@ -84,16 +84,16 @@ public class IC2Tweaks
 	{
 		/* copypasta code, ignore horrible formatting */
 			       		
-		GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.iridiumDrill, new Object[] { " I ", "IdI", " C ", Character.valueOf('I'), Ic2Items.iridiumPlate, Character.valueOf('d'), StackUtil.copyWithWildCard(Ic2Items.diamondDrill), Character.valueOf('C'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal) }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.mvTransformer, new Object[] { "C", "M", "C", Character.valueOf('M'), Ic2Items.machine, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.weedEx, new Object[] { "R", "G", "C", Character.valueOf('R'), Items.redstone, Character.valueOf('G'), Ic2Items.grinPowder, Character.valueOf('C'), Ic2Items.cell }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 5), new Object[] { "C", "R", "D", Character.valueOf('D'), "dustCoal", Character.valueOf('R'), Items.redstone, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 5), new Object[] { "C", "D", "R", Character.valueOf('D'), "dustCoal", Character.valueOf('R'), Items.redstone, Character.valueOf('C'), Ic2Items.insulatedCopperCableItem }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 8), new Object[] { "c", "C", "R", Character.valueOf('R'), Items.redstone, Character.valueOf('C'), "dustHydratedCoal", Character.valueOf('c'), Ic2Items.insulatedCopperCableItem }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 8), new Object[] { "c", "R", "C", Character.valueOf('R'), Items.redstone, Character.valueOf('C'), "dustHydratedCoal", Character.valueOf('c'), Ic2Items.insulatedCopperCableItem }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.personalSafe, new Object[] { "c", "M", "C", Character.valueOf('c'), Ic2Items.electronicCircuit.copy(), Character.valueOf('C'), Blocks.chest, Character.valueOf('M'), Ic2Items.machine }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.nanoHelmet, new Object[] { "CcC", "CGC", Character.valueOf('C'), Ic2Items.carbonPlate, Character.valueOf('c'), StackUtil.copyWithWildCard(Ic2Items.energyCrystal), Character.valueOf('G'), StackUtil.copyWithWildCard(Ic2Items.nightvisionGoggles) }));
-        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.electricJetpack, new Object[] { "ICI", "IBI", "G G", Character.valueOf('I'), Ic2Items.casingiron, Character.valueOf('C'), Ic2Items.advancedCircuit.copy(), Character.valueOf('B'), Ic2Items.batBox, Character.valueOf('G'), Items.glowstone_dust }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.iridiumDrill, " I ", "IdI", " C ", 'I', Ic2Items.iridiumPlate, 'd', StackUtil.copyWithWildCard(Ic2Items.diamondDrill), 'C', StackUtil.copyWithWildCard(Ic2Items.energyCrystal)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.mvTransformer, "C", "M", "C", 'M', Ic2Items.machine, 'C', Ic2Items.insulatedCopperCableItem));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.weedEx, "R", "G", "C", 'R', Items.redstone, 'G', Ic2Items.grinPowder, 'C', Ic2Items.cell));
+        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 5), "C", "R", "D", 'D', "dustCoal", 'R', Items.redstone, 'C', Ic2Items.insulatedCopperCableItem));
+        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 5), "C", "D", "R", 'D', "dustCoal", 'R', Items.redstone, 'C', Ic2Items.insulatedCopperCableItem));
+        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 8), "c", "C", "R", 'R', Items.redstone, 'C', "dustHydratedCoal", 'c', Ic2Items.insulatedCopperCableItem));
+        GameRegistry.addRecipe(new ShapedOreRecipe(StackUtil.copyWithSize(Ic2Items.suBattery, 8), "c", "R", "C", 'R', Items.redstone, 'C', "dustHydratedCoal", 'c', Ic2Items.insulatedCopperCableItem));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.personalSafe, "c", "M", "C", 'c', Ic2Items.electronicCircuit.copy(), 'C', Blocks.chest, 'M', Ic2Items.machine));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.nanoHelmet, "CcC", "CGC", 'C', Ic2Items.carbonPlate, 'c', StackUtil.copyWithWildCard(Ic2Items.energyCrystal), 'G', StackUtil.copyWithWildCard(Ic2Items.nightvisionGoggles)));
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.electricJetpack, "ICI", "IBI", "G G", 'I', Ic2Items.casingiron, 'C', Ic2Items.advancedCircuit.copy(), 'B', Ic2Items.batBox, 'G', Items.glowstone_dust));
         GameRegistry.addRecipe(new ShapelessOreRecipe(Ic2Items.carbonFiber, "dustCoal", "dustCoal", "dustCoal", "dustCoal"));
 	}
 	

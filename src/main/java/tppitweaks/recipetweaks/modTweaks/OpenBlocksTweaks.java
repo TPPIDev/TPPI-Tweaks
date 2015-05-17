@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import openblocks.OpenBlocks;
+import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
@@ -27,11 +27,11 @@ public class OpenBlocksTweaks
 	{
 		if (ConfigurationHandler.eloraamBreakersAndDeployers)
 		{
-			if (openblocks.OpenBlocks.Blocks.blockBreaker != null)
-				TweakingRegistry.markItemForRecipeRemoval(openblocks.OpenBlocks.Blocks.blockBreaker, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
+			if (ModBlocks.obBlockBreaker != null)
+				TweakingRegistry.markItemForRecipeRemoval(ModBlocks.obBlockBreaker, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
 
-			if (openblocks.OpenBlocks.Blocks.blockPlacer != null)
-				TweakingRegistry.markItemForRecipeRemoval(openblocks.OpenBlocks.Blocks.blockPlacer, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
+			if (ModBlocks.obBlockPlacer != null)
+				TweakingRegistry.markItemForRecipeRemoval(ModBlocks.obBlockPlacer, -1, TweakingAction.CHANGED, "Recipe changed to bring back", "RP2-like recipes");
 		}
 
 		if (ConfigurationHandler.disablePigmenTrophyDrop)
@@ -45,14 +45,14 @@ public class OpenBlocksTweaks
 	{
 		if (ConfigurationHandler.eloraamBreakersAndDeployers)
 		{
-			if (openblocks.OpenBlocks.Blocks.blockBreaker != null)
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockBreaker), 1),
+			if (ModBlocks.obBlockBreaker != null)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.obBlockBreaker),
                         "CAC", "CPC", "CRC", 'C', "cobblestone",
                         'A', Items.iron_pickaxe, 'P', Blocks.piston, 'R', Items.redstone
                 ));
 
-			if (openblocks.OpenBlocks.Blocks.blockPlacer != null)
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack((openblocks.OpenBlocks.Blocks.blockPlacer), 1),
+			if (ModBlocks.obBlockPlacer != null)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.obBlockPlacer),
                         "CAC", "CPC", "CRC", 'C', "cobblestone",
                         'A', Blocks.chest, 'P', Blocks.piston, 'R', Items.redstone
                 ));
@@ -68,7 +68,7 @@ public class OpenBlocksTweaks
 			while (iter.hasNext())
 			{
 				ItemStack stack = iter.next().getEntityItem();
-				if (stack != null && stack.getItem() == Item.getItemFromBlock(OpenBlocks.Blocks.trophy))
+				if (stack != null && stack.getItem() == Item.getItemFromBlock(ModBlocks.obTrophy))
 				{
 					iter.remove();
 				}

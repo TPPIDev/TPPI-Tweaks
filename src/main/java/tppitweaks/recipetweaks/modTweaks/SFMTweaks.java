@@ -5,14 +5,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import tppitweaks.block.ModBlocks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
-import vswe.stevesfactory.blocks.ModBlocks;
-import appeng.core.Api;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SFMTweaks
@@ -22,14 +21,13 @@ public class SFMTweaks
 	{
 		if (ConfigurationHandler.tweakSFM)
 		{
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockManager, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockCable, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockCableRelay, 8, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockCableInput, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockCableOutput, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
-
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockCableIntake, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
-			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.blockCableBreaker, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmManager, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmCable, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmCableRelay, 8, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmCableInput, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmCableOutput, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmCableIntake, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
+			TweakingRegistry.markItemForRecipeRemoval(ModBlocks.sfmCableBreaker, -1, TweakingAction.CHANGED, "Recipe changed to be AE-like", "to balance the vast capabilities", "of this normally cheap mod");
 		}
 	}
 
@@ -38,63 +36,63 @@ public class SFMTweaks
 	{
 		if (ConfigurationHandler.tweakSFM)
 		{
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockManager), 
-			        "III", 
-			        "aRf", 
-			        "SSS", 
-			        
+			GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.sfmManager,
+			        "III",
+			        "aRf",
+			        "SSS",
+
 			        'R', new ItemStack(ModItems.tppiMaterial),
-			        'a', Api.INSTANCE.materials().materialAnnihilationCore.stack(1),
-			        'f', Api.INSTANCE.materials().materialFormationCore.stack(1),
-			        'I', "ingotIron", 
+			        'a', new ItemStack(ModItems.aeMaterial, 1, 44),
+			        'f', new ItemStack(ModItems.aeMaterial, 1, 43),
+			        'I', "ingotIron",
 			        'S', "stone"
-			));
-			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCable, 8),
-					 "GPG", 
-					 "IRI", 
-					 "GPG", 
-					 
-					 'R', Api.INSTANCE.materials().materialFluixDust.stack(1), 
-					 'G', "blockGlass", 
+			).setMirrored(true));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.sfmCable, 8),
+					 "GPG",
+					 "IRI",
+					 "GPG",
+
+					 'R', new ItemStack(ModItems.aeMaterial, 1, 8),
+					 'G', "blockGlass",
 					 'I', "ingotIron",
-					 'P', Blocks.heavy_weighted_pressure_plate 
+					 'P', Blocks.heavy_weighted_pressure_plate
 			));
-			
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCableRelay, 1, 8), 
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.sfmCableRelay, 1, 8),
 					    "fBf",
 						"BIB",
 						"fBf",
 
 						'B', "blockLapis",
-						'I', ModBlocks.blockCableRelay,
-						'f', Api.INSTANCE.materials().materialFluixDust.stack(1)
+						'I', ModBlocks.sfmCableRelay,
+						'f', new ItemStack(ModItems.aeMaterial, 1, 8)
 			));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCableInput),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.sfmCableInput),
 			            " r ",
 						"rIr",
 						" r ",
 
 						'r', "dustRedstone",
-						'I', ModBlocks.blockCable
+						'I', ModBlocks.sfmCable
 			));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCableOutput),
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.sfmCableOutput),
 						"rtr",
 						"rIr",
 						"rrr",
 
 						'r', "dustRedstone",
-						't', Api.INSTANCE.parts().partLevelEmitter.stack(1),
-						'I', ModBlocks.blockCable
+						't', new ItemStack(ModItems.aeMultipart, 1, 280),
+						'I', ModBlocks.sfmCable
 			));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableIntake, 1, 0), ModBlocks.blockCable, Blocks.hopper, Blocks.dropper, Api.INSTANCE.parts().partInterface.stack(1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.sfmCableIntake, 1, 0), ModBlocks.sfmCable, Blocks.hopper, Blocks.dropper, new ItemStack(ModItems.aeMultipart, 1, 440)));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableIntake, 1, 8), new ItemStack(ModBlocks.blockCableIntake, 1, 0), Api.INSTANCE.materials().materialCalcProcessor.stack(1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.sfmCableIntake, 1, 8), new ItemStack(ModBlocks.sfmCableIntake, 1, 0), new ItemStack(ModItems.aeMaterial, 1, 23)));
 
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.blockCableBreaker), ModBlocks.blockCable, Items.iron_pickaxe, Blocks.dispenser, Api.INSTANCE.parts().partInterface.stack(1)));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.sfmCableBreaker), ModBlocks.sfmCable, Items.iron_pickaxe, Blocks.dispenser, new ItemStack(ModItems.aeMultipart, 1, 440)));
 		}
 	}
 }
