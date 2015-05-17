@@ -29,7 +29,6 @@ public class Reference
 			+ "after:powersuits;"
 			+ "after:Mekanism;"
 			+ "after:xreliquary;"
-			+ "required-after:NotEnoughItems;"
 			+ "after:Railcraft;"
 			+ "after:advancedgenetics;"
 			+ "after:IC2;"
