@@ -7,11 +7,10 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.world.WorldEvent;
-import tppitweaks.aspecttweaks.AspectTweaks;
+import tppitweaks.tweak.aspect.TweakVanilla;
 import tppitweaks.client.gui.IRCGui;
-import tppitweaks.client.gui.MaricultureGui;
 import tppitweaks.config.ConfigurationHandler;
-import tppitweaks.recipetweaks.modTweaks.DATweaks;
+import tppitweaks.tweak.recipe.TweakDimensionalAnchors;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -43,7 +42,7 @@ public class TPPIEventHandler
     @SubscribeEvent
     public void worldLoaded(WorldEvent.Load event){
     	if (Loader.isModLoaded("Thaumcraft"))
-    		AspectTweaks.onWorldLoad();
+    		TweakVanilla.onWorldLoad();
     }
 
     @SubscribeEvent
@@ -51,7 +50,7 @@ public class TPPIEventHandler
     {
         if (Loader.isModLoaded("DimensionalAnchors") && !Loader.isModLoaded("ChickenChunks"))
         {
-            DATweaks.addTooltip(event);
+            TweakDimensionalAnchors.addTooltip(event);
         }
     }
 

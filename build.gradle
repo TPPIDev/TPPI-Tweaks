@@ -18,10 +18,13 @@ version = "MC${minecraft_version}-${mod_version}-${System.getenv().BUILD_NUMBER}
 minecraft {
     version = "${minecraft_version}-${forge_version}"
     runDir = 'run'
+
+    replace "@VERSION@", project.version
+    replaceIn "TPPITweaks.java"
 }
 
 repositories {
-    maven { // ttCore
+    maven { // RecipeTweakingCore
         name 'tterrag Repo'
         url "http://maven.tterrag.com"
     }

@@ -2,51 +2,33 @@ package tppitweaks.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import tppitweaks.TPPITweaks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TPPIBlock extends Block
-{
+public class TPPIBlock extends Block {
     @SideOnly(Side.CLIENT)
     private IIcon icon;
 
-    public TPPIBlock()
-    {
+    public TPPIBlock() {
         super(Material.iron);
         setHardness(5.0F);
         setResistance(10.0F);
         setStepSound(soundTypeMetal);
         setBlockName("redstoneCompressed");
+        setBlockTextureName("tppitweaks:redstoneCompressed");
         setCreativeTab(TPPITweaks.creativeTab);
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void registerBlockIcons(IIconRegister register)
-    {
-        icon = register.registerIcon("tppitweaks:redstoneCompressed");
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public IIcon getIcon(int side, int metadata)
-    {
-        return icon;
-    }
-
-    @Override
-    public boolean canProvidePower()
-    {
+    public boolean canProvidePower() {
         return true;
     }
 
     @Override
-    public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
+    public int isProvidingWeakPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
         return 15;
     }
 

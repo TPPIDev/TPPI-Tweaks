@@ -15,7 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import tppitweaks.aspecttweaks.AspectTweaks;
+import tppitweaks.tweak.aspect.TweakVanilla;
 import tppitweaks.block.ModBlocks;
 import tppitweaks.command.CommandGetInvolved;
 import tppitweaks.command.CommandOres;
@@ -25,7 +25,7 @@ import tppitweaks.event.TPPIEventHandler;
 import tppitweaks.item.ModItems;
 import tppitweaks.lib.Reference;
 import tppitweaks.proxy.CommonProxy;
-import tppitweaks.recipetweaks.AdditionalTweaks;
+import tppitweaks.tweak.AdditionalTweaks;
 import tterrag.rtc.RecipeTweakingCore;
 
 import java.io.File;
@@ -33,7 +33,7 @@ import java.io.File;
 @Mod(modid = "TPPITweaks", name = "TPPI Tweaks", version = TPPITweaks.VERSION, dependencies = Reference.DEPENDENCIES)
 public class TPPITweaks
 {
-	public static final String VERSION = "1.1.0";
+	public static final String VERSION = "@VERSION@";
 
 	@Instance("TPPITweaks")
 	public static TPPITweaks instance;
@@ -72,7 +72,7 @@ public class TPPITweaks
 			proxy.initTickHandler();
 		
 		if (Loader.isModLoaded("Thaumcraft"))
-			AspectTweaks.init();
+			TweakVanilla.init();
 	}
 
 	@EventHandler

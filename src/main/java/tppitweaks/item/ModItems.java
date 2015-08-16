@@ -1,12 +1,8 @@
 package tppitweaks.item;
 
-import cofh.api.modhelpers.ThermalExpansionHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.config.ConfigurationHandler;
-import appeng.core.Api;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -22,17 +18,16 @@ public class ModItems
 
     public static void registerRecipes()
     {
-        if (Loader.isModLoaded("appliedenergistics2") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM)
-        {
+        if (Loader.isModLoaded("appliedenergistics2") && Loader.isModLoaded("StevesFactoryManager") && ConfigurationHandler.tweakSFM) {
             /* @formatter:off */
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(tppiMaterial, 1, 0),
 			        "CdC",
 					"dsd",
 					"CdC",
 		                                                    
-					'C', Api.INSTANCE.materials().materialCalcProcessor.stack(1),
+					'C', new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 23),
 					's', "itemSilicon",
-					'd', Api.INSTANCE.materials().materialFluixDust.stack(1)
+					'd', new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 8)
 			));
 			/* @formatter:on */
         }

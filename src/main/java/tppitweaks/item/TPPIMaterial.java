@@ -8,15 +8,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import tppitweaks.TPPITweaks;
-import tppitweaks.recipetweaks.modTweaks.MekanismTweaks;
+import tppitweaks.tweak.recipe.TweakMekanism;
 import cpw.mods.fml.common.Loader;
 
-public class TPPIMaterial extends Item
-{
+public class TPPIMaterial extends Item {
     public IIcon uncookedIcon;
 
-    public TPPIMaterial()
-    {
+    public TPPIMaterial() {
         super();
         setCreativeTab(TPPITweaks.creativeTab);
         setHasSubtypes(true);
@@ -33,38 +31,29 @@ public class TPPIMaterial extends Item
         icons[0] = par1IconRegister.registerIcon("tppitweaks:tppiProcessor");
         icons[1] = par1IconRegister.registerIcon("tppitweaks:disassemblerCore");
         icons[2] = par1IconRegister.registerIcon("tppitweaks:miningCore");
-        icons[3] = Loader.isModLoaded("Mekanism") ? MekanismTweaks.getCircuitIcon() : par1IconRegister.registerIcon("not:applicable");
+        icons[3] = Loader.isModLoaded("Mekanism") ? TweakMekanism.getCircuitIcon() : par1IconRegister.registerIcon("not:applicable");
         icons[4] = par1IconRegister.registerIcon("tppitweaks:blazeEnderStill");
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack par1ItemStack)
-    {
-        return unlocNames[par1ItemStack.getItemDamage()];
+    public String getUnlocalizedName(ItemStack stack) {
+        return unlocNames[stack.getItemDamage()];
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack)
-    {
-    	if (stack.getItemDamage() == 2 || stack.getItemDamage() == 3)
-    		return true;
-    	else
-    		return false;
+    public boolean hasEffect(ItemStack stack, int pass) {
+    	return stack.getItemDamage() == 2 || stack.getItemDamage() == 3;
     }
 
     @Override
-    public IIcon getIconFromDamage(int dmg)
-    {
+    public IIcon getIconFromDamage(int dmg) {
         return dmg < icons.length ? icons[dmg] : null;
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    public void getSubItems(Item item, CreativeTabs tab, List list)
-    {
+    public void getSubItems(Item item, CreativeTabs tab, List list) {
         for (int i = 0; i < 5; i++)
-        {
             list.add(new ItemStack(this, 1, i));
-        }
     }
 }

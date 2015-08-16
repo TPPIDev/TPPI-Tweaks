@@ -46,6 +46,7 @@ public class ConfigurationHandler
 	public static boolean addOneToOnePlateHammerRecipes;
 	public static boolean unnerfPaperRecipe;
 	public static boolean readdResinSmelting;
+
 	public static boolean doCharcoalBlockCompression;
 	public static boolean makeEIOHardModeEasier;
 	public static String[] removeExtruderInput;
@@ -104,7 +105,7 @@ public class ConfigurationHandler
 		buffUnifierRecipe = config.get("Other Mod Tweaks", "buffUnifierRecipe", true, "Make the unifier cheaper.").getBoolean(true);
 		disablePlasticCups = config.get("Other Mod Tweaks", "disablePlasticCups", true, "Disable the plastic cups from MFR as they dupe liquids.").getBoolean(true);
 		makeEIOHardModeEasier = config.get("Other Mod Tweaks", "makeEnderIOHardModeEasier", true, "Give some EnderIO recipes a buff as they are way too diffucult. Currently affects: basic capacitor, reservoir").getBoolean(true);
-		addDarkMenagerieMobDrops = config.get("Other Mod Tweaks", "addDarkMenagerieMobDrops", true, "The mobs are interesting but some don't drop anything. This fixes that.").getBoolean(true);
+//		addDarkMenagerieMobDrops = config.get("Other Mod Tweaks", "addDarkMenagerieMobDrops", true, "The mobs are interesting but some don't drop anything. This fixes that.").getBoolean(true);
 		
 		enableSoulFragmentRecipes = config.get("ExtraUtils Tweaks", "enableSoulFragmentRecipes", true, "Add in expensive recipes to allow auto-crafting of soul fragments to either offset health loss or avoid it.").getBoolean(true);
 		fixExURecipes = config.get("ExtraUtils Tweaks", "fixExtraUtilsRecipes", true, "Current version of ExU has broken recipes for the unstable ingot block. This fixes that.").getBoolean(true);
@@ -114,14 +115,14 @@ public class ConfigurationHandler
 		nerfEnderGen = config.get("ExtraUtils Tweaks", "nerfEnderGen", true, "Make the Extra Utilities ender generator expensive.").getBoolean(true);
 		nerfAngelRings = config.get("ExtraUtils Tweaks", "nerfAngelRings", true, "Make the Extra Utilities Angel Rings expensive.").getBoolean(true);
 
-		doPlatinumInCentrifuge = config.get("Gregtech Tweaks", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
-		addLapisDustMortarRecipes = config.get("Gregtech Tweaks", "addLapisDustMortarRecipes", true, "Lapis dust can be made from lapis using GregTech's mortars.").getBoolean(true);
-		tinkersAluminumPlates = config.get("Gregtech Tweaks", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
-		tinkersAluminumOreInGTMachines = config.get("Gregtech Tweaks", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
-		unnerfPaperRecipe = config.get("Gregtech Tweaks", "unnerfPaperRecipe", true, "Revert GregTech's paper recipe output nerf.").getBoolean(true);
-		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
-		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
-		removeExtruderInput = config.get("Gregtech Tweaks", "removeExtruderInput", new String[] {"crystalIron", "crystalGold", "crystalOsmium", "crystalCopper", "crystalTin", "crystalSilver", "crystalObsidian", "crystalLead", "shardIron", "shardGold", "shardOsmium", "shardCopper", "shardTin", "shardSilver", "shardObsidian", "shardLead"}, "Disable these Ore Dict items as valid inputs for the Extruder").getStringList();
+//		doPlatinumInCentrifuge = config.get("Gregtech Tweaks", "doPlatinumInCentrifuge", true, "Re-adds the old GregTech centrifuge recipe for platinum dust to iridium nugget + small nickel dust.").getBoolean(true);
+//		addLapisDustMortarRecipes = config.get("Gregtech Tweaks", "addLapisDustMortarRecipes", true, "Lapis dust can be made from lapis using GregTech's mortars.").getBoolean(true);
+//		tinkersAluminumPlates = config.get("Gregtech Tweaks", "tinkersAluminumPlates", true, "Tinkers' Construct aluminum ingots can make aluminum plates in the GregTech plate bending machine.").getBoolean(true);
+//		tinkersAluminumOreInGTMachines = config.get("Gregtech Tweaks", "tinkersAluminumOreInGTMachines", true, "Tinkers' Construct aluminum ore works in GregTech machines.").getBoolean(true);
+//		unnerfPaperRecipe = config.get("Gregtech Tweaks", "unnerfPaperRecipe", true, "Revert GregTech's paper recipe output nerf.").getBoolean(true);
+//		readdResinSmelting = config.get("Gregtech Tweaks", "readdResinSmelting", true, "Re-add the IC2 sticky resin to rubber smelting recipe.").getBoolean(true);
+//		doCharcoalBlockCompression = config.get("Gregtech Tweaks", "doCharcoalBlockCompression", true, "Charcoal blocks can be compressed to coal via compressor.").getBoolean(true);
+//		removeExtruderInput = config.get("Gregtech Tweaks", "removeExtruderInput", new String[] {"crystalIron", "crystalGold", "crystalOsmium", "crystalCopper", "crystalTin", "crystalSilver", "crystalObsidian", "crystalLead", "shardIron", "shardGold", "shardOsmium", "shardCopper", "shardTin", "shardSilver", "shardObsidian", "shardLead"}, "Disable these Ore Dict items as valid inputs for the Extruder").getStringList();
 		
 		showIRCGui = config.get("Mod Loading Tweaks", "showIRCGui", true, "Show the IRC integration startup GUI").getBoolean(true);
 
@@ -140,7 +141,7 @@ public class ConfigurationHandler
 		
 		nerfTECaches = config.get("Thermal Expansion Tweaks", "nerfTECaches", true, "Add Mekanism Bins to basic cache recipe.").getBoolean(true);
 		
-		allowCapes = config.get("Pack Info", "allowDevCapes", true, "Enables/Disables the visibility of dev capes. This only affects the user and does NOT have to be the same between client and server.").getBoolean(true);
+//		allowCapes = config.get("Pack Info", "allowDevCapes", true, "Enables/Disables the visibility of dev capes. This only affects the user and does NOT have to be the same between client and server.").getBoolean(true);
 		
 		config.save();
 	}
