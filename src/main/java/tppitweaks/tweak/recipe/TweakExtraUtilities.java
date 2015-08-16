@@ -164,7 +164,7 @@ public class TweakExtraUtilities {
                     'U', new ItemStack(unstableIngot),
                     'N', new ItemStack(Items.nether_star),
                     'S', new ItemStack(soul),
-                    'W', Loader.isModLoaded("xreliquary") ? GameRegistry.findItem("xreliquary", "mob_ingredient") : new ItemStack(Items.feather),
+                    'W', Loader.isModLoaded("xreliquary") ? new ItemStack(GameRegistry.findItem("xreliquary", "mob_ingredient"), 1, 5) : new ItemStack(Items.feather),
                     'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
             ));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(angelRing, 1, 1),
@@ -176,7 +176,7 @@ public class TweakExtraUtilities {
                     'U', new ItemStack(unstableIngot),
                     'N', new ItemStack(Items.nether_star),
                     'S', new ItemStack(soul),
-                    'W', Loader.isModLoaded("xreliquary") ? GameRegistry.findItem("xreliquary", "mob_ingredient") : new ItemStack(Items.feather),
+                    'W', Loader.isModLoaded("xreliquary") ? new ItemStack(GameRegistry.findItem("xreliquary", "mob_ingredient"), 1, 5) : new ItemStack(Items.feather),
                     'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
             ));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(angelRing, 1, 2),
@@ -189,7 +189,7 @@ public class TweakExtraUtilities {
                     'U', new ItemStack(unstableIngot),
                     'N', new ItemStack(Items.nether_star),
                     'S', new ItemStack(soul),
-                    'W', Loader.isModLoaded("xreliquary") ? GameRegistry.findItem("xreliquary", "mob_ingredient") : new ItemStack(Items.feather),
+                    'W', Loader.isModLoaded("xreliquary") ? new ItemStack(GameRegistry.findItem("xreliquary", "mob_ingredient"), 1, 5) : new ItemStack(Items.feather),
                     'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
             ));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(angelRing, 1, 3),
@@ -201,7 +201,7 @@ public class TweakExtraUtilities {
                     'U', new ItemStack(unstableIngot),
                     'N', new ItemStack(Items.nether_star),
                     'S', new ItemStack(soul),
-                    'W', Loader.isModLoaded("xreliquary") ? GameRegistry.findItem("xreliquary", "mob_ingredient") : new ItemStack(Items.feather),
+                    'W', Loader.isModLoaded("xreliquary") ? new ItemStack(GameRegistry.findItem("xreliquary", "mob_ingredient"), 1, 5) : new ItemStack(Items.feather),
                     'B', Loader.isModLoaded("TConstruct") ? new ItemStack(GameRegistry.findItem("TConstruct", "buckets"), 1, 1) : new ItemStack(Blocks.gold_block)
             ));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(angelRing, 1, 4),
