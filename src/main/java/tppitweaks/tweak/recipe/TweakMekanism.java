@@ -213,19 +213,18 @@ public class TweakMekanism {
 
     private static void doMinerNerf() {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 3),
-                "012",
-                "3c4",
-                "567",
+                "0c2",
+                "314",
+                "5c6",
 
-                'c', controlCircuit,
+                'c', new ItemStack(controlCircuit, 1, 1),
                 '0', setClump(clump, 0),
                 '1', setClump(clump, 1),
                 '2', setClump(clump, 2),
                 '3', setClump(clump, 3),
                 '4', setClump(clump, 4),
                 '5', setClump(clump, 5),
-                '6', setClump(clump, 6),
-                '7', setClump(clump, 7)
+                '6', setClump(clump, 6)
         ));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(machineBlock, 1, 4),
@@ -249,7 +248,7 @@ public class TweakMekanism {
     }
 
     public static IIcon getCircuitIcon() {
-        return controlCircuit.getIconFromDamage(0);
+        return controlCircuit.getIconFromDamage(1);
     }
 
     @SuppressWarnings("unchecked")
