@@ -69,11 +69,6 @@ Redstone:~
 Redstone is spawned in small, 4 ore clusters commonly in the low teens (y13), with a variance of 6, 
 with some appearing up where gold is, and some also appearing at and below lava.~
 ~~~
-Magical Crops Essence:~
-~
-You can find this ore in similar areas as redstone, 
-in rare, mid-large sized chunks of ore. It spawns in the low teens with a variance of 5 blocks.~
-~~~
 Diamond:~
 ~
 Diamond is unchanged from vanilla, in that it can spawn anywhere in the first 16 levels of the world. 
@@ -95,16 +90,13 @@ Spawns anywhere from levels 0 to 128.
 ~~~
 Unaffected Ores:~
 ~
--Power ore~
 -PR gems~
 -Dark Iron~
--Ars Magica Ores~
 -Nether Ores~
 -End Ores~
 -Apatite~
 -Sulfur~
 -Thaumcraft Shards~
--Gregtech Ores~
 ~~~
 Have fun!
 ~
