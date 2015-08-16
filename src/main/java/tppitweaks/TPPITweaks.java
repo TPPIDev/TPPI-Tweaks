@@ -50,7 +50,7 @@ public class TPPITweaks
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{		
-		RecipeTweakingCore.registerPackageName("tppitweaks.recipetweaks.modTweaks");
+		RecipeTweakingCore.registerPackageName("tppitweaks.tweak.recipe");
 
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/TPPI/TPPITweaks.cfg"));
 	}
