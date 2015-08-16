@@ -12,13 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tterrag.rtc.RecipeAddition;
 import tterrag.rtc.RecipeRemoval;
 import tterrag.rtc.TweakingRegistry;
 import tterrag.rtc.TweakingRegistry.TweakingAction;
-import tterrag.rtc.RecipeAddition.EventTime;
 
 public class TweakThermalExpansion {
 
@@ -46,9 +44,9 @@ public class TweakThermalExpansion {
         TweakingRegistry.markItemForRecipeRemoval(florb, 1, TweakingAction.NOTE, "Recipe edited to be", "ore dictionary");
     }
 
-    @RecipeAddition(requiredModids = "ThermalExpansion", time = EventTime.POST_INIT)
+    @RecipeAddition(requiredModids = "ThermalExpansion")
     public static void addRecipes() {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.paper, 3),
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.paper, 3),
                 new ItemStack(material, 1, 512),
                 new ItemStack(material, 1, 512),
                 new ItemStack(material, 1, 512)
