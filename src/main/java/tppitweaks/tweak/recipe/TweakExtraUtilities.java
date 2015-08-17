@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tppitweaks.TPPITweaks;
@@ -251,7 +252,10 @@ public class TweakExtraUtilities {
         if (Loader.isModLoaded("gregtech_addon"))
             TPPITweaks.logger.info("Stahp, greg, I know. Blame Tema.");
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(curtain, "xx", "xx", "xx", 'x', "blockWoolBlack"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(curtain,
+                "xx", "xx", "xx",
+                'x', "blockWoolBlack"
+        ));
 
         if (ConfigurationHandler.harderDiamondSpikeRecipe) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(GameRegistry.findItem("ExtraUtilities", "spike_base_diamond"), 3, 0),
@@ -265,7 +269,7 @@ public class TweakExtraUtilities {
         }
 
         if (ConfigurationHandler.enableSoulFragmentRecipes) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(soul),
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 5),
                     "GSG",
                     "SDS",
                     "GSG",
@@ -273,8 +277,9 @@ public class TweakExtraUtilities {
                     'S', new ItemStack(Items.nether_star),
                     'D', new ItemStack(Blocks.dragon_egg)
             ));
+
             if (Loader.isModLoaded("StevesCarts")) {
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(soul),
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.tppiMaterial, 1, 5),
                         "GSG",
                         "SBS",
                         "GSG",
@@ -294,5 +299,9 @@ public class TweakExtraUtilities {
 
         GameRegistry.addRecipe(new ItemStack(decorative1, 1, 5), "iii", "iii", "iii", 'i', unstableIngot);
         GameRegistry.addRecipe(stableIngot, "nnn", "nnn", "nnn", 'n', new ItemStack(unstableIngot, 1, 1));
+    }
+
+    public static IIcon getSoulFragmentIcon() {
+        return soul.getIconFromDamage(0);
     }
 }

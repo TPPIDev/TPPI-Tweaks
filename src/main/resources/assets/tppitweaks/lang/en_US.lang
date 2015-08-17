@@ -9,6 +9,7 @@ miningCore.name=Enderman Mining Assistant
 tile.redstoneCompressed.name=Compressed Redstone Block
 dmCore.name=Imbued Control Circuit
 enderium420.name=Blazing Enderium
+soul.name=Soul Provider
 
 tppi.splash.text.1=Why didn't you ignore?
 tppi.splash.text.2=test splash please ignore
@@ -18,3 +19,5 @@ tppi.splash.text.5=DON'T TEST THE BOT!
 tppi.splash.text.6=You're famous now Tom7890!
 tppi.splash.text.7=You better be testin'!
 tppi.splash.text.8=Tcon tools don't burn in lava!
+
+tppi.tooltip.soul=Right click to obtain Soul Fragment
