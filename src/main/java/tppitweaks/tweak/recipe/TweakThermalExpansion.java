@@ -108,7 +108,7 @@ public class TweakThermalExpansion {
         OreDictionary.registerOre("dustWood", new ItemStack(material, 1, 512));
         OreDictionary.registerOre("itemSlag", new ItemStack(material, 1, 514));
         OreDictionary.registerOre("magmaCream", Items.magma_cream);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(material, 513),
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(material, 1, 513),
                 "sss",
                 "s s",
                 "sss",
