@@ -47,9 +47,7 @@ public class TweakThermalExpansion {
     @RecipeAddition(requiredModids = "ThermalExpansion")
     public static void addRecipes() {
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.paper, 3),
-                new ItemStack(material, 1, 512),
-                new ItemStack(material, 1, 512),
-                new ItemStack(material, 1, 512)
+                "dustWood", "dustWood", "dustWood"
         ));
 
         if (!OreDictionary.getOres("itemRubber").isEmpty())
