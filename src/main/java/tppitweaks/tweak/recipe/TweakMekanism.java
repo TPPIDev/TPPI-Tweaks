@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
 import tterrag.rtc.RecipeAddition;
@@ -235,9 +236,9 @@ public class TweakMekanism {
                 'A', atomicAlloy,
                 'c', new ItemStack(ModItems.tppiMaterial, 1, 3),
                 'L', new ItemStack(machineBlock, 1, 15),
-                'R', robit,
+                'R', getUnchargedItem(robit),
                 'M', new ItemStack(basic, 1, 8),
-                'C', atomicDisassembler
+                'C', getUnchargedItem(atomicDisassembler)
         ));
     }
 
@@ -245,6 +246,12 @@ public class TweakMekanism {
         ItemStack stack = new ItemStack(item);
         stack.setItemDamage(dmg);
         return stack;
+    }
+
+    private static ItemStack getUnchargedItem(Item item) {
+        ItemStack ret = new ItemStack(item, 1);
+        ret.setItemDamage(100);
+        return ret;
     }
 
     public static IIcon getCircuitIcon() {
@@ -258,7 +265,7 @@ public class TweakMekanism {
             Method m = recipeClass.getMethod("addCrusherRecipe", ItemStack.class, ItemStack.class);
             m.invoke(null, input, output);
         } catch(Exception e) {
-            System.err.println("Error while adding recipe: " + e.getMessage());
+            TPPITweaks.logger.error("Error while adding recipe: " + e.getMessage());
         }
     }
 
