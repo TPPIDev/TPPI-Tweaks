@@ -2,6 +2,7 @@ package tppitweaks.tweak;
 
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -23,6 +24,9 @@ public class AdditionalTweaks {
 			for (ItemStack stack1 : OreDictionary.getOres("ingotZinc"))
 				GameRegistry.addSmelting(newStack, stack1.copy(), 0.1F);
 		}
+
+		if (Loader.isModLoaded("ExtraTrees"))
+			OreDictionary.registerOre("dustWood", new ItemStack(GameRegistry.findItem("ExtraTrees", "misc"), 1, 1));
 	}
 	
 	public static void addMiscRecipes() {
