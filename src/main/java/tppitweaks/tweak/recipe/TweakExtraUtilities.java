@@ -85,7 +85,7 @@ public class TweakExtraUtilities {
                     'A', destructionPickaxe,
                     'W', buildersWand,
                     'S', erosionShovel,
-                    'P', portal,
+                    'P', new ItemStack(portal, 1, 0),
                     'B', Blocks.iron_bars,
                     'G', enderCore,
                     'E', Loader.isModLoaded("ThermalExpansion") ? new ItemStack(TweakThermalExpansion.cell, 1, 4) : Items.ender_pearl
