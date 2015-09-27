@@ -2,6 +2,7 @@ package tppitweaks.tweak.recipe;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import ic2.api.item.IC2Items;
 import ic2.api.recipe.RecipeInputOreDict;
 import ic2.api.recipe.Recipes;
 import ic2.core.Ic2Items;
@@ -37,12 +38,12 @@ public class TweakIC2 {
         TweakingRegistry.markItemForRecipeRemoval(Ic2Items.nanoHelmet.getItem(), -1);
         TweakingRegistry.markItemForRecipeRemoval(Ic2Items.electricJetpack.getItem(), -1);
         TweakingRegistry.markItemForRecipeRemoval(Ic2Items.carbonFiber.getItem(), -1);
+        TweakingRegistry.markItemForRecipeRemoval(Ic2Items.nightvisionGoggles.getItem(), -1);
         TweakingRegistry.markItemForRecipeRemoval(hybSolarHelm, -1);
         TweakingRegistry.markItemForRecipeRemoval(ultSolarHelm, -1);
 
-        if (ConfigurationHandler.addIridiumPanelRecipe) {
+        if (ConfigurationHandler.addIridiumPanelRecipe)
             TweakingRegistry.addTweakedTooltip(Ic2Items.iridiumPlate.getItem(), 0, TweakingAction.ADDED, "Added secondary recipe for", "AOBD compatibility.");
-        }
     }
 
     @RecipeAddition(requiredModids = "IC2", time = EventTime.INIT)
@@ -160,6 +161,16 @@ public class TweakIC2 {
                 "dustCoal",
                 "dustCoal",
                 "dustCoal"
+        ));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(Ic2Items.nightvisionGoggles,
+                "HBH", "LGL", "RCR",
+                'H', StackUtil.copyWithWildCard(new ItemStack(Ic2Items.reactorHeatSwitchDiamond.getItem(), 1, 1)),
+                'B', StackUtil.copyWithWildCard(Ic2Items.advBattery),
+                'L', Ic2Items.luminator,
+                'G', Ic2Items.reinforcedGlass,
+                'R', "itemRubber",
+                'C', Ic2Items.advancedCircuit
         ));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(hybSolarHelm,
