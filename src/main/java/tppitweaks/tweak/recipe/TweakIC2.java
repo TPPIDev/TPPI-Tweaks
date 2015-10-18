@@ -27,6 +27,7 @@ public class TweakIC2 {
     public static Block advSolarPanel = GameRegistry.findBlock("AdvancedSolarPanel", "BlockAdvSolarPanel");
     public static Item hybSolarHelm = GameRegistry.findItem("AdvancedSolarPanel", "hybrid_solar_helmet");
     public static Item ultSolarHelm = GameRegistry.findItem("AdvancedSolarPanel", "ultimate_solar_helmet");
+    public static Item mtCore = GameRegistry.findItem("AdvancedSolarPanel", "asp_crafting_items");
 
     @RecipeRemoval(requiredModids = "IC2")
     public static void init() {
@@ -41,6 +42,7 @@ public class TweakIC2 {
         TweakingRegistry.markItemForRecipeRemoval(Ic2Items.nightvisionGoggles.getItem(), -1);
         TweakingRegistry.markItemForRecipeRemoval(hybSolarHelm, -1);
         TweakingRegistry.markItemForRecipeRemoval(ultSolarHelm, -1);
+        TweakingRegistry.markItemForRecipeRemoval(mtCore, 12);
 
         if (ConfigurationHandler.addIridiumPanelRecipe)
             TweakingRegistry.addTweakedTooltip(Ic2Items.iridiumPlate.getItem(), 0, TweakingAction.ADDED, "Added secondary recipe for", "AOBD compatibility.");
@@ -194,6 +196,12 @@ public class TweakIC2 {
         GameRegistry.addRecipe(new ShapelessOreRecipe(ultSolarHelm,
                 new ItemStack(advSolarPanel, 1, 2),
                 StackUtil.copyWithWildCard(new ItemStack(hybSolarHelm))
+        ));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(mtCore, 1, 12),
+                "GRG", "G G", "GRG",
+                'R', StackUtil.copyWithWildCard(Ic2Items.reactorReflectorThick),
+                'G', Ic2Items.reinforcedGlass
         ));
     }
 }
