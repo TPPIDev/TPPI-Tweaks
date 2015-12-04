@@ -11,27 +11,28 @@ import tterrag.rtc.TweakingRegistry.TweakingAction;
 
 public class TweakBuildcraft {
 
-    public static ItemStack diamondDrill = new ItemStack(GameRegistry.findItem("IC2", "itemToolDDrill"), 1, -1);
+    public static ItemStack quarry = new ItemStack(GameRegistry.findItem("Buildcraft|Builders", "machineBlock"));
+    public static ItemStack robot = new ItemStack(GameRegistry.findItem("Buildcraft|Robotics", "robot"));
 
-    @RecipeRemoval(requiredModids = {"IC2", "BuildCraft|Factory"})
+    @RecipeRemoval(requiredModids = {"BuildCraft|Robotics", "BuildCraft|Silicon", "BuildCraft|Builders"})
     public static void init() {
         if (ConfigurationHandler.harderQuarryRecipe) {
-            TweakingRegistry.markItemForRecipeRemoval(GameRegistry.findItem("BuildCraft|Factory", "machineBlock"), 0, TweakingAction.CHANGED, "Replaced Diamond Pickaxe with Drill", "as temporary cost adjustment.");
+            TweakingRegistry.markItemForRecipeRemoval(GameRegistry.findItem("BuildCraft|Factory", "machineBlock"), 0, TweakingAction.CHANGED, "Moved farther down the", "BuildCraft tech tree");
         }
     }
 
-    @RecipeAddition(requiredModids = {"IC2", "BuildCraft|Factory"})
+    @RecipeAddition(requiredModids = {"BuildCraft|Robotics", "BuildCraft|Silicon", "BuildCraft|Builders"})
     public static void addRecipes() {
         if (ConfigurationHandler.harderQuarryRecipe) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(GameRegistry.findItem("BuildCraft|Factory", "machineBlock")),
+            GameRegistry.addRecipe(new ShapedOreRecipe(quarry,
                     "IRI",
                     "GIG",
                     "DAD",
                     'I', "gearIron",
-                    'R', "dustRedstone",
+                    'R', "crystalRedstone",
                     'G', "gearGold",
                     'D', "gearDiamond",
-                    'A', diamondDrill
+                    'A', robot
             ));
         }
     }
