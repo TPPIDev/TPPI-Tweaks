@@ -179,13 +179,13 @@ public class TweakMekanism {
     }
 
     private static void doMaterialNerfs() {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(atomicDisassembler),
+        GameRegistry.addRecipe(new ShapedOreRecipe(getUnchargedItem(atomicDisassembler),
                 "AtA",
                 "ADA",
                 " o ",
 
                 'D', new ItemStack(ModItems.tppiMaterial, 1, 1),
-                't', new ItemStack(energyTablet, 1, 1),
+                't', getUnchargedItem(energyTablet),
                 'o', "ingotRefinedObsidian",
                 'A', atomicAlloy
         ));
