@@ -1,7 +1,6 @@
 package tppitweaks.tweak.recipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import crazypants.enderio.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -19,9 +18,11 @@ public class TweakEnderIO {
     public static Block fusedQuartz = GameRegistry.findBlock("EnderIO", "blockFusedQuartz");
     public static Item capacitor = GameRegistry.findItem("EnderIO", "itemBasicCapacitor");
 
+    public static boolean useHardRecipes = Boolean.getBoolean(ConfigurationHandler.manuallyGetConfigValue("enderio/EnderIO.cfg", "useHardRecipes"));
+
     @RecipeRemoval(requiredModids = "EnderIO")
     public static void init() {
-        if (ConfigurationHandler.makeEIOHardModeEasier && Config.useHardRecipes) {
+        if (ConfigurationHandler.makeEIOHardModeEasier && useHardRecipes) {
             TweakingRegistry.markItemForRecipeRemoval(reservoir, -1, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
             TweakingRegistry.markItemForRecipeRemoval(capacitor, 0, TweakingAction.CHANGED, "Easy 'hardmode' recipe");
         }
@@ -30,7 +31,7 @@ public class TweakEnderIO {
 
     @RecipeAddition(requiredModids = "EnderIO")
     public static void addRecipes() {
-        if (ConfigurationHandler.makeEIOHardModeEasier && Config.useHardRecipes) {
+        if (ConfigurationHandler.makeEIOHardModeEasier && useHardRecipes) {
             GameRegistry.addRecipe(new ShapedOreRecipe(reservoir,
                     "GGG",
                     "QcQ",
