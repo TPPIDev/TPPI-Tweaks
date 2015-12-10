@@ -73,8 +73,6 @@ public class ConfigurationHandler
 	public static boolean showIRCGui;
 		
 	public static File cfg;
-		
-	public static boolean allowCapes = true;
 
 	public static void init(File file)
 	{
@@ -95,7 +93,7 @@ public class ConfigurationHandler
 		glassFuelRods = config.get("Other Mod Tweaks", "glassFuelRods", false, "Big Reactors fuel rods take just a touch of reactor glass.").getBoolean(false);
 		twoReactorGlass = config.get("Other Mod Tweaks", "twoReactorGlass", true, "Big Reactors\' reactor glass recipe gives two reactor glass in exchange for the harder recipe.").getBoolean(true);
 		addIridiumPanelRecipe = config.get("Other Mod Tweaks", "addIridiumPanelRecipe", true, "Add additional recipe for the Iridium Reinforced Plate, because AOBD removes all ways to process the ore into the appropriate type.").getBoolean(true);
-		harderQuarryRecipe = config.get("Other Mod Tweaks", "harderQuarryRecipe", true, "Replace the Diamond Pickaxe in the Quarry with a Diamond Drill to increase initial investment while Greg's away.").getBoolean(true);
+		harderQuarryRecipe = config.get("Other Mod Tweaks", "harderQuarryRecipe", true, "Put the Quarry farther down the BuildCraft tech tree").getBoolean(true);
 		
 		eloraamBreakersAndDeployers = config.get("Other Mod Tweaks", "eloraamBreakersAndDeployers", true, "OpenBlocks block breakers and placers have the same recipes as Redpower 2's.").getBoolean(true);
 		disablePigmenTrophyDrop = config.get("Other Mod Tweaks", "disablePigmenTrophyDrop", true, "Disables pigmen trophies from dropping.").getBoolean(true);
@@ -128,7 +126,7 @@ public class ConfigurationHandler
 
 		addGreenHeartRecipe = config.get("Tinker's Construct Tweaks", "addGreenHeartRecipe", true, "Adds a recipe for the green heart and canister.").getBoolean(true);
 
-		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", true, "Make the autonomous activator recipe slightly harder").getBoolean(true);
+		harderActivatorRecipe = config.get("Other Mod Tweaks", "harderActivatorRecipe", false, "Make the autonomous activator recipe slightly harder").getBoolean(true);
 		
 		addOsmiumToOreWasher = config.get("Mekanism Tweaks", "addOsmiumToOreWasher", true, "Add a recipe for impure osmium dust to clean osmium dust in the IC2 ore washer.").getBoolean(true);
 		harderDisassemblerRecipe = config.get("Mekanism Tweaks", "harderAtomicDisassembler", true, "Makes the recipe for the Atomic Disassembler much more difficult").getBoolean(true);
@@ -140,9 +138,7 @@ public class ConfigurationHandler
 		harderAdvancedItemCollectorRecipe = config.get("Random Things Tweaks", "harderAdvancedItemCollectorRecipe", true, "Increase the cost of the advanced item collector.").getBoolean(true);
 		
 		nerfTECaches = config.get("Thermal Expansion Tweaks", "nerfTECaches", true, "Add Mekanism Bins to basic cache recipe.").getBoolean(true);
-		
-//		allowCapes = config.get("Pack Info", "allowDevCapes", true, "Enables/Disables the visibility of dev capes. This only affects the user and does NOT have to be the same between client and server.").getBoolean(true);
-		
+
 		config.save();
 	}
 
