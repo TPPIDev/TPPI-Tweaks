@@ -17,13 +17,13 @@ public class TweakBuildcraft {
 
     @RecipeRemoval(requiredModids = {"BuildCraft|Robotics", "BuildCraft|Silicon", "BuildCraft|Builders"})
     public static void init() {
-//        if (ConfigurationHandler.harderQuarryRecipe)
+        if (ConfigurationHandler.harderQuarryRecipe)
             TweakingRegistry.markItemForRecipeRemoval(quarry, 0, TweakingAction.CHANGED, "Moved farther down the", "BuildCraft tech tree");
     }
 
     @RecipeAddition(requiredModids = {"BuildCraft|Robotics", "BuildCraft|Silicon", "BuildCraft|Builders"})
     public static void addRecipes() {
-//        if (ConfigurationHandler.harderQuarryRecipe) {
+        if (ConfigurationHandler.harderQuarryRecipe) {
             GameRegistry.addRecipe(new ShapedOreRecipe(quarry,
                     "IRI",
                     "GIG",
@@ -34,6 +34,6 @@ public class TweakBuildcraft {
                     'D', "gearDiamond",
                     'A', robot
             ));
-//        }
+        }
     }
 }
