@@ -7,8 +7,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
@@ -46,10 +48,14 @@ public class TweakMekanism {
             TweakingRegistry.markItemForRecipeRemoval(atomicDisassembler, -1, TweakingAction.CHANGED, "Changed to ensure", "balance with all other tools");
             TweakingRegistry.markItemForRecipeRemoval(atomicAlloy, -1, TweakingAction.CHANGED, "Changed to further", "balance all of Mekanism");
         }
-
+        
+        
         TweakingRegistry.addTweakedTooltip(compressedDiamond, 0, TweakingAction.REMOVED, "Removed to further increase", "costs of Mekanism");
         TweakingRegistry.addTweakedTooltip(compressedObsidian, 0, TweakingAction.REMOVED, "Removed to further increase", "costs of Mekanism");
 
+        removeRecipe("EnrichmentChamber", new ItemStack(Items.diamond), new ItemStack(compressedDiamond));
+        removeRecipe("EnrichmentChamber", new ItemStack(Blocks.obsidian), new ItemStack(compressedObsidian));
+        
         if (ConfigurationHandler.disableCardboardBox)
             TweakingRegistry.markItemForRecipeRemoval(cardboardBox, -1);
 
@@ -61,6 +67,13 @@ public class TweakMekanism {
             TweakingRegistry.markItemForRecipeRemoval(machineBlock, 4, TweakingAction.CHANGED, "Changed to balance better", "with other quarry-like blocks");
     }
 
+    public static void removeRecipe(String recipeType, ItemStack input, ItemStack output) {
+        NBTTagCompound recipeTag = new NBTTagCompound();
+        recipeTag.setTag("input", input.writeToNBT(new NBTTagCompound()));
+        recipeTag.setTag("output", output.writeToNBT(new NBTTagCompound()));
+        FMLInterModComms.sendMessage("Mekanism", "Delete" + recipeType + "Recipe", recipeTag);
+    }
+    
     @RecipeAddition(requiredModids = "Mekanism")
     public static void addRecipes() {
         if (ConfigurationHandler.harderDisassemblerRecipe)
