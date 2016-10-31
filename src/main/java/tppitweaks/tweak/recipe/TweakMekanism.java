@@ -71,7 +71,7 @@ public class TweakMekanism {
         NBTTagCompound recipeTag = new NBTTagCompound();
         recipeTag.setTag("input", input.writeToNBT(new NBTTagCompound()));
         recipeTag.setTag("output", output.writeToNBT(new NBTTagCompound()));
-        FMLInterModComms.sendMessage("Mekanism", "Remove" + recipeType + "Recipe", recipeTag);
+        FMLInterModComms.sendMessage("Mekanism", "Delete" + recipeType + "Recipe", recipeTag);
     }
     
     @RecipeAddition(requiredModids = "Mekanism")
