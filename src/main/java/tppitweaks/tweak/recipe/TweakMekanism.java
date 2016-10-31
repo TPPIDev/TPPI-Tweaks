@@ -10,7 +10,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import tppitweaks.TPPITweaks;
 import tppitweaks.config.ConfigurationHandler;
 import tppitweaks.item.ModItems;
